@@ -1,11 +1,14 @@
+'use client'
+
 import type { PhProduct } from '@/lib/fixtures/types'
 import PhProductRow from './PhProductRow'
 
 interface PhTableProps {
   products: PhProduct[]
+  onVeloPreview?: () => void
 }
 
-export default function PhTable({ products }: PhTableProps) {
+export default function PhTable({ products, onVeloPreview }: PhTableProps) {
   return (
     <div className="premium-glass rounded-xl p-8">
       <div className="flex justify-between items-center mb-8">
@@ -36,7 +39,12 @@ export default function PhTable({ products }: PhTableProps) {
       </div>
       <div className="space-y-2.5">
         {products.map((product, index) => (
-          <PhProductRow key={product.name} product={product} rank={index + 1} />
+          <PhProductRow
+            key={product.name}
+            product={product}
+            rank={index + 1}
+            onPreviewClick={product.name === 'Velo' ? onVeloPreview : undefined}
+          />
         ))}
       </div>
     </div>
