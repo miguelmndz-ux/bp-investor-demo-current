@@ -1,11 +1,19 @@
 'use client'
 
+import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
+
 interface OutreachDraftModalProps {
   onClose: () => void
 }
 
 export default function OutreachDraftModal({ onClose }: OutreachDraftModalProps) {
-  return (
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = '' }
+  }, [])
+
+  return createPortal(
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
@@ -200,6 +208,7 @@ export default function OutreachDraftModal({ onClose }: OutreachDraftModalProps)
         </div>
 
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
