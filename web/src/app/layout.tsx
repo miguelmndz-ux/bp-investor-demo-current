@@ -1,13 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import AppShell from '@/components/layout/AppShell'
 import './globals.css'
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-plus-jakarta-sans',
@@ -20,21 +16,14 @@ export const metadata: Metadata = {
   description: 'The live platform for AI builder communities',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} min-h-screen`}>
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   )
