@@ -87,6 +87,16 @@ Source of truth: `DESIGN.md` and `web/src/styles/globals.css` + `web/tailwind.co
 
 All mock data lives in `web/src/lib/fixtures/` as typed TypeScript objects. Components import directly — no API calls, no loading states for demo screens. Types are defined in `web/src/lib/fixtures/types.ts`.
 
+### Modals
+
+All modals must:
+- Render via `createPortal(…, document.body)` to escape AppShell's stacking context
+- Lock body scroll on mount: `document.body.style.overflow = 'hidden'`, restore on unmount
+- Close on backdrop click (`if (e.target === e.currentTarget) onClose()`) and on `×` button
+- Use `z-[60]` or higher (SideNav is `z-50`, TopNav is `z-40`)
+
+See `web/src/components/apex/OutreachDraftModal.tsx` as the reference implementation.
+
 ### Testing
 
 Each component gets a test file at `__tests__/<ComponentName>.test.tsx` next to the component. Tests are smoke tests — render the component, check key text/elements are present. Keep them focused and fast.
@@ -107,6 +117,14 @@ Full product context in `docs/`:
 - `docs/033126_build_party_prd_reframed_mvp_v_1_v_2_v_3.md` — reframed PRD (MVP → V3)
 - `docs/buildparty-agent-strategy.md` — the five agents (Nova, Echo, Orbit, Flare, Apex)
 - `docs/product-launch-agent-competitive-analysis.md` — Apex competitive analysis
+
+## Deployment
+
+- **Platform:** Vercel
+- **Root directory:** `web/`
+- **Production branch:** `master` (not `main`)
+- **Live URL:** https://bp-investor-demo-current-k890mz3n0-miguels-projects-854c1db4.vercel.app/apex
+- Vercel auto-deploys on every push to `master`
 
 ## Live Session Screen (future)
 
