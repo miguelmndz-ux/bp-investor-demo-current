@@ -7,6 +7,7 @@ import FounderGrid from '@/components/apex/FounderGrid'
 import LiveStatsPanel from '@/components/apex/LiveStatsPanel'
 import AgentWorkflowLog from '@/components/apex/AgentWorkflowLog'
 import OutreachDraftModal from '@/components/apex/OutreachDraftModal'
+import ApexScanOverlay from '@/components/apex/ApexScanOverlay'
 import { phProducts } from '@/lib/fixtures/products'
 import { founders } from '@/lib/fixtures/founders'
 import { workflowLog } from '@/lib/fixtures/workflowLog'
@@ -16,6 +17,7 @@ export default function ApexPage() {
 
   return (
     <>
+      <ApexScanOverlay />
       <HeroCard draftCount={10} />
       <div className="grid grid-cols-12 gap-8">
         <div className="col-span-8 space-y-10 fade-up fade-up-1">
