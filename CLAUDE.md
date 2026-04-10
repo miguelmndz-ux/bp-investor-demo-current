@@ -67,6 +67,58 @@ Source of truth: `DESIGN.md` and `web/src/styles/globals.css` + `web/tailwind.co
 
 **Mode:** Light mode only. No dark mode.
 
+## Known Gotchas
+
+### Material Symbols icon sizing
+
+The Google Fonts Material Symbols CDN stylesheet sets `font-size: 24px` on `.material-symbols-outlined`. This has the same CSS specificity as Tailwind utility classes (`text-8xl`, `text-[200px]`, etc.) and the CDN rule can win due to load order. **Always use inline `style` for any non-default icon size:**
+
+```tsx
+// ✅ correct — inline style always wins
+<span className="material-symbols-outlined" style={{ fontSize: '96px', lineHeight: '1' }}>
+  trending_up
+</span>
+
+// ❌ wrong — may be overridden by CDN stylesheet
+<span className="material-symbols-outlined text-8xl">trending_up</span>
+```
+
+Default nav icons at ~24px are fine with just the class.
+
+### Custom border radius tokens override Tailwind defaults
+
+`tailwind.config.ts` overrides several radius values — know what you're getting:
+- `rounded` (DEFAULT) = `1rem` (16px)
+- `rounded-lg` = `2rem` (32px)
+- `rounded-xl` = `3rem` (48px) — fully rounds anything narrower than 96px
+- `rounded-full` = `9999px`
+- `rounded-2xl`, `rounded-3xl`, etc. = Tailwind defaults (not overridden)
+
+Use arbitrary values like `rounded-[10px]` when the tokens don't fit (e.g. tooltip pills, small icon containers).
+
+### Tooltips/popovers inside `overflow-y-auto` containers
+
+CSS forces `overflow-x: auto` whenever `overflow-y: auto` is set on the same element, clipping any absolutely-positioned children horizontally. Use `createPortal` + `position: fixed` + `getBoundingClientRect()` for anything that needs to escape a scroll container:
+
+```tsx
+function Tooltip({ label, y }: { label: string; y: number }) {
+  return createPortal(
+    <div className="fixed pointer-events-none z-[200]"
+         style={{ left: 92, top: y, transform: 'translateY(-50%)' }}>
+      ...
+    </div>,
+    document.body
+  )
+}
+// Anchor: onMouseEnter → getBoundingClientRect() → set y in state
+```
+
+See `web/src/components/layout/SideNav.tsx` for the full pattern.
+
+### `overflow-hidden` + `hover:scale-*` clips the first item
+
+When a scroll container (`overflow-y-auto`) holds items with a scale hover effect, the first item gets clipped at the container's top boundary. Add `pt-1` to the scroll container to give the first item room.
+
 ## Architecture Patterns
 
 ### Adding a new screen
@@ -96,6 +148,14 @@ All modals must:
 - Use `z-[60]` or higher (SideNav is `z-50`, TopNav is `z-40`)
 
 See `web/src/components/apex/OutreachDraftModal.tsx` as the reference implementation.
+
+### Full-screen overlays
+
+Same portal + scroll-lock rules as modals, with two differences:
+- Use `z-[100]` to guarantee they sit above everything (SideNav `z-50`, TopNav `z-40`, modals `z-[60]`)
+- No backdrop click-to-close — they own the full screen and dismiss on their own terms
+
+See `web/src/components/apex/ApexScanOverlay.tsx` as the reference implementation.
 
 ### Testing
 
