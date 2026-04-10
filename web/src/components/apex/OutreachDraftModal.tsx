@@ -5,9 +5,10 @@ import { createPortal } from 'react-dom'
 
 interface OutreachDraftModalProps {
   onClose: () => void
+  onSend?: () => void
 }
 
-export default function OutreachDraftModal({ onClose }: OutreachDraftModalProps) {
+export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftModalProps) {
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
@@ -201,7 +202,10 @@ export default function OutreachDraftModal({ onClose }: OutreachDraftModalProps)
             <span className="material-symbols-outlined text-[20px]">edit</span>
             Edit drafts
           </button>
-          <button className="px-8 py-3.5 rounded-2xl bg-gradient-to-br from-primary-container to-primary text-white font-black text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
+          <button
+            onClick={() => { onSend?.(); onClose() }}
+            className="px-8 py-3.5 rounded-2xl bg-gradient-to-br from-primary-container to-primary text-white font-black text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2"
+          >
             <span className="material-symbols-outlined text-[20px]">send</span>
             Approve &amp; Send All
           </button>

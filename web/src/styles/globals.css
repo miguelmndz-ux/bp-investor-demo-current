@@ -122,3 +122,8 @@ h1, h2, h3, .font-jakarta {
 .animate-apex-pop {
   animation: apexPop 0.4s ease-out forwards;
 }
+
+@keyframes slideIn {
+  0%   { opacity: 0; transform: translateX(100px); }
+  100% { opacity: 1; transform: translateX(0); }
+}

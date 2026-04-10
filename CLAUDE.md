@@ -63,6 +63,19 @@ Source of truth: `DESIGN.md` and `web/src/styles/globals.css` + `web/tailwind.co
 
 **Glass effects:** Use `.premium-glass` class for cards/panels. Use `.glass-button` for secondary action buttons. Do not replicate these styles inline — use the classes.
 
+**Liquid glass buttons:** A recurring "liquid glass" style used for interactive elements (action buttons, active filter pills, sidebar active state, preview card CTAs). Apply via inline `style`:
+
+```tsx
+style={{
+  background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
+  backdropFilter: 'blur(20px) saturate(180%)',
+  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+  border: '1px solid rgba(255, 122, 47, 0.3)',
+  boxShadow: '0 8px 32px -4px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
+  color: '#7a2e00',
+}}
+```
+
 **Animations:** Use `.fade-up`, `.fade-up-1` through `.fade-up-4` for page-load entrance animations.
 
 **Mode:** Light mode only. No dark mode.
@@ -115,6 +128,22 @@ function Tooltip({ label, y }: { label: string; y: number }) {
 
 See `web/src/components/layout/SideNav.tsx` for the full pattern.
 
+### `premium-glass` breaks `sticky` positioning
+
+`premium-glass` sets `overflow: hidden`, which breaks `position: sticky` on the same element or its ancestors. When you need a sticky glass card, use two nested divs:
+
+```tsx
+{/* Outer div is sticky — no overflow:hidden */}
+<div className="sticky top-24">
+  {/* Inner div gets premium-glass */}
+  <div className="premium-glass rounded-2xl p-6">
+    ...
+  </div>
+</div>
+```
+
+Never put `sticky` and `premium-glass` on the same element.
+
 ### `overflow-hidden` + `hover:scale-*` clips the first item
 
 When a scroll container (`overflow-y-auto`) holds items with a scale hover effect, the first item gets clipped at the container's top boundary. Add `pt-1` to the scroll container to give the first item room.
@@ -149,13 +178,25 @@ All modals must:
 
 See `web/src/components/apex/OutreachDraftModal.tsx` as the reference implementation.
 
-### Full-screen overlays
+### Content-area overlays
 
-Same portal + scroll-lock rules as modals, with two differences:
-- Use `z-[100]` to guarantee they sit above everything (SideNav `z-50`, TopNav `z-40`, modals `z-[60]`)
-- No backdrop click-to-close — they own the full screen and dismiss on their own terms
+The Apex scan overlay covers only the main content area (not SideNav/TopNav) using `fixed top-20 left-20 right-0 bottom-0 z-[45]`. It renders inline (no `createPortal`). Background matches the dashboard gradient (`#fffaf7 → #fff1e6`). See `web/src/components/apex/ApexScanOverlay.tsx`.
 
-See `web/src/components/apex/ApexScanOverlay.tsx` as the reference implementation.
+### Toasts
+
+Success toasts render via `createPortal(…, document.body)` at `z-[200]`, positioned `fixed top-6 right-6`. They auto-dismiss after a duration and slide in from the right using the `slideIn` keyframe. See `web/src/components/ui/SuccessToast.tsx` as the reference implementation.
+
+### Two-column profile layout
+
+Community profile pages use a sticky left panel (30%) + scrollable right content (70%) with `flex items-start gap-10`. The left panel must use the two-div sticky pattern (see `premium-glass` + `sticky` gotcha above). See `web/src/components/apex/CommunityProfile.tsx`.
+
+### Embedding external HTML files
+
+Static HTML files go in `web/public/apex/` and are embedded via `<iframe>` with `sandbox="allow-scripts allow-same-origin"`. Wrap in a `rounded-lg overflow-hidden border` container. Link out to the full file with `target="_blank"`. See `DecodePreviewCard.tsx`.
+
+### Cross-component events
+
+For communication between unrelated components (e.g., scan overlay → sidebar progress indicator), use `window.dispatchEvent(new CustomEvent(...))` and `window.addEventListener(...)`. See the `apex-scan-progress` event dispatched by `ApexScanOverlay` and consumed by `SideNav`.
 
 ### Testing
 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 
-type ScanPhase = 'idle' | 'scanning' | 'complete' | 'dismissed'
+type ScanPhase = 'scanning' | 'complete' | 'dismissed'
 
 const PHASES = [
   { id: 1, name: 'Scanning Product Hunt top 10', icon: 'travel_explore' },
@@ -12,17 +12,30 @@ const PHASES = [
   { id: 5, name: 'Drafting outreach messages',    icon: 'edit_note'      },
 ] as const
 
-const PHASE_DURATION_MS  = 1800
+const PHASE_DURATION_MS  = 3500
 const FADE_DURATION_MS   = 600
 
 export default function ApexScanOverlay() {
-  const [scanPhase, setScanPhase]           = useState<ScanPhase>('idle')
-  const [activePhaseIndex, setActivePhaseIndex] = useState(-1)
+  const [scanPhase, setScanPhase]           = useState<ScanPhase>('scanning')
+  const [activePhaseIndex, setActivePhaseIndex] = useState(0)
   const [isExiting, setIsExiting]           = useState(false)
+
+  // Broadcast scan progress for SideNav indicator
+  useEffect(() => {
+    const progress = scanPhase === 'complete' ? 1 : activePhaseIndex / PHASES.length
+    window.dispatchEvent(new CustomEvent('apex-scan-progress', { detail: { progress, phase: scanPhase } }))
+  }, [scanPhase, activePhaseIndex])
+
+  // Clear progress on unmount
+  useEffect(() => {
+    return () => {
+      window.dispatchEvent(new CustomEvent('apex-scan-progress', { detail: { progress: -1, phase: 'dismissed' } }))
+    }
+  }, [])
 
   // Advance through phases sequentially
   useEffect(() => {
-    if (scanPhase !== 'scanning' || activePhaseIndex < 0) return
+    if (scanPhase !== 'scanning') return
 
     if (activePhaseIndex >= PHASES.length) {
       setScanPhase('complete')
@@ -33,11 +46,6 @@ export default function ApexScanOverlay() {
     return () => clearTimeout(t)
   }, [scanPhase, activePhaseIndex])
 
-  const handleRunApex = useCallback(() => {
-    setScanPhase('scanning')
-    setActivePhaseIndex(0)
-  }, [])
-
   const handleDismiss = useCallback(() => {
     setIsExiting(true)
     setTimeout(() => setScanPhase('dismissed'), FADE_DURATION_MS)
@@ -47,7 +55,7 @@ export default function ApexScanOverlay() {
 
   const sparkleClass =
     scanPhase === 'scanning' ? 'animate-apex-pulse' :
-    scanPhase === 'complete' ? 'animate-apex-pop'   : ''
+    scanPhase === 'complete' ? 'animate-apex-pop'   : 'animate-apex-pulse'
 
   return (
     <div
@@ -91,32 +99,6 @@ export default function ApexScanOverlay() {
 
         {/* Right: Content */}
         <div className="flex-1">
-
-          {/* Idle state */}
-          {scanPhase === 'idle' && (
-            <div>
-              <h1 className="text-4xl font-black font-jakarta text-primary leading-tight mb-3">
-                Ready to run Apex?
-              </h1>
-              <p className="text-on-background/70 text-base mb-8">
-                Apex will scan Product Hunt, enrich founder profiles, and draft your outreach.
-              </p>
-              <button
-                onClick={handleRunApex}
-                className="font-extrabold font-jakarta px-8 py-3.5 rounded-full text-base active:scale-95 transition-all"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
-                  backdropFilter: 'blur(20px) saturate(180%)',
-                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                  border: '1px solid rgba(255, 122, 47, 0.3)',
-                  boxShadow: '0 8px 32px -4px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
-                  color: '#7a2e00',
-                }}
-              >
-                Run Apex
-              </button>
-            </div>
-          )}
 
           {/* Scanning / Complete state */}
           {(scanPhase === 'scanning' || scanPhase === 'complete') && (

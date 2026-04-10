@@ -28,8 +28,8 @@ export default function TopNav() {
         </div>
         <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
           <img
-            src="https://ui-avatars.com/api/?name=Admin&background=ff7a2f&color=fff&bold=true"
-            alt="Admin User"
+            src="/profile-pic.jpg"
+            alt="Profile"
             className="w-full h-full object-cover"
           />
         </div>

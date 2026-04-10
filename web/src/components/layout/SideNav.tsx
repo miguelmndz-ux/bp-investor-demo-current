@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { communities } from '@/lib/fixtures/communities'
 
@@ -98,7 +98,53 @@ function CommunityItem({
   )
 }
 
+function ScanProgressDot({ progress }: { progress: number }) {
+  const size = 14
+  const r = size / 2
+  // Pie slice: start from top (12 o'clock), sweep clockwise
+  const angle = progress * 360
+  const rad = (angle - 90) * (Math.PI / 180)
+  const x = r + r * Math.cos(rad)
+  const y = r + r * Math.sin(rad)
+  const largeArc = angle > 180 ? 1 : 0
+
+  // Full circle when complete
+  const piePath = progress >= 1
+    ? `M ${r},0 A ${r},${r} 0 1,1 ${r - 0.001},0 Z`
+    : `M ${r},0 A ${r},${r} 0 ${largeArc},1 ${x},${y} L ${r},${r} Z`
+
+  return (
+    <div className="absolute -top-0.5 -right-0.5 pointer-events-none z-10">
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <circle cx={r} cy={r} r={r} fill="#f5c9a8" />
+        <defs>
+          <linearGradient id="scanPieGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ff9a5c" />
+            <stop offset="100%" stopColor="#ff7a2f" />
+          </linearGradient>
+        </defs>
+        <path
+          d={piePath}
+          fill="url(#scanPieGradient)"
+          style={{ transition: 'all 0.6s ease' }}
+        />
+      </svg>
+    </div>
+  )
+}
+
 export default function SideNav() {
+  const [scanProgress, setScanProgress] = useState(-1)
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { progress } = (e as CustomEvent).detail
+      setScanProgress(progress)
+    }
+    window.addEventListener('apex-scan-progress', handler)
+    return () => window.removeEventListener('apex-scan-progress', handler)
+  }, [])
+
   return (
     <aside
       className="fixed left-0 top-0 h-full flex flex-col items-center py-6 px-4 z-50 w-20"
@@ -120,9 +166,12 @@ export default function SideNav() {
         <NavItem href="#" label="Calendar">
           <span className="material-symbols-outlined">calendar_today</span>
         </NavItem>
-        <NavItem href="/apex" label="Apex" active>
-          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>auto_awesome</span>
-        </NavItem>
+        <div className="relative">
+          {scanProgress >= 0 && <ScanProgressDot progress={scanProgress} />}
+          <NavItem href="/apex" label="Apex" active>
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>auto_awesome</span>
+          </NavItem>
+        </div>
       </div>
       <div className="my-3 w-8 h-px bg-orange-200/60 shrink-0" />
       <div
