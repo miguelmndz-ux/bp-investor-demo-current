@@ -1,7 +1,6 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
 import { phProducts } from '@/lib/fixtures/products'
 import { founders } from '@/lib/fixtures/founders'
 import CommunityProfile from '@/components/apex/CommunityProfile'
@@ -23,25 +22,16 @@ export default function CommunityPage() {
   }
 
   const hasFullProfile = product.description !== null
-  const founder = founders.find(f => f.role.includes(product.name)) ?? null
+  const productFounders = founders.filter(f => f.role.includes(product.name))
 
   return (
     <div className="fade-up">
-      {/* Back button */}
-      <Link
-        href="/apex"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors mb-8"
-      >
-        <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
-        Back to Apex
-      </Link>
-
       {hasFullProfile ? (
-        <CommunityProfile product={product} founder={founder} />
+        <CommunityProfile product={product} founders={productFounders} />
       ) : (
         <div className="flex gap-10">
           {/* Minimal left column with available data */}
-          <div className="w-[40%] shrink-0">
+          <div className="w-[30%] shrink-0">
             <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg border border-orange-100/40 mb-5 bg-white">
               <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
             </div>
