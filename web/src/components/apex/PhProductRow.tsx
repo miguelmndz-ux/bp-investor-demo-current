@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import type { PhProduct } from '@/lib/fixtures/types'
 
 interface PhProductRowProps {
@@ -19,12 +20,17 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
           <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
         </div>
         <div className="truncate flex-1 min-w-0">
-          <h3 className="font-extrabold text-sm text-on-background group-hover:text-primary transition-colors leading-tight">{product.name}</h3>
+          <Link
+            href={`/apex/community/${product.slug}`}
+            className="font-extrabold text-sm text-on-background group-hover:text-primary transition-colors leading-tight hover:underline"
+          >
+            {product.name}
+          </Link>
           <p className="text-[10px] text-stone-500 font-bold truncate leading-tight">{product.category}</p>
         </div>
         {onPreviewClick && (
           <button
-            onClick={onPreviewClick}
+            onClick={(e) => { e.stopPropagation(); onPreviewClick() }}
             className="opacity-0 group-hover:opacity-100 transition-all duration-200 bg-white text-primary text-[10px] font-extrabold px-3 py-1.5 rounded-xl shadow-sm hover:shadow-md active:scale-95 whitespace-nowrap shrink-0 border border-orange-50/80 font-jakarta"
           >
             Preview Outreach
