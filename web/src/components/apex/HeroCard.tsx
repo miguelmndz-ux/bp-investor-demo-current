@@ -25,7 +25,7 @@ export default function HeroCard({ draftCount }: HeroCardProps) {
       <div className="absolute -right-20 -top-20 w-96 h-96 bg-white/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -right-8 -bottom-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
       <div className="absolute right-12 top-1/2 -translate-y-1/2 opacity-20 drop-shadow-2xl pointer-events-none select-none">
-        <span className="material-symbols-outlined text-[200px] text-white" style={{ fontVariationSettings: "'FILL' 1, 'wght' 700" }}>auto_awesome</span>
+        <span className="material-symbols-outlined text-white" style={{ fontSize: '200px', lineHeight: '1', fontVariationSettings: "'FILL' 1, 'wght' 700" }}>auto_awesome</span>
       </div>
     </section>
   )

@@ -1,7 +1,102 @@
 'use client'
 
 import Link from 'next/link'
+import { useState, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { communities } from '@/lib/fixtures/communities'
+
+function Tooltip({ label, y }: { label: string; y: number }) {
+  return createPortal(
+    <div
+      className="fixed pointer-events-none z-[200]"
+      style={{ left: 92, top: y, transform: 'translateY(-50%)' }}
+    >
+      <div className="bg-[#1c0900] text-white text-[13px] font-bold font-jakarta px-3 py-[7px] rounded-[8px] shadow-2xl whitespace-nowrap">
+        {label}
+      </div>
+    </div>,
+    document.body
+  )
+}
+
+function NavItem({
+  href,
+  label,
+  active,
+  children,
+}: {
+  href: string
+  label: string
+  active?: boolean
+  children: React.ReactNode
+}) {
+  const ref = useRef<HTMLAnchorElement>(null)
+  const [tooltipY, setTooltipY] = useState<number | null>(null)
+  return (
+    <>
+      <Link
+        ref={ref}
+        href={href}
+        className={
+          active
+            ? 'flex items-center justify-center w-12 h-12 rounded-2xl text-primary transition-all duration-300'
+            : 'flex items-center justify-center w-12 h-12 text-stone-400 hover:text-primary hover:bg-orange-50 rounded-2xl transition-all duration-300'
+        }
+        style={active ? {
+          background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          border: '1px solid rgba(255, 122, 47, 0.3)',
+          boxShadow: '0 4px 16px -2px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
+        } : undefined}
+        onMouseEnter={() => {
+          const rect = ref.current?.getBoundingClientRect()
+          if (rect) setTooltipY(rect.top + rect.height / 2)
+        }}
+        onMouseLeave={() => setTooltipY(null)}
+      >
+        {children}
+      </Link>
+      {tooltipY !== null && <Tooltip label={label} y={tooltipY} />}
+    </>
+  )
+}
+
+function CommunityItem({
+  href,
+  label,
+  avatar,
+  type,
+}: {
+  href: string
+  label: string
+  avatar: string
+  type: 'creator' | 'community'
+}) {
+  const ref = useRef<HTMLAnchorElement>(null)
+  const [tooltipY, setTooltipY] = useState<number | null>(null)
+  return (
+    <>
+      <a
+        ref={ref}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`flex items-center justify-center w-11 h-11 overflow-hidden shadow-sm hover:scale-105 active:scale-95 transition-all duration-200 shrink-0 ${
+          type === 'creator' ? 'rounded-full ring-2 ring-white/60' : 'rounded-2xl'
+        }`}
+        onMouseEnter={() => {
+          const rect = ref.current?.getBoundingClientRect()
+          if (rect) setTooltipY(rect.top + rect.height / 2)
+        }}
+        onMouseLeave={() => setTooltipY(null)}
+      >
+        <img src={avatar} alt={label} className="w-full h-full object-cover" />
+      </a>
+      {tooltipY !== null && <Tooltip label={label} y={tooltipY} />}
+    </>
+  )
+}
 
 export default function SideNav() {
   return (
@@ -16,31 +111,32 @@ export default function SideNav() {
       }}
     >
       <div className="space-y-3 flex flex-col items-center w-full shrink-0">
-        <Link href="/apex" title="Home" className="flex items-center justify-center w-12 h-12 bg-primary/10 shadow-sm rounded-2xl text-primary transition-all duration-300 border border-primary/20">
-          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>home</span>
-        </Link>
-        <Link href="#" title="Explore" className="flex items-center justify-center w-12 h-12 text-stone-400 hover:text-primary hover:bg-orange-50 rounded-2xl transition-all duration-300">
+        <NavItem href="/apex" label="Home">
+          <span className="material-symbols-outlined">home</span>
+        </NavItem>
+        <NavItem href="#" label="Explore">
           <span className="material-symbols-outlined">explore</span>
-        </Link>
-        <Link href="#" title="Calendar" className="flex items-center justify-center w-12 h-12 text-stone-400 hover:text-primary hover:bg-orange-50 rounded-2xl transition-all duration-300">
+        </NavItem>
+        <NavItem href="#" label="Calendar">
           <span className="material-symbols-outlined">calendar_today</span>
-        </Link>
+        </NavItem>
+        <NavItem href="/apex" label="Apex" active>
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>auto_awesome</span>
+        </NavItem>
       </div>
       <div className="my-3 w-8 h-px bg-orange-200/60 shrink-0" />
-      <div className="flex-1 overflow-y-auto w-full flex flex-col items-center space-y-2.5 pb-4" style={{ scrollbarWidth: 'none' }}>
+      <div
+        className="flex-1 overflow-y-auto w-full flex flex-col items-center space-y-2.5 pt-1 pb-4"
+        style={{ scrollbarWidth: 'none' }}
+      >
         {communities.map((community) => (
-          <a
+          <CommunityItem
             key={community.name}
             href={community.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={community.name}
-            className={`flex items-center justify-center w-11 h-11 overflow-hidden shadow-sm hover:scale-105 active:scale-95 transition-all duration-200 shrink-0 ${
-              community.type === 'creator' ? 'rounded-full ring-2 ring-white/60' : 'rounded-2xl'
-            }`}
-          >
-            <img src={community.avatar} alt={community.name} className="w-full h-full object-cover" />
-          </a>
+            label={community.name}
+            avatar={community.avatar}
+            type={community.type}
+          />
         ))}
       </div>
     </aside>

@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storybook + Figma + Claude Code — Microcourse</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --bg: #F6F9FC;
+      --surface: #FFFFFF;
+      --sidebar-bg: #FAFAFA;
+      --sidebar-border: #E6E6E6;
+      --border: #E6E6E6;
+      --accent: #FF4785;
+      --accent-tint: rgba(255, 71, 133, 0.06);
+      --accent-border: rgba(255, 71, 133, 0.2);
+      --success: #66BF3C;
+      --text: #333333;
+      --muted: #888888;
+      --code-bg: #F8F8F8;
+      --concept-bg: #FAFAFA;
+      --exercise-bg: #EEF3FF;
+      --exercise-border: #B3C6FF;
+      --outcome-bg: rgba(255, 71, 133, 0.07);
+      --outcome-border: rgba(255, 71, 133, 0.2);
+      --sidebar-width: 280px;
+      --sidebar-collapsed-width: 64px;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+    }
+
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      display: flex;
+      justify-content: center;
+      padding-left: var(--sidebar-width);
+      min-height: 100vh;
+      transition: padding-left 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── Sidebar ─── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 100;
+      transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .sidebar-logo {
+      font-family: var(--font-display);
+      font-size: 16px;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .sidebar-logo span { color: var(--accent); }
+    .progress-count {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .progress-bar-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+    .sidebar-nav::-webkit-scrollbar { width: 4px; }
+    .sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+    .sidebar-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .nav-item:hover { background: var(--accent-tint); }
+    .nav-item.active {
+      background: var(--accent-tint);
+      border-left-color: var(--accent);
+    }
+    .nav-item.active .nav-title { color: var(--accent); font-weight: 600; }
+    .nav-num {
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--border);
+      color: var(--muted);
+      border-radius: 4px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+      min-width: 28px;
+      text-align: center;
+    }
+    .nav-item.active .nav-num { background: var(--accent); color: #fff; }
+    .nav-item.completed .nav-num { background: var(--success); color: #fff; }
+    .nav-title {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.4;
+      flex: 1;
+    }
+    .nav-icon { font-size: 14px; flex-shrink: 0; color: var(--border); }
+    .nav-item.completed .nav-icon { color: var(--success); }
+
+    /* ─── Main Content ─── */
+    .main {
+      width: 100%;
+      max-width: 840px;
+      padding: 32px 40px 80px;
+    }
+    .main-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .main-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .main-header h1 em { font-style: italic; color: var(--accent); }
+    .main-header p { color: var(--muted); font-size: 14px; max-width: 560px; }
+    .milestones-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .milestone-chip {
+      font-size: 11px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 10px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .milestone-chip.done { border-color: var(--success); color: var(--success); background: rgba(102,191,60,0.06); }
+
+    /* ─── Module Cards ─── */
+    .modules-list { display: flex; flex-direction: column; gap: 12px; }
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      scroll-margin-top: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .module-card.active {
+      border-top: 3px solid var(--accent);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .module-card.completed .card-header { background: rgba(102,191,60,0.03); }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .card-header:hover { background: var(--bg); }
+    .card-num {
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      padding: 3px 8px;
+      flex-shrink: 0;
+    }
+    .module-card.completed .card-num { background: var(--success); }
+    .card-title { flex: 1; font-size: 15px; font-weight: 600; color: var(--text); }
+    .card-check { font-size: 16px; color: var(--success); display: none; }
+    .module-card.completed .card-check { display: block; }
+    .card-chevron { color: var(--muted); font-size: 12px; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; }
+    .module-card.active .card-chevron { transform: rotate(180deg); }
+    .card-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-inner { padding: 0 28px 28px; border-top: 1px solid var(--border);
+      opacity: 0; transform: translateY(-5px);
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.08s, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.08s; }
+    .module-card.active .card-inner { opacity: 1; transform: translateY(0); }
+
+    /* ─── Content Components ─── */
+
+    /* Outcome banner */
+    .outcome-banner {
+      background: var(--outcome-bg);
+      border: 1px solid var(--outcome-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 13.5px;
+      color: #c0264d;
+    }
+    .outcome-banner strong { color: var(--accent); }
+
+    /* Headings inside cards */
+    .card-inner h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 28px 0 10px;
+      color: var(--text);
+    }
+    .card-inner h3 { font-size: 15px; font-weight: 600; margin: 22px 0 8px; color: var(--text); }
+    .card-inner h4 {
+      font-size: 13px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--accent); margin: 20px 0 8px;
+    }
+    .card-inner p { color: #555; margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+
+    /* Concept cards grid */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .concept-card {
+      background: var(--concept-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .concept-card .concept-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+    }
+    .concept-card h4 {
+      font-size: 13px; font-weight: 600; text-transform: none;
+      letter-spacing: 0; color: var(--text); margin: 0 0 6px;
+    }
+    .concept-card p { font-size: 12.5px; color: var(--muted); margin: 0; }
+
+    /* Numbered steps */
+    .steps-list { list-style: none; margin: 14px 0; display: flex; flex-direction: column; gap: 10px; }
+    .steps-list li { display: flex; gap: 12px; font-size: 14px; color: #555; align-items: flex-start; }
+    .step-num {
+      width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+      color: #fff; font-size: 11px; font-weight: 700; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* Bullet list */
+    .bullet-list { list-style: none; margin: 10px 0; display: flex; flex-direction: column; gap: 7px; }
+    .bullet-list li { display: flex; gap: 10px; font-size: 14px; color: #555; line-height: 1.5; }
+    .bullet-list li::before { content: '›'; color: var(--accent); font-size: 16px; line-height: 1.5; flex-shrink: 0; }
+
+    /* Code blocks */
+    .code-block {
+      position: relative;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 14px 0;
+      overflow: hidden;
+    }
+    .code-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 8px 14px 4px;
+      border-bottom: 1px solid var(--border);
+      background: #f0f0f0;
+    }
+    .code-block pre {
+      padding: 14px 16px;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 12.5px; line-height: 1.6; color: #333;
+      overflow-x: auto; margin: 0;
+    }
+    .code-block code { color: inherit; background: none; border: none; padding: 0; }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 11px; color: var(--muted);
+      padding: 3px 9px; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .copy-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .code-block.has-label .copy-btn { top: 34px; }
+
+    /* Inline code */
+    code {
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 12.5px;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 1px 6px; border-radius: 4px; color: #c0264d;
+    }
+
+    /* Callout boxes */
+    .callout {
+      background: var(--exercise-bg);
+      border: 1px solid var(--exercise-border);
+      border-radius: 8px; padding: 16px 18px; margin: 16px 0;
+      font-size: 13.5px; color: #3a4a7a;
+    }
+    .callout strong { color: #2a3a8a; }
+    .callout.pink { background: var(--outcome-bg); border-color: var(--outcome-border); color: #8a2040; }
+    .callout.pink strong { color: var(--accent); }
+    .callout.green { background: rgba(102,191,60,0.07); border-color: rgba(102,191,60,0.3); color: #2a5a10; }
+
+    /* Key terms */
+    .key-terms { margin: 24px 0 16px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .key-terms-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .terms-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .term-pill {
+      font-size: 12px; background: var(--surface);
+      border: 1px solid var(--accent-border);
+      border-radius: 100px; padding: 4px 12px;
+      color: var(--accent); cursor: pointer;
+      transition: background 0.15s; user-select: none;
+    }
+    .term-pill:hover { background: var(--accent-tint); }
+    .term-pill.open { background: var(--accent-tint); border-radius: 8px 8px 0 0; }
+    .term-def {
+      display: none; font-size: 12.5px; color: #555;
+      background: var(--accent-tint); border: 1px solid var(--accent-border);
+      border-top: none; border-radius: 0 8px 8px 8px;
+      padding: 10px 12px; margin-top: -8px; margin-bottom: 6px;
+    }
+    .term-def.open { display: block; }
+
+    /* Exercise block */
+    .exercise-block {
+      background: var(--exercise-bg); border: 1px solid var(--exercise-border);
+      border-radius: 10px; padding: 20px; margin: 24px 0 20px;
+    }
+    .exercise-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #4060cc; margin-bottom: 8px;
+    }
+    .exercise-block h3 { font-size: 14px; margin: 0 0 8px; color: #2a3a8a; }
+    .exercise-block p { font-size: 13.5px; color: #3a4a7a; margin: 0; }
+
+    /* Mark complete button */
+    .complete-btn {
+      width: 100%; padding: 13px; border: none; border-radius: 8px;
+      background: var(--accent); color: #fff;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 8px;
+    }
+    .complete-btn:hover { background: #e03070; }
+    .complete-btn:active { transform: scale(0.99); }
+    .complete-btn.done { background: var(--success); }
+    .complete-btn.done:hover { background: #55aa2a; }
+
+    /* Comparison table */
+    .compare-table { margin: 16px 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .compare-row.three { grid-template-columns: 1fr 1fr 1fr; }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row.header { background: var(--concept-bg); }
+    .compare-cell { padding: 10px 14px; font-size: 13px; color: #555; border-right: 1px solid var(--border); }
+    .compare-cell:last-child { border-right: none; }
+    .compare-row.header .compare-cell { font-weight: 600; color: var(--text); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* Section divider */
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+    /* ─── Sidebar Toggle Button ─── */
+    .sidebar-toggle-btn {
+      position: absolute;
+      top: 18px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      z-index: 10;
+    }
+    .sidebar-toggle-btn:hover {
+      background: var(--accent-tint);
+      color: var(--accent);
+      border-color: var(--accent-border);
+    }
+
+
+    /* ─── Progress count pink number ─── */
+    .count-num { color: var(--accent); font-weight: 600; }
+
+    /* ─── Progress mini (collapsed only) ─── */
+    .progress-mini {
+      display: none;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .progress-mini .count-num { color: var(--accent); }
+
+    /* ─── Collapsed sidebar state ─── */
+    body.sidebar-collapsed {
+      padding-left: var(--sidebar-collapsed-width);
+    }
+    body.sidebar-collapsed .sidebar {
+      width: var(--sidebar-collapsed-width);
+    }
+    body.sidebar-collapsed .sidebar-logo {
+      opacity: 0;
+      pointer-events: none;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    body.sidebar-collapsed .progress-count {
+      display: none;
+    }
+    body.sidebar-collapsed .progress-bar-track {
+      display: none;
+    }
+    body.sidebar-collapsed .progress-mini {
+      display: block;
+      margin-top: 40px;
+    }
+    body.sidebar-collapsed .nav-item {
+      justify-content: center;
+      padding: 10px 6px;
+    }
+    body.sidebar-collapsed .nav-title,
+    body.sidebar-collapsed .nav-icon {
+      display: none;
+    }
+    body.sidebar-collapsed .nav-num {
+      min-width: 36px;
+      width: 36px;
+      height: 30px;
+      border-radius: 8px;
+      font-size: 12px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Sidebar ─── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Toggle sidebar">
+        <i class="ph ph-caret-double-left"></i>
+      </button>
+      <div class="sidebar-logo">Storybook + Figma<br>+ <span>Claude Code</span></div>
+      <div class="progress-count"><span class="count-num">0</span> / 13 modules complete</div>
+      <div class="progress-mini"><span class="count-num">0</span>/13</div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill"></div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" data-index="0">
+        <span class="nav-num">0</span>
+        <span class="nav-title">Course Overview & Mental Model</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="1">
+        <span class="nav-num">1</span>
+        <span class="nav-title">Storybook Fundamentals</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="2">
+        <span class="nav-num">2</span>
+        <span class="nav-title">Installation & MCP Connection</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="3">
+        <span class="nav-num">3</span>
+        <span class="nav-title">Writing Your CLAUDE.md</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="4">
+        <span class="nav-num">4</span>
+        <span class="nav-title">Every MCP Tool Explained</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="5">
+        <span class="nav-num">5</span>
+        <span class="nav-title">Your First Atomic Component</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="6">
+        <span class="nav-num">6</span>
+        <span class="nav-title">Stories for All Variants</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="7">
+        <span class="nav-num">7</span>
+        <span class="nav-title">The Interaction Test Loop</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="8">
+        <span class="nav-num">8</span>
+        <span class="nav-title">Full Library + GitHub Issues</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="9">
+        <span class="nav-num">9</span>
+        <span class="nav-title">Visual Regression (Chromatic)</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="10">
+        <span class="nav-num">10</span>
+        <span class="nav-title">Publishing, CI & Sharing</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="11">
+        <span class="nav-num">11</span>
+        <span class="nav-title">Teaching Teammates</span>
+        <span class="nav-icon">○</span>
+      </div>
+      <div class="nav-item" data-index="12">
+        <span class="nav-num">12</span>
+        <span class="nav-title">Capstone Sprint</span>
+        <span class="nav-icon">○</span>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ─── Main Content ─── -->
+  <main class="main">
+    <header class="main-header">
+      <h1>Storybook + Figma + <em>Claude Code</em></h1>
+      <p>A 13-module microcourse to take you from Figma designs to a production component library in days — not months.</p>
+      <div class="milestones-strip">
+        <span class="milestone-chip" data-milestone="1">① Storybook + MCP installed</span>
+        <span class="milestone-chip" data-milestone="2">② Both MCPs connected</span>
+        <span class="milestone-chip" data-milestone="3">③ First atomic component</span>
+        <span class="milestone-chip" data-milestone="4">④ Stories for all variants</span>
+        <span class="milestone-chip" data-milestone="5">⑤ Test loop working</span>
+        <span class="milestone-chip" data-milestone="6">⑥ CLAUDE.md written</span>
+        <span class="milestone-chip" data-milestone="7">⑦ Full atom library</span>
+        <span class="milestone-chip" data-milestone="8">⑧ Manifest reuse</span>
+        <span class="milestone-chip" data-milestone="9">⑨ Chromatic visual tests</span>
+        <span class="milestone-chip" data-milestone="10">⑩ GitHub Issues + PRs</span>
+        <span class="milestone-chip" data-milestone="11">⑪ Storybook published</span>
+        <span class="milestone-chip" data-milestone="12">⑫ Storybook in CI</span>
+        <span class="milestone-chip" data-milestone="13">⑬ Team onboarded</span>
+      </div>
+    </header>
+
+    <div class="modules-list">
+
+      <!-- Module 0 -->
+      <div class="module-card" id="module-0" data-index="0">
+        <div class="card-header">
+          <span class="card-num">0</span>
+          <span class="card-title">Course Overview & The Mental Model</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will understand the three-tool mental model, how the course is structured, and confirm you have everything you need to start.
+            </div>
+
+            <p>This module is the foundation of everything that follows. Before you touch a single tool, you need to understand why these three tools work together and what each one is responsible for. Rushing past this step is the most common reason people get stuck later. A few minutes here saves hours of confusion down the road.</p>
+
+            <h3>The Promise — From 6 Months to 2 Days</h3>
+
+            <p>Building a design system normally takes months. That's not an exaggeration — someone has to manually translate each Figma screen into code, write documentation for every component, write tests so the components don't break, and then keep all of that in sync every time the design changes. That translation work is slow, error-prone, and frankly tedious. This workflow automates the translation step using AI (Claude Code) and connects the tools directly using MCP — Model Context Protocol. Think of MCP as a shared language between apps: instead of you copy-pasting a Figma screenshot into Claude and hoping it guesses right, MCP lets Claude actually read your Figma file and your component library directly, the same way a developer reads source code. The result is that Claude can generate accurate, production-ready components without you acting as a messenger between tools.</p>
+
+            <div class="callout pink">
+              <strong>Important:</strong> "2 days" means 2 focused days on a clean, well-structured Figma file with someone who knows how to prompt Claude Code. Your first run will take longer as you learn. That's what this course is for.
+            </div>
+
+            <h3>The Three Tools — One Job Each</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Tool 1</div>
+                <h4>Figma</h4>
+                <p>Your design source of truth. Every color, spacing value, component variant, and interaction lives here. Think of it as your master blueprint.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Tool 2</div>
+                <h4>Claude Code</h4>
+                <p>The AI engine that reads your Figma blueprint and writes production code. It doesn't just copy-paste — it understands component structure, writes tests, and fixes its own mistakes.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Tool 3</div>
+                <h4>Storybook</h4>
+                <p>Your code source of truth. Every finished component lives here — documented, interactive, and testable. It's what your team browses instead of digging through source files.</p>
+              </div>
+            </div>
+
+            <p>MCP (specifically the Storybook MCP Addon) is the connective layer that makes the whole system work. It's what lets Claude Code "talk to" both Figma and Storybook without you manually copying anything between them. Instead of pasting component specs into a chat window, Claude reads them directly from the source. You may notice the Storybook MCP Addon is marked "experimental" as of 2025–2026. That means the feature is real and working, but the API details might change slightly as it matures — this is completely normal for new developer tools. Figma's own plugin API changed significantly in its first year, and it's now the standard everyone uses. The same trajectory is expected here.</p>
+
+            <h3>The Figma → Storybook Translation Table</h3>
+
+            <p>If you already work in Figma, you already understand the mental model. Storybook uses almost identical concepts — just in code.</p>
+
+            <div class="compare-table">
+              <div class="compare-row header three">
+                <div class="compare-cell">In Figma</div>
+                <div class="compare-cell">In Storybook</div>
+                <div class="compare-cell">What it means</div>
+              </div>
+              <div class="compare-row three">
+                <div class="compare-cell">Component</div>
+                <div class="compare-cell">React Component + Story file</div>
+                <div class="compare-cell">The reusable building block</div>
+              </div>
+              <div class="compare-row three">
+                <div class="compare-cell">Variant (Type=Primary)</div>
+                <div class="compare-cell">Named Story (Primary)</div>
+                <div class="compare-cell">One specific state of the component</div>
+              </div>
+              <div class="compare-row three">
+                <div class="compare-cell">Component Properties</div>
+                <div class="compare-cell">Args / Controls panel</div>
+                <div class="compare-cell">Live-editable props in the browser</div>
+              </div>
+              <div class="compare-row three">
+                <div class="compare-cell">Design Tokens / Variables</div>
+                <div class="compare-cell">Tailwind config / CSS variables</div>
+                <div class="compare-cell">Colors, spacing, and type scale</div>
+              </div>
+              <div class="compare-row three">
+                <div class="compare-cell">Prototype interactions</div>
+                <div class="compare-cell">Play functions / Interaction tests</div>
+                <div class="compare-cell">Simulated user actions with pass/fail checks</div>
+              </div>
+            </div>
+
+            <h3>Course Roadmap — Which Modules Unlock Which Milestones</h3>
+
+            <p>This course is built around 13 specific outcomes. Complete all 13 and you're at 8/10 proficiency with this workflow. Here's the map:</p>
+
+            <ol class="steps-list">
+              <li><strong>Module 0:</strong> This module — mental model and setup</li>
+              <li><strong>Module 1:</strong> Understand Storybook before you automate it</li>
+              <li><strong>Module 2:</strong> ✓ Milestones 1 &amp; 2 — Storybook + both MCPs installed</li>
+              <li><strong>Module 3:</strong> ✓ Milestone 6 — CLAUDE.md written</li>
+              <li><strong>Module 4:</strong> Reference — understand all 19 MCP tools</li>
+              <li><strong>Module 5:</strong> ✓ Milestone 3 — first component generated</li>
+              <li><strong>Module 6:</strong> ✓ Milestone 4 — stories for all variants</li>
+              <li><strong>Module 7:</strong> ✓ Milestone 5 — test loop working</li>
+              <li><strong>Module 8:</strong> ✓ Milestones 7, 8, 10 — full library + GitHub Issues</li>
+              <li><strong>Module 9:</strong> ✓ Milestone 9 — Chromatic visual tests</li>
+              <li><strong>Module 10:</strong> ✓ Milestones 11 &amp; 12 — published + CI</li>
+              <li><strong>Module 11:</strong> ✓ Milestone 13 — team onboarded</li>
+              <li><strong>Module 12:</strong> Capstone — all 13 milestones demonstrated</li>
+            </ol>
+
+            <h3>Prerequisites — What You Need Before Module 1</h3>
+
+            <p>Before you start, confirm you have these in place. If you're missing any, don't skip ahead — they're all needed by Module 2.</p>
+
+            <ol class="steps-list">
+              <li><strong>Node.js 24 or newer</strong> — Node.js is the engine that runs JavaScript on your computer (outside of a browser). The Storybook MCP addon specifically requires version 24+. Download from nodejs.org and run <code>node --version</code> to check.</li>
+              <li><strong>A Figma account</strong> with at least one component set you'd like to turn into code. A free account works.</li>
+              <li><strong>Claude Code installed</strong> — Claude Code is Anthropic's CLI tool. You clearly have it since you're reading this, but confirm with <code>claude --version</code> in your terminal.</li>
+              <li><strong>An existing React + Tailwind project</strong>, or willingness to scaffold one in Module 2. If you don't have one yet, <code>npm create vite@latest my-app -- --template react</code> gets you started.</li>
+              <li><strong>Basic comfort with your terminal</strong> — you'll be running commands like <code>npm install</code> and <code>git commit</code>. You don't need to be an expert, but you need to not be afraid of a command line.</li>
+            </ol>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">MCP</span>
+                <div class="term-def">Model Context Protocol — a standard that lets AI tools like Claude Code directly read data from other apps (like Figma or Storybook) instead of you having to copy-paste information between them.</div>
+                <span class="term-pill">Storybook MCP Addon</span>
+                <div class="term-def">A plugin that runs alongside your Storybook and lets Claude Code read your component library — what components exist, what their props are, and how to use them.</div>
+                <span class="term-pill">Design System</span>
+                <div class="term-def">A shared library of UI components (buttons, inputs, cards, etc.) with consistent design and behavior. The thing this course teaches you to build in days instead of months.</div>
+                <span class="term-pill">Atomic Design</span>
+                <div class="term-def">A way of organizing components from small to large: atoms (basic pieces like buttons) → molecules (groups like a form field) → organisms (full sections like a header). You'll use this in Module 5+.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 0 Exercise</div>
+              <h3>Confirm your prerequisites and set your goal</h3>
+              <p>Run <code>node --version</code> and <code>claude --version</code> in your terminal. Then open your Figma file and identify 3 atomic components (buttons, inputs, badges) you want to turn into code first. Write them down — these will be your Module 5 starting point.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 1 -->
+      <div class="module-card" id="module-1" data-index="1">
+        <div class="card-header">
+          <span class="card-num">1</span>
+          <span class="card-title">Storybook Fundamentals: The Designer's Mental Model</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will understand every core Storybook concept — stories, CSF3, args, decorators, autodocs, and all 6 built-in Essentials — before any automation touches your project.
+            </div>
+
+            <p>Before automating anything, you need to understand what Storybook is doing under the hood. Think of this module as learning to drive before getting on the highway. You'll manually write a few stories yourself — that's the fastest way to truly understand what Claude Code will be generating for you later.</p>
+
+            <h3>What is a Story?</h3>
+
+            <p>A story is one specific rendered state of a component, shown in isolation in your browser — completely disconnected from the rest of your app. Think about a Button component: it might have stories for Primary, Secondary, Disabled, Loading, and With Icon. Each of those is a separate story. The Figma analogy makes this click immediately: when you select a Button component in Figma and open the properties panel, you can switch between variants like Type=Primary, Type=Secondary, State=Disabled. A Storybook story is exactly that — one variant, rendered live in a browser, isolated from everything else. Stories live in <code>.stories.tsx</code> files right next to your component file. That isolation is the whole point: you can develop, test, and share a Button without running your entire application. You can hand someone a Storybook URL and they can see every state of every component without touching your codebase.</p>
+
+            <h3>Component Story Format (CSF3)</h3>
+
+            <p>CSF3 is just a standard way of writing story files that all of Storybook's tools understand. Like how a Figma file follows a specific format so any Figma feature can read it, your story files follow CSF3 so Storybook's panels, tests, and documentation tools can all read them consistently. It uses plain ES6 module syntax — a default export for the component's metadata and named exports for each individual story. No magic, no custom syntax.</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">TYPESCRIPT</div>
+              <pre><code>import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+// The "meta" (default export) describes the component
+const meta = {
+  title: 'Components/Button',
+  component: Button,
+  tags: ['autodocs'], // auto-generate a documentation page
+} satisfies Meta&lt;typeof Button&gt;;
+
+export default meta;
+type Story = StoryObj&lt;typeof meta&gt;;
+
+// Each named export is one story (one state)
+export const Primary: Story = {
+  args: { label: 'Click me', variant: 'primary' }
+};
+
+export const Disabled: Story = {
+  args: { label: 'Click me', variant: 'primary', disabled: true }
+};</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>The <code>meta</code> (default export) is like the component's cover page — it tells Storybook what component this file is about. Each named export (like <code>Primary</code> or <code>Disabled</code>) is a story — one specific state shown in isolation.</p>
+
+            <h3>Args and ArgTypes — Live-Editable Props</h3>
+
+            <p>Args are the props you pass to your component in a story. What makes them special is that Storybook's Controls panel lets anyone toggle, type, or select new arg values directly in the browser — no code changes needed. Think of it as the equivalent of Figma's properties panel, but for your code component running live in a browser. You can hand a designer the Storybook URL and they can explore every combination of props themselves. ArgTypes take this further: they let you define how the Controls panel should display each prop — as a color picker, a dropdown, a boolean toggle, or a text field — so the editing experience matches the type of data.</p>
+
+            <h3>Decorators</h3>
+
+            <p>Sometimes a component needs context to render correctly — a theme provider, a React Router wrapper, or just some padding to prevent it from touching the edges of the canvas. Decorators are wrappers you can apply to individual stories or to all stories in a file. Think of them like Figma frames: you're not changing the component itself, just giving it a container to sit in. A decorator that wraps every story in a <code>&lt;div style="padding: 2rem"&gt;</code> is one of the most common examples.</p>
+
+            <h3>Autodocs</h3>
+
+            <p>Storybook's Autodocs feature reads your component's TypeScript types and your story data and automatically generates a documentation page — complete with a prop table showing every prop, its type, its default value, and a description, plus live usage examples pulled directly from your stories. To enable it, add <code>tags: ['autodocs']</code> to your meta object and the docs page appears automatically. It's like having a Figma Inspect panel that's always in sync with your code because it's generated from your code. No manual documentation writing required.</p>
+
+            <h3>The 6 Storybook Essentials</h3>
+
+            <p>Storybook ships with six built-in "essential" addons pre-installed. These are the panels and tools you'll see in the Storybook UI every day. Here's what each one does:</p>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Essential 1</div>
+                <h4>Controls</h4>
+                <p>Toggle props interactively in the browser. This is your live Figma properties panel for code — change any prop value without touching a file.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Essential 2</div>
+                <h4>Actions</h4>
+                <p>Logs events (clicks, form submissions, any callback) fired by your component as you interact with it. Confirms your event handlers are wired correctly.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Essential 3</div>
+                <h4>Backgrounds</h4>
+                <p>Switch between light, dark, or custom background colors to test how your component looks in different contexts without changing your app.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Essential 4</div>
+                <h4>Viewport</h4>
+                <p>Test your component at preset or custom screen sizes without resizing your browser window. Confirms responsive behavior at every breakpoint.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Essential 5</div>
+                <h4>Measure &amp; Outline</h4>
+                <p>Inspect spacing and layout boundaries of rendered components directly on the canvas. Like Figma's measurement tool — hover to see spacing values.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Essential 6</div>
+                <h4>Highlight</h4>
+                <p>Visually highlight specific DOM elements inside a story. Useful for debugging layout issues and confirming which element corresponds to which code.</p>
+              </div>
+            </div>
+
+            <h3>MDX — When Autodocs Isn't Enough</h3>
+
+            <p>MDX is a file format that lets you write richer documentation by mixing Markdown text with live story examples. You'd use it when you want to write a narrative alongside your components — design principles, usage guidelines, accessibility notes, do's and don'ts. For most teams, Autodocs handles the basics automatically and MDX is only used for a handful of complex documentation pages where you need a specific layout or want to tell a story about how a component should be used.</p>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Story</span>
+                <div class="term-def">One rendered state of a component shown in isolation in Storybook — like one variant in Figma. Lives in a <code>.stories.tsx</code> file next to the component.</div>
+                <span class="term-pill">CSF3</span>
+                <div class="term-def">Component Story Format 3 — the standard file format for Storybook story files. Uses ES6 module syntax: a default export for the component meta and named exports for each story.</div>
+                <span class="term-pill">Args</span>
+                <div class="term-def">The props passed to a component in a story. Can be edited live in the Controls panel without writing any code.</div>
+                <span class="term-pill">Decorator</span>
+                <div class="term-def">A wrapper applied around a story to provide context (like a theme provider or layout container). Like a Figma frame — it holds the component without changing it.</div>
+                <span class="term-pill">Autodocs</span>
+                <div class="term-def">Storybook's auto-documentation feature. Reads your TypeScript types and stories to generate a prop table and usage examples automatically. Enable with <code>tags: ['autodocs']</code>.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 1 Exercise</div>
+              <h3>Install Storybook and write your first stories</h3>
+              <p>Install Storybook on a new or existing React project with <code>npm create storybook@latest</code>. Once it's running (with <code>npm run storybook</code>), manually write 3 stories for a Button component you already have — or use the example Button that Storybook installs by default. Open every panel in the UI: Controls, Actions, Backgrounds, Viewport, Docs. Your goal: by the end of this exercise, understand what you're looking at — because Module 2 is where Claude Code starts generating this for you automatically.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module-card" id="module-2" data-index="2">
+        <div class="card-header">
+          <span class="card-num">2</span>
+          <span class="card-title">Installation & Full MCP Connection</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module,</strong> Storybook will be installed, the Storybook MCP addon will be running, and both the Figma MCP and Storybook MCP will be connected inside Claude Code — achieving Milestones 1 and 2.
+            </div>
+
+            <p>This is the setup module. Everything you do here you'll only do once per project. Work through each step carefully — a correctly configured environment is what separates a smooth experience from constant debugging. By the end, you'll see both MCP servers listed as active when you run <code>/mcp list</code> inside Claude Code.</p>
+
+            <h3>Install Storybook</h3>
+
+            <p>Storybook has a setup command that auto-detects your framework (React, Next.js, Vue, etc.) and configures everything for you. As of 2025–2026, Storybook is at version 8.x–10.x. Run this in your project root:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">BASH</div>
+              <pre><code>npm create storybook@latest</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>The CLI will ask a few questions about your setup. For a React + Vite + Tailwind project, accept the defaults. When it's done, you'll have a <code>.storybook/</code> folder and a <code>src/stories/</code> folder with example components. Run <code>npm run storybook</code> to verify — it should open in your browser at <code>localhost:6006</code>.</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">FILE TREE</div>
+              <pre><code>your-project/
+├── .storybook/
+│   ├── main.js       ← Storybook configuration
+│   └── preview.js    ← Global decorators and parameters
+├── src/
+│   ├── stories/      ← Example stories (you can delete these)
+│   └── components/   ← Your actual components go here
+└── package.json</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Install the Storybook MCP Addon</h3>
+
+            <p>The Storybook MCP Addon is what lets Claude Code "read" your component library. Without it, Claude Code has no way to know what components already exist — so it might build a new Button even when you already have one. The addon runs a small server alongside Storybook (at <code>localhost:6006/mcp</code>) that Claude Code can query to get the full manifest of your component library: every component, every prop, every story.</p>
+
+            <div class="callout pink">
+              <strong>⚠️ Experimental as of early 2026:</strong> The <code>@storybook/addon-mcp</code> package is currently experimental. It works, but the API details may change as it matures. Budget extra troubleshooting time and check the Storybook GitHub for the latest install instructions if anything here is outdated.
+            </div>
+
+            <div class="code-block has-label">
+              <div class="code-label">BASH</div>
+              <pre><code>npx storybook add @storybook/addon-mcp</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>That command automatically updates your <code>main.js</code> to include the addon:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">JAVASCRIPT</div>
+              <pre><code>// .storybook/main.js — after running the addon install command
+export default {
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-mcp', // ← this line gets added automatically
+  ],
+};</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>When Storybook is running, the MCP server is live at <code>http://localhost:6006/mcp</code>. You can visit that URL in your browser to confirm it's working — you'll see a JSON response listing your components.</p>
+
+            <h3>The Two Storybook Packages</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Option A</div>
+                <h4>@storybook/addon-mcp</h4>
+                <p>Attaches to your running Storybook dev server. Best for day-to-day development. The one most teams use. Install it with <code>npx storybook add</code>.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Option B</div>
+                <h4>@storybook/mcp</h4>
+                <p>A standalone package that serves component knowledge independently of Storybook. Useful for CI or headless contexts. Most teams only need the addon version.</p>
+              </div>
+            </div>
+
+            <h3>Figma MCP Server Setup</h3>
+
+            <p>The Figma MCP Server is what lets Claude Code read your Figma designs. You have two options — both give Claude Code the same capabilities. The choice is about where the server runs, not what it can do.</p>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Mode 1</div>
+                <h4>Remote Mode</h4>
+                <p>A cloud-hosted endpoint. No Figma desktop app required. Works anywhere, including CI pipelines. Set up via the Figma developer settings. Best for most teams.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Mode 2</div>
+                <h4>Desktop Mode</h4>
+                <p>Runs locally via the Figma desktop app. Works offline. Set up via the Figma desktop app's developer settings. Best if you prefer local-only operation.</p>
+              </div>
+            </div>
+
+            <p>Follow the setup steps at <code>developers.figma.com/docs/figma-mcp-server</code> for the mode you choose. Once connected, Claude Code can read frames, extract tokens, inspect components, and get code suggestions directly from your Figma file.</p>
+
+            <h3>Connect Both MCPs to Claude Code</h3>
+
+            <h4>Step 1 — Start Storybook</h4>
+
+            <div class="code-block has-label">
+              <div class="code-label">BASH</div>
+              <pre><code>npm run storybook</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h4>Step 2 — Add the Storybook MCP to Claude Code</h4>
+
+            <p>This command tells Claude Code where to find the Storybook MCP server and stores the connection in your project's config:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">BASH</div>
+              <pre><code>claude mcp add storybook-mcp --transport http http://localhost:6006/mcp --scope project</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h4>Step 3 — Verify the Figma MCP</h4>
+
+            <p>Verify the Figma MCP server is already connected. If you haven't done this yet, follow the Figma MCP setup guide at <code>developers.figma.com/docs/figma-mcp-server</code>.</p>
+
+            <h4>Step 4 — Confirm Both Are Active</h4>
+
+            <p>Open Claude Code and run this command to list all connected MCP servers:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">INSIDE CLAUDE CODE</div>
+              <pre><code>/mcp list</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>You should see both servers listed as connected. If Storybook MCP shows as "disconnected", make sure Storybook is running first — it must be active for the MCP server to respond.</p>
+
+            <div class="callout green">
+              <strong>Two MCPs, one workflow:</strong> With both connected, Claude Code has everything in one session — Figma provides the design spec, Storybook provides the component context. Claude knows what already exists (Storybook manifest) and what it should look like (Figma design). This combination is what enables the fast workflow.
+            </div>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">MCP Server</span>
+                <div class="term-def">A running service that Claude Code can connect to and query. The Storybook MCP server runs at <code>localhost:6006/mcp</code> alongside your dev server.</div>
+                <span class="term-pill">@storybook/addon-mcp</span>
+                <div class="term-def">The Storybook addon that runs the MCP server alongside your Storybook dev server. Required for Claude Code to read your component library.</div>
+                <span class="term-pill">Remote MCP</span>
+                <div class="term-def">A Figma MCP server hosted in the cloud — no local install needed, works from any machine or CI pipeline.</div>
+                <span class="term-pill">Desktop MCP</span>
+                <div class="term-def">A Figma MCP server that runs locally via the Figma desktop app. Works offline but requires Figma to be open on your machine.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 2 Exercise</div>
+              <h3>Complete the full setup on your real project</h3>
+              <p>Follow all four steps above on your actual project (not a toy). When you're done, run <code>/mcp list</code> inside Claude Code and confirm both servers appear. Take a screenshot — this is your Milestone 1 and Milestone 2 proof.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module-card" id="module-3" data-index="3">
+        <div class="card-header">
+          <span class="card-num">3</span>
+          <span class="card-title">Writing a CLAUDE.md That Drives Quality</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will have written a CLAUDE.md that tells Claude Code exactly how to work in your project — achieving Milestone 6.
+            </div>
+
+            <p>Claude Code reads a file called <code>CLAUDE.md</code> at the start of every session. Whatever you put in it, Claude remembers for the entire session — your tech stack, your naming conventions, your rules. Without it, Claude makes assumptions. With a well-crafted <code>CLAUDE.md</code>, Claude Code acts like a contractor who already read your project brief before showing up.</p>
+
+            <h3>Why CLAUDE.md Is Not Optional</h3>
+
+            <p>Claude Code has no memory between sessions. Without a <code>CLAUDE.md</code>, every new session starts from zero — Claude might generate a component using ShadCN UI even though your project doesn't use it, or build a molecule before any atoms exist, or use class names that don't match your naming convention. These aren't failures of intelligence, they're failures of context. Claude can only follow rules it's been told. The <code>CLAUDE.md</code> is the fix. It's a plain text file at the root of your project that Claude reads automatically at the start of every session — no special command needed. Think of it as the project brief you'd give a new developer on their first day, except Claude reads it every single day.</p>
+
+            <h3>The Atomic-First Ordering Rule</h3>
+
+            <p>One of the most important things to put in your <code>CLAUDE.md</code> is the build order. Atomic design means building from small pieces to large ones: atoms (Button, Input, Badge) first, then molecules (Card, Form Field, Alert) that are built from atoms, then organisms (Header, Modal, Sidebar) that are built from molecules. If you don't specify this order explicitly, Claude might start generating a Modal that contains a Button before the Button component exists — leaving you with broken imports and missing dependencies. Include this line verbatim: <em>"Always build atoms before molecules before organisms. Never build a composite component if any of its atomic children are missing."</em> The Figma analogy is direct: you can't use a Button instance inside a Card component in Figma if you haven't created the Button component first. Code works the same way.</p>
+
+            <h3>Design Token Mapping</h3>
+
+            <p>If your Figma file uses design tokens (variables for colors, spacing, type scale), you need to tell Claude how those variable names map to your Tailwind classes. For example, your Figma might have a variable called <code>color/primary/500</code> that maps to <code>bg-blue-500</code> in Tailwind. Without this mapping in your <code>CLAUDE.md</code>, Claude will use hardcoded hex values instead of your design token classes — making your components inconsistent and harder to update. The mapping table doesn't need to be exhaustive, but it should cover the tokens you use most: your primary colors, your spacing scale, your border radii, and your type scale. Quick tip: You can use the Figma MCP tool <code>create_design_system_rules</code> to auto-generate this section from your actual Figma variables instead of writing it by hand.</p>
+
+            <h3>The Single Most Important Line</h3>
+
+            <div class="callout pink">
+              <strong>Add this exact line to your CLAUDE.md:</strong><br><br>
+              "Before any UI, frontend, or React development, ALWAYS call the Storybook MCP server to get further instructions."<br><br>
+              This single instruction makes Claude check your existing component library before generating anything new. Without it, Claude might build a Button when you already have one — wasting tokens and creating duplicates that drift from your established patterns.
+            </div>
+
+            <h3>Full Annotated CLAUDE.md Example</h3>
+
+            <p>Here's a complete <code>CLAUDE.md</code> you can use as a starting point. Adapt it to your project. Every section has a comment explaining what it does:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">MARKDOWN</div>
+              <pre><code># Project: [Your Project Name]
+
+## Tech Stack
+- React 18 + TypeScript
+- Tailwind CSS v3 (utility classes only — no custom CSS, no inline styles)
+- Vite for bundling
+- Storybook for component documentation and testing
+- NO ShadCN UI, NO Radix, NO MUI — build all components from scratch
+
+## Before Any UI Work
+Before any UI, frontend, or React development, ALWAYS call the Storybook MCP
+server to get further instructions. This ensures you use existing components
+instead of reinventing them.
+
+## Component Build Order (Atomic Design)
+Always build in this order. Never skip ahead:
+1. Atoms first: Button, Input, Checkbox, Select, Badge, Icon, Typography, Tooltip
+2. Molecules second: Card, Form Field, Alert, Modal Header
+3. Organisms third: Header, Sidebar, Modal, Form
+
+## Naming Conventions
+- Component files: PascalCase (Button.tsx, FormField.tsx)
+- Story files: [ComponentName].stories.tsx
+- One component per file
+- Props interface named [ComponentName]Props
+
+## Design Token Mapping
+Figma variable → Tailwind class:
+- color/primary/500 → bg-blue-500 / text-blue-500
+- color/neutral/100 → bg-gray-100
+- spacing/4 → p-4 / gap-4 / m-4
+- radius/md → rounded-md
+[Add your own token mappings here]
+
+## Component Patterns
+- Use Tailwind `cn()` helper for conditional classes
+- Prefer composition over prop drilling
+- Every component must have TypeScript props interface
+- Every component must have a Storybook story file
+
+## Testing
+- Write Storybook Play functions for interactive components
+- Run accessibility tests via Storybook MCP after each component</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Using <code>create_design_system_rules</code></h3>
+
+            <p>The Figma MCP tool <code>create_design_system_rules</code> (covered in detail in Module 4) reads your Figma variables and your existing code tokens, then writes the mapping rules between them directly into your <code>CLAUDE.md</code>. Run it once after both your Figma variables and your <code>tokens.css</code> are in place — that's when it has everything it needs to generate accurate, project-specific rules.</p>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">CLAUDE.md</span>
+                <div class="term-def">A plain text file at the root of your project that Claude Code reads at the start of every session. Like a project brief Claude always has access to — tech stack, rules, naming conventions, build order.</div>
+                <span class="term-pill">Atomic Design</span>
+                <div class="term-def">A component organization system: atoms (basic pieces) → molecules (combinations) → organisms (full sections). Used to define the build order in CLAUDE.md so Claude never builds composite components before their parts exist.</div>
+                <span class="term-pill">Design Token Mapping</span>
+                <div class="term-def">A table in your CLAUDE.md that tells Claude how Figma variable names (like <code>color/primary/500</code>) map to Tailwind classes (like <code>bg-blue-500</code>). Prevents hardcoded hex values in generated code.</div>
+                <span class="term-pill">create_design_system_rules</span>
+                <div class="term-def">A Figma MCP tool that reads your Figma variables and your existing code tokens, then writes the mapping rules into your CLAUDE.md. Requires both your Figma file and your token file to be set up first.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 3 Exercise</div>
+              <h3>Write your own CLAUDE.md</h3>
+              <p>Create a <code>CLAUDE.md</code> at the root of your project. At minimum, include: (1) your tech stack with explicit exclusions (what NOT to use), (2) the Storybook MCP system prompt line, (3) your atomic build order, and (4) at least 5 design token mappings from your Figma file. Save it, open Claude Code, and verify it reads the file by asking "what tech stack should I use for this project?" — Claude should answer based on what you wrote.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module-card" id="module-4" data-index="4">
+        <div class="card-header">
+          <span class="card-num">4</span>
+          <span class="card-title">Every MCP Tool, Explained (13 Figma + up to 6 Storybook)</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will know exactly what all MCP tools do — 13 from the Figma MCP server and up to 6 from the Storybook MCP server (depending on your setup) — and when Claude uses each one automatically.
+            </div>
+
+            <p>This is your reference module. You don't need to memorize this — but understanding what each tool does is what separates someone who just uses the workflow from someone who can debug it when something goes wrong.</p>
+
+            <h3>Part A — The 13 Figma MCP Tools</h3>
+
+            <p>The Figma MCP Server gives Claude Code 13 tools for reading and working with your Figma files. Here's what each one does, in plain language.</p>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Primary</div>
+                <h4><code>get_design_context</code></h4>
+                <p>The main tool. Reads a Figma frame and returns its design as code — React + Tailwind by default. Think of it as asking Figma to explain this component to Claude. This is the tool Claude calls most.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Data</div>
+                <h4><code>get_variable_defs</code></h4>
+                <p>Returns all color, spacing, and typography variables from your Figma selection. Used to extract design tokens before generating code.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Data</div>
+                <h4><code>get_screenshot</code></h4>
+                <p>Takes a screenshot of your Figma selection. Claude uses this to preserve visual layout fidelity when the design is complex or positioned absolutely.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Data</div>
+                <h4><code>get_metadata</code></h4>
+                <p>Returns structural information (layer names, types, positions, sizes) as XML. Gives Claude a structural overview without reading full design context.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Code Connect</div>
+                <h4><code>get_code_connect_map</code></h4>
+                <p>Retrieves existing mappings between Figma component node IDs and your codebase's component files. Used to check what's already connected.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Code Connect</div>
+                <h4><code>add_code_connect_map</code></h4>
+                <p>Adds a new mapping: "this Figma component is the same as this code component." Prevents Claude from building duplicates.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Code Connect</div>
+                <h4><code>get_code_connect_suggestions</code></h4>
+                <p>AI-generated suggestions for which Figma components match which code components. Useful when starting a new project with existing code.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Code Connect</div>
+                <h4><code>send_code_connect_mappings</code></h4>
+                <p>Confirms and saves Code Connect mappings in bulk. Used after reviewing <code>get_code_connect_suggestions</code>.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Data</div>
+                <h4><code>create_design_system_rules</code></h4>
+                <p>Generates a project-specific rules file that tells Claude how to translate your Figma designs into your code conventions. Output goes into CLAUDE.md.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Diagram</div>
+                <h4><code>get_figjam</code></h4>
+                <p>Converts FigJam diagrams (whiteboards, flowcharts) into XML with screenshots. Useful for reading architecture diagrams.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Diagram</div>
+                <h4><code>generate_diagram</code></h4>
+                <p>Creates a FigJam diagram from Mermaid syntax. Claude can draw flowcharts and architecture diagrams directly in FigJam.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Remote Only</div>
+                <h4><code>generate_figma_design</code></h4>
+                <p>Writes a generated design back into your Figma file. Only available in Remote MCP mode.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Remote Only</div>
+                <h4><code>whoami</code></h4>
+                <p>Returns the authenticated Figma user identity. Used to verify the Remote MCP connection is working.</p>
+              </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <h3>Part B — The 6 Storybook MCP Tools</h3>
+
+            <p>The Storybook MCP Addon exposes up to 6 tools depending on your setup. Not all 6 are visible at once — they unlock in three stages as your project grows. This is normal and expected.</p>
+
+            <div class="callout">
+              <strong>Why you might only see 2 tools right now:</strong> The first two tools are always available. The next three (the "Docs" toolset) exist in the addon's release notes but may not be in the current release yet — <code>@storybook/addon-mcp</code> is explicitly experimental and under active development. If you only see 2 tools even after writing components, this is a known limitation, not a setup error. The last tool requires an additional addon. Check back as the addon continues to ship new features.
+            </div>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Dev — Always On</div>
+                <h4><code>get-storybook-story-instructions</code></h4>
+                <p>Returns framework-specific patterns, imports, and conventions for writing stories in your project. This is the first thing Claude calls when starting any UI task — it tells Claude what story format, imports, and naming conventions your project uses.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Dev — Always On</div>
+                <h4><code>preview-stories</code></h4>
+                <p>Generates direct preview URLs for stories by story ID or file path. Claude uses this to verify the visual output of a component after generating it — confirming it renders correctly before handing it back to you.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Docs — Requires Manifest</div>
+                <h4><code>list-all-documentation</code></h4>
+                <p>Returns every component and docs entry in your Storybook. This is how Claude checks what already exists before building anything new — without this, Claude might build a Button when you already have one. Unlocks automatically once your first component is written.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Docs — Requires Manifest</div>
+                <h4><code>get-documentation</code></h4>
+                <p>Returns full documentation for one specific component: prop types, code snippets, and usage examples. Claude calls this before modifying or composing a component to avoid hallucinating prop names or invalid combinations.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Docs — Requires Manifest</div>
+                <h4><code>get-documentation-for-story</code></h4>
+                <p>Returns the detailed documentation for one specific story variant. Use this when you need more usage examples of a single component variant — Claude uses it to understand the exact props and patterns for that variant.</p>
+              </div>
+              <div class="concept-card" style="border-color: var(--color-warning, #f59e0b); background: #fffbeb;">
+                <div class="concept-label">⚠ Availability Note</div>
+                <p>The three Docs tools above are referenced in the addon's release notes but <strong>may not be available in the current release</strong>. <code>@storybook/addon-mcp</code> is experimental and actively shipping. If you only see 2 tools after installing the latest version, this is expected — not a setup error. Claude Code can still read your component files directly from the filesystem as a fallback.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Test — Requires addon-vitest</div>
+                <h4><code>run-story-tests</code></h4>
+                <p>Runs your story tests and returns pass/fail results. If <code>@storybook/addon-a11y</code> is also installed, it also returns accessibility violations in the same call. This is the self-healing tool — Claude runs it, reads what failed, rewrites the code, and re-tests until everything passes. Requires <code>@storybook/addon-vitest</code> and Storybook 10.3+.</p>
+              </div>
+            </div>
+
+            <p>Here's the typical sequence Claude follows during a full generation session (once all tools are available):</p>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span>Calls <code>get-storybook-story-instructions</code> (Storybook MCP) — gets project conventions and story format</li>
+              <li><span class="step-num">2</span>Calls <code>get_design_context</code> (Figma MCP) — reads the design</li>
+              <li><span class="step-num">3</span>Calls <code>get_variable_defs</code> (Figma MCP) — extracts design tokens</li>
+              <li><span class="step-num">4</span>Calls <code>list-all-documentation</code> (Storybook MCP) — checks what components already exist</li>
+              <li><span class="step-num">5</span>Calls <code>get-documentation</code> (Storybook MCP) — reads details for any relevant existing component</li>
+              <li><span class="step-num">6</span>Generates <code>Component.tsx</code> + <code>Component.stories.tsx</code></li>
+              <li><span class="step-num">7</span>Calls <code>preview-stories</code> (Storybook MCP) — verifies the component renders correctly</li>
+              <li><span class="step-num">8</span>Calls <code>run-story-tests</code> (Storybook MCP) — runs tests and accessibility checks</li>
+              <li><span class="step-num">9</span>Fixes failures and violations, re-runs until green</li>
+              <li><span class="step-num">10</span>Returns finished component to you</li>
+            </ol>
+
+            <hr class="section-divider">
+
+            <h3>Part C — The Component Manifest</h3>
+
+            <p>The Component Manifest is a machine-readable summary of your entire component library — what components exist, what their props are, what variants they support, and how to use them. It lives at <code>localhost:PORT/manifests/components.html</code> while Storybook is running (dev mode), and as static JSON files when you build Storybook for production.</p>
+
+            <p>Instead of Claude reading your raw source files (hundreds of files, thousands of lines), the manifest gives Claude exactly what it needs — curated, token-efficient, always up to date. Studies from the Storybook team show better-quality code, generated faster, with fewer tokens when manifests are used vs. raw source files.</p>
+
+            <p>The compounding leverage point: every component you add to Storybook makes the manifest richer. A richer manifest means Claude is better at reusing existing components instead of inventing new ones. The system gets smarter as the library grows.</p>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Figma MCP Server</span>
+                <div class="term-def">The server that gives Claude Code access to your Figma files. Provides 13 tools for reading designs, extracting tokens, and managing Code Connect.</div>
+                <span class="term-pill">Code Connect</span>
+                <div class="term-def">A Figma feature that maps Figma components to their code equivalents. When set up, Claude uses your actual components instead of generating new ones.</div>
+                <span class="term-pill">Storybook MCP Addon</span>
+                <div class="term-def">The addon that runs a server alongside Storybook at localhost:6006/mcp. Exposes up to 6 tools across three toolsets: Dev (always on), Docs (requires component manifest), and Test (requires addon-vitest).</div>
+                <span class="term-pill">Component Manifest</span>
+                <div class="term-def">A machine-readable summary of your component library. More token-efficient than raw source files, and gets richer as your library grows.</div>
+                <span class="term-pill">Self-Heal</span>
+                <div class="term-def">The autonomous correction loop where Claude calls <code>run-story-tests</code>, reads failures, rewrites code, and re-tests until everything passes — without you intervening.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 4 Exercise</div>
+              <h3>Watch the Dev toolset fire — then set up for the rest</h3>
+              <p>At this point in the course, your Storybook is a fresh install with no custom components yet. That means only the two Dev tools are active. This exercise uses both of them, and ends with you ready for Module 5.</p>
+              <p>Make sure Storybook is running (<code>npm run storybook</code>) and the Storybook MCP is connected from Module 2. Then try these two prompts in Claude Code:</p>
+              <p><strong>Step 1 —</strong> <em>"What story format and conventions should I use when writing stories for this project?"</em><br>Tool called: <code>get-storybook-story-instructions</code> — Claude reads your project's framework-specific patterns instead of guessing. Note what it says: this is the exact format you'll use in Module 5.</p>
+              <p><strong>Step 2 —</strong> <em>"Preview the default Button story from the example components."</em><br>Tool called: <code>preview-stories</code> — Claude returns a direct URL to the rendered story. Open it. This is how Claude visually verifies components without you having to navigate Storybook manually.</p>
+              <p><strong>What's not here yet — and why:</strong> The three Docs tools (<code>list-all-documentation</code>, <code>get-documentation</code>, <code>get-documentation-for-story</code>) are referenced in the addon's release notes but may not be available in your current version. <code>@storybook/addon-mcp</code> is experimental and actively shipping new features. If they don't appear after writing components, that's a known current limitation — not a setup error. The good news: Claude Code can still read your component files directly from the filesystem without these tools, so the workflow continues regardless.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module-card" id="module-5" data-index="5">
+        <div class="card-header">
+          <span class="card-num">5</span>
+          <span class="card-title">Generating Your First Atomic Component from Figma</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will have successfully generated your first atomic component (a Button) from a Figma design — achieving Milestone 3.
+            </div>
+
+            <p>This is the module where the workflow becomes real. You'll take a Button component from your Figma file and have Claude Code generate the React component, TypeScript props, Tailwind classes, and Storybook stories — all in one pass. Before you start, make sure you have Modules 2 and 3 complete: both MCPs connected and your CLAUDE.md written.</p>
+
+            <h3>Atomic Design — Atoms, Molecules, Organisms</h3>
+
+            <p>Atomic design is a way of thinking about components from smallest to largest. An atom is the most basic piece — a Button, an Input, a Badge, a single Icon. A molecule combines atoms — a Form Field is an Input + a Label + an error message. An organism is a full section — a Header with a Logo, a Nav, and some Buttons inside it.</p>
+
+            <p>Why it matters here: you can't build a Modal that contains a Button if the Button component doesn't exist yet. Claude Code will try to reuse existing components (via the Storybook manifest) before creating new ones. If your atoms don't exist, Claude either refuses or invents inline components — which is exactly what you don't want.</p>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Level 1</div>
+                <h4>Atoms</h4>
+                <p>Basic, indivisible UI pieces. Examples: Button, Input, Checkbox, Select, Badge, Icon, Typography, Tooltip, Divider. These come first.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Level 2</div>
+                <h4>Molecules</h4>
+                <p>Groups of atoms working together. Examples: Form Field (Input + Label + Error), Card (Image + Typography + Button), Alert (Icon + Typography). Build these after atoms.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Level 3</div>
+                <h4>Organisms</h4>
+                <p>Full sections built from molecules. Examples: Header, Modal, Sidebar, Form. Build these last.</p>
+              </div>
+            </div>
+
+            <h3>Setting Up Figma for Best MCP Output</h3>
+
+            <p>The quality of Claude's generated code is directly tied to how well your Figma file is structured. Here's what gets the best results:</p>
+
+            <ul class="bullet-list">
+              <li><strong>Clean component naming</strong> — Name your components in Figma exactly how you want them named in code. "Button" in Figma → <code>Button.tsx</code> in code.</li>
+              <li><strong>Proper component hierarchy</strong> — Your button should be a Figma component, not a group of ungrouped layers. Claude reads component structure, not flat layer lists.</li>
+              <li><strong>Well-defined variants</strong> — Use Figma's Variants feature (not just frames with different names). Each variant becomes a React prop. "Type=Primary" → <code>variant="primary"</code>.</li>
+              <li><strong>Variables for tokens</strong> — Set up Figma Variables for your colors, spacing, and type scale. Without them, Claude uses hardcoded hex values.</li>
+            </ul>
+
+            <h3>The Generation Prompt Anatomy</h3>
+
+            <p>A good generation prompt has four parts. Here's the exact structure to use:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">PROMPT</div>
+              <pre><code>Generate [component name] as a React + Tailwind component from this Figma frame: [Figma URL]
+
+Requirements:
+- Tech stack: React 18, TypeScript, Tailwind CSS only. No ShadCN, no Radix, no custom CSS.
+- Output files: src/components/Button/Button.tsx and Button.stories.tsx
+- Stories: one named story for every Figma variant (Primary, Secondary, Disabled, Loading, etc.)
+- Follow the conventions in CLAUDE.md
+
+After generating, run the Storybook interaction tests and fix any failures before returning.</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>Each part serves a specific purpose: (1) what to generate and from where — the Figma URL; (2) the tech stack constraints — always explicit, prevents Claude from adding libraries; (3) where to put the files — prevents Claude from guessing; (4) the test instruction — activates the self-heal loop.</p>
+
+            <h3>Step-by-Step — Button Generation Walk-Through</h3>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span>Open Claude Code in your project directory (make sure Storybook is running so the Storybook MCP server is available)</li>
+              <li><span class="step-num">2</span>Claude automatically calls <code>get-storybook-story-instructions</code> (Storybook MCP) — reads your project's story format and conventions</li>
+              <li><span class="step-num">3</span>You paste the Figma Button URL and your generation prompt</li>
+              <li><span class="step-num">4</span>Claude calls <code>get_design_context</code> (Figma MCP) with your Button frame URL</li>
+              <li><span class="step-num">5</span>Claude calls <code>get_variable_defs</code> (Figma MCP) — extracts your color and spacing tokens</li>
+              <li><span class="step-num">6</span>Claude calls <code>list-all-documentation</code> (Storybook MCP) — confirms Button doesn't exist yet</li>
+              <li><span class="step-num">7</span>Claude generates <code>Button.tsx</code> with TypeScript props, Tailwind classes, and all variant logic</li>
+              <li><span class="step-num">8</span>Claude generates <code>Button.stories.tsx</code> with named stories for every Figma variant</li>
+              <li><span class="step-num">9</span>Claude calls <code>preview-stories</code> (Storybook MCP) — verifies the component renders correctly</li>
+              <li><span class="step-num">10</span>Claude calls <code>run-story-tests</code> (Storybook MCP, if addon-vitest is set up) — runs tests and accessibility checks, fixes any failures, then returns the finished files</li>
+            </ol>
+
+            <h3>Reviewing Claude's Output</h3>
+
+            <p>Once Claude returns the files, here's what to check before marking the task done:</p>
+
+            <p><strong>Component checklist:</strong></p>
+            <ul class="bullet-list">
+              <li>Does the TypeScript props interface cover all the variants in your Figma?</li>
+              <li>Are the Tailwind classes readable and using your token mappings (not hardcoded hex)?</li>
+              <li>Is there no external library being imported (no ShadCN, no Radix)?</li>
+              <li>Does the component accept and forward an <code>onClick</code> or other event handlers?</li>
+            </ul>
+
+            <p><strong>Stories checklist:</strong></p>
+            <ul class="bullet-list">
+              <li>Does every Figma variant have a named story?</li>
+              <li>Do the args match the component's TypeScript props?</li>
+              <li>Is <code>tags: ['autodocs']</code> in the meta?</li>
+            </ul>
+
+            <h3>Common Mistakes to Avoid</h3>
+
+            <ul class="bullet-list">
+              <li><strong>Vague prompt</strong> — "Generate a button" gives poor results. Always include the Figma URL, stack constraints, and output paths.</li>
+              <li><strong>Not specifying "no ShadCN"</strong> — Claude will often reach for component libraries if not told not to. Be explicit.</li>
+              <li><strong>Missing variant coverage</strong> — If your Figma Button has 8 variants and Claude only generates 4 stories, your prompt didn't ask for "one story per variant."</li>
+              <li><strong>Generating molecules first</strong> — Don't ask for a Card before you have Button, Badge, and Typography atoms in your library.</li>
+            </ul>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Atom</span>
+                <div class="term-def">The smallest type of UI component — a Button, Input, Badge, or Icon. Must be built before molecules or organisms.</div>
+                <span class="term-pill">Molecule</span>
+                <div class="term-def">A UI component made of atoms — like a Form Field (Input + Label + Error Text).</div>
+                <span class="term-pill">Generation Prompt</span>
+                <div class="term-def">The instruction you give Claude Code to generate a component. Must include Figma URL, stack constraints, output paths, and story requirements for best results.</div>
+                <span class="term-pill">Figma Variant</span>
+                <div class="term-def">A variation of a component in Figma (e.g. Type=Primary, State=Disabled). Each variant becomes a named story and a React prop value in the generated code.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 5 Exercise</div>
+              <h3>Generate your first atomic component</h3>
+              <p>Using a Button component from your own Figma file, write a generation prompt following the anatomy above. Run it in Claude Code with both MCPs active. Review the output — does it match the Figma? Are all variants covered? Open the Storybook URL and visually compare. This is Milestone 3 complete.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 6 -->
+      <div class="module-card" id="module-6" data-index="6">
+        <div class="card-header">
+          <span class="card-num">6</span>
+          <span class="card-title">Stories for All Variants</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module,</strong> you will know how to write and review story files so every Figma variant has a corresponding named story — achieving Milestone 4.
+            </div>
+
+            <p>Generating a component is only half the job. The stories are what make it useful — they document every state of the component, power the Controls panel, and serve as the test harness for the interaction test loop in Module 7. This module covers everything you need to know about writing and reviewing story files.</p>
+
+            <h3>CSF3 Deep Dive</h3>
+
+            <p>CSF3 (Component Story Format 3) is the standard that every Storybook tool relies on. You already saw a basic example in Module 1. Here's a more complete look at the full pattern with TypeScript:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">TYPESCRIPT</div>
+              <pre><code>import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+// The meta (default export) tells Storybook about the component
+const meta = {
+  title: 'Components/Button',
+  component: Button,
+  tags: ['autodocs'],         // generates the Docs tab automatically
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'ghost'],
+      description: 'Visual style of the button',
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+    },
+    disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },  // logs click events in Actions panel
+  },
+} satisfies Meta&lt;typeof Button&gt;;
+
+export default meta;
+type Story = StoryObj&lt;typeof meta&gt;;
+
+// Default args shared across all stories
+const defaultArgs = {
+  label: 'Button',
+  variant: 'primary' as const,
+  size: 'md' as const,
+};
+
+// Named stories — one per Figma variant
+export const Primary: Story = { args: { ...defaultArgs } };
+
+export const Secondary: Story = {
+  args: { ...defaultArgs, variant: 'secondary' }
+};
+
+export const Ghost: Story = {
+  args: { ...defaultArgs, variant: 'ghost' }
+};
+
+export const Disabled: Story = {
+  args: { ...defaultArgs, disabled: true }
+};
+
+export const Small: Story = {
+  args: { ...defaultArgs, size: 'sm' }
+};
+
+export const Large: Story = {
+  args: { ...defaultArgs, size: 'lg' }
+};</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>The <code>satisfies Meta&lt;typeof Button&gt;</code> pattern gives you full TypeScript type-checking on your meta — it catches mistyped arg names and invalid control types at compile time, not just at runtime.</p>
+
+            <h3>The Variant Coverage Principle</h3>
+
+            <p>Every distinct Figma variant should become a named story — but this does not mean creating a story for every possible combination of variant × state. That leads to a combinatorial explosion that's hard to maintain and adds little value.</p>
+
+            <p>Think of it this way: each named story should reveal something visually or behaviorally distinct. If two combinations look and behave the same, one story is enough. The table below shows a sensible coverage for a Button with Primary and Secondary types:</p>
+
+            <div class="compare-table">
+              <div class="compare-row header">
+                <div class="compare-cell">Figma Variant</div>
+                <div class="compare-cell">Named Story</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Primary, State=Default</div>
+                <div class="compare-cell">Primary</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Secondary, State=Default</div>
+                <div class="compare-cell">Secondary</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Primary, State=Disabled</div>
+                <div class="compare-cell">Disabled</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Primary, State=Loading</div>
+                <div class="compare-cell">Loading</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Primary, Size=Small</div>
+                <div class="compare-cell">Small</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Primary, Size=Large</div>
+                <div class="compare-cell">Large</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">Type=Primary, With Icon</div>
+                <div class="compare-cell">WithIcon</div>
+              </div>
+            </div>
+
+            <div class="callout">
+              <strong>The Controls panel handles the rest.</strong> Anyone reviewing your Storybook can already switch between Primary and Secondary, or toggle Disabled, using the controls sidebar — without you needing a named story for every combination. Reserve named stories for states you want to test with a Play function, catch in visual regression (Chromatic), or document explicitly because they're non-obvious.
+            </div>
+
+            <p>If Claude misses any variants in the initial generation, you can add them manually by spreading the previous story's args and overriding only what changes.</p>
+
+            <h3>Story Composition</h3>
+
+            <p>The <code>...defaultArgs</code> spread pattern prevents repetition. Instead of re-typing every prop in every story, you define defaults once and only override what's different. This makes the file much easier to read and maintain as the component grows.</p>
+
+            <h3>Decorators for Context</h3>
+
+            <p>Some components need a wrapper to render correctly. A full-width hero section needs to be inside a max-width container. A dark-mode component needs a dark background. Add a decorator in the meta or per-story:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">TYPESCRIPT</div>
+              <pre><code>// Per-story decorator
+export const DarkMode: Story = {
+  args: { ...defaultArgs },
+  decorators: [
+    (Story) =&gt; (
+      &lt;div className="bg-gray-900 p-8"&gt;
+        &lt;Story /&gt;
+      &lt;/div&gt;
+    ),
+  ],
+};</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Parameters — Configuring Per-Story Behavior</h3>
+
+            <p>Parameters control Storybook addons on a per-story basis. You can set a specific background, disable certain controls, or configure how docs behave:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">TYPESCRIPT</div>
+              <pre><code>export const OnDarkBackground: Story = {
+  args: { ...defaultArgs },
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+};</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Ensuring Claude Covers All Variants</h3>
+
+            <p>When generating, explicitly tell Claude "write one named story for every Figma variant" in your prompt. After generation, cross-check the story file against the Figma component's variant panel. If any are missing, either add them to the prompt and regenerate, or write them manually using the spread pattern above. This is a 5-minute task.</p>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Named Story</span>
+                <div class="term-def">A named export in a <code>.stories.tsx</code> file that represents one specific state of a component. Each name appears as an entry in Storybook's left sidebar.</div>
+                <span class="term-pill">ArgTypes</span>
+                <div class="term-def">The configuration in your story meta that tells the Controls panel how to display each prop — as a dropdown, color picker, boolean toggle, or text field.</div>
+                <span class="term-pill">Story Composition</span>
+                <div class="term-def">The pattern of spreading default args and overriding only what changes per story. Reduces repetition and keeps story files readable.</div>
+                <span class="term-pill">satisfies Meta</span>
+                <div class="term-def">A TypeScript pattern that gives you full type-checking on your story meta object — catches invalid arg names and control types at compile time.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 6 Exercise</div>
+              <h3>Review and complete a generated story file</h3>
+              <p>Take the Button story file Claude generated in Module 5. Compare every story to the variants in your Figma file. If any are missing, add them manually using the spread pattern. Run <code>npm run storybook</code>, open the Button component, and verify every variant renders correctly in Storybook. This is Milestone 4 complete.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 7 -->
+      <div class="module-card" id="module-7" data-index="7">
+        <div class="card-header">
+          <span class="card-num">7</span>
+          <span class="card-title">The Interaction Test Loop (Generate → Test → Fix)</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module,</strong> you will understand how to write interaction tests, trigger the autonomous self-healing loop, and know what to do when tests fail — achieving Milestone 5.
+            </div>
+
+            <p>The interaction test loop is the most powerful part of the workflow — and what makes it fundamentally different from just using Claude to generate code. Without tests, Claude generates and walks away. With the Storybook MCP test tools connected, Claude generates, runs tests, reads what failed, rewrites the code, and re-tests — all without you intervening. By the end, you step in only after the tests are green.</p>
+
+            <h3>Why Tests Close the Loop</h3>
+
+            <p>Any AI can write code that looks right. What makes the Claude Code + Storybook MCP workflow different is that Claude can verify whether the code actually works — by running real automated tests against the real rendered component in a real browser. When a test fails, Claude sees the exact assertion that failed and the exact error message. It can then trace that error back to a specific prop or logic mistake and fix it. This loop repeats until all tests pass. You don't babysit it.</p>
+
+            <h3>Play Functions — The Test Unit</h3>
+
+            <p>A Play function is an async function you add to a story. It runs automatically after the story renders and simulates user interactions — clicks, typing, keyboard navigation — then asserts that the right things happened. Think of it as a Figma prototype that runs itself and reports a pass or fail.</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">TYPESCRIPT</div>
+              <pre><code>import { expect } from '@storybook/test';
+import { userEvent, within } from '@storybook/test';
+
+export const Clickable: Story = {
+  args: { label: 'Submit', variant: 'primary' },
+  play: async ({ canvasElement }) =&gt; {
+    const canvas = within(canvasElement);
+
+    // Find the button by its accessible role
+    const button = canvas.getByRole('button', { name: 'Submit' });
+
+    // Simulate a click
+    await userEvent.click(button);
+
+    // Assert the button is still there and not disabled
+    expect(button).not.toBeDisabled();
+  },
+};</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>The @storybook/test Toolkit</h3>
+
+            <p>Everything you need for interaction tests lives in <code>@storybook/test</code>. Here are the four key parts:</p>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Query</div>
+                <h4><code>within(canvasElement)</code></h4>
+                <p>Gets the test canvas scoped to your story. Use <code>canvas.getByRole()</code>, <code>canvas.findByText()</code>, <code>canvas.queryBy()</code> to find elements. Like using Figma's layers panel to select a specific layer by name.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Action</div>
+                <h4><code>userEvent</code></h4>
+                <p>Simulates real user interactions: <code>userEvent.click()</code>, <code>userEvent.type()</code>, <code>userEvent.keyboard()</code>, <code>userEvent.selectOptions()</code>. All async — use <code>await</code>.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Assert</div>
+                <h4><code>expect</code></h4>
+                <p>Checks that elements are in the right state: <code>expect(el).toBeVisible()</code>, <code>expect(el).toBeDisabled()</code>, <code>expect(el).toHaveValue('...')</code>.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Organize</div>
+                <h4><code>step</code></h4>
+                <p>Groups related interactions for readable output in the Interactions panel: <code>await step('Fill out the form', async () =&gt; { ... })</code>.</p>
+              </div>
+            </div>
+
+            <h3>Accessibility Tests</h3>
+
+            <p>When <code>@storybook/addon-a11y</code> is installed, the <code>run-story-tests</code> Storybook MCP tool automatically includes accessibility results alongside your interaction test results — both come back in one call. Under the hood it uses axe, an industry-standard accessibility scanner. Axe checks for WCAG violations like missing button labels, low contrast text, missing form field associations, and keyboard trap issues. These are real bugs that affect real users — and Claude fixes them the same way it fixes interaction test failures.</p>
+
+            <p>Common violations Claude will catch and fix automatically:</p>
+
+            <ul class="bullet-list">
+              <li>"Button has no accessible name" — your button has no text or <code>aria-label</code>. Screen readers can't announce it.</li>
+              <li>"Images must have alternate text" — your <code>&lt;img&gt;</code> has no <code>alt</code> attribute. Screen readers skip it.</li>
+              <li>"Form elements must have labels" — your input has no <code>&lt;label&gt;</code>. Screen readers can't tell users what the field is for.</li>
+              <li>"Color contrast ratio of 2.5:1 is too low" — your text is too light against its background. Users with low vision can't read it.</li>
+            </ul>
+
+            <h3>The Autonomous Self-Healing Loop</h3>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span>Claude generates the component (<code>Button.tsx</code>) and stories (<code>Button.stories.tsx</code>), including Play functions</li>
+              <li><span class="step-num">2</span>Claude calls <code>run-story-tests</code> (Storybook MCP) — the tests run headlessly and return results, including accessibility violations if <code>addon-a11y</code> is installed</li>
+              <li><span class="step-num">3</span>If tests fail: Claude reads the specific assertion that failed (e.g. "Expected button to be visible but it wasn't found") and traces it back to a prop name mismatch or missing conditional logic</li>
+              <li><span class="step-num">4</span>Claude rewrites the component, saves the file, and re-runs the tests</li>
+              <li><span class="step-num">5</span>Claude repeats until all interaction and accessibility checks pass</li>
+              <li><span class="step-num">6</span>When all tests are green: Claude returns the finished files to you — you step in at this point, not earlier</li>
+            </ol>
+
+            <div class="callout green">
+              <strong>The key insight:</strong> you're not reviewing every intermediate draft. You review the final output after the tests have already confirmed it works.
+            </div>
+
+            <h3>Running Tests in CI</h3>
+
+            <p>For tests to run in your CI pipeline (covered in Module 10), you use <code>@storybook/test-runner</code> — a Node.js tool that runs your Play functions headlessly (without opening a browser). Install it with <code>npm install @storybook/test-runner --save-dev</code>. In CI, your Storybook is built to a static folder, a test server starts, and the test runner checks every story that has a Play function. Failures block the merge.</p>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Play Function</span>
+                <div class="term-def">An async function in a story that runs after the component renders. Simulates user interactions and asserts expected outcomes — the foundation of the self-healing loop.</div>
+                <span class="term-pill">userEvent</span>
+                <div class="term-def">The <code>@storybook/test</code> utility for simulating user interactions (clicks, typing, keyboard). Always async.</div>
+                <span class="term-pill">Axe</span>
+                <div class="term-def">An open-source accessibility testing engine. Powers accessibility checks inside <code>run-story-tests</code> when <code>@storybook/addon-a11y</code> is installed. Checks for WCAG violations automatically.</div>
+                <span class="term-pill">Self-Healing Loop</span>
+                <div class="term-def">The autonomous cycle where Claude generates code, runs tests via Storybook MCP, reads failures, rewrites, and re-tests — without you intervening until tests pass.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 7 Exercise</div>
+              <h3>Trigger the self-healing loop</h3>
+              <p>Add a Play function to your Button story that clicks the button and checks that it responds (is visible and not disabled). Then introduce an intentional bug into your Button component — rename a prop from <code>variant</code> to <code>type</code> without updating the usage. Ask Claude to run the interaction tests and fix the failure. Watch Claude read the error, trace it to the prop rename, and fix it. That's Milestone 5 in action.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 8 -->
+      <div class="module-card" id="module-8" data-index="8">
+        <div class="card-header">
+          <span class="card-num">8</span>
+          <span class="card-title">Building the Full Atomic + Molecule Library</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will have a systematic approach for building your full component library, understand how GitHub Issues drive the workflow, and have the tools to establish Milestones 7, 8, and 10.
+            </div>
+
+            <p>Module 5 showed you how to generate one component. This module covers the full library — how to systematically generate every atom and then build molecules on top of them. It also introduces the GitHub Issues workflow, which is what turns this from a personal experiment into a team-scale process.</p>
+
+            <h3>The Systematic Atom Generation Sequence</h3>
+
+            <p>Don't pick atoms randomly — generate them in dependency order. Atoms that are used inside other atoms must come first.</p>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span><strong>Button</strong> — foundational, used everywhere. Generate first.</span></li>
+              <li><span class="step-num">2</span><span><strong>Input</strong> — text, email, password, search variants.</span></li>
+              <li><span class="step-num">3</span><span><strong>Checkbox</strong> — single and group variants.</span></li>
+              <li><span class="step-num">4</span><span><strong>Select</strong> — dropdown with options.</span></li>
+              <li><span class="step-num">5</span><span><strong>Badge</strong> — status, count, label variants.</span></li>
+              <li><span class="step-num">6</span><span><strong>Typography</strong> — h1–h6, body text, caption, label — as a single component with variants.</span></li>
+              <li><span class="step-num">7</span><span><strong>Icon</strong> — wrapper around your icon library with size and color props.</span></li>
+              <li><span class="step-num">8</span><span><strong>Tooltip</strong> — needs Icon and often wraps other atoms.</span></li>
+              <li><span class="step-num">9</span><span><strong>Divider</strong> — horizontal rule with optional label.</span></li>
+            </ol>
+
+            <p>Once all atoms are in Storybook and the manifest is rich with their details, start molecules. Claude will reference the manifest to compose atoms correctly instead of inventing new ones.</p>
+
+            <h3>Using the Manifest as a Reuse Check</h3>
+
+            <p>After each atom is added, the Storybook component manifest grows richer. The intended workflow is for Claude to call <code>list-all-documentation</code> to see the full inventory, then <code>get-documentation</code> on each atom it plans to compose. <strong>Note:</strong> these tools are not fully available in the current release of <code>@storybook/addon-mcp</code> — see the Module 4 availability note. When they aren't available, Claude falls back to reading your component files directly from the filesystem, which works but is slower and less reliable for reuse.</p>
+
+            <p>Here's the walk-through for generating a Card molecule (intended workflow once Docs tools are available):</p>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span>You ask Claude: "Generate a Card component from [Figma URL]"</span></li>
+              <li><span class="step-num">2</span><span>Claude calls <code>get-storybook-story-instructions</code> — reads project conventions</span></li>
+              <li><span class="step-num">3</span><span>Claude calls <code>list-all-documentation</code> — sees Button, Badge, Typography already exist <em>(requires Docs tools; fallback: Claude scans your src folder directly)</em></span></li>
+              <li><span class="step-num">4</span><span>Claude calls <code>get-documentation</code> on Button — gets full API, variant list, Tailwind classes <em>(fallback: Claude reads Button.tsx and Button.stories.tsx directly)</em></span></li>
+              <li><span class="step-num">5</span><span>Claude calls <code>get-documentation</code> on Badge and Typography <em>(same fallback)</em></span></li>
+              <li><span class="step-num">6</span><span>Claude calls <code>get_design_context</code> on the Figma Card frame</span></li>
+              <li><span class="step-num">7</span><span>Claude generates <code>Card.tsx</code> that imports and composes the existing Button, Badge, and Typography — not reinventing them</span></li>
+              <li><span class="step-num">8</span><span>This is manifest reuse in action. Milestone 8 = the manifest is rich enough that this works reliably.</span></li>
+            </ol>
+
+            <div class="callout green">
+              <strong>If Claude is inventing components that already exist,</strong> your manifest isn't rich enough yet. The fix: make sure each atom's stories have complete args coverage and autodocs enabled. The manifest is built from your stories — incomplete stories = incomplete manifest.
+            </div>
+
+            <h3>Moving to Molecules</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Molecule 1</div>
+                <h4>Card</h4>
+                <p>Composes: Button + Badge + Typography. A card component with a header, body text, optional status badge, and a CTA button.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Molecule 2</div>
+                <h4>Form Field</h4>
+                <p>Composes: Input + Label + Typography (for error text). An input with a label above and optional error message below.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Molecule 3</div>
+                <h4>Alert</h4>
+                <p>Composes: Icon + Typography. An alert with an icon on the left and text content. Variants: success, warning, error, info.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Molecule 4</div>
+                <h4>Modal</h4>
+                <p>Composes: Button (for close + CTAs) + Typography (for title + body). Overlay with header, body, and footer sections.</p>
+              </div>
+            </div>
+
+            <h3>GitHub Issues as Agentic Task Units</h3>
+
+            <p>For teams using Claude Code with GitHub, the cleanest way to manage component development is one issue per component. Each issue is a tightly scoped task: one component, one Figma link, all expected variants, tech constraints. Claude creates a git branch, does the work, runs tests, and opens a PR. You review the PR and merge.</p>
+
+            <p>An issue that says "implement all the button variants" produces better results than "build the UI". The smaller and more precise the issue, the better Claude's output.</p>
+
+            <p>The anatomy of a well-formed component issue:</p>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span><strong>Title:</strong> "feat: implement Button component with all variants"</span></li>
+              <li><span class="step-num">2</span><span><strong>Figma link:</strong> Direct link to the Button component in your Figma file</span></li>
+              <li><span class="step-num">3</span><span><strong>Expected variants:</strong> List from the Figma properties panel (Primary, Secondary, Ghost, Disabled, Loading, Small, Large, WithIcon)</span></li>
+              <li><span class="step-num">4</span><span><strong>Tech constraints:</strong> "React 18 + TypeScript + Tailwind only. No ShadCN. Follow CLAUDE.md."</span></li>
+              <li><span class="step-num">5</span><span><strong>Definition of done:</strong> Stories for all variants ✓, Interaction tests passing ✓, Accessibility tests passing ✓</span></li>
+            </ol>
+
+            <p>When you have multiple component issues open, git worktrees let Claude work on each in a separate folder — like having multiple Figma draft pages open, each with a different component in progress, without them interfering with each other. Use <code>git worktree add ../project-button feature/button-component</code> to create a worktree for a specific issue branch.</p>
+
+            <h3>Your Role in This Workflow</h3>
+
+            <p>With the GitHub Issues workflow running, your job becomes: write the ticket, review the PR, approve the merge. You're not writing component code — you're the editor and quality gate. The code review checklist:</p>
+
+            <ul class="bullet-list">
+              <li>Read the component file — do the prop types match the Figma variants?</li>
+              <li>Check the stories — is every Figma variant represented as a named story?</li>
+              <li>Open the Storybook URL from the PR — do the rendered stories look right?</li>
+              <li>Confirm tests pass — the PR should show green CI status before you review it</li>
+            </ul>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Molecule</span>
+                <div class="term-def">A UI component made by combining two or more atoms. A Form Field (Input + Label + Error) is a molecule.</div>
+                <span class="term-pill">Component Manifest Reuse</span>
+                <div class="term-def">When Claude calls <code>list-all-documentation</code> and <code>get-documentation</code> before building anything new, composing from existing atoms instead of inventing duplicates.</div>
+                <span class="term-pill">GitHub Issue as Task Unit</span>
+                <div class="term-def">The pattern of creating one GitHub Issue per component, with a Figma link and variant list, so Claude has a tightly scoped task that produces a single reviewable PR.</div>
+                <span class="term-pill">Git Worktree</span>
+                <div class="term-def">A way to have multiple working copies of the same repository at once. Like having multiple Figma pages open — each branch has its own folder and they don't interfere.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 8 Exercise</div>
+              <h3>Build your atom library and two molecules</h3>
+              <p>Create GitHub Issues for 6 atoms (Button, Input, Checkbox, Badge, Typography, Icon) and 2 molecules (Card, Form Field). Generate each via the Figma → Claude Code → Storybook loop. For each, create a GitHub Issue with the anatomy above, let Claude create the branch and PR, and review the result. When all 8 PRs are merged, check your Storybook — it should show 8 components in the manifest. That's Milestones 7 and 8.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 9 -->
+      <div class="module-card" id="module-9" data-index="9">
+        <div class="card-header">
+          <span class="card-num">9</span>
+          <span class="card-title">Visual Regression Testing with Chromatic</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module,</strong> visual regression tests will be set up with Chromatic and your first baseline snapshot set will be captured — achieving Milestone 9.
+            </div>
+
+            <p>Interaction tests verify that components behave correctly. Visual regression tests verify that they look correct — catching pixel-level regressions in layout, color, shadows, borders, and spacing that behavior tests miss. Chromatic is the platform purpose-built for this, made by the same team that built Storybook.</p>
+
+            <h3>What Visual Regression Testing Means</h3>
+
+            <p>A visual regression test takes a screenshot ("snapshot") of each story at a specific point in time and saves it as the "baseline." Every time you run it again, it compares the new screenshot to the baseline pixel-by-pixel. If anything changed — a border is 1px thinner, a color is slightly different, a font weight changed — it flags it as a change for you to review. You then decide: is this change intentional (accept it, making it the new baseline) or is it a regression (deny it, fix the code)?</p>
+
+            <p>Think of it like Figma's version history. You can always go back and compare any current state to a previous saved version. Visual regression does this automatically on every commit.</p>
+
+            <h3>When Visual Regression Tests Catch What Others Miss</h3>
+
+            <ul class="bullet-list">
+              <li>A CSS refactor accidentally makes all buttons 1px shorter</li>
+              <li>A font update changes the line height of all body text</li>
+              <li>A Tailwind config change shifts all spacing by 4px</li>
+              <li>A component's shadow or border changes after a dependency update</li>
+              <li>A third-party library update changes the appearance of a select dropdown</li>
+            </ul>
+
+            <h3>Chromatic Setup — Step by Step</h3>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span>Install the Chromatic CLI:
+                <div class="code-block has-label" style="margin-top:10px;">
+                  <div class="code-label">BASH</div>
+                  <pre><code>npm install chromatic --save-dev</code></pre>
+                  <button class="copy-btn">Copy</button>
+                </div>
+              </span></li>
+              <li><span class="step-num">2</span><span>Create an account at chromatic.com — it's free for small teams.</span></li>
+              <li><span class="step-num">3</span><span>Create a new project in Chromatic and copy your project token.</span></li>
+              <li><span class="step-num">4</span><span>Run your first snapshot set:
+                <div class="code-block has-label" style="margin-top:10px;">
+                  <div class="code-label">BASH</div>
+                  <pre><code>npx chromatic --project-token=YOUR_PROJECT_TOKEN</code></pre>
+                  <button class="copy-btn">Copy</button>
+                </div>
+              </span></li>
+              <li><span class="step-num">5</span><span>Chromatic builds your Storybook, takes a snapshot of every story, and shows you the results in the Chromatic UI. Since it's your first run, all snapshots are new — you review and "Accept" them to set the baseline.</span></li>
+            </ol>
+
+            <h3>The Review Flow</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Action 1</div>
+                <h4>Accept</h4>
+                <p>The change was intentional. You updated a color, refined spacing, or changed a font. Clicking Accept makes this the new baseline for future comparisons.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Action 2</div>
+                <h4>Deny</h4>
+                <p>The change was a regression. Something broke unexpectedly. Clicking Deny marks the test as failed and blocks the PR until it's fixed.</p>
+              </div>
+            </div>
+
+            <p>For each PR, Chromatic runs automatically and reports: "X stories changed." You review each changed story visually before merging. This is your final visual quality gate.</p>
+
+            <h3>SteadySnap and TurboSnap</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Technology 1</div>
+                <h4>SteadySnap</h4>
+                <p>Chromatic's technology for eliminating test flakiness. Before taking a snapshot, it stabilizes animations, freezes dynamic content (like timestamps), and waits for the browser to fully render. Without this, the same story might look slightly different on every run — flaky tests. SteadySnap makes snapshots deterministic.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Technology 2</div>
+                <h4>TurboSnap</h4>
+                <p>Chromatic's speed optimization. Instead of re-snapshotting every story on every commit, TurboSnap analyzes your Git diff and your dependency graph to identify which components could have changed — and only tests those. On large component libraries this can reduce Chromatic run time by 80%+.</p>
+              </div>
+            </div>
+
+            <h3>Multi-Browser and Viewport Testing</h3>
+
+            <p>Chromatic runs your snapshots on Chrome, Firefox, Safari, and Edge — in parallel, automatically. You can also configure multiple viewport sizes (mobile, tablet, desktop) and test each story across all combinations. This catches browser-specific rendering differences without you maintaining separate browser test infrastructure.</p>
+
+            <h3>Chromatic in the PR Workflow</h3>
+
+            <p>Once Chromatic is connected to GitHub (set up via the Chromatic UI), it adds status checks to every PR:</p>
+
+            <ul class="bullet-list">
+              <li><strong>UI Tests</strong> — Did any visual regressions appear? Blocks merge if unreviewed changes exist.</li>
+              <li><strong>Storybook Publish</strong> — A permanent URL for this specific version of your Storybook. Share it in PR comments for design reviews.</li>
+              <li><strong>UI Review</strong> — Separate review step where designers can sign off on visual changes before the PR merges.</li>
+            </ul>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Visual Regression Testing</span>
+                <div class="term-def">Pixel-level comparison between story screenshots. Catches unintended visual changes that behavior tests miss.</div>
+                <span class="term-pill">Baseline</span>
+                <div class="term-def">The accepted snapshot that future snapshots are compared against. Set when you first run Chromatic or when you accept a change.</div>
+                <span class="term-pill">SteadySnap</span>
+                <div class="term-def">Chromatic's rendering stabilization technology — freezes animations and dynamic content before snapshotting to prevent flaky tests.</div>
+                <span class="term-pill">TurboSnap</span>
+                <div class="term-def">Chromatic's Git-aware optimization that only snapshots stories connected to changed code — significantly faster on large libraries.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 9 Exercise</div>
+              <h3>Connect Chromatic and capture your baseline</h3>
+              <p>Install Chromatic, create an account, and run <code>npx chromatic --project-token=YOUR_TOKEN</code> on your component library. Review and accept all baseline snapshots. Then make a small visible change to one component (increase a border-radius, change a color) and run Chromatic again — review the visual diff. Accept it if intentional, deny it if not. That's Milestone 9 complete.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 10 -->
+      <div class="module-card" id="module-10" data-index="10">
+        <div class="card-header">
+          <span class="card-num">10</span>
+          <span class="card-title">Publishing, CI & Team Sharing</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module,</strong> your Storybook will be published at a permanent URL, a GitHub Actions CI pipeline will be running, and your Storybook will be part of every PR review — achieving Milestones 11 and 12.
+            </div>
+
+            <p>Building a component library locally is powerful. Publishing it is what makes it a team asset. This module covers everything after the build: how to deploy Storybook so your whole team can access it, how to set up CI so tests run on every PR, and how to make Storybook the default reference for your design-to-code workflow.</p>
+
+            <h3>Building Storybook for Production</h3>
+
+            <p>Storybook builds to a folder of static HTML, CSS, and JS files — no server required to host it. Run:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">BASH</div>
+              <pre><code>npm run build-storybook</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>Output goes to <code>storybook-static/</code>. This folder can be deployed to any static host. The build typically takes 30–90 seconds for a library of 10–20 components.</p>
+
+            <h3>Deployment Options</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Recommended</div>
+                <h4>Chromatic</h4>
+                <p>The official Storybook cloud. Free for small teams, integrates directly with GitHub PRs, adds visual regression as a PR status check. Zero configuration beyond linking your GitHub repo. Every merged PR gets a permanent Storybook URL automatically.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Easy</div>
+                <h4>Vercel</h4>
+                <p>Drag the <code>storybook-static/</code> folder into Vercel's dashboard, or connect your GitHub repo and it deploys automatically on push. Free tier is generous. No Chromatic integration, but fast and simple.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Easy</div>
+                <h4>Netlify</h4>
+                <p>Same as Vercel — connect repo or drag folder. Free tier works for most teams. Supports preview deployments for branches.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Free</div>
+                <h4>GitHub Pages</h4>
+                <p>Free hosting via GitHub Actions. More setup required — you write a workflow YAML to build and deploy. Good option if you want everything in one place.</p>
+              </div>
+            </div>
+
+            <h3>Embedding Stories</h3>
+
+            <p>Published stories can be embedded anywhere your team works:</p>
+
+            <ul class="bullet-list">
+              <li><strong>Figma</strong> — Use the Figma Design addon to embed the live code story next to the design component. Designers can see the code equivalent while reviewing.</li>
+              <li><strong>Notion</strong> — Paste the Storybook story URL into a Notion page and it embeds as an iframe.</li>
+              <li><strong>Confluence</strong> — Same as Notion — story URL embeds inline.</li>
+              <li><strong>PR comments</strong> — Paste the Chromatic PR URL in code reviews so reviewers can click through to the visual diff.</li>
+            </ul>
+
+            <h3>GitHub Actions CI Pipeline</h3>
+
+            <p>CI (Continuous Integration) means your tests run automatically on every PR. No one can merge broken code. Here's the GitHub Actions workflow:</p>
+
+            <div class="code-block has-label">
+              <div class="code-label">YAML</div>
+              <pre><code>name: Storybook CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  test-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'  # Node 24+ required for @storybook/addon-mcp
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Run Storybook tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:6006 &amp;&amp; npx test-storybook"
+
+      - name: Run Chromatic visual tests
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}</code></pre>
+              <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>What each step does:</p>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span><strong>Checkout code</strong> — Gets the latest code from GitHub onto the CI machine</span></li>
+              <li><span class="step-num">2</span><span><strong>Set up Node.js</strong> — Installs Node 24 (required for Storybook's MCP tools)</span></li>
+              <li><span class="step-num">3</span><span><strong>Install dependencies</strong> — Runs <code>npm ci</code> (like <code>npm install</code> but faster and deterministic in CI)</span></li>
+              <li><span class="step-num">4</span><span><strong>Build Storybook</strong> — Compiles your component library to static files</span></li>
+              <li><span class="step-num">5</span><span><strong>Run Storybook tests</strong> — Starts a static server for the built Storybook, then runs all Play functions headlessly</span></li>
+              <li><span class="step-num">6</span><span><strong>Run Chromatic</strong> — Uploads the build to Chromatic and runs visual regression tests. Requires your <code>CHROMATIC_PROJECT_TOKEN</code> stored as a GitHub secret.</span></li>
+            </ol>
+
+            <h3>Setting Up the GitHub Secret</h3>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span>Copy your Chromatic project token from the Chromatic dashboard</span></li>
+              <li><span class="step-num">2</span><span>Go to your GitHub repo → Settings → Secrets and variables → Actions</span></li>
+              <li><span class="step-num">3</span><span>Click "New repository secret"</span></li>
+              <li><span class="step-num">4</span><span>Name it <code>CHROMATIC_PROJECT_TOKEN</code>, paste the token</span></li>
+              <li><span class="step-num">5</span><span>Click Save — the YAML above can now read it as <code>${{ secrets.CHROMATIC_PROJECT_TOKEN }}</code></span></li>
+            </ol>
+
+            <h3>The Complete PR Status Checks</h3>
+
+            <ul class="bullet-list">
+              <li><strong>✓ Build / test-storybook</strong> — All interaction and accessibility tests passing</li>
+              <li><strong>✓ Chromatic UI Tests</strong> — No unreviewed visual regressions</li>
+              <li><strong>✓ Chromatic Storybook Publish</strong> — New Storybook version published and accessible</li>
+              <li>These three must all be green before a PR can merge</li>
+            </ul>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">CI (Continuous Integration)</span>
+                <div class="term-def">A system that automatically runs your tests on every PR, blocking merges when tests fail.</div>
+                <span class="term-pill">GitHub Actions</span>
+                <div class="term-def">GitHub's built-in CI system. Runs workflows defined in YAML files in your <code>.github/workflows/</code> folder.</div>
+                <span class="term-pill">@storybook/test-runner</span>
+                <div class="term-def">A Node.js CLI tool that runs Storybook Play functions headlessly in CI — no browser UI required.</div>
+                <span class="term-pill">GitHub Secret</span>
+                <div class="term-def">A securely stored value in your GitHub repo that CI workflows can read but humans can't see in plaintext. Used for API keys like the Chromatic project token.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 10 Exercise</div>
+              <h3>Deploy Storybook and set up CI</h3>
+              <p>Run <code>npm run build-storybook</code> locally and confirm the <code>storybook-static/</code> folder builds without errors. Then: (1) Connect your repo to Chromatic from their dashboard. (2) Add the <code>CHROMATIC_PROJECT_TOKEN</code> as a GitHub secret. (3) Create the GitHub Actions YAML file from this module. (4) Push a small change and watch the pipeline run. All three status checks should pass. That's Milestones 11 and 12.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 11 -->
+      <div class="module-card" id="module-11" data-index="11">
+        <div class="card-header">
+          <span class="card-num">11</span>
+          <span class="card-title">Teaching Teammates the Workflow</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will know how to onboard teammates to the workflow without requiring them to understand MCP internals — achieving Milestone 13.
+            </div>
+
+            <p>You don't need everyone on your team to understand how MCP works. What they need to know depends on their role. This module covers the three roles in the workflow, what each role needs to learn, and how to write the team documentation that makes the workflow self-sustaining.</p>
+
+            <h3>The Three Roles</h3>
+
+            <div class="concept-grid">
+              <div class="concept-card">
+                <div class="concept-label">Role 1</div>
+                <h4>Designer</h4>
+                <p>Structures Figma properly. Clean component naming, variants with properties panel configured, design tokens as Figma Variables. Doesn't need to know how Claude works — but needs to know that their Figma structure is the upstream quality gate for everything that follows.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Role 2</div>
+                <h4>Claude Code Developer</h4>
+                <p>Writes GitHub Issues with Figma links and variant lists, runs Claude Code sessions, reviews PRs from Claude. Needs to understand CLAUDE.md, the generation prompt anatomy, and how to review component code and stories.</p>
+              </div>
+              <div class="concept-card">
+                <div class="concept-label">Role 3</div>
+                <h4>Reviewer / Consumer</h4>
+                <p>Browses Storybook to find components, copies usage examples from the code panel, reviews PRs for correctness. Doesn't need to write code or use Claude — just needs to know Storybook exists and how to use it as a reference.</p>
+              </div>
+            </div>
+
+            <h3>What Teammates Don't Need to Know</h3>
+
+            <p>Most teammates don't need to understand MCP internals. They don't need to know what <code>get_design_context</code> does, how the manifest works, or what a Play function is. What they need is clear documentation of the process they follow. Keep onboarding docs role-specific.</p>
+
+            <h3>The Figma-First Principle</h3>
+
+            <p>The single most important thing to teach your design team: clean Figma structure is the upstream quality gate. If a designer names a component layer "Rectangle 42" instead of "Button", Claude reads "Rectangle 42" and generates poor code. If variants are set up as separate frames instead of as Figma Variants, Claude can't extract the variant logic.</p>
+
+            <p>Teach designers to:</p>
+
+            <ul class="bullet-list">
+              <li>Name all components in PascalCase matching the code name (Button, not button or btn)</li>
+              <li>Use Figma's Variants panel for every component that has multiple states</li>
+              <li>Use Figma Variables (not hardcoded hex values) for all colors and spacing</li>
+              <li>Group components by atomic level in the Figma pages: Atoms, Molecules, Organisms</li>
+            </ul>
+
+            <h3>The Update Cadence</h3>
+
+            <p>Establish when new Figma components trigger new GitHub Issues. A simple rule: whenever a designer marks a Figma component as "ready for development" (using a Figma status or label), the Claude Code operator creates a new issue. Weekly reviews of the Figma file catch new components. This keeps the code library in sync with the design library.</p>
+
+            <h3>The Compound Leverage Insight for Your Team</h3>
+
+            <div class="callout green">
+              <strong>Every component your team adds to Storybook makes the manifest richer.</strong> A richer manifest means Claude reuses existing components more reliably, which means every future component takes less time and produces higher-quality output. The system gets smarter as the library grows. Share this with your team so they understand why Storybook maintenance is worth the investment.
+            </div>
+
+            <h3>Common Pitfalls for New Team Members</h3>
+
+            <ul class="bullet-list">
+              <li><strong>Vague issue briefs</strong> — "Build the card component" is not enough. The issue must include a Figma link and a variant list.</li>
+              <li><strong>Approving PRs without checking Storybook</strong> — The code might look fine but render incorrectly. Always open the Storybook link from the PR before approving.</li>
+              <li><strong>Not running the MCP test loop</strong> — If Claude generates a component without running tests, there could be hidden accessibility issues or interaction bugs. The CLAUDE.md should enforce this.</li>
+              <li><strong>Skipping Code Connect</strong> — Without Code Connect mappings, Claude can't tell which Figma component corresponds to which code component. This leads to duplicate components.</li>
+              <li><strong>Adding atoms after molecules</strong> — If a molecule PR arrives before the atom it composes exists, Claude invents the atom inline. Keep the atomic order strict.</li>
+            </ul>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Claude Code Developer</span>
+                <div class="term-def">The team role responsible for writing GitHub Issues, running Claude Code sessions, and reviewing PRs from Claude.</div>
+                <span class="term-pill">Code Connect</span>
+                <div class="term-def">Figma feature that maps a Figma component to its code equivalent. Prevents Claude from building duplicates when the mapping is set up.</div>
+                <span class="term-pill">Update Cadence</span>
+                <div class="term-def">The agreed process for how new Figma designs trigger new GitHub Issues. Keeps the code library in sync with the design library.</div>
+                <span class="term-pill">Compound Leverage</span>
+                <div class="term-def">The compounding benefit where each new component added to Storybook makes the manifest richer, making future generations faster and higher quality.</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">✦ Module 11 Exercise</div>
+              <h3>Write your team onboarding doc</h3>
+              <p>Write a 1-page document (Markdown or Notion) covering: (1) the three roles and what each person does, (2) the issue template (Figma link + variant list + tech constraints), (3) how to review a PR (check code, check Storybook, confirm tests pass), and (4) how to browse components in Storybook. Link it from your repository README. Send it to one teammate and walk them through it. That's Milestone 13.</p>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 12 -->
+      <div class="module-card" id="module-12" data-index="12">
+        <div class="card-header">
+          <span class="card-num">12</span>
+          <span class="card-title">Capstone: Full Design System Sprint</span>
+          <span class="card-check">✓</span>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          <div class="card-inner">
+
+            <div class="outcome-banner">
+              <strong>By the end of this module</strong> you will have executed the complete workflow from scratch, demonstrating all 13 milestones in one integrated sprint.
+            </div>
+
+            <p>This is where everything comes together. The capstone is not a quiz — it's a real build. You take a Figma component set and execute the complete Figma → Claude Code → Storybook pipeline from scratch, hitting every milestone along the way.</p>
+
+            <h3>What to Build</h3>
+
+            <p>Use a Figma component set you actually work with — or find one in the Figma Community (search "design system" for free component files). The file should have at least 8 components you can categorize as atoms and molecules.</p>
+
+            <h3>The 9-Step Capstone Checklist</h3>
+
+            <ol class="steps-list">
+              <li><span class="step-num">1</span><span><strong>Write CLAUDE.md</strong> — Stack constraints, atomic ordering rule, Storybook MCP system prompt, token mapping table. (Milestone 6)</span></li>
+              <li><span class="step-num">2</span><span><strong>Set up Storybook + both MCPs</strong> — Install Storybook, install addon-mcp, connect both MCPs, verify <code>/mcp list</code> shows both active. (Milestones 1 &amp; 2)</span></li>
+              <li><span class="step-num">3</span><span><strong>Create GitHub Issues for 8+ components</strong> — Mix of atoms and molecules. Use the issue anatomy from Module 8: Figma link, variant list, tech constraints. (Part of Milestone 10)</span></li>
+              <li><span class="step-num">4</span><span><strong>Generate each component</strong> via the Figma → Claude Code → Storybook loop. One component per issue, one PR per component. (Milestones 3 &amp; 4)</span></li>
+              <li><span class="step-num">5</span><span><strong>Run the full test suite per component</strong> — Interaction tests + accessibility tests via the self-healing loop. All must pass before you merge each PR. (Milestone 5)</span></li>
+              <li><span class="step-num">6</span><span><strong>Connect Chromatic and accept baseline snapshots</strong> — <code>npx chromatic --project-token=...</code> on your built Storybook. Review and accept all first-run snapshots. (Milestone 9)</span></li>
+              <li><span class="step-num">7</span><span><strong>Set up GitHub Actions CI</strong> — Create the YAML from Module 10. Push a test commit and verify all three status checks pass. (Milestone 12)</span></li>
+              <li><span class="step-num">8</span><span><strong>Publish the Storybook URL</strong> — Via Chromatic (automatic after step 6) or any static host. Share the URL with your team. (Milestone 11)</span></li>
+              <li><span class="step-num">9</span><span><strong>Onboard one teammate</strong> — Walk one person through the workflow using the onboarding doc from Module 11. (Milestone 13)</span></li>
+            </ol>
+
+            <h3>Assessment Rubric</h3>
+
+            <p>Use this rubric to confirm you've hit all 13 milestones. Check each item off as you complete it:</p>
+
+            <div class="compare-table">
+              <div class="compare-row header">
+                <div class="compare-cell">Milestone</div>
+                <div class="compare-cell">How to Verify</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">① Storybook + addon-mcp installed</div>
+                <div class="compare-cell"><code>npm run storybook</code> opens at localhost:6006 and the MCP is available at /mcp</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">② Both MCPs connected in Claude Code</div>
+                <div class="compare-cell"><code>/mcp list</code> shows both Figma MCP and Storybook MCP active</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">③ First atomic component generated</div>
+                <div class="compare-cell">A Button component exists in <code>src/components/</code> with a story file</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">④ Stories for all variants</div>
+                <div class="compare-cell">Every Figma variant has a named story in the story file</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑤ Interaction test loop working</div>
+                <div class="compare-cell">Play functions exist and pass via <code>run-story-tests</code></div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑥ CLAUDE.md written</div>
+                <div class="compare-cell"><code>CLAUDE.md</code> exists at project root with stack, atomic order, and Storybook MCP prompt</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑦ Full atom library in Storybook</div>
+                <div class="compare-cell">At least 6 atoms listed in <code>list-all-documentation</code> output</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑧ Manifest reuse working</div>
+                <div class="compare-cell">When generating a Card, Claude composes from existing Button — not a new one</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑨ Chromatic visual tests</div>
+                <div class="compare-cell">Baseline snapshots accepted, Chromatic PR status check is green</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑩ GitHub Issues + PR workflow</div>
+                <div class="compare-cell">Each component has a merged PR with the issue linked</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑪ Storybook published</div>
+                <div class="compare-cell">A publicly accessible Storybook URL exists and is shared with the team</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑫ Storybook in CI</div>
+                <div class="compare-cell">GitHub Actions YAML exists, all three status checks pass on PRs</div>
+              </div>
+              <div class="compare-row">
+                <div class="compare-cell">⑬ Team onboarded</div>
+                <div class="compare-cell">One teammate has used the workflow doc and knows how to find components in Storybook</div>
+              </div>
+            </div>
+
+            <div class="exercise-block">
+              <div class="exercise-label">Capstone Exercise</div>
+              <h3>Execute the Full Sprint</h3>
+              <p>Work through the 9-step checklist above using a real Figma component set. Check off each item in the Assessment Rubric as you complete it. When all 13 milestones are verified, mark this module complete — you've finished the course.</p>
+            </div>
+
+            <div class="callout green">
+              <strong>Completing this capstone means you've hit all 13 milestones</strong> — you're at 8/10 proficiency with the Figma → Claude Code → Storybook workflow. The 9→10 jump from here takes breadth: multiple projects, edge cases, and the kind of compound leverage that only comes from building real design systems for real teams. You're ready for it.
+            </div>
+
+            <div class="key-terms">
+              <div class="key-terms-label">Key Terms</div>
+              <div class="terms-row">
+                <span class="term-pill">Capstone</span>
+                <div class="term-def">A final project that demonstrates all the skills from a course in one integrated build.</div>
+                <span class="term-pill">Assessment Rubric</span>
+                <div class="term-def">A checklist that maps each milestone to a concrete, verifiable outcome — so you know exactly when you've hit it.</div>
+                <span class="term-pill">Design System Sprint</span>
+                <div class="term-def">A focused, time-boxed period where you go from zero to a complete, published component library using the workflow from this course.</div>
+                <span class="term-pill">8/10 Proficiency</span>
+                <div class="term-def">The target level for this course — functional, productive, team-ready. You know every tool, the full pipeline works end-to-end, and you can teach it to others.</div>
+              </div>
+            </div>
+
+            <button class="complete-btn">Mark as Complete</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.modules-list -->
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'sb-microcourse-progress';
+    const TOTAL = 13;
+
+    // Milestone → module index mapping
+    // Milestones 1&2 → Module 2, Milestone 3 → Module 5, Milestone 4 → Module 6
+    // Milestone 5 → Module 7, Milestone 6 → Module 3, Milestones 7&8 → Module 8
+    // Milestone 9 → Module 9, Milestone 10 → Module 8, Milestones 11&12 → Module 10
+    // Milestone 13 → Module 11
+    const MILESTONE_TO_MODULE = {1:2,2:2,3:5,4:6,5:7,6:3,7:8,8:8,9:9,10:8,11:10,12:10,13:11};
+
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            const normalized = new Array(TOTAL).fill(false);
+            parsed.forEach((v, i) => { if (i < TOTAL) normalized[i] = Boolean(v); });
+            return normalized;
+          }
+        }
+      } catch(e) {}
+      return new Array(TOTAL).fill(false);
+    }
+
+    function saveProgress(arr) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+      } catch(e) {
+        console.warn('Progress could not be saved:', e);
+      }
+    }
+
+    let progress = loadProgress();
+
+    const cards = document.querySelectorAll('.module-card');
+    const navItems = document.querySelectorAll('.nav-item');
+    const progressFill = document.querySelector('.progress-bar-fill');
+    const progressCountEl = document.querySelector('.progress-count');
+    const progressMiniEl = document.querySelector('.progress-mini');
+
+    function renderProgress() {
+      const done = progress.filter(Boolean).length;
+      if (progressFill) progressFill.style.width = `${(done / TOTAL) * 100}%`;
+      if (progressCountEl) progressCountEl.innerHTML = `<span class="count-num">${done}</span> / ${TOTAL} modules complete`;
+      if (progressMiniEl) progressMiniEl.innerHTML = `<span class="count-num">${done}</span>/${TOTAL}`;
+
+      cards.forEach((card, i) => {
+        const btn = card.querySelector('.complete-btn');
+        if (progress[i]) {
+          card.classList.add('completed');
+          if (btn) { btn.textContent = '✓ Completed — click to undo'; btn.classList.add('done'); }
+        } else {
+          card.classList.remove('completed');
+          if (btn) { btn.textContent = 'Mark as Complete'; btn.classList.remove('done'); }
+        }
+      });
+
+      navItems.forEach((item, i) => {
+        const icon = item.querySelector('.nav-icon');
+        if (progress[i]) {
+          item.classList.add('completed');
+          if (icon) icon.textContent = '✓';
+        } else {
+          item.classList.remove('completed');
+          if (icon) icon.textContent = '○';
+        }
+      });
+
+      document.querySelectorAll('.milestone-chip').forEach(chip => {
+        const m = parseInt(chip.dataset.milestone, 10);
+        const moduleIdx = MILESTONE_TO_MODULE[m];
+        if (moduleIdx !== undefined && progress[moduleIdx]) {
+          chip.classList.add('done');
+        } else {
+          chip.classList.remove('done');
+        }
+      });
+    }
+
+    let activeIndex = null;
+
+    function _closeCard(index) {
+      const card = cards[index];
+      const body = card.querySelector('.card-body');
+      // Re-enable overflow:hidden before animating closed
+      body.style.overflow = 'hidden';
+      // Snapshot exact height first so the closing animation has a stable start point
+      if (body.style.maxHeight === 'none' || body.style.maxHeight === '') {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        body.style.maxHeight = '0';
+      }));
+      card.classList.remove('active');
+      navItems[index] && navItems[index].classList.remove('active');
+      if (activeIndex === index) activeIndex = null;
+    }
+
+    function openCard(index) {
+      if (activeIndex !== null && activeIndex !== index) {
+        _closeCard(activeIndex);
+      }
+      const card = cards[index];
+      const body = card.querySelector('.card-body');
+      card.classList.add('active');
+      navItems[index] && navItems[index].classList.add('active');
+      // Animate to exact content height, then unlock so dynamic content (key terms) can expand freely
+      body.style.maxHeight = body.scrollHeight + 'px';
+      function onEnd(e) {
+        if (e.propertyName !== 'max-height') return;
+        body.removeEventListener('transitionend', onEnd);
+        if (card.classList.contains('active')) {
+          body.style.maxHeight = 'none';
+          body.style.overflow = 'visible'; // Allow key-term definitions to expand without clipping
+        }
+      }
+      body.addEventListener('transitionend', onEnd);
+      activeIndex = index;
+    }
+
+    function toggleCard(index) {
+      if (activeIndex === index) {
+        _closeCard(index);
+      } else {
+        openCard(index);
+      }
+    }
+
+    cards.forEach((card, i) => {
+      const header = card.querySelector('.card-header');
+      if (header) header.addEventListener('click', () => toggleCard(i));
+
+      const btn = card.querySelector('.complete-btn');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          progress[i] = !progress[i];
+          saveProgress(progress);
+          renderProgress();
+        });
+      }
+    });
+
+    navItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        const wasAlreadyOpen = activeIndex === i;
+        openCard(i);
+        if (wasAlreadyOpen) {
+          // Card was already open — scroll immediately
+          cards[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // Card is animating open — wait for the max-height transition to finish
+          // so the layout is stable and we land at the top of the card, not the bottom
+          const body = cards[i].querySelector('.card-body');
+          function onTransitionEnd(e) {
+            if (e.propertyName !== 'max-height') return;
+            body.removeEventListener('transitionend', onTransitionEnd);
+            cards[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          body.addEventListener('transitionend', onTransitionEnd);
+        }
+      });
+    });
+
+    // Key terms toggle (independent per pill)
+    document.querySelectorAll('.term-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const def = pill.nextElementSibling;
+        if (!def || !def.classList.contains('term-def')) return;
+        const isOpen = def.classList.contains('open');
+        def.classList.toggle('open', !isOpen);
+        pill.classList.toggle('open', !isOpen);
+        // If the card body still has a fixed max-height (transitionend hasn't fired yet),
+        // recalculate it so the expanded definition isn't clipped.
+        const cardBody = pill.closest('.card-body');
+        if (cardBody && cardBody.style.maxHeight && cardBody.style.maxHeight !== 'none') {
+          cardBody.style.maxHeight = cardBody.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Copy button with file:// fallback
+    function copyCode(btn) {
+      const pre = btn.closest('.code-block').querySelector('pre');
+      const text = pre ? pre.innerText : '';
+      const original = btn.textContent;
+      function success() {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = original, 1500);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(success).catch(fallback);
+      } else { fallback(); }
+      function fallback() {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (ok) success(); else btn.textContent = 'Copy failed';
+      }
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => copyCode(btn));
+    });
+
+    // ─── Sidebar collapse toggle ───
+    const SIDEBAR_COLLAPSED_KEY = 'sb-sidebar-collapsed';
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+
+    function applySidebarState(collapsed) {
+      if (collapsed) {
+        document.body.classList.add('sidebar-collapsed');
+        sidebarToggleBtn.querySelector('i').className = 'ph ph-caret-double-right';
+      } else {
+        document.body.classList.remove('sidebar-collapsed');
+        sidebarToggleBtn.querySelector('i').className = 'ph ph-caret-double-left';
+      }
+    }
+
+    // Restore saved state on load (no transition flash)
+    const savedCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === 'true';
+    if (savedCollapsed) {
+      // Apply instantly before first paint to avoid transition on load
+      document.body.style.transition = 'none';
+      document.querySelector('.sidebar').style.transition = 'none';
+      applySidebarState(true);
+      requestAnimationFrame(() => {
+        document.body.style.transition = '';
+        document.querySelector('.sidebar').style.transition = '';
+      });
+    }
+
+    sidebarToggleBtn.addEventListener('click', () => {
+      const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+      const next = !isCollapsed;
+      localStorage.setItem(SIDEBAR_COLLAPSED_KEY, next);
+      applySidebarState(next);
+    });
+
+    renderProgress();
+  </script>
+</body>
+</html>
