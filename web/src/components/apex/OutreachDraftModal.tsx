@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import GmailFlowOverlay from './GmailFlowOverlay'
 
 interface OutreachDraftModalProps {
   onClose: () => void
@@ -9,12 +10,36 @@ interface OutreachDraftModalProps {
 }
 
 export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftModalProps) {
+  const [sent, setSent] = useState(false)
+  const [gmailOpen, setGmailOpen] = useState(false)
+
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
 
-  return createPortal(
+  // Auto-close confirmation overlay after 3.2s — paused while Gmail flow is open
+  useEffect(() => {
+    if (!sent || gmailOpen) return
+    const t = setTimeout(() => { onSend?.(); onClose() }, 3200)
+    return () => clearTimeout(t)
+  }, [sent, gmailOpen, onSend, onClose])
+
+  // Easter egg: Tab opens Gmail flow while confirmation overlay is showing.
+  // Once Gmail is open, GmailFlowOverlay owns Tab/Esc — we stop listening.
+  useEffect(() => {
+    if (!sent || gmailOpen) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        e.preventDefault()
+        setGmailOpen(true)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [sent, gmailOpen])
+
+  const modal = createPortal(
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
@@ -104,7 +129,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
                       See what&apos;s waiting for you <span className="material-symbols-outlined">arrow_forward</span>
                     </button>
                   </div>
-                  <p className="text-stone-600 italic text-center">Takes about 2 minutes to book a time. Happy to answer questions before then.</p>
+                  <p className="text-stone-600 italic text-center">Takes about 3 minutes to create your account and book a time.</p>
                 </div>
               </div>
             </div>
@@ -203,7 +228,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
             Edit drafts
           </button>
           <button
-            onClick={() => { onSend?.(); onClose() }}
+            onClick={() => setSent(true)}
             className="px-8 py-3.5 rounded-2xl bg-gradient-to-br from-primary-container to-primary text-white font-black text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2"
           >
             <span className="material-symbols-outlined text-[20px]">send</span>
@@ -214,5 +239,51 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
       </div>
     </div>,
     document.body
+  )
+
+  return (
+    <>
+      {modal}
+      {sent && createPortal(
+        <div
+          className="confirm-overlay fixed inset-0 z-[80] flex flex-col items-center justify-center cursor-pointer"
+          style={{
+            background: 'rgba(10, 5, 2, 0.72)',
+            backdropFilter: 'blur(20px) saturate(140%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(140%)',
+          }}
+          onClick={() => { onSend?.(); onClose() }}
+        >
+          {/* Icon */}
+          <div
+            className="confirm-icon w-20 h-20 rounded-full flex items-center justify-center mb-7 shadow-2xl"
+            style={{
+              background: 'linear-gradient(135deg, #4ade80 0%, #16a34a 100%)',
+              boxShadow: '0 0 60px rgba(74,222,128,0.45), 0 8px 32px rgba(22,163,74,0.35)',
+            }}
+          >
+            <span className="material-symbols-outlined text-white" style={{ fontSize: 40 }}>check</span>
+          </div>
+
+          {/* Title */}
+          <h2 className="confirm-title font-jakarta font-black text-white text-3xl mb-3 tracking-tight">
+            Outreach sent.
+          </h2>
+
+          {/* Subtitle */}
+          <p className="confirm-subtitle text-white/60 text-base font-medium">
+            Apex sent to 5 channels across 1 founder. We&apos;ll track replies for you.
+          </p>
+
+          {/* Tab hint */}
+          <p className="confirm-subtitle text-white/20 text-xs font-medium mt-8 flex items-center gap-1.5" style={{ animationDelay: '0.9s' }}>
+            <kbd className="px-1.5 py-0.5 rounded-[4px] border border-white/20 font-mono text-[11px]">Tab</kbd>
+            see what Ajay sees
+          </p>
+        </div>,
+        document.body
+      )}
+      {gmailOpen && <GmailFlowOverlay onClose={() => setGmailOpen(false)} />}
+    </>
   )
 }

@@ -5,11 +5,12 @@ import { useState, useEffect, useCallback } from 'react'
 type ScanPhase = 'scanning' | 'complete' | 'dismissed'
 
 const PHASES = [
-  { id: 1, name: 'Scanning Product Hunt top 10', icon: 'travel_explore' },
-  { id: 2, name: 'Enriching founder profiles',   icon: 'person_search'  },
-  { id: 3, name: 'Running Decode skill',          icon: 'psychology'     },
-  { id: 4, name: 'Running Rapid Course skill',    icon: 'bolt'           },
-  { id: 5, name: 'Drafting outreach messages',    icon: 'edit_note'      },
+  { id: 1, name: 'Scanning Product Hunt top 10',      icon: 'travel_explore' },
+  { id: 2, name: 'Enriching founder profiles',         icon: 'person_search'  },
+  { id: 3, name: 'Creating community profile pages',   icon: 'group'          },
+  { id: 4, name: 'Running Decode skill',               icon: 'psychology'     },
+  { id: 5, name: 'Running Rapid Course skill',         icon: 'bolt'           },
+  { id: 6, name: 'Drafting outreach messages',         icon: 'edit_note'      },
 ] as const
 
 const PHASE_DURATION_MS  = 3500

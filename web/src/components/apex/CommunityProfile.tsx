@@ -9,9 +9,11 @@ import PillButton from '@/components/ui/PillButton'
 interface CommunityProfileProps {
   product: PhProduct
   founders: Founder[]
+  isOwner?: boolean
+  slug?: string
 }
 
-export default function CommunityProfile({ product, founders }: CommunityProfileProps) {
+export default function CommunityProfile({ product, founders, isOwner = false, slug }: CommunityProfileProps) {
   return (
     <div className="flex items-start gap-10">
       {/* Left column — sticky wrapper (no overflow:hidden so sticky works) */}
@@ -73,22 +75,31 @@ export default function CommunityProfile({ product, founders }: CommunityProfile
           {/* Spacer pushes buttons to bottom */}
           <div className="flex-1" />
 
-          {/* Visit website — secondary outline button */}
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center text-primary font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all mb-3"
-          >
-            Visit website
-          </a>
+          {/* Secondary button */}
+          {isOwner ? (
+            <a
+              href={slug ? `/apex/community/${slug}` : '#'}
+              className="block w-full text-center text-primary font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all mb-3"
+            >
+              See public view
+            </a>
+          ) : (
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center text-primary font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all mb-3"
+            >
+              Visit website
+            </a>
+          )}
 
-          {/* Join community — primary button */}
+          {/* Primary button */}
           <button
             className="block w-full text-center text-white font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm shadow-xl hover:shadow-2xl active:scale-95 transition-all"
             style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)' }}
           >
-            Join community
+            {isOwner ? 'Community settings' : 'Join community'}
           </button>
         </div>
       </div>
@@ -105,7 +116,17 @@ export default function CommunityProfile({ product, founders }: CommunityProfile
         {/* Full description */}
         {product.description && (
           <div>
-            <h2 className="text-xl font-black font-jakarta text-on-background mb-3">About</h2>
+            <div className="flex items-center gap-2 mb-3">
+              <h2 className="text-xl font-black font-jakarta text-on-background">About</h2>
+              {isOwner && (
+                <button
+                  className="w-11 h-11 flex items-center justify-center rounded-full border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all"
+                  title="Edit about"
+                >
+                  <span className="material-symbols-outlined text-primary" style={{ fontSize: '20px' }}>edit</span>
+                </button>
+              )}
+            </div>
             {product.description.split('\n\n').map((paragraph, i) => (
               <p key={i} className="text-sm text-on-background/80 leading-relaxed mb-3">{paragraph}</p>
             ))}
@@ -114,7 +135,7 @@ export default function CommunityProfile({ product, founders }: CommunityProfile
 
         {/* Product images carousel */}
         {product.images.length > 0 && (
-          <ImageCarousel images={product.images} productName={product.name} />
+          <ImageCarousel images={product.images} productName={product.name} isOwner={isOwner} />
         )}
 
         {/* Decode preview card */}
@@ -122,6 +143,7 @@ export default function CommunityProfile({ product, founders }: CommunityProfile
           <DecodePreviewCard
             productName={product.name}
             decodeUrl={product.decodeUrl}
+            isOwner={isOwner}
           />
         )}
 
@@ -130,6 +152,7 @@ export default function CommunityProfile({ product, founders }: CommunityProfile
           <RapidCoursePreviewCard
             productName={product.name}
             rapidCourseUrl={product.rapidCourseUrl}
+            isOwner={isOwner}
           />
         )}
       </div>

@@ -5,9 +5,10 @@ import { useState, useCallback, useMemo } from 'react'
 interface ImageCarouselProps {
   images: string[]
   productName: string
+  isOwner?: boolean
 }
 
-export default function ImageCarousel({ images, productName }: ImageCarouselProps) {
+export default function ImageCarousel({ images, productName, isOwner = false }: ImageCarouselProps) {
   const [pageIndex, setPageIndex] = useState(0)
 
   // Group images into pairs
@@ -33,6 +34,24 @@ export default function ImageCarousel({ images, productName }: ImageCarouselProp
 
   return (
     <div className="relative">
+      {/* Owner toolbar */}
+      {isOwner && (
+        <div className="flex items-center justify-end gap-2 mb-3">
+          <button
+            className="w-11 h-11 flex items-center justify-center rounded-full border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all"
+            title="Add image"
+          >
+            <span className="material-symbols-outlined text-primary" style={{ fontSize: '20px' }}>add</span>
+          </button>
+          <button
+            className="w-11 h-11 flex items-center justify-center rounded-full border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all"
+            title="Reorder images"
+          >
+            <span className="material-symbols-outlined text-primary" style={{ fontSize: '20px' }}>reorder</span>
+          </button>
+        </div>
+      )}
+
       {/* Images container */}
       <div className="relative">
         <div className="grid grid-cols-2 gap-3">

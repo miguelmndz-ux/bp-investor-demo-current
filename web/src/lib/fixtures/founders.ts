@@ -11,7 +11,7 @@ export const founders: Founder[] = [
     name: 'Sourav S.',
     role: 'Co-founder, Velo',
     quote: 'A very large enthusiast of technology and people.',
-    avatar: 'https://media.licdn.com/dms/image/v2/D5603AQFQK5cj0Ezj-A/profile-displayphoto-scale_200_200/B56ZwpNMmSHgAY-/0/1770217852294?e=2147483647&v=beta&t=JDycDkS6Auj8CH7XLFT6aIKFAaf7zqLwBLu3gDvR1gU',
+    avatar: 'https://ph-avatars.imgix.net/1699657/b971469f-f10c-45ac-a15f-a060cd12f38a.jpeg',
   },
   {
     name: 'Michelle Lim',

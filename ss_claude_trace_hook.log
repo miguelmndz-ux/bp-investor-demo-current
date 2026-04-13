@@ -1231,3 +1231,11 @@ WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 21409: C:\Users\
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 21409: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\c7bb0b0e-3fdf-4d27-8088-1e565f9da320.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 14590: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\c7bb0b0e-3fdf-4d27-8088-1e565f9da320\subagents\agent-a4a8c073334af5167.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 21409: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\c7bb0b0e-3fdf-4d27-8088-1e565f9da320.jsonl
+INFO:root:Started new session: c95128f7-b727-4c7b-b735-8bcd7d9d7876
+INFO:cc_tracer_lib.state:Starting episode, trace id: 909d0efe-5f97-4e31-b565-3cc919a1eba7, span id: 4d2d9c93-fa2f-49dc-9951-76c8be6ec277
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 909d0efe-5f97-4e31-b565-3cc919a1eba7, span id: 87caae6e-132c-4e99-851d-2dc7274cf81a
+INFO:cc_tracer_lib.state:Starting episode, trace id: 909d0efe-5f97-4e31-b565-3cc919a1eba7, span id: d0b4f715-c007-407b-a587-819cbc0bf5a4
+INFO:cc_tracer_lib.state:Starting episode, trace id: 909d0efe-5f97-4e31-b565-3cc919a1eba7, span id: d4c94fda-807f-4080-943c-4b72e70c0887
+INFO:root:Started new session: c56948ee-e2b1-4f97-95c2-cdffc337381f
+INFO:cc_tracer_lib.state:Starting episode, trace id: f9479747-5167-4d11-87da-cbeebdbf67a6, span id: 0f0f25ff-ad22-4908-bc22-e674aceca82e

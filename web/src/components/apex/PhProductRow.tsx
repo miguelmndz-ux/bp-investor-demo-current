@@ -21,7 +21,7 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
         </div>
         <div className="truncate flex-1 min-w-0">
           <Link
-            href={`/apex/community/${product.slug}`}
+            href={`/apex/community/${product.slug}/owner`}
             className="font-extrabold text-sm text-on-background group-hover:text-primary transition-colors leading-tight hover:underline"
           >
             {product.name}
