@@ -160,13 +160,35 @@ When a scroll container (`overflow-y-auto`) holds items with a scale hover effec
 ### Adding new components
 
 - Apex-specific: `web/src/components/apex/`
+- Discover/browse: `web/src/components/discover/`
 - Layout: `web/src/components/layout/`
 - Shared UI primitives: `web/src/components/ui/`
 - Session/LiveKit: `web/src/components/session/`
 
+### Shared UI components
+
+When a UI pattern appears in more than one page, extract it to `web/src/components/ui/`. Don't duplicate styling across components — import the shared primitive.
+
+Existing shared components:
+- `PillButton` — liquid glass filter pill used on discover page and community profile. Always use this instead of inlining the pill style.
+
+### SideNav active state
+
+SideNav uses `usePathname()` to determine which icon is active — never hardcode the `active` prop. When adding a new route to the sidebar, add a NavItem with a pathname check (e.g., `active={pathname === '/discover'}` or `active={pathname.startsWith('/apex')}`).
+
+### Hover effects
+
+Don't use `hover:-translate-y-*` or `hover:shadow-*` on cards. Use a simple opacity change on hover instead (e.g., `hover:opacity-80` or brightening the background). Keep it subtle.
+
+### Floating side panels
+
+Slide-in preview panels should look like floating cards, not edge-to-edge sidebars. Use `premium-glass rounded-2xl` with inset from edges (`top-20 right-4 bottom-4`). Content should be fixed height (no scroll) with the CTA button pinned to the bottom via `flex-col h-full` and a `flex-1` spacer. See `web/src/components/discover/PreviewPanel.tsx`.
+
 ### Faked data
 
-All mock data lives in `web/src/lib/fixtures/` as typed TypeScript objects. Components import directly — no API calls, no loading states for demo screens. Types are defined in `web/src/lib/fixtures/types.ts`.
+All mock data lives in `web/src/lib/fixtures/` as typed TypeScript objects. Components import directly — no API calls, no loading states for demo screens. Types are defined in `web/src/lib/fixtures/types.ts` and `web/src/lib/fixtures/discover-types.ts`.
+
+When populating fixtures, prefer real data from public sources (Luma events, Maven courses, Unsplash photos) over placeholder content like picsum.photos. Use real community logos, real event titles, and real instructor names — it makes the demo more convincing.
 
 ### Modals
 
@@ -210,6 +232,7 @@ Each component gets a test file at `__tests__/<ComponentName>.test.tsx` next to 
 - **Design fidelity:** Every screen must match the orange/cream glassmorphism aesthetic. When in doubt, check `apex-dashboard.html` as the visual reference.
 - **Flexible routing:** Don't lock in a rigid navigation structure. New routes are added one at a time as prompted.
 - **Tailwind v3:** The project uses Tailwind v3, not v4. Do not upgrade or use v4 syntax.
+- **No competitors in demo data:** Don't feature competing platforms (e.g., Build Club) in fixture data. Use non-competing AI communities instead.
 
 ## Product Context
 

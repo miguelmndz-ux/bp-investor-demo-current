@@ -16,6 +16,6 @@ describe('FilterPills', () => {
   it('marks "All" as active by default', () => {
     render(<FilterPills />)
     const allButton = screen.getByText('All')
-    expect(allButton.className).toContain('border')
+    expect(allButton.style.border).toContain('rgba(255, 122, 47, 0.3)')
   })
 })

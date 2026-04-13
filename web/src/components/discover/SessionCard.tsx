@@ -11,11 +11,13 @@ export default function SessionCard({ session, onClick }: SessionCardProps) {
   return (
     <div
       onClick={onClick}
-      className="group flex flex-col gap-3 p-3.5 rounded-[14px] cursor-pointer transition-all border border-primary/[0.06] hover:shadow-lg hover:-translate-y-[3px]"
+      className="group flex flex-col gap-3 p-3.5 rounded-[14px] cursor-pointer transition-[background] duration-300 border border-primary/[0.06]"
       style={{
         background: 'rgba(255,255,255,0.6)',
         backdropFilter: 'blur(12px)',
       }}
+      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.85)'}
+      onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.6)'}
     >
       <div className="relative w-full aspect-square rounded-[10px] overflow-hidden bg-primary/[0.06]">
         <img

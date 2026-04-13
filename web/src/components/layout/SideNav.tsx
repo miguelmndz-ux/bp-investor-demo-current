@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { communities } from '@/lib/fixtures/communities'
@@ -134,6 +135,7 @@ function ScanProgressDot({ progress }: { progress: number }) {
 }
 
 export default function SideNav() {
+  const pathname = usePathname()
   const [scanProgress, setScanProgress] = useState(-1)
 
   useEffect(() => {
@@ -160,7 +162,7 @@ export default function SideNav() {
         <NavItem href="/apex" label="Home">
           <span className="material-symbols-outlined">home</span>
         </NavItem>
-        <NavItem href="#" label="Explore">
+        <NavItem href="/discover" label="Explore" active={pathname === '/discover'}>
           <span className="material-symbols-outlined">explore</span>
         </NavItem>
         <NavItem href="#" label="Calendar">
@@ -168,7 +170,7 @@ export default function SideNav() {
         </NavItem>
         <div className="relative">
           {scanProgress >= 0 && <ScanProgressDot progress={scanProgress} />}
-          <NavItem href="/apex" label="Apex" active>
+          <NavItem href="/apex" label="Apex" active={pathname.startsWith('/apex')}>
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>auto_awesome</span>
           </NavItem>
         </div>

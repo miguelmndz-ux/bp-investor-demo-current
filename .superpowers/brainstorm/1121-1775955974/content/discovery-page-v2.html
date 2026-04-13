@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BuildParty Discovery — Mockup v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #fffaf7 0%, #fff1e6 100%);
+    min-height: 100vh;
+    color: #3d1c00;
+    overflow-x: hidden;
+  }
+
+  /* ── SideNav ── */
+  .sidenav {
+    width: 72px; min-height: 100vh; position: fixed; left: 0; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(30px);
+    border-right: 1px solid rgba(156,63,0,0.08);
+    display: flex; flex-direction: column; align-items: center; padding-top: 20px; gap: 20px;
+  }
+  .nav-icon {
+    width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    color: #9c3f00; cursor: pointer; transition: background 0.2s;
+  }
+  .nav-icon:hover { background: rgba(255,122,47,0.1); }
+  .nav-icon.active {
+    background: linear-gradient(135deg, rgba(255,122,47,0.25), rgba(194,78,0,0.2));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,122,47,0.3);
+  }
+
+  /* ── TopNav ── */
+  .topnav {
+    position: fixed; top: 0; left: 72px; right: 0; height: 64px; z-index: 40;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(156,63,0,0.06);
+    display: flex; align-items: center; padding: 0 32px; gap: 16px;
+  }
+  .topnav .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 20px; color: #9c3f00; }
+  .topnav .search {
+    flex: 1; max-width: 440px; height: 40px; border-radius: 9999px;
+    background: rgba(156,63,0,0.06); border: 1px solid rgba(156,63,0,0.1);
+    padding: 0 16px; font-size: 14px; color: #3d1c00; outline: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .topnav .search::placeholder { color: #9c7a60; }
+  .topnav .spacer { flex: 1; }
+  .topnav .avatar {
+    width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #ff7a2f, #c24e00);
+  }
+
+  /* ── Main content area ── */
+  .main-area {
+    margin-left: 72px;
+    padding-top: 64px;
+    /* This is the key: right padding transitions when panel opens */
+    padding-right: 0;
+    transition: padding-right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  .main-area.panel-open {
+    padding-right: 380px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 1100px;
+    padding: 32px 40px;
+  }
+
+  /* ── Filter pills ── */
+  .filters { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .filter-pill {
+    height: 34px; padding: 0 16px; border-radius: 9999px; border: none;
+    font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    background: rgba(156,63,0,0.08); color: #7a3d10;
+  }
+  .filter-pill:hover { background: rgba(156,63,0,0.14); }
+  .filter-pill.active {
+    background: linear-gradient(135deg, rgba(255,122,47,0.25), rgba(194,78,0,0.2));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,122,47,0.3);
+    box-shadow: 0 4px 16px -2px rgba(194,78,0,0.12);
+    color: #7a2e00; font-weight: 700;
+  }
+
+  /* ── Section headers ── */
+  .section { margin-bottom: 36px; }
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .section-header h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px;
+    color: #3d1c00;
+  }
+  .section-header a {
+    font-size: 13px; font-weight: 700; color: #9c3f00; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .section-header a:hover { text-decoration: underline; }
+
+  /* ── Quick-access cards (Programs) ── */
+  .quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .qcard {
+    display: flex; align-items: center; height: 56px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(156,63,0,0.08);
+    border-radius: 10px; overflow: hidden; cursor: pointer;
+    transition: all 0.25s; position: relative;
+  }
+  .qcard:hover {
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 4px 20px -4px rgba(194,78,0,0.12);
+    transform: translateY(-1px);
+  }
+  .qcard:hover .qplay { opacity: 1; transform: scale(1); }
+  .qcard img { width: 56px; height: 56px; object-fit: cover; flex-shrink: 0; }
+  .qcard .qtext { flex: 1; padding: 0 14px; min-width: 0; }
+  .qcard .qtext strong {
+    display: block; font-size: 13.5px; font-weight: 700; color: #3d1c00;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .qcard .qtext span {
+    font-size: 11px; color: #9c7a60;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
+  }
+  .qplay {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff7a2f, #e06520);
+    margin-right: 10px; flex-shrink: 0; opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s, transform 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    border: none; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(194,78,0,0.3);
+  }
+  .qplay .material-symbols-outlined { color: #fff; font-size: 16px; }
+
+  /* ── Carousel (Sessions) ── */
+  .carousel {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 220px;
+    gap: 16px; overflow-x: auto; scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .carousel::-webkit-scrollbar { display: none; }
+  .scard {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(156,63,0,0.06);
+    border-radius: 14px; padding: 14px;
+    display: flex; flex-direction: column; gap: 12px;
+    cursor: pointer; transition: all 0.25s;
+  }
+  .scard:hover {
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 8px 28px -6px rgba(194,78,0,0.14);
+    transform: translateY(-3px);
+  }
+  .scard:hover .scard-play { opacity: 1; transform: translateY(0); }
+  .scard-img {
+    position: relative; width: 100%; aspect-ratio: 1/1;
+    border-radius: 10px; overflow: hidden; background: #f0e0d0;
+  }
+  .scard-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .scard-play {
+    position: absolute; bottom: 10px; right: 10px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff7a2f, #e06520);
+    border: none; display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(8px);
+    transition: transform 0.3s, opacity 0.3s;
+    box-shadow: 0 6px 20px rgba(194,78,0,0.35);
+    cursor: pointer;
+  }
+  .scard-play .material-symbols-outlined { color: #fff; font-size: 20px; }
+  .scard-title {
+    font-size: 14.5px; font-weight: 700; color: #3d1c00; line-height: 1.3;
+    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .scard-meta {
+    font-size: 12.5px; color: #9c7a60; line-height: 1.4;
+    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .scard-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #c24e00; background: rgba(255,122,47,0.12); border-radius: 6px;
+    padding: 3px 8px; width: fit-content;
+  }
+  .scard-badge.live { color: #dc2626; background: rgba(220,38,38,0.1); }
+  .scard-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ── Featured community cards ── */
+  .featured-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .fcard {
+    position: relative; border-radius: 18px; overflow: hidden;
+    aspect-ratio: 3/4; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 24px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .fcard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px -8px rgba(194,78,0,0.2);
+  }
+  .fcard-bg { position: absolute; inset: 0; }
+  .fcard-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fcard-grad-t { position: absolute; inset: 0; background: linear-gradient(rgba(61,28,0,0.4) 0%, transparent 50%); pointer-events: none; }
+  .fcard-grad-b { position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(61,28,0,0.75) 100%); pointer-events: none; }
+  .fcard-body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+  .fcard-header { display: flex; align-items: flex-end; gap: 14px; }
+  .fcard-thumb {
+    width: 64px; height: 64px; border-radius: 14px; overflow: hidden; flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .fcard-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .fcard-label {
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .fcard-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px; font-weight: 800; color: #fff; line-height: 1.15;
+  }
+  .fcard-owner { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .fcard-stats {
+    display: flex; gap: 16px; font-size: 12px; color: rgba(255,255,255,0.65);
+  }
+  .fcard-stats span { display: flex; align-items: center; gap: 4px; }
+  .fcard-controls { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+  .btn-join {
+    height: 34px; padding: 0 18px; border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(255,122,47,0.4), rgba(194,78,0,0.3));
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff; font-size: 13px; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; font-family: 'Inter', sans-serif;
+  }
+  .btn-join:hover { background: linear-gradient(135deg, rgba(255,122,47,0.6), rgba(194,78,0,0.45)); }
+
+  /* ── Preview Panel ── */
+  .preview-panel {
+    position: fixed; top: 64px; right: 0; bottom: 0; width: 380px;
+    background: rgba(255,250,247,0.88);
+    backdrop-filter: blur(40px) saturate(180%);
+    border-left: 1px solid rgba(156,63,0,0.1);
+    box-shadow: -8px 0 40px rgba(194,78,0,0.08);
+    z-index: 45; padding: 28px 24px;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+  }
+  .preview-panel.open { transform: translateX(0); }
+  .panel-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(156,63,0,0.08); border: none;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: #9c3f00; transition: background 0.2s;
+  }
+  .panel-close:hover { background: rgba(156,63,0,0.15); }
+  .panel-image {
+    width: 100%; aspect-ratio: 16/10; border-radius: 14px;
+    overflow: hidden; margin-bottom: 20px; background: #f0e0d0;
+  }
+  .panel-image img { width: 100%; height: 100%; object-fit: cover; }
+  .panel-type {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #c24e00; margin-bottom: 6px;
+  }
+  .panel-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px; font-weight: 800; color: #3d1c00; margin-bottom: 8px;
+  }
+  .panel-subtitle { font-size: 13px; color: #9c7a60; margin-bottom: 16px; }
+  .panel-desc {
+    font-size: 14px; color: #5c3a1e; line-height: 1.6; margin-bottom: 20px;
+  }
+  .panel-detail {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: #7a3d10; margin-bottom: 10px;
+  }
+  .panel-detail .material-symbols-outlined { font-size: 18px; color: #c24e00; }
+  .panel-cta {
+    width: 100%; height: 44px; border-radius: 9999px; border: none;
+    background: linear-gradient(135deg, #ff7a2f, #e06520);
+    color: #fff; font-size: 14px; font-weight: 700; cursor: pointer;
+    margin-top: 20px; transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(194,78,0,0.25);
+    font-family: 'Inter', sans-serif;
+  }
+  .panel-cta:hover { box-shadow: 0 6px 24px rgba(194,78,0,0.35); transform: translateY(-1px); }
+  .panel-divider { height: 1px; background: rgba(156,63,0,0.1); margin: 16px 0; }
+  .panel-section-title {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: #9c7a60; margin-bottom: 10px;
+  }
+  .panel-program-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; font-size: 13px; color: #3d1c00;
+  }
+  .panel-program-item img {
+    width: 40px; height: 40px; border-radius: 8px; object-fit: cover;
+  }
+
+  /* ── Mockup label ── */
+  .mockup-label {
+    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+    background: #c24e00; color: #fff; font-size: 11px; font-weight: 700;
+    padding: 4px 16px; border-radius: 0 0 8px 8px; z-index: 100;
+    letter-spacing: 0.04em;
+  }
+
+  /* Responsive: when panel is open, featured grid can collapse */
+  .main-area.panel-open .featured-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-label">MOCKUP v2 — Content stays centered, panel pushes it left</div>
+
+<!-- SideNav -->
+<div class="sidenav">
+  <div class="nav-icon"><span class="material-symbols-outlined">home</span></div>
+  <div class="nav-icon active"><span class="material-symbols-outlined">explore</span></div>
+  <div class="nav-icon"><span class="material-symbols-outlined">calendar_month</span></div>
+  <div class="nav-icon"><span class="material-symbols-outlined">auto_awesome</span></div>
+</div>
+
+<!-- TopNav -->
+<div class="topnav">
+  <div class="logo">BuildParty</div>
+  <input class="search" placeholder="Search communities, sessions, people..." />
+  <div class="spacer"></div>
+  <span class="material-symbols-outlined" style="color:#9c3f00;cursor:pointer">notifications</span>
+  <div class="avatar"></div>
+</div>
+
+<!-- Main area: centered content that responds to panel -->
+<div class="main-area" id="mainArea">
+  <div class="content">
+
+    <!-- Filter pills -->
+    <div class="filters">
+      <button class="filter-pill active">All</button>
+      <button class="filter-pill">AI Tools</button>
+      <button class="filter-pill">Creators</button>
+      <button class="filter-pill">Schools</button>
+      <button class="filter-pill">Bootcamps</button>
+      <button class="filter-pill">Live Now</button>
+    </div>
+
+    <!-- Trending Programs -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Trending Programs</h2>
+        <a href="#">Show all</a>
+      </div>
+      <div class="quick-grid">
+        <div class="qcard" onclick="openPanel('program')">
+          <img src="https://picsum.photos/seed/bp1/112" alt="" />
+          <div class="qtext">
+            <strong>Build a Coding Agent that Fixes Bugs</strong>
+            <span>AWS Builder Loft</span>
+          </div>
+          <button class="qplay"><span class="material-symbols-outlined">play_arrow</span></button>
+        </div>
+        <div class="qcard" onclick="openPanel('program')">
+          <img src="https://picsum.photos/seed/bp2/112" alt="" />
+          <div class="qtext">
+            <strong>AI Vibe Coding Workshop</strong>
+            <span>Dr. Paul Fang</span>
+          </div>
+          <button class="qplay"><span class="material-symbols-outlined">play_arrow</span></button>
+        </div>
+        <div class="qcard" onclick="openPanel('program')">
+          <img src="https://picsum.photos/seed/bp3/112" alt="" />
+          <div class="qtext">
+            <strong>Build a 1-Page MVP Live in 60 Minutes</strong>
+            <span>Anand Chivaparenne</span>
+          </div>
+          <button class="qplay"><span class="material-symbols-outlined">play_arrow</span></button>
+        </div>
+        <div class="qcard" onclick="openPanel('program')">
+          <img src="https://picsum.photos/seed/bp4/112" alt="" />
+          <div class="qtext">
+            <strong>AI Toolbox &amp; Live Build with AI</strong>
+            <span>GSA for Startups</span>
+          </div>
+          <button class="qplay"><span class="material-symbols-outlined">play_arrow</span></button>
+        </div>
+        <div class="qcard" onclick="openPanel('program')">
+          <img src="https://picsum.photos/seed/bp5/112" alt="" />
+          <div class="qtext">
+            <strong>Build Your AI Agent in 45 Minutes</strong>
+            <span>Regal</span>
+          </div>
+          <button class="qplay"><span class="material-symbols-outlined">play_arrow</span></button>
+        </div>
+        <div class="qcard" onclick="openPanel('program')">
+          <img src="https://picsum.photos/seed/bp6/112" alt="" />
+          <div class="qtext">
+            <strong>Agents in Action: Google Cloud &amp; Meta</strong>
+            <span>Article AI</span>
+          </div>
+          <button class="qplay"><span class="material-symbols-outlined">play_arrow</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trending Today -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Trending Today</h2>
+        <a href="#">Show all</a>
+      </div>
+      <div class="carousel">
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/s1/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge live"><span class="dot"></span>Live Now</div>
+          <div class="scard-title">NovaVoice Live: Build with TTS in SF</div>
+          <div class="scard-meta">by Rustam Khasanov</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/s2/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Upcoming</div>
+          <div class="scard-title">AI Agent World Tour in SF</div>
+          <div class="scard-meta">by MLOps Community</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/s3/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Tomorrow</div>
+          <div class="scard-title">GenAI Week Silicon Valley</div>
+          <div class="scard-meta">by GPTDAO &amp; Microsoft</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/s4/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Apr 15</div>
+          <div class="scard-title">Encode AI London Hackathon</div>
+          <div class="scard-meta">by Encode Club</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/s5/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Apr 18</div>
+          <div class="scard-title">Agentic AI Summit Live</div>
+          <div class="scard-meta">by Berkeley RDI</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/s6/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Apr 20</div>
+          <div class="scard-title">AI+ Multimodal Day</div>
+          <div class="scard-meta">by AI+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming This Week -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Upcoming This Week</h2>
+        <a href="#">Show all</a>
+      </div>
+      <div class="carousel">
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/u1/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Mon 2pm</div>
+          <div class="scard-title">ODSC East 2025: AI Builder Track</div>
+          <div class="scard-meta">by ODSC AI</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/u2/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Tue 11am</div>
+          <div class="scard-title">F50 Physical AI Summit</div>
+          <div class="scard-meta">by F50</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/u3/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Wed 3pm</div>
+          <div class="scard-title">Weekly Live Build #14</div>
+          <div class="scard-meta">by Sabrina Ramonov</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/u4/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Thu 1pm</div>
+          <div class="scard-title">Ask Me &amp; AI: Office Hours</div>
+          <div class="scard-meta">by AI Collective</div>
+        </div>
+        <div class="scard" onclick="openPanel('session')">
+          <div class="scard-img">
+            <img src="https://picsum.photos/seed/u5/440" alt="" />
+            <button class="scard-play"><span class="material-symbols-outlined">play_arrow</span></button>
+          </div>
+          <div class="scard-badge">Fri 5pm</div>
+          <div class="scard-title">Hack Day: Build an Agent in 3 Hours</div>
+          <div class="scard-meta">by Ben's Bites</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Communities -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Featured Communities</h2>
+        <a href="#">Show all</a>
+      </div>
+      <div class="featured-grid">
+        <div class="fcard" onclick="openPanel('community')">
+          <div class="fcard-bg"><img src="https://picsum.photos/seed/fc1/600/800" alt="" /></div>
+          <div class="fcard-grad-t"></div>
+          <div class="fcard-grad-b"></div>
+          <div class="fcard-body">
+            <div class="fcard-header">
+              <div class="fcard-thumb"><img src="https://picsum.photos/seed/fc1t/144" alt="" /></div>
+              <div>
+                <div class="fcard-label">Community</div>
+                <div class="fcard-title">Voice Builders</div>
+                <div class="fcard-owner">by ElevenLabs</div>
+              </div>
+            </div>
+            <div class="fcard-stats">
+              <span><span class="material-symbols-outlined" style="font-size:14px">group</span> 2.4k members</span>
+              <span><span class="material-symbols-outlined" style="font-size:14px">event</span> 3 programs</span>
+            </div>
+            <div class="fcard-controls"><button class="btn-join">Join Community</button></div>
+          </div>
+        </div>
+        <div class="fcard" onclick="openPanel('community')">
+          <div class="fcard-bg"><img src="https://picsum.photos/seed/fc2/600/800" alt="" /></div>
+          <div class="fcard-grad-t"></div>
+          <div class="fcard-grad-b"></div>
+          <div class="fcard-body">
+            <div class="fcard-header">
+              <div class="fcard-thumb"><img src="https://picsum.photos/seed/fc2t/144" alt="" /></div>
+              <div>
+                <div class="fcard-label">Community</div>
+                <div class="fcard-title">AI Collective</div>
+                <div class="fcard-owner">by AI Collective</div>
+              </div>
+            </div>
+            <div class="fcard-stats">
+              <span><span class="material-symbols-outlined" style="font-size:14px">group</span> 5.1k members</span>
+              <span><span class="material-symbols-outlined" style="font-size:14px">event</span> 7 programs</span>
+            </div>
+            <div class="fcard-controls"><button class="btn-join">Join Community</button></div>
+          </div>
+        </div>
+        <div class="fcard" onclick="openPanel('community')">
+          <div class="fcard-bg"><img src="https://picsum.photos/seed/fc3/600/800" alt="" /></div>
+          <div class="fcard-grad-t"></div>
+          <div class="fcard-grad-b"></div>
+          <div class="fcard-body">
+            <div class="fcard-header">
+              <div class="fcard-thumb"><img src="https://picsum.photos/seed/fc3t/144" alt="" /></div>
+              <div>
+                <div class="fcard-label">Community</div>
+                <div class="fcard-title">Prompt Engineers</div>
+                <div class="fcard-owner">by Stanford AI Club</div>
+              </div>
+            </div>
+            <div class="fcard-stats">
+              <span><span class="material-symbols-outlined" style="font-size:14px">group</span> 890 members</span>
+              <span><span class="material-symbols-outlined" style="font-size:14px">event</span> 2 programs</span>
+            </div>
+            <div class="fcard-controls"><button class="btn-join">Join Community</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Preview Panel -->
+<div class="preview-panel" id="previewPanel">
+  <button class="panel-close" onclick="closePanel()">
+    <span class="material-symbols-outlined" style="font-size:18px">close</span>
+  </button>
+
+  <div id="panelSession">
+    <div class="panel-image"><img src="https://picsum.photos/seed/s1/600/375" alt="" /></div>
+    <div class="panel-type">Session</div>
+    <div class="panel-title">NovaVoice Live: Build with TTS in SF</div>
+    <div class="panel-subtitle">by Rustam Khasanov</div>
+    <div class="panel-desc">Join us for a hands-on session building text-to-speech applications with the latest NovaVoice API. Live coding, Q&A, and demos.</div>
+    <div class="panel-divider"></div>
+    <div class="panel-detail"><span class="material-symbols-outlined">calendar_today</span>April 11, 2025 at 2:00 PM PST</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">schedule</span>60 minutes</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">group</span>142 attending</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">folder</span>Part of: Voice Builders Launch Week</div>
+    <button class="panel-cta">Join Session</button>
+  </div>
+
+  <div id="panelProgram" style="display:none">
+    <div class="panel-image"><img src="https://picsum.photos/seed/bp1/600/375" alt="" /></div>
+    <div class="panel-type">Program</div>
+    <div class="panel-title">Build a Coding Agent that Fixes Bugs</div>
+    <div class="panel-subtitle">by AWS Builder Loft</div>
+    <div class="panel-desc">A 4-session program covering autonomous bug detection, code analysis, and fix generation using foundation models on AWS.</div>
+    <div class="panel-divider"></div>
+    <div class="panel-detail"><span class="material-symbols-outlined">event_repeat</span>4 sessions over 2 weeks</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">calendar_today</span>Starts April 14, 2025</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">group</span>238 enrolled</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">workspace_premium</span>Certificate on completion</div>
+    <div class="panel-divider"></div>
+    <div class="panel-section-title">Sessions</div>
+    <div class="panel-program-item">
+      <img src="https://picsum.photos/seed/ps1/80" alt="" />
+      <div><strong style="font-size:13px">Session 1: Agent Architecture</strong><br/><span style="font-size:12px;color:#9c7a60">Apr 14 at 11am</span></div>
+    </div>
+    <div class="panel-program-item">
+      <img src="https://picsum.photos/seed/ps2/80" alt="" />
+      <div><strong style="font-size:13px">Session 2: Bug Detection Pipelines</strong><br/><span style="font-size:12px;color:#9c7a60">Apr 16 at 11am</span></div>
+    </div>
+    <button class="panel-cta">Enroll in Program</button>
+  </div>
+
+  <div id="panelCommunity" style="display:none">
+    <div class="panel-image"><img src="https://picsum.photos/seed/fc1/600/375" alt="" /></div>
+    <div class="panel-type">Community</div>
+    <div class="panel-title">Voice Builders</div>
+    <div class="panel-subtitle">by ElevenLabs</div>
+    <div class="panel-desc">The home for developers building with voice AI. Weekly office hours, launch events, and hands-on workshops with the ElevenLabs team.</div>
+    <div class="panel-divider"></div>
+    <div class="panel-detail"><span class="material-symbols-outlined">group</span>2,400 members</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">event</span>3 active programs</div>
+    <div class="panel-detail"><span class="material-symbols-outlined">trending_up</span>12 sessions this month</div>
+    <div class="panel-divider"></div>
+    <div class="panel-section-title">Active Programs</div>
+    <div class="panel-program-item">
+      <img src="https://picsum.photos/seed/cp1/80" alt="" />
+      <div><strong style="font-size:13px">Launch Week</strong><br/><span style="font-size:12px;color:#9c7a60">5 sessions remaining</span></div>
+    </div>
+    <div class="panel-program-item">
+      <img src="https://picsum.photos/seed/cp2/80" alt="" />
+      <div><strong style="font-size:13px">Weekly Office Hours</strong><br/><span style="font-size:12px;color:#9c7a60">Every Thursday</span></div>
+    </div>
+    <button class="panel-cta">Join Community</button>
+  </div>
+</div>
+
+<script>
+  const panel = document.getElementById('previewPanel');
+  const mainArea = document.getElementById('mainArea');
+
+  function openPanel(type) {
+    document.getElementById('panelSession').style.display = type === 'session' ? 'block' : 'none';
+    document.getElementById('panelProgram').style.display = type === 'program' ? 'block' : 'none';
+    document.getElementById('panelCommunity').style.display = type === 'community' ? 'block' : 'none';
+    panel.classList.add('open');
+    mainArea.classList.add('panel-open');
+  }
+
+  function closePanel() {
+    panel.classList.remove('open');
+    mainArea.classList.remove('panel-open');
+  }
+</script>
+</body>
+</html>

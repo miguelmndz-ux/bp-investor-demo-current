@@ -11,19 +11,19 @@ describe('TrendingPrograms', () => {
 
   it('renders program titles', () => {
     render(<TrendingPrograms programs={trendingPrograms} onSelect={() => {}} />)
-    expect(screen.getByText('Build a Coding Agent that Fixes Bugs')).toBeInTheDocument()
-    expect(screen.getByText('AI Vibe Coding Workshop')).toBeInTheDocument()
+    expect(screen.getByText('The AI Engineering Bootcamp')).toBeInTheDocument()
+    expect(screen.getByText('AI Product Management Certification')).toBeInTheDocument()
   })
 
   it('renders program owners', () => {
     render(<TrendingPrograms programs={trendingPrograms} onSelect={() => {}} />)
-    expect(screen.getByText('AWS Builder Loft')).toBeInTheDocument()
+    expect(screen.getByText('Dr. Greg Loughnane & Chris Alexiuk')).toBeInTheDocument()
   })
 
   it('calls onSelect when a card is clicked', () => {
     const onSelect = vi.fn()
     render(<TrendingPrograms programs={trendingPrograms} onSelect={onSelect} />)
-    fireEvent.click(screen.getByText('Build a Coding Agent that Fixes Bugs'))
+    fireEvent.click(screen.getByText('The AI Engineering Bootcamp'))
     expect(onSelect).toHaveBeenCalledWith(trendingPrograms[0])
   })
 })

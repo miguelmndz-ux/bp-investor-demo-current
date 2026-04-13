@@ -9,33 +9,30 @@ export default function CommunityCard({ community, onClick }: CommunityCardProps
   return (
     <div
       onClick={onClick}
-      className="group relative rounded-[18px] overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:shadow-xl"
+      className="group relative rounded-[18px] overflow-hidden cursor-pointer transition-[filter] duration-300 hover:brightness-110"
       style={{ aspectRatio: '3/4' }}
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" style={{ filter: 'blur(2px)', transform: 'scale(1.05)' }}>
         <img src={community.image} alt={community.name} className="w-full h-full object-cover block" />
       </div>
 
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(rgba(61,28,0,0.4) 0%, transparent 50%)' }}
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 35%, transparent 50%)' }}
       />
 
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(transparent 40%, rgba(61,28,0,0.75) 100%)' }}
+        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 35%, transparent 50%)' }}
       />
 
-      <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
-        <div className="flex items-end gap-3.5 mb-2.5">
-          <div className="w-16 h-16 rounded-[14px] overflow-hidden flex-shrink-0 border-2 border-white/30">
+      <div className="absolute top-0 left-0 right-0 p-5 z-10">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-20 h-20 rounded-[14px] overflow-hidden flex-shrink-0 border-2 border-white/30">
             <img src={community.thumbnail} alt="" className="w-full h-full object-cover" />
           </div>
           <div>
-            <div className="text-[11px] font-bold text-white/70 uppercase tracking-wider">
-              Community
-            </div>
-            <div className="font-jakarta font-black text-[22px] text-white leading-tight">
+            <div className="font-jakarta font-black text-[18px] text-white leading-tight">
               {community.name}
             </div>
             <div className="text-[13px] text-white/70">
@@ -43,26 +40,21 @@ export default function CommunityCard({ community, onClick }: CommunityCardProps
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="flex gap-4 text-[12px] text-white/65 mb-2">
-          <span className="flex items-center gap-1">
-            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>group</span>
-            {community.members} members
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>event</span>
-            {community.programCount} programs
-          </span>
-        </div>
-
+      <div className="absolute bottom-0 right-0 p-5 z-10">
         <button
-          className="h-[34px] px-[18px] rounded-full text-[13px] font-bold text-white cursor-pointer transition-all w-fit border border-white/25"
+          className="h-[34px] px-[18px] rounded-full text-[13px] font-bold cursor-pointer transition-all border-none hover:-translate-y-px"
           style={{
-            background: 'linear-gradient(135deg, rgba(255,122,47,0.4), rgba(194,78,0,0.3))',
-            backdropFilter: 'blur(16px)',
+            background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            border: '1px solid rgba(255, 122, 47, 0.3)',
+            boxShadow: '0 8px 32px -4px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
+            color: '#fff',
           }}
         >
-          Join Community
+          Join
         </button>
       </div>
     </div>

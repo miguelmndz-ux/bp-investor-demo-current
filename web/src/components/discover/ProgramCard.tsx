@@ -9,11 +9,13 @@ export default function ProgramCard({ program, onClick }: ProgramCardProps) {
   return (
     <div
       onClick={onClick}
-      className="group flex items-center h-14 rounded-[10px] overflow-hidden cursor-pointer transition-all border border-primary/[0.08] hover:shadow-md hover:-translate-y-px"
+      className="group flex items-center h-14 rounded-[10px] overflow-hidden cursor-pointer transition-[background] duration-300 border border-primary/[0.08]"
       style={{
         background: 'rgba(255,255,255,0.55)',
         backdropFilter: 'blur(16px)',
       }}
+      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.8)'}
+      onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.55)'}
     >
       <img
         src={program.image}
