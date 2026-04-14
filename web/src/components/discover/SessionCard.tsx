@@ -11,13 +11,18 @@ export default function SessionCard({ session, onClick }: SessionCardProps) {
   return (
     <div
       onClick={onClick}
-      className="group flex flex-col gap-3 p-3.5 rounded-[14px] cursor-pointer transition-[background] duration-300 border border-primary/[0.06]"
-      style={{
-        background: 'rgba(255,255,255,0.6)',
-        backdropFilter: 'blur(12px)',
+      className="group flex flex-col gap-3 p-3.5 rounded-[14px] cursor-pointer transition-[background,border-color] duration-300 border border-transparent"
+      style={{ background: 'transparent' }}
+      onMouseEnter={e => {
+        e.currentTarget.style.background = 'rgba(255,255,255,0.6)'
+        e.currentTarget.style.backdropFilter = 'blur(12px)'
+        e.currentTarget.style.borderColor = 'rgba(156, 63, 0, 0.08)'
       }}
-      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.85)'}
-      onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.6)'}
+      onMouseLeave={e => {
+        e.currentTarget.style.background = 'transparent'
+        e.currentTarget.style.backdropFilter = 'none'
+        e.currentTarget.style.borderColor = 'transparent'
+      }}
     >
       <div className="relative w-full aspect-square rounded-[10px] overflow-hidden bg-primary/[0.06]">
         <img
@@ -26,16 +31,15 @@ export default function SessionCard({ session, onClick }: SessionCardProps) {
           className="w-full h-full object-cover block"
         />
         <button
-          className="absolute bottom-2.5 right-2.5 w-11 h-11 rounded-full border-none flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all cursor-pointer"
+          className="absolute bottom-2.5 right-2.5 h-8 px-2.5 rounded-full border-none flex items-center gap-0.5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all cursor-pointer"
           style={{
-            background: 'linear-gradient(135deg, #ff7a2f, #e06520)',
-            boxShadow: '0 6px 20px rgba(194,78,0,0.35)',
+            background: '#111',
+            boxShadow: '0 6px 20px rgba(0,0,0,0.25)',
           }}
-          aria-label={`Play ${session.title}`}
+          aria-label={`Add ${session.title} to calendar`}
         >
-          <span className="material-symbols-outlined text-white" style={{ fontSize: '20px' }}>
-            play_arrow
-          </span>
+          <span className="material-symbols-outlined text-white" style={{ fontSize: '16px' }}>calendar_month</span>
+          <span className="material-symbols-outlined text-white" style={{ fontSize: '16px' }}>add</span>
         </button>
       </div>
       <div

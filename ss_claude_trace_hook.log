@@ -2043,3 +2043,1380 @@ WARNING:cc_tracer_lib.state:Notification received without an active episode
 INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 195c4e95-c82c-4ff3-9128-d268da45abb4
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:root:Started new session: 7ef75d57-dc1f-4090-a635-5f1a6e2bfdf1
+INFO:cc_tracer_lib.state:Starting episode, trace id: ddb64585-c0bc-4fad-bf64-c2337af5c56f, span id: 98d9aa73-78c9-4bb2-8a0f-992c93cf4214
+INFO:cc_tracer_lib.state:Starting episode, trace id: ddb64585-c0bc-4fad-bf64-c2337af5c56f, span id: 030f75b4-1ecd-4c10-8a48-6c9ac92148cb
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 71: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 76: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 86: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 91: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 96: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 100: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 104: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 108: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 115: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 119: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 123: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 127: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 71: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 76: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 86: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 91: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 96: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 100: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 104: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 108: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 115: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 119: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 123: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 127: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 71: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 76: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 86: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 91: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 96: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 100: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 104: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 108: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 115: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 119: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 123: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 127: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 145: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 151: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 156: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 71: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 76: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 86: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 91: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 96: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 100: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 104: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 108: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 115: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 119: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 123: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 127: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 145: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 151: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 156: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...rQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':..."8067:59","8067:62"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...NQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...s3oAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...wwAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 71: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 76: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 86: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 91: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 96: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 100: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 104: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 108: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 115: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 119: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 123: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 127: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 145: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 151: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 156: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 166: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...rQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...rQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 171: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':..."8067:59","8067:62"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':..."8067:59","8067:62"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 176: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...NQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...NQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 182: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...s3oAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...s3oAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 185: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...wwAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...wwAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 71: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 76: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...PH Activation Flow"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 86: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...2.3","new":"1.1.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 91: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...OUND"}],"deleted":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 96: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"name":"THUMBNAIL"}}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 100: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"sampleChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 104: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...s":[],"textNodes":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 108: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...],"sectionInfo":null}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 115: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...ILE","type":"TEXT"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 119: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 123: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...,"directChildren":[]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 127: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...1","name":"Miguel"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 145: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 151: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...RTY\\nACTIVE FILE"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 156: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...estId was 8066:3125"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 166: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...rQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...rQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 171: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':..."8067:59","8067:62"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':..."8067:59","8067:62"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 176: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...NQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...NQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 182: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...s3oAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...s3oAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 185: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'image', 'sourc...wwAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'image', 'sourc...wwAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+INFO:root:Started new session: 51878fa1-ffcf-4cb6-bf4e-7859762a5d66
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...tatus":"NOT FOUND"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+INFO:cc_tracer_lib.state:Starting episode, trace id: bd7a060c-cc19-4fd0-a457-788577aab35e, span id: 8a66bd84-8948-43c2-b35c-75c71cf2e6e8
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: bd7a060c-cc19-4fd0-a457-788577aab35e, span id: 351a3eae-4961-45cf-be04-def462d8e635
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:root:Started new session: 01e8a635-f165-4369-9847-87b6d69ed8c5
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 181b4064-151a-4653-bad8-01ff4c64ef99
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: e02aad04-8304-41c1-9370-1fa83d25d12c
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 25a5974a-248e-4212-9faa-980db1e41bbc
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: f9978037-e957-46ad-b847-e71d417358f6
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 8aa85c50-d324-49e9-8a52-e3be6f56c93e
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 48ef06b1-051f-4825-bf11-c28d63e9e981
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 6681f437-d079-482f-a5c4-edd645144ab8
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 234eea4f-32dd-4642-a690-e08059082a12
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 3f08b88e-0f64-454e-bb00-73acd20cb4d7
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Ignoring tool stop: tool `toolu_01TyFJbWLcEUboxBNix9cffc` is not known.
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Ignoring tool stop: tool `toolu_01DUGBSzWrYtNz7HCPgBNsVW` is not known.
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Ignoring tool stop: tool `toolu_01Ev7cQpRcQNote7LDiXAqm6` is not known.
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 44076777-6180-45f3-b856-059a00bca924
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 113a1e51-16d4-441b-ace9-061c8721632e
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 5053cd36-c3d6-40e0-8375-b3e9691a975d
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 9796f3ce-8398-4271-920a-7f25ab8a68dc
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 2384c207-e315-49dc-8575-47b47866ffa9
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 14c2aeb2-8d18-4cdf-9ae6-a4d83cdc4aad
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 1d3ab158-135f-44da-9ce4-e66fe2ca4e8e
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 72c7871f-0cfb-45c9-b46d-d68c8d96a187
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 4cabeb9b-b748-40d3-ac1d-208a9c056514
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 77f55320-1e39-41d1-a409-270198b7d2c3
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: e14a7594-3bf3-462f-b219-715d344bc294
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: fcc500a8-7bd7-45e9-81df-2d1c1a3aab78
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 37cf5036-cf0b-4ce0-a2c8-81c256c6864f
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: f56b67ba-42e1-4aed-9a8f-b8c250efb0cf
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Ignoring subagent stop: agent `a955ca210eea5f3fa` is not known.
+INFO:root:Started new session: 01e8a635-f165-4369-9847-87b6d69ed8c5
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: c2653683-ebae-4baf-90fe-98f34880fb7a
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 4e7853af-90d8-433f-a525-f3cedea22f51
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 02471c29-a4f7-4141-b684-39303c825db9
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 178908d1-4394-424d-bb9b-13adad17e3b4
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:root:Started new session: 5f7d3da3-ad48-4f6d-81bd-584ef369b651
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: 1c0b5aec-e245-42cb-a116-9d8259c931eb
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: eb598829-4c48-4e3c-8a31-5b39bb7f63f1
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 320032fb-4dba-4887-add4-488a66c2a8c3, span id: dd136c3a-a777-4550-be01-43094f52684b
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 296026: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\01e8a635-f165-4369-9847-87b6d69ed8c5.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 2c68dfcd-5954-48c2-a404-7990f2b2100e, span id: 3aaa26ce-db54-4127-8b2b-a47d5cb5b055
+INFO:cc_tracer_lib.state:Starting episode, trace id: 2c68dfcd-5954-48c2-a404-7990f2b2100e, span id: 29c6dca5-d7dd-4d9c-904a-e511ed98463c
+INFO:cc_tracer_lib.state:Starting episode, trace id: bd7a060c-cc19-4fd0-a457-788577aab35e, span id: 7ce65380-f200-40da-a243-8387daf99680
+INFO:cc_tracer_lib.state:Starting episode, trace id: bd7a060c-cc19-4fd0-a457-788577aab35e, span id: c8c35da1-d6de-4414-8e44-8e975af7d324
+INFO:cc_tracer_lib.state:Starting episode, trace id: bd7a060c-cc19-4fd0-a457-788577aab35e, span id: f34dea44-26c1-40eb-8c7d-14ac1b74588f
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: bd7a060c-cc19-4fd0-a457-788577aab35e, span id: 1c9e9a72-7007-4748-adb1-b22d6e16fc3c
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+ERROR:opentelemetry.exporter.otlp.proto.http.trace_exporter:Failed to export span batch code: None, reason: HTTPSConnectionPool(host='bench.silverstream.ai', port=443): Read timed out. (read timeout=1.9999895095825195)
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl

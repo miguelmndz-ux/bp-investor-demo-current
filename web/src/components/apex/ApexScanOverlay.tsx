@@ -104,10 +104,10 @@ export default function ApexScanOverlay() {
           {/* Scanning / Complete state */}
           {(scanPhase === 'scanning' || scanPhase === 'complete') && (
             <div>
-              <h1 className="text-4xl font-black font-jakarta text-primary leading-tight mb-6">
+              <h1 className="text-4xl font-black font-jakarta text-primary leading-tight mb-10">
                 {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
               </h1>
-              <div className="space-y-3 fade-up">
+              <div className="space-y-4 fade-up">
                 {PHASES.map((p, i) => {
                   const isActive   = i === activePhaseIndex
                   const isComplete = i < activePhaseIndex || scanPhase === 'complete'
@@ -115,11 +115,11 @@ export default function ApexScanOverlay() {
                   return (
                     <div
                       key={p.id}
-                      className={`flex items-center gap-4 transition-opacity duration-300 ${isWaiting ? 'opacity-40' : 'opacity-100'}`}
+                      className={`flex items-center gap-5 transition-opacity duration-300 ${isWaiting ? 'opacity-40' : 'opacity-100'}`}
                     >
                       {/* Icon pill */}
                       <div
-                        className="w-10 h-10 flex items-center justify-center shrink-0 rounded-full"
+                        className="w-12 h-12 flex items-center justify-center shrink-0 rounded-full"
                         style={{
                           background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)',
                           border: '1px solid rgba(255,122,47,0.3)',
@@ -127,26 +127,26 @@ export default function ApexScanOverlay() {
                       >
                         <span
                           className="material-symbols-outlined text-white"
-                          style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}
+                          style={{ fontSize: '28px', fontVariationSettings: "'FILL' 1" }}
                         >
                           {p.icon}
                         </span>
                       </div>
 
                       {/* Phase name */}
-                      <span className="text-on-background text-sm font-semibold flex-1">{p.name}</span>
+                      <span className="text-on-background text-xl font-semibold flex-1">{p.name}</span>
 
                       {/* Status: spinner or checkmark */}
                       {isActive && (
                         <div
-                          className="w-4 h-4 rounded-full border-2 animate-spin shrink-0"
+                          className="w-6 h-6 rounded-full border-2 animate-spin shrink-0"
                           style={{ borderColor: 'rgba(255,122,47,0.3)', borderTopColor: '#ff7a2f' }}
                         />
                       )}
                       {isComplete && (
                         <span
                           className="material-symbols-outlined shrink-0"
-                          style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}
+                          style={{ fontSize: '28px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}
                         >
                           check_circle
                         </span>
@@ -157,7 +157,7 @@ export default function ApexScanOverlay() {
               </div>
               <button
                 onClick={handleDismiss}
-                className="mt-8 font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
+                className="mt-14 font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
                   backdropFilter: 'blur(20px) saturate(180%)',

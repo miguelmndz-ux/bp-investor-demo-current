@@ -41,14 +41,11 @@ function NavItem({
         className={
           active
             ? 'flex items-center justify-center w-12 h-12 rounded-2xl text-primary transition-all duration-300'
-            : 'flex items-center justify-center w-12 h-12 text-stone-400 hover:text-primary hover:bg-orange-50 rounded-2xl transition-all duration-300'
+            : 'flex items-center justify-center w-12 h-12 text-stone-400 hover:text-primary hover:bg-stone-50 rounded-2xl transition-all duration-300'
         }
         style={active ? {
-          background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-          border: '1px solid rgba(255, 122, 47, 0.3)',
-          boxShadow: '0 4px 16px -2px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
+          background: 'rgba(163,56,0,0.09)',
+          boxShadow: '0 1px 4px rgba(163,56,0,0.08)',
         } : undefined}
         onMouseEnter={() => {
           const rect = ref.current?.getBoundingClientRect()
@@ -149,20 +146,13 @@ export default function SideNav() {
 
   return (
     <aside
-      className="fixed left-0 top-0 h-full flex flex-col items-center py-6 px-4 z-50 w-20"
-      style={{
-        background: 'rgba(255,255,255,0.45)',
-        backdropFilter: 'blur(40px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(40px) saturate(180%)',
-        borderRight: '1px solid rgba(255,237,213,0.6)',
-        boxShadow: '0 8px 32px -4px rgba(74,37,6,0.12), 0 2px 8px -2px rgba(74,37,6,0.06)',
-      }}
+      className="fixed left-0 top-0 h-full flex flex-col items-center pt-[6.5rem] pb-6 px-4 z-50 w-20 bg-white"
     >
       <div className="space-y-3 flex flex-col items-center w-full shrink-0">
         <NavItem href="/apex" label="Home">
           <span className="material-symbols-outlined">home</span>
         </NavItem>
-        <NavItem href="/discover" label="Explore" active={pathname === '/discover'}>
+        <NavItem href="/discover" label="Discover" active={pathname === '/discover'}>
           <span className="material-symbols-outlined">explore</span>
         </NavItem>
         <NavItem href="#" label="Calendar">
@@ -175,7 +165,7 @@ export default function SideNav() {
           </NavItem>
         </div>
       </div>
-      <div className="my-3 w-8 h-px bg-orange-200/60 shrink-0" />
+      <div className="my-3 w-8 h-px bg-stone-200/80 shrink-0" />
       <div
         className="flex-1 overflow-y-auto w-full flex flex-col items-center space-y-2.5 pt-1 pb-4"
         style={{ scrollbarWidth: 'none' }}

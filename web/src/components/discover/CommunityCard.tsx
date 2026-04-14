@@ -9,21 +9,26 @@ export default function CommunityCard({ community, onClick }: CommunityCardProps
   return (
     <div
       onClick={onClick}
-      className="group relative rounded-[18px] overflow-hidden cursor-pointer transition-[filter] duration-300 hover:brightness-110"
+      className="group relative rounded-[18px] overflow-hidden cursor-pointer"
       style={{ aspectRatio: '3/4' }}
     >
-      <div className="absolute inset-0" style={{ filter: 'blur(2px)', transform: 'scale(1.05)' }}>
+      <div
+        className="absolute inset-0 transition-[filter] duration-300"
+        style={{ filter: 'blur(2px) brightness(0.75)', transform: 'scale(1.05)' }}
+        onMouseEnter={e => (e.currentTarget.style.filter = 'blur(2px) brightness(1)')}
+        onMouseLeave={e => (e.currentTarget.style.filter = 'blur(2px) brightness(0.75)')}
+      >
         <img src={community.image} alt={community.name} className="w-full h-full object-cover block" />
       </div>
 
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 35%, transparent 50%)' }}
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 35%, transparent 50%)' }}
       />
 
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 35%, transparent 50%)' }}
+        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 35%, transparent 50%)' }}
       />
 
       <div className="absolute top-0 left-0 right-0 p-5 z-10">

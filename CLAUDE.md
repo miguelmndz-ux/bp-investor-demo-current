@@ -244,13 +244,13 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 | # | Screen | Route / Location | Status |
 |---|--------|-----------------|--------|
 | 1.0 | Apex is running (scan overlay) | `/apex` (overlay) | Built |
-| 1.1 | Apex run complete | `/apex` (overlay final state) | Built |
-| 1.2 | Apex Admin Dashboard | `/apex` | Built |
-| 1.2.1 | Outreach Draft Modal | `/apex` (modal) | Built |
-| 1.2.2 | Outreach Sent Success Overlay | `/apex` (overlay) | Built |
-| 1.3 | Community Profile Page | `/apex/community/[slug]/owner` | Built |
-| 1.3.1 | Decode Page | — | Not built |
-| 1.3.2 | Microcourse Page | — | Not built |
+| 1.0.1 | Apex run complete | `/apex` (overlay final state) | Built |
+| 1.1 | Apex Admin Dashboard | `/apex` | Built |
+| 1.1.1 | Outreach Draft Modal | `/apex` (modal) | Built |
+| 1.1.2 | Outreach Sent Success Overlay | `/apex` (overlay) | Built |
+| 1.2 | Community Profile Page | `/apex/community/[slug]/owner` | Built |
+| 1.2.1 | Decode Page | — | Not built |
+| 1.2.2 | Microcourse Page | — | Not built |
 | 2.0 | Founder checks Gmail inbox | — | External |
 | 2.1 | Founder opens BuildParty email | — | External |
 | 3.0 | BuildParty Sign-Up Screen | — | Not built |
@@ -263,7 +263,7 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 | 5.0.1 | Session preview panel + RSVP | `/discover` (panel) | Built |
 | 5.0.2 | You're in! Overlay | — | Not built |
 | 5.0.3 | Rob clicks "Join the PreParty" | — | Not built |
-| 6.0 | Nova: PreParty Lobby | — | Concept only |
+| 6.0 | Nova: PreParty Lobby | `/preparty` | Built |
 
 ### Taxonomy rules
 

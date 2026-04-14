@@ -14,7 +14,7 @@ export default function ProgramCard({ program, onClick }: ProgramCardProps) {
         background: 'rgba(255,255,255,0.55)',
         backdropFilter: 'blur(16px)',
       }}
-      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.8)'}
+      onMouseEnter={e => e.currentTarget.style.background = 'rgba(220,205,198,0.65)'}
       onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.55)'}
     >
       <img
@@ -31,16 +31,15 @@ export default function ProgramCard({ program, onClick }: ProgramCardProps) {
         </span>
       </div>
       <button
-        className="w-8 h-8 rounded-full flex-shrink-0 mr-2.5 opacity-0 scale-[0.8] group-hover:opacity-100 group-hover:scale-100 transition-all flex items-center justify-center border-none cursor-pointer"
+        className="h-7 px-2 rounded-full flex-shrink-0 mr-2.5 opacity-0 scale-[0.8] group-hover:opacity-100 group-hover:scale-100 transition-all flex items-center gap-0.5 border-none cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, #ff7a2f, #e06520)',
-          boxShadow: '0 4px 12px rgba(194,78,0,0.3)',
+          background: '#111',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
         }}
-        aria-label={`Play ${program.title}`}
+        aria-label={`Add ${program.title} to calendar`}
       >
-        <span className="material-symbols-outlined text-white" style={{ fontSize: '16px' }}>
-          play_arrow
-        </span>
+        <span className="material-symbols-outlined text-white" style={{ fontSize: '14px' }}>calendar_month</span>
+        <span className="material-symbols-outlined text-white" style={{ fontSize: '14px' }}>add</span>
       </button>
     </div>
   )
