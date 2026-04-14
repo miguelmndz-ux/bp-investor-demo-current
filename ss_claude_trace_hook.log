@@ -1239,3 +1239,807 @@ INFO:cc_tracer_lib.state:Starting episode, trace id: 909d0efe-5f97-4e31-b565-3cc
 INFO:cc_tracer_lib.state:Starting episode, trace id: 909d0efe-5f97-4e31-b565-3cc919a1eba7, span id: d4c94fda-807f-4080-943c-4b72e70c0887
 INFO:root:Started new session: c56948ee-e2b1-4f97-95c2-cdffc337381f
 INFO:cc_tracer_lib.state:Starting episode, trace id: f9479747-5167-4d11-87da-cbeebdbf67a6, span id: 0f0f25ff-ad22-4908-bc22-e674aceca82e
+INFO:root:Started new session: 5ccbac34-ee7b-4047-a05d-177fe161174e
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 162155ec-abfa-4b97-ad3a-86eb22fc8df0
+WARNING:cc_tracer_lib.state:Ignoring tool stop: tool `toolu_01N5M2E7fYueKRS55xUwdfmE` is not known.
+INFO:root:Unknown event received: PermissionRequest
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...cgAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.state:Ignoring subagent stop: agent `a959404901c579cdd` is not known.
+INFO:root:Unknown event received: PermissionRequest
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 88cc87b0-6010-493f-b796-97137716b306
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:root:Unknown event received: PermissionRequest
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+ERROR:opentelemetry.exporter.otlp.proto.http.trace_exporter:Failed to export span batch code: None, reason: HTTPSConnectionPool(host='bench.silverstream.ai', port=443): Read timed out. (read timeout=1.9999959468841553)
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...characters":"A-6.0"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...boundVariables":{}}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...,"status":"updated"}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...546,"height":2811}]}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':..."7978:20","7978:22"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':..."7979:59","7979:61"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...KAAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...EesAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 336d5b35-6445-4dd5-974e-ba928f75549e
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...":"[Border] 5.0.3"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...31UAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 9f5a237f-c8d9-4827-bfa0-bcb9fdde9c41
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text': 'done'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 3ea39f89-11b2-4af5-8611-11392976bac4
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...rQAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...152,"w":320,"h":100}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...":50267,"newY":332}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...7zcAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...x+6ZAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 142c701c-e31e-4e05-a476-2d6777478844
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text': '{"newY":116}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'image', 'sourc...30TfAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: f553835b-2f72-4860-9590-2b9f4c38b11e
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...RSAAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...3.1","new":"1.2.1"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':..."7991:41","7991:43"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 23d25456-3de0-46cd-8326-757889853749
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...6,"w":2962,"h":1547}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...3,"elementsMoved":72}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.state:Ignoring subagent stop: agent `a2116c541ac5587aa` is not known.
+INFO:root:Started new session: 5ccbac34-ee7b-4047-a05d-177fe161174e
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: da8f998f-31cb-42b0-a417-7c2f1cbe9cd5
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: f3e91825-fa73-4ef8-8c73-e7da645dc043
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+ERROR:opentelemetry.exporter.otlp.proto.http.trace_exporter:Failed to export span batch due to timeout, max retries or shutdown.
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 04ba5a5d-e6f7-47d2-a0dd-9522261decad
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: cef28379-8ba7-4c74-8734-e337189b36b2
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...RSAAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...implement the design.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':..."1.0.5 → 1.3"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...orderId":"8001:13"}]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...6,"w":2962,"h":1547}]'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...X":356,"lastX":64170}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...t exist)","249:866"]}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...:21,"labelsMoved":19}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...ent Success Overlay"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...ent Success Overlay"}'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: e0db6248-0643-43cd-9a01-968aaf6017c2, span id: 195c4e95-c82c-4ff3-9128-d268da45abb4
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 159075: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\5ccbac34-ee7b-4047-a05d-177fe161174e.jsonl

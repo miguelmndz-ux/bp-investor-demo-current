@@ -156,6 +156,7 @@ When a scroll container (`overflow-y-auto`) holds items with a scale hover effec
 2. Mark it `'use client'` at the top
 3. The root layout (`web/src/app/layout.tsx`) automatically wraps all pages in `AppShell` (SideNav + TopNav + main content area)
 4. No additional wiring needed
+5. **Assign a taxonomy number** — every screen in the demo must have one (see Screen Taxonomy below). Update the FigJam board, Figma design file, and screen inventory spreadsheet to reflect the new screen.
 
 ### Adding new components
 
@@ -233,6 +234,56 @@ Each component gets a test file at `__tests__/<ComponentName>.test.tsx` next to 
 - **Flexible routing:** Don't lock in a rigid navigation structure. New routes are added one at a time as prompted.
 - **Tailwind v3:** The project uses Tailwind v3, not v4. Do not upgrade or use v4 syntax.
 - **No competitors in demo data:** Don't feature competing platforms (e.g., Build Club) in fixture data. Use non-competing AI communities instead.
+
+## Screen Taxonomy
+
+Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.2.1`, `5.0`). This taxonomy is the shared language between design, code, and investor conversations. Rob references screens by number.
+
+### Current taxonomy
+
+| # | Screen | Route / Location | Status |
+|---|--------|-----------------|--------|
+| 1.0 | Apex is running (scan overlay) | `/apex` (overlay) | Built |
+| 1.1 | Apex run complete | `/apex` (overlay final state) | Built |
+| 1.2 | Apex Admin Dashboard | `/apex` | Built |
+| 1.2.1 | Outreach Draft Modal | `/apex` (modal) | Built |
+| 1.2.2 | Outreach Sent Success Overlay | `/apex` (overlay) | Built |
+| 1.3 | Community Profile Page | `/apex/community/[slug]/owner` | Built |
+| 1.3.1 | Decode Page | — | Not built |
+| 1.3.2 | Microcourse Page | — | Not built |
+| 2.0 | Founder checks Gmail inbox | — | External |
+| 2.1 | Founder opens BuildParty email | — | External |
+| 3.0 | BuildParty Sign-Up Screen | — | Not built |
+| 3.1 | BuildParty Profile Details | — | Not built |
+| 3.2 | "What to Expect" Screen | — | Not built |
+| 3.3 | Slot Selection Screen | — | Not built |
+| 3.4 | Session Confirmation Screen | — | Not built |
+| 4.0 | Luma Event Page Live | — | External |
+| 5.0 | Discovery Page | `/discover` | Built |
+| 5.0.1 | Session preview panel + RSVP | `/discover` (panel) | Built |
+| 5.0.2 | You're in! Overlay | — | Not built |
+| 5.0.3 | Rob clicks "Join the PreParty" | — | Not built |
+| 6.0 | Nova: PreParty Lobby | — | Concept only |
+
+### Taxonomy rules
+
+- **Every screen gets a number.** No screen exists in the app without a taxonomy entry.
+- **Hierarchical dot notation:** top-level flows are integers (1, 2, 3…), sub-screens use decimals (1.2, 1.2.1). Modals/overlays on a parent screen are sub-numbers of that parent (e.g., 1.2.1 is a modal on 1.2).
+- **Three artifacts must stay in sync** when adding, removing, or renaming screens:
+  1. **FigJam board** — workflow diagram with numbered labels (file key: `lHeDvpwvVswnuSVF0tAcao`, section `252:1435`)
+  2. **Figma design file** — frame with taxonomy badge + colored border (file key: `Fl5XvddT3QsN2VRokrFuqs`, section `7975:2252`, page "THUMBNAIL")
+  3. **Screen inventory spreadsheet** — (to be created) central record of all screens with taxonomy #, name, route, and build status
+- **Border colors in the Figma design file** indicate build status:
+  - **Gray** — Not started
+  - **Orange** — In development
+  - **Red** — Rob to review
+  - **Green** — Rob approved
+
+### When changing screens
+
+If you add, remove, rename, or restructure a screen:
+1. Update the taxonomy table above in this file
+2. Note what changed so the FigJam board, Figma design file, and inventory spreadsheet can be updated (these require the Figma MCP tools or manual edits)
 
 ## Product Context
 
