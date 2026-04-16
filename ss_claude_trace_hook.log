@@ -3420,3 +3420,522 @@ WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 403390: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\51878fa1-ffcf-4cb6-bf4e-7859762a5d66.jsonl
+INFO:root:Started new session: 282e6290-059c-405d-8454-76204cd9fd40
+INFO:cc_tracer_lib.state:Starting episode, trace id: 7935ac52-8181-4d2d-95d3-79ba2fee7581, span id: d0139f0f-9156-4821-978e-6cd2bc833c90
+INFO:root:Started new session: a6ed5d58-d55c-4a5b-a17a-0bcde715556d
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 7935ac52-8181-4d2d-95d3-79ba2fee7581, span id: 8913750b-0f4e-44d6-88b8-64d0694ca4d1
+INFO:cc_tracer_lib.state:Starting episode, trace id: 7935ac52-8181-4d2d-95d3-79ba2fee7581, span id: 5cef2cb5-0851-4623-a107-323d61fc2606
+INFO:cc_tracer_lib.state:Starting episode, trace id: 7935ac52-8181-4d2d-95d3-79ba2fee7581, span id: d2614fa2-eec4-4af2-a338-b43e4eeeceea
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 7935ac52-8181-4d2d-95d3-79ba2fee7581, span id: 03675b72-ff13-41ad-9578-42d11eb098d9
+INFO:cc_tracer_lib.state:Starting episode, trace id: 7935ac52-8181-4d2d-95d3-79ba2fee7581, span id: 7709dc77-ef97-4d83-804d-e3ccbae840d2
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 637982: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\282e6290-059c-405d-8454-76204cd9fd40.jsonl
+INFO:root:Started new session: 885cdbd0-34b4-428a-ad1c-de83eb8b1a89
+INFO:cc_tracer_lib.state:Starting episode, trace id: 8f56bb1d-3d11-4f09-b34f-280e1d8c1d87, span id: 1166f63b-f4f7-4cb4-82e3-65ff9833cd20
+INFO:root:Started new session: 7d61beff-eb68-4ee7-aaba-df0d2318c0bd
+INFO:cc_tracer_lib.state:Starting episode, trace id: a1ca4f00-0890-4f55-b8a3-196dc0684364, span id: 9ff2e445-0064-4670-a23d-eb57b3614474
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: a1ca4f00-0890-4f55-b8a3-196dc0684364, span id: 86aca037-d346-431a-82e9-71cb4855b17b
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 38: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 41: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:root:Started new session: d9f1644b-a51f-4091-afe6-ff3ac2e5453e
+INFO:cc_tracer_lib.state:Starting episode, trace id: b1d79ae6-eddf-4976-9028-09befed265b5, span id: 3f7a97a6-2b11-4178-916d-d3e6413b3629
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: a1ca4f00-0890-4f55-b8a3-196dc0684364, span id: b41da618-d558-4fa1-9d98-5448388edc7f
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 38: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 41: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 38: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 41: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L8-L9'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...llHeight;\\n}');\n```"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...n chain;\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...llHeight;\\n}');\n```"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...vxQ9AAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+INFO:cc_tracer_lib.state:Starting episode, trace id: b1d79ae6-eddf-4976-9028-09befed265b5, span id: 0e1c64b8-cc4e-499d-99c2-a7c69797a54b
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...15T17-34-32-264Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...KpUAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 21: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L1-L3"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 24: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...3TbIAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 38: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L4-L7'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 41: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...sdwBAAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 56: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L8-L9'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-23-699Z.log#L8-L9'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 61: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...llHeight;\\n}');\n```"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...llHeight;\\n}');\n```"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 65: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...n chain;\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...n chain;\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 70: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...llHeight;\\n}');\n```"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...llHeight;\\n}');\n```"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 74: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...vxQ9AAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...vxQ9AAAAAElFTkSuQmCC'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 79: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...15T17-34-32-264Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...15T17-34-32-264Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 83: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...KpUAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...KpUAAAAASUVORK5CYII='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: b1d79ae6-eddf-4976-9028-09befed265b5, span id: 3b46dd10-9cbe-4b3f-9475-6c905a0136a7
+WARNING:cc_tracer_lib.state:Ignoring tool stop: tool `toolu_01QHg3kmLuWAz5Lphae3SuFi` is not known.
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 501: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...15T18-25-14-669Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...15T18-25-14-669Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 504: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':.../QAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':.../QAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 514: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...25-08-769Z.log#L1-L18'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...25-08-769Z.log#L1-L18'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 501: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...15T18-25-14-669Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...15T18-25-14-669Z.yml)"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 504: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':.../QAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':.../QAAAABJRU5ErkJggg=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 514: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...25-08-769Z.log#L1-L18'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...25-08-769Z.log#L1-L18'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useRouter } from 'next/navigation'
 
 type GmailScreen = 'inbox' | 'email'
 
@@ -13,6 +14,7 @@ export default function GmailFlowOverlay({ onClose }: GmailFlowOverlayProps) {
   const [screen, setScreen] = useState<GmailScreen>('inbox')
   const [visible, setVisible] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const router = useRouter()
 
   // Fade in on mount + lock body scroll
   useEffect(() => {
@@ -35,6 +37,22 @@ export default function GmailFlowOverlay({ onClose }: GmailFlowOverlayProps) {
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [])
+
+  // CTA in email iframe sends 'advance' → navigate to signup
+  // Guard on screen === 'email' so inbox clicks never trigger this
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (e.data === 'advance' && screen === 'email') {
+        setVisible(false)
+        setTimeout(() => {
+          onClose()
+          router.push('/signup')
+        }, 350)
+      }
+    }
+    window.addEventListener('message', handler)
+    return () => window.removeEventListener('message', handler)
+  }, [screen, onClose, router])
 
   // When inbox loads, wire up the BuildParty email row click
   function handleIframeLoad() {

@@ -3,7 +3,12 @@
 export default function TopNav() {
   return (
     <header
-      className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 z-[55] bg-white h-20"
+      className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 z-[55] h-16"
+      style={{
+        background: 'rgba(255, 255, 255, 0.88)',
+        backdropFilter: 'blur(16px) saturate(150%)',
+        WebkitBackdropFilter: 'blur(16px) saturate(150%)',
+      }}
     >
       {/* Logo — z-[55] puts TopNav above SideNav (z-50) in the header zone,
           so px-6 + pl-1 = x:28 is visible, matching the preparty layout exactly */}
@@ -16,7 +21,7 @@ export default function TopNav() {
       {/* Search + actions + avatar */}
       <div className="flex items-center gap-2">
         {/* Search */}
-        <div className="relative w-80 bg-stone-100/60 rounded-xl px-4 border border-stone-200/40 flex items-center h-10 mr-2">
+        <div className="relative w-80 bg-stone-100 rounded-xl px-4 border border-stone-200 flex items-center h-10 mr-2">
           <span className="material-symbols-outlined text-stone-400 shrink-0 mr-2" style={{ fontSize: '18px' }}>search</span>
           <input
             type="text"

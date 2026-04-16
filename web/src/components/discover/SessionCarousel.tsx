@@ -24,6 +24,7 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
   const outerRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [hovering, setHovering] = useState(false)
   // leftOffset = how far we extend the scroll container to the left (reaches sidebar edge)
   const [leftOffset, setLeftOffset] = useState(14)
 
@@ -34,9 +35,12 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
 
     const measure = () => {
       const { left } = el.getBoundingClientRect()
-      const parentRight = el.parentElement!.getBoundingClientRect().right
-      // rightTarget: viewport edge when panel closed, panel edge when panel open
-      const rightTarget = Math.min(window.innerWidth, parentRight + 48)
+      const parent = el.parentElement!
+      const parentMarginRight = parseFloat(getComputedStyle(parent).marginRight) || 0
+      // When the preview panel is open the parent has marginRight: 380 —
+      // shrink the carousel so the fade ends right at the panel's left edge.
+      // When closed, extend to the viewport edge.
+      const rightTarget = window.innerWidth - parentMarginRight
 
       el.style.width = `${rightTarget - left}px`
 
@@ -49,8 +53,8 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
       if (scrollEl) {
         scrollEl.style.marginLeft = `-${reach}px`
         scrollEl.style.width = `${rightTarget - SIDEBAR_WIDTH}px`
-        scrollEl.style.paddingLeft = `${reach}px`
-        scrollEl.style.paddingRight = '48px'
+        scrollEl.style.paddingLeft = `${reach - 14}px`
+        scrollEl.style.paddingRight = `${reach + 56}px`
       }
     }
 
@@ -79,11 +83,11 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
 
   // The button and fade are positioned so they always land at the sidebar right edge
   // regardless of screen size: viewport x = outerRef.left - (leftOffset - 10) = 80 + 10 = 90px
-  const btnLeft = -(leftOffset - 10)
+  const btnLeft = -(leftOffset - 40)
   const fadeLeft = -leftOffset
 
   return (
-    <div ref={outerRef} className="mb-9">
+    <div ref={outerRef} className="mb-9" style={{ clipPath: 'inset(0 0 0 -9999px)' }}>
       <div className="flex items-baseline justify-between mb-3.5 pr-12">
         <h2 className="font-jakarta font-black text-[22px] text-on-surface">
           {title}
@@ -92,7 +96,7 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
           Show all
         </a>
       </div>
-      <div className="relative">
+      <div className="relative" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
         <div
           ref={scrollRef}
           className="grid grid-flow-col gap-[2px] overflow-x-auto pb-1 pt-1"
@@ -113,7 +117,7 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
           style={{
             left: `${fadeLeft}px`,
             width: `${leftOffset + 56}px`,
-            background: 'linear-gradient(to left, transparent 0%, rgba(255, 243, 234, 0.45) 55%, #fff3ea 100%)',
+            background: 'linear-gradient(to left, transparent 0%, rgba(255, 243, 234, 0.25) 60%, rgba(255, 243, 234, 0.7) 100%)',
             opacity: scrolled ? 1 : 0,
           }}
         />
@@ -123,8 +127,8 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
           style={{
             left: `${btnLeft}px`,
             ...arrowStyle,
-            opacity: scrolled ? 1 : 0,
-            pointerEvents: scrolled ? 'auto' : 'none',
+            opacity: hovering && scrolled ? 1 : 0,
+            pointerEvents: hovering && scrolled ? 'auto' : 'none',
           }}
         >
           <span className="material-symbols-outlined text-on-background" style={{ fontSize: '18px' }}>
@@ -132,15 +136,23 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
           </span>
         </button>
 
-        {/* Right fade + button — always visible */}
+        {/* Right fade + button — always visible, mirrors left fade width */}
         <div
-          className="absolute top-0 right-0 bottom-0 w-28 pointer-events-none"
-          style={{ background: 'linear-gradient(to right, transparent 0%, rgba(255, 243, 234, 0.45) 55%, #fff3ea 100%)' }}
+          className="absolute top-0 right-0 bottom-0 pointer-events-none"
+          style={{
+            width: `${leftOffset + 56}px`,
+            background: 'linear-gradient(to right, transparent 0%, rgba(255, 243, 234, 0.25) 60%, rgba(255, 243, 234, 0.7) 100%)',
+          }}
         />
         <button
           onClick={scrollRight}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 z-10"
-          style={arrowStyle}
+          className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 z-10"
+          style={{
+            right: 48,
+            ...arrowStyle,
+            opacity: hovering ? 1 : 0,
+            pointerEvents: hovering ? 'auto' : 'none',
+          }}
         >
           <span className="material-symbols-outlined text-on-background" style={{ fontSize: '18px' }}>
             chevron_right

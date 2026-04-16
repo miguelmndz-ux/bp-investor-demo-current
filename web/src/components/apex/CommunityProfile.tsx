@@ -143,6 +143,7 @@ export default function CommunityProfile({ product, founders, isOwner = false, s
           <DecodePreviewCard
             productName={product.name}
             decodeUrl={product.decodeUrl}
+            slug={product.slug}
             isOwner={isOwner}
           />
         )}
@@ -152,6 +153,7 @@ export default function CommunityProfile({ product, founders, isOwner = false, s
           <RapidCoursePreviewCard
             productName={product.name}
             rapidCourseUrl={product.rapidCourseUrl}
+            slug={product.slug}
             isOwner={isOwner}
           />
         )}

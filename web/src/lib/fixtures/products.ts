@@ -25,7 +25,7 @@ export const phProducts: PhProduct[] = [
     ],
     makerName: 'Ajay Kumar',
     decodeUrl: '/apex/velo-decode.html',
-    rapidCourseUrl: '/apex/velo-rapidcourse.html',
+    rapidCourseUrl: '/apex/velo-microcourse.html',
   },
   {
     name: 'Chrome Vertical Tabs',

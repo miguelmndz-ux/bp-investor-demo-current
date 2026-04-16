@@ -60,7 +60,7 @@ export default function ApexScanOverlay() {
 
   return (
     <div
-      className="fixed top-20 left-20 right-0 bottom-0 z-[45] flex items-center justify-center"
+      className="fixed top-16 left-20 right-0 bottom-0 z-[45] flex items-center justify-center"
       style={{
         background: 'linear-gradient(180deg, #fffaf7 0%, #fff1e6 100%)',
         opacity: isExiting ? 0 : 1,

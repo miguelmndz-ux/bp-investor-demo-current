@@ -1,0 +1,445 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation:
+      - generic [ref=e3]:
+        - link "Velo" [ref=e4] [cursor=pointer]:
+          - /url: /
+          - img "Velo" [ref=e5]
+        - generic [ref=e6]:
+          - link "Blog" [ref=e7] [cursor=pointer]:
+            - /url: /blog
+          - link "Pricing" [ref=e8] [cursor=pointer]:
+            - /url: /pricing
+          - link "About Us" [ref=e9] [cursor=pointer]:
+            - /url: /about
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: https://docs.usevelo.ai
+            - text: Docs
+            - img [ref=e11]
+        - link "Try for free" [ref=e15] [cursor=pointer]:
+          - /url: https://app.usevelo.ai/
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]:
+            - generic [ref=e20]:
+              - link "Velo - Share anything as video messages | Product Hunt" [ref=e21] [cursor=pointer]:
+                - /url: https://www.producthunt.com/products/velo-4?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_campaign=badge-velo-10
+                - img "Velo - Share anything as video messages | Product Hunt" [ref=e22]
+              - link "NEW Velo's agentic screen recording" [ref=e23] [cursor=pointer]:
+                - /url: /articles/agentic-screen-recording-by-velo
+                - generic [ref=e24]: NEW
+                - text: Velo's agentic screen recording
+                - img [ref=e25]
+              - heading "Share anything as video messages" [level=1] [ref=e27]
+              - paragraph [ref=e28]: Velo takes raw recordings and makes them awesome with AI
+              - link "Try for free" [ref=e30] [cursor=pointer]:
+                - /url: https://app.usevelo.ai/
+            - generic [ref=e36]:
+              - generic [ref=e37] [cursor=pointer]: Without Velo
+              - button "Toggle between Rough Takes and Output with Velo" [ref=e38] [cursor=pointer]
+              - generic [ref=e40] [cursor=pointer]: With Velo
+              - button "Pause" [ref=e42] [cursor=pointer]:
+                - img [ref=e43]
+              - button "Unmute" [ref=e46] [cursor=pointer]:
+                - img [ref=e47]
+          - generic:
+            - img "Velo Hand"
+        - generic [ref=e52]:
+          - heading "Trusted by the teams at" [level=2] [ref=e53]
+          - generic [ref=e55]:
+            - img "Align" [ref=e57]
+            - img "Botminds AI" [ref=e59]
+            - img "Brighter AI" [ref=e61]
+            - img "Circuitry" [ref=e63]
+            - img "Experfy" [ref=e65]
+            - img "Hushh" [ref=e67]
+            - img "Instawork" [ref=e69]
+            - img "Inure" [ref=e71]
+            - img "Mavenir" [ref=e73]
+            - img "Prosperix" [ref=e75]
+            - img "Recrut AI" [ref=e77]
+            - img "Sanas" [ref=e79]
+            - img "Serri" [ref=e81]
+            - img "Signeasy" [ref=e83]
+            - img "Vectara" [ref=e85]
+            - img "Beam" [ref=e87]
+            - img "Cognitensor" [ref=e89]
+            - img "Darwin AI" [ref=e91]
+            - img "Fast Simon" [ref=e93]
+            - img "Sony" [ref=e95]
+            - img "Touch Cast" [ref=e97]
+            - img "Align" [ref=e99]
+            - img "Botminds AI" [ref=e101]
+            - img "Brighter AI" [ref=e103]
+            - img "Circuitry" [ref=e105]
+            - img "Experfy" [ref=e107]
+            - img "Hushh" [ref=e109]
+            - img "Instawork" [ref=e111]
+            - img "Inure" [ref=e113]
+            - img "Mavenir" [ref=e115]
+            - img "Prosperix" [ref=e117]
+            - img "Recrut AI" [ref=e119]
+            - img "Sanas" [ref=e121]
+            - img "Serri" [ref=e123]
+            - img "Signeasy" [ref=e125]
+            - img "Vectara" [ref=e127]
+            - img "Beam" [ref=e129]
+            - img "Cognitensor" [ref=e131]
+            - img "Darwin AI" [ref=e133]
+            - img "Fast Simon" [ref=e135]
+            - img "Sony" [ref=e137]
+            - img "Touch Cast" [ref=e139]
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - heading "Made with Velo" [level=2] [ref=e143]
+            - paragraph [ref=e144]: See what people are creating with Velo
+          - generic [ref=e145]:
+            - button "Scroll left" [ref=e146] [cursor=pointer]:
+              - img [ref=e147]
+            - button "Scroll right" [ref=e149] [cursor=pointer]:
+              - img [ref=e150]
+            - generic [ref=e152]:
+              - generic [ref=e153]:
+                - button "Play video" [ref=e156] [cursor=pointer]:
+                  - img [ref=e158]
+                - generic [ref=e161]:
+                  - img "Gamma AI" [ref=e163]
+                  - generic [ref=e165]: Gamma AI
+              - generic [ref=e166]:
+                - button "Play video" [ref=e169] [cursor=pointer]:
+                  - img [ref=e171]
+                - generic [ref=e174]:
+                  - img "Notion" [ref=e176]
+                  - generic [ref=e178]: Notion
+              - generic [ref=e179]:
+                - button "Play video" [ref=e182] [cursor=pointer]:
+                  - img [ref=e184]
+                - generic [ref=e187]:
+                  - img "Lovable" [ref=e189]
+                  - generic [ref=e191]: Lovable
+              - generic [ref=e192]:
+                - button "Play video" [ref=e195] [cursor=pointer]:
+                  - img [ref=e197]
+                - generic [ref=e200]:
+                  - img "Jenni AI" [ref=e202]
+                  - generic [ref=e204]: Jenni AI
+              - generic [ref=e205]:
+                - button "Play video" [ref=e208] [cursor=pointer]:
+                  - img [ref=e210]
+                - generic [ref=e213]:
+                  - img "Diffusion Transformers Tabular Comparison" [ref=e215]
+                  - generic [ref=e217]: Diffusion Transformers Tabular Comparison
+              - generic [ref=e218]:
+                - button "Play video" [ref=e221] [cursor=pointer]:
+                  - img [ref=e223]
+                - generic [ref=e226]:
+                  - img "Diffusion Transformers Detailed Review" [ref=e228]
+                  - generic [ref=e230]: Diffusion Transformers Detailed Review
+        - generic [ref=e233]:
+          - heading "Automated AI script generation" [level=2] [ref=e235]
+          - generic [ref=e236]:
+            - img [ref=e237]
+            - img [ref=e238]
+            - img [ref=e239]
+        - generic [ref=e240]:
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - generic [ref=e245]:
+                - heading "Browser agent that records for you" [level=2] [ref=e246]
+                - paragraph [ref=e247]: Velo runs inside your browser. It listens to your instructions, reads your clicks, and turns all of it into a video message.
+              - blockquote [ref=e248]:
+                - paragraph [ref=e249]: "\"I didn't have to record on my own. The browser agent recorded while I focused on another task.\""
+                - generic [ref=e250]:
+                  - img "Connor Rose" [ref=e251]
+                  - generic [ref=e252]:
+                    - generic [ref=e253]: Connor Rose
+                    - generic [ref=e254]: Co-Founder @IRLY
+            - img "Browser agent recording a video" [ref=e255]
+          - generic [ref=e258]:
+            - generic [ref=e259]:
+              - img "Real person" [ref=e261]
+              - generic [ref=e262]:
+                - generic [ref=e263] [cursor=pointer]: Input Image
+                - button "Toggle between real person and AI avatar" [ref=e264] [cursor=pointer]
+                - generic [ref=e266] [cursor=pointer]: Make it alive
+              - img "Velo" [ref=e268]
+            - generic [ref=e270]:
+              - heading "AI Avatar with your face and voice" [level=2] [ref=e271]
+              - paragraph [ref=e272]: Velo builds a hyper-realistic AI Avatar that presents your demo with natural expressions, down to lip sync, eye blinks, and hand gestures.
+          - generic [ref=e275]:
+            - generic [ref=e277]:
+              - heading "Record your screen in a single click" [level=2] [ref=e278]
+              - paragraph [ref=e279]: Launch our Chrome extension to capture your workflow and express your ideas effortlessly, across your entire desktop.
+            - img "Browser agent recording a demo" [ref=e282]
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - heading "Raw recordings to share-ready video messages" [level=2] [ref=e287]
+            - paragraph [ref=e288]: Upload any existing raw recording to Velo. Velo writes a new script from scratch, syncs everything, and delivers a video worth sharing.
+          - generic [ref=e289]:
+            - generic [ref=e290]:
+              - img "Zoom" [ref=e292]
+              - img "Gong" [ref=e294]
+              - img "MP4" [ref=e296]
+              - img "Fathom" [ref=e298]
+            - generic [ref=e300]:
+              - generic [ref=e301]:
+                - generic [ref=e305]:
+                  - button "Pause video" [ref=e306] [cursor=pointer]:
+                    - img [ref=e307]
+                  - button "Unmute video" [ref=e310] [cursor=pointer]:
+                    - img [ref=e311]
+                - generic [ref=e315]: Without Velo
+              - generic [ref=e316]:
+                - img "Velo" [ref=e318]
+                - img "mp4" [ref=e320]
+              - generic [ref=e321]:
+                - generic [ref=e325]:
+                  - button "Pause video" [ref=e326] [cursor=pointer]:
+                    - img [ref=e327]
+                  - button "Unmute video" [ref=e330] [cursor=pointer]:
+                    - img [ref=e331]
+                - generic [ref=e335]: With Velo
+        - generic [ref=e339]:
+          - heading "Create video messages faster" [level=2] [ref=e340]
+          - 'img "Standard creation process: 12 Takes vs Using Velo: 1 Take, 55 mins saved" [ref=e342]'
+          - link "Try for free" [ref=e343] [cursor=pointer]:
+            - /url: https://app.usevelo.ai/
+        - generic [ref=e346]:
+          - generic [ref=e347]:
+            - heading "The only video messaging tool you’ll need" [level=2] [ref=e348]
+            - generic [ref=e349]: Add your brand kit, choose personas, change your cursor styles, rewrite scripts and a lot more
+          - generic [ref=e350]:
+            - generic [ref=e352]:
+              - heading "Change cursor style and size" [level=3] [ref=e354]
+              - img "Change cursor style and size" [ref=e356]
+            - generic [ref=e358]:
+              - heading "Personas" [level=3] [ref=e360]
+              - img "Personas" [ref=e362]
+            - generic [ref=e364]:
+              - heading "Easy-to-use editor" [level=3] [ref=e366]
+              - img "Easy-to-use editor" [ref=e368]
+            - generic [ref=e370]:
+              - heading "Use your brand kit" [level=3] [ref=e372]
+              - img "Use your brand kit" [ref=e374]
+            - img "Velo" [ref=e376]
+            - generic [ref=e378]:
+              - heading "Shareable Links" [level=3] [ref=e380]
+              - img "Shareable Links" [ref=e382]
+            - generic [ref=e384]:
+              - heading "Rewrite scripts with context" [level=3] [ref=e386]
+              - img "Rewrite scripts with context" [ref=e388]
+        - generic [ref=e391]:
+          - heading "Velo is for everyone" [level=2] [ref=e392]
+          - generic [ref=e393]:
+            - generic [ref=e394]:
+              - img "Velo for Sales" [ref=e396]
+              - generic [ref=e397]:
+                - heading "Velo for Sales" [level=3] [ref=e398]
+                - paragraph [ref=e399]: Send polished video pitches to prospects without twelve takes
+            - generic [ref=e400]:
+              - img "Velo for Product" [ref=e402]
+              - generic [ref=e403]:
+                - heading "Velo for Product" [level=3] [ref=e404]
+                - paragraph [ref=e405]: Walk through new features and share updates your team actually watches
+            - generic [ref=e406]:
+              - img "Velo for Support" [ref=e408]
+              - generic [ref=e409]:
+                - heading "Velo for Support" [level=3] [ref=e410]
+                - paragraph [ref=e411]: Build onboarding guides and training videos without a production team
+            - generic [ref=e412]:
+              - img "Velo for Creators" [ref=e414]
+              - generic [ref=e415]:
+                - heading "Velo for Creators" [level=3] [ref=e416]
+                - paragraph [ref=e417]: Make product reviews, tutorials, and content for YouTube, X, and beyond
+            - generic [ref=e418]:
+              - img "Velo for Marketing" [ref=e420]
+              - generic [ref=e421]:
+                - heading "Velo for Marketing" [level=3] [ref=e422]
+                - paragraph [ref=e423]: Create launch videos, walkthroughs, and product content in minutes
+            - generic [ref=e424]:
+              - img "Velo for Educators" [ref=e426]
+              - generic [ref=e427]:
+                - heading "Velo for Educators" [level=3] [ref=e428]
+                - paragraph [ref=e429]: Record professional courses, lectures, and walkthroughs day one
+        - generic [ref=e432]:
+          - heading "See what people are saying about Velo" [level=2] [ref=e433]
+          - generic [ref=e434]:
+            - link "Andrew Yeung Andrew Yeung angel investor in 20+ companies Honestly, a pretty magical experience. x" [ref=e435] [cursor=pointer]:
+              - /url: https://x.com/andruyeung/status/2042015313357922463?s=20
+              - generic [ref=e436]:
+                - img "Andrew Yeung" [ref=e437]
+                - generic [ref=e438]:
+                  - paragraph [ref=e439]: Andrew Yeung
+                  - paragraph [ref=e440]: angel investor in 20+ companies
+              - paragraph [ref=e441]: Honestly, a pretty magical experience.
+              - generic [ref=e442]:
+                - img "x" [ref=e443]
+                - img [ref=e444]
+            - link "Alex Ablazevics Alex Ablazevics Founder @ Ivy, ex eBay Velo is soo cool .. as a founder I've been using a bunch of the products and always thought there was a gap ..y'all solved it ! Made a short explainer video, hope I got it right. producthunt" [ref=e446] [cursor=pointer]:
+              - /url: https://www.producthunt.com/products/velo-4
+              - generic [ref=e447]:
+                - img "Alex Ablazevics" [ref=e448]
+                - generic [ref=e449]:
+                  - paragraph [ref=e450]: Alex Ablazevics
+                  - paragraph [ref=e451]: Founder @ Ivy, ex eBay
+              - paragraph [ref=e452]: Velo is soo cool .. as a founder I've been using a bunch of the products and always thought there was a gap ..y'all solved it ! Made a short explainer video, hope I got it right.
+              - generic [ref=e453]:
+                - img "producthunt" [ref=e454]
+                - img [ref=e455]
+            - link "Bengeekly Bengeekly Founder @ ProdShot I used Velo to make a video and I enjoyed building it. the process is straight forward, and the initial result is already good. What I liked the most is also what bothers me a bit. I will be launching tomorrow, I might use the video on my launch. producthunt" [ref=e457] [cursor=pointer]:
+              - /url: https://www.producthunt.com/products/velo-4
+              - generic [ref=e458]:
+                - img "Bengeekly" [ref=e459]
+                - generic [ref=e460]:
+                  - paragraph [ref=e461]: Bengeekly
+                  - paragraph [ref=e462]: Founder @ ProdShot
+              - paragraph [ref=e463]: I used Velo to make a video and I enjoyed building it. the process is straight forward, and the initial result is already good. What I liked the most is also what bothers me a bit. I will be launching tomorrow, I might use the video on my launch.
+              - generic [ref=e464]:
+                - img "producthunt" [ref=e465]
+                - img [ref=e466]
+            - link "Elias Elias AI Educator I tried Velo today after wasting hours re-recording a 5-minute video message. The video message shouldn't be harder than building the product. If you've ever re-recorded the same video 10 times… you'll get why this matters. x" [ref=e468] [cursor=pointer]:
+              - /url: https://x.com/iam_elias1/status/2042533833615228951?s=20
+              - generic [ref=e469]:
+                - img "Elias" [ref=e470]
+                - generic [ref=e471]:
+                  - paragraph [ref=e472]: Elias
+                  - paragraph [ref=e473]: AI Educator
+              - paragraph [ref=e474]: I tried Velo today after wasting hours re-recording a 5-minute video message. The video message shouldn't be harder than building the product. If you've ever re-recorded the same video 10 times… you'll get why this matters.
+              - generic [ref=e475]:
+                - img "x" [ref=e476]
+                - img [ref=e477]
+            - link "Matheus Santos Matheus Santos Full-Stack Developer I gave Velo a quick try and was genuinely impressed, within minutes I had a polished video with smooth animations and a really solid overall result. As someone who’s not experienced in video editing, I found the process intuitive and easy to follow, which is a big win. producthunt" [ref=e479] [cursor=pointer]:
+              - /url: https://www.producthunt.com/products/velo-4
+              - generic [ref=e480]:
+                - img "Matheus Santos" [ref=e481]
+                - generic [ref=e482]:
+                  - paragraph [ref=e483]: Matheus Santos
+                  - paragraph [ref=e484]: Full-Stack Developer
+              - paragraph [ref=e485]: I gave Velo a quick try and was genuinely impressed, within minutes I had a polished video with smooth animations and a really solid overall result. As someone who’s not experienced in video editing, I found the process intuitive and easy to follow, which is a big win.
+              - generic [ref=e486]:
+                - img "producthunt" [ref=e487]
+                - img [ref=e488]
+            - link "Shivani Shimpi Shivani Shimpi Product Manager & AI/ML Engineer Not bad, time to move away from loom producthunt" [ref=e490] [cursor=pointer]:
+              - /url: https://www.producthunt.com/products/velo-4
+              - generic [ref=e491]:
+                - img "Shivani Shimpi" [ref=e492]
+                - generic [ref=e493]:
+                  - paragraph [ref=e494]: Shivani Shimpi
+                  - paragraph [ref=e495]: Product Manager & AI/ML Engineer
+              - paragraph [ref=e496]: Not bad, time to move away from loom
+              - generic [ref=e497]:
+                - img "producthunt" [ref=e498]
+                - img [ref=e499]
+            - link "Alina Anitei Alina Anitei Growth @ Piwi.ai This looks like exactly what I've been looking for, so I'm definitely trying it today. producthunt" [ref=e501] [cursor=pointer]:
+              - /url: https://www.producthunt.com/products/velo-4
+              - generic [ref=e502]:
+                - img "Alina Anitei" [ref=e503]
+                - generic [ref=e504]:
+                  - paragraph [ref=e505]: Alina Anitei
+                  - paragraph [ref=e506]: Growth @ Piwi.ai
+              - paragraph [ref=e507]: This looks like exactly what I've been looking for, so I'm definitely trying it today.
+              - generic [ref=e508]:
+                - img "producthunt" [ref=e509]
+                - img [ref=e510]
+            - link "Sam Morris Sam Morris GTM | nottelabs Super clean product congrats! Genuinely nails a real pain, can't wait to use. producthunt" [ref=e512] [cursor=pointer]:
+              - /url: https://www.producthunt.com/products/velo-4
+              - generic [ref=e513]:
+                - img "Sam Morris" [ref=e514]
+                - generic [ref=e515]:
+                  - paragraph [ref=e516]: Sam Morris
+                  - paragraph [ref=e517]: GTM | nottelabs
+              - paragraph [ref=e518]: Super clean product congrats! Genuinely nails a real pain, can't wait to use.
+              - generic [ref=e519]:
+                - img "producthunt" [ref=e520]
+                - img [ref=e521]
+            - link "Gokul Krishna A Gokul Krishna A Automation Technical Lead A key idea behind Velo is that you don't need to get the recording perfect; the system restructures the content into a final video. This reflects a broader shift from manually recording and editing to generating structured video content through AI workflows. linkedin" [ref=e523] [cursor=pointer]:
+              - /url: https://www.linkedin.com/posts/agokulakrishna_velo-ai-ugcPost-7449627901672493057-Mxxt?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjoi-sB8-662OB5Ayqe0uOX6i-agu7Hy5E
+              - generic [ref=e524]:
+                - img "Gokul Krishna A" [ref=e525]
+                - generic [ref=e526]:
+                  - paragraph [ref=e527]: Gokul Krishna A
+                  - paragraph [ref=e528]: Automation Technical Lead
+              - paragraph [ref=e529]: A key idea behind Velo is that you don't need to get the recording perfect; the system restructures the content into a final video. This reflects a broader shift from manually recording and editing to generating structured video content through AI workflows.
+              - generic [ref=e530]:
+                - img "linkedin" [ref=e531]
+                - img [ref=e532]
+    - contentinfo [ref=e534]:
+      - generic [ref=e535]:
+        - generic [ref=e536]:
+          - heading "Request an AI summary of Velo" [level=2] [ref=e537]
+          - generic [ref=e538]:
+            - link "ChatGPT" [ref=e539] [cursor=pointer]:
+              - /url: https://chat.openai.com/?q=How%20does%20Velo%20(www.usevelo.ai)%20help%20me%20to%20create%20video%20messages%3F
+              - img "ChatGPT" [ref=e540]
+            - link "Claude" [ref=e541] [cursor=pointer]:
+              - /url: https://claude.ai/new?q=How%20does%20Velo%20(www.usevelo.ai)%20help%20me%20to%20create%20video%20messages%3F
+              - img "Claude" [ref=e542]
+            - link "Grok" [ref=e543] [cursor=pointer]:
+              - /url: https://grok.com/?q=How%20does%20Velo%20(www.usevelo.ai)%20help%20me%20to%20create%20video%20messages%3F
+              - img "Grok" [ref=e544]
+        - generic [ref=e552]:
+          - generic [ref=e553]:
+            - heading "Share anything with video messages" [level=3] [ref=e554]
+            - paragraph [ref=e555]: Velo takes raw recordings and makes them awesome with AI
+          - link "Try for free" [ref=e556] [cursor=pointer]:
+            - /url: https://app.usevelo.ai/
+      - generic [ref=e557]:
+        - generic [ref=e558]:
+          - generic [ref=e559]:
+            - link "Velo" [ref=e560] [cursor=pointer]:
+              - /url: /
+              - img "Velo" [ref=e561]
+            - generic [ref=e562]:
+              - link "Instagram" [ref=e563] [cursor=pointer]:
+                - /url: https://www.instagram.com/sharewithvelo/
+                - img [ref=e564]
+              - link "LinkedIn" [ref=e568] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/useveloai/
+                - img [ref=e569]
+              - link "X (Twitter)" [ref=e571] [cursor=pointer]:
+                - /url: https://x.com/sharewithvelo
+                - img [ref=e572]
+              - link "YouTube" [ref=e574] [cursor=pointer]:
+                - /url: https://www.youtube.com/@sharewithvelo
+                - img [ref=e575]
+          - generic [ref=e578]:
+            - generic [ref=e579]:
+              - heading "Quick Links" [level=4] [ref=e580]
+              - generic [ref=e581]:
+                - link "Pricing" [ref=e582] [cursor=pointer]:
+                  - /url: /pricing
+                - link "Docs" [ref=e583] [cursor=pointer]:
+                  - /url: https://docs.usevelo.ai
+                  - text: Docs
+                  - img [ref=e584]
+                - link "Blog" [ref=e587] [cursor=pointer]:
+                  - /url: /blog
+                - link "About Us" [ref=e588] [cursor=pointer]:
+                  - /url: /about
+                - link "Become an Affiliate" [ref=e589] [cursor=pointer]:
+                  - /url: /affiliate-program
+            - generic [ref=e590]:
+              - heading "Contact Us" [level=4] [ref=e591]
+              - link "support@usevelo.ai" [ref=e593] [cursor=pointer]:
+                - /url: mailto:support@usevelo.ai
+              - link "Book a demo" [ref=e594] [cursor=pointer]:
+                - /url: https://calendar.app.google/zgvW1tqLmB2jrBUU9
+                - generic [ref=e595]: Book a demo
+                - img [ref=e596]
+        - generic [ref=e599]:
+          - paragraph [ref=e600]:
+            - text: 2026 FlowFrame Inc. All rights reserved |
+            - link "Privacy Policy" [ref=e601] [cursor=pointer]:
+              - /url: /privacy
+            - text: "|"
+            - link "Terms of Service" [ref=e602] [cursor=pointer]:
+              - /url: /terms
+            - text: "|"
+            - link "Acceptable Use" [ref=e603] [cursor=pointer]:
+              - /url: /acceptable-use
+            - text: "|"
+            - link "Cookie Notice" [ref=e604] [cursor=pointer]:
+              - /url: /cookies
+          - paragraph [ref=e605]: 2261, Market Street, San Francisco.
+  - alert [ref=e606]

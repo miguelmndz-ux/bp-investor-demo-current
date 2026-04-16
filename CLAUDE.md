@@ -17,6 +17,7 @@ bp-investor-demo-current/
     superpowers/
       specs/                  ← Design specs
       plans/                  ← Implementation plans
+  input/                      ← Design references, HTML prototypes, and meeting transcripts from Rob
   apex-dashboard.html         ← Original design reference (do not edit)
   DESIGN.md                   ← Design system source of truth
   CLAUDE.md                   ← This file
@@ -148,6 +149,43 @@ Never put `sticky` and `premium-glass` on the same element.
 
 When a scroll container (`overflow-y-auto`) holds items with a scale hover effect, the first item gets clipped at the container's top boundary. Add `pt-1` to the scroll container to give the first item room.
 
+### Full-screen iframes cover the concave corner
+
+The AppShell's concave corner (the clip-path white wedge at the SideNav/TopNav junction) cannot reliably appear above a `position: fixed` iframe via z-index alone — the iframe creates its own stacking context that can paint above even high z-index values in practice.
+
+**Fix:** Add `rounded-tl-3xl overflow-hidden` to the iframe wrapper div. This clips the iframe content at a 24px radius (matching the AppShell arc), letting the AppShell background show through the corner naturally — no z-index required.
+
+```tsx
+// ✅ correct — concave corner shows through clipped corner
+<div className="fixed top-16 left-20 right-0 bottom-0 rounded-tl-3xl overflow-hidden">
+  <iframe className="w-full h-full border-0" ... />
+</div>
+
+// ❌ wrong — concave corner gets buried by iframe stacking context
+<div className="fixed top-16 left-20 right-0 bottom-0">
+  <iframe className="w-full h-full border-0" ... />
+</div>
+```
+
+### Editing large static HTML files in `web/public/`
+
+Files like `web/public/apex/luma-event.html` can exceed 1MB and cannot be read directly with the Read tool. Use Python scripts for all edits. Key gotchas:
+
+- **CSS is base64-encoded:** Styles are stored as data URIs in `<link href="data:text/css;base64,...">` tags — injecting a `<style>` override block is not reliable.
+- **CSS custom property cascade:** `!important` on a custom property set on an ancestor does **not** override the same property declared directly on a descendant element. If colors persist after an injected override, the fix is to decode all base64 CSS blocks with Python, replace the hex values, and re-encode them.
+- **Unicode in Python scripts:** Add `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')` to avoid `UnicodeEncodeError` on Windows when printing non-ASCII characters.
+
+### One-sided overflow clipping with `clip-path`
+
+`overflow: hidden` clips all four sides, which breaks elements that intentionally extend past one edge (e.g., a carousel whose left fade/arrow use negative positioning to reach the sidebar). Use `clip-path: inset()` with a large negative value on the side you want to keep open:
+
+```tsx
+// Clips right, top, bottom — but lets left side overflow freely
+<div style={{ clipPath: 'inset(0 0 0 -9999px)' }}>
+```
+
+See `web/src/components/discover/SessionCarousel.tsx` for this pattern.
+
 ## Architecture Patterns
 
 ### Adding a new screen
@@ -181,9 +219,24 @@ SideNav uses `usePathname()` to determine which icon is active — never hardcod
 
 Don't use `hover:-translate-y-*` or `hover:shadow-*` on cards. Use a simple opacity change on hover instead (e.g., `hover:opacity-80` or brightening the background). Keep it subtle.
 
-### Floating side panels
+### Preview side panels
 
-Slide-in preview panels should look like floating cards, not edge-to-edge sidebars. Use `premium-glass rounded-2xl` with inset from edges (`top-20 right-4 bottom-4`). Content should be fixed height (no scroll) with the CTA button pinned to the bottom via `flex-col h-full` and a `flex-1` spacer. See `web/src/components/discover/PreviewPanel.tsx`.
+The Discover page's preview panel is a full-height right sidebar (`fixed top-16 right-0 bottom-0`), styled to match the PreParty channel sidebar: `rgba(255,255,255,0.45)` background with `blur(40px)` backdrop and a left border. It uses a solid background (`#fef9f4`) to prevent content from showing through. Content uses `flex-col h-full` with a `flex-1` spacer to pin the CTA button to the bottom. See `web/src/components/discover/PreviewPanel.tsx`.
+
+When the panel opens, the parent content area applies `marginRight: 380` to avoid overlap. Full-bleed elements (like carousels) must react to this margin — see the carousel pattern below.
+
+### Full-bleed carousels
+
+`SessionCarousel` extends edge-to-edge (sidebar to viewport right) by measuring its position with `getBoundingClientRect()` and setting explicit pixel widths. Key details:
+
+- **Right edge:** Uses `window.innerWidth` when the preview panel is closed. When open, detects the parent's `marginRight` via `getComputedStyle()` and subtracts it: `rightTarget = window.innerWidth - parentMarginRight`.
+- **Left edge:** Extends to the sidebar (80px) using negative `marginLeft` and compensating `paddingLeft` on the scroll container.
+- **Card alignment:** The first card's cover image aligns with the section title by offsetting `paddingLeft` by the card's internal padding (`p-3.5` = 14px).
+- **Fade effects:** Left and right fades use matching dynamic widths (`leftOffset + 56` px). Right side uses `clip-path: inset(0 0 0 -9999px)` to clip overflow without breaking the left fade's negative positioning.
+- **Arrow buttons:** Only visible on hover. Left arrow appears only when scrolled. Right arrow aligns with the "Show All" link (`right: 48px` matching `pr-12`).
+- **Reactivity:** A `ResizeObserver` on the parent re-measures on panel open/close.
+
+See `web/src/components/discover/SessionCarousel.tsx`.
 
 ### Faked data
 
@@ -203,7 +256,7 @@ See `web/src/components/apex/OutreachDraftModal.tsx` as the reference implementa
 
 ### Content-area overlays
 
-The Apex scan overlay covers only the main content area (not SideNav/TopNav) using `fixed top-20 left-20 right-0 bottom-0 z-[45]`. It renders inline (no `createPortal`). Background matches the dashboard gradient (`#fffaf7 → #fff1e6`). See `web/src/components/apex/ApexScanOverlay.tsx`.
+The Apex scan overlay covers only the main content area (not SideNav/TopNav) using `fixed top-16 left-20 right-0 bottom-0 z-[45]`. It renders inline (no `createPortal`). Background matches the dashboard gradient (`#fffaf7 → #fff1e6`). See `web/src/components/apex/ApexScanOverlay.tsx`.
 
 ### Toasts
 
@@ -216,6 +269,8 @@ Community profile pages use a sticky left panel (30%) + scrollable right content
 ### Embedding external HTML files
 
 Static HTML files go in `web/public/apex/` and are embedded via `<iframe>` with `sandbox="allow-scripts allow-same-origin"`. Wrap in a `rounded-lg overflow-hidden border` container. Link out to the full file with `target="_blank"`. See `DecodePreviewCard.tsx`.
+
+For full-screen iframes (pages that render the iframe as the entire content area), always add `rounded-tl-3xl overflow-hidden` to the wrapper div so the AppShell concave corner renders correctly (see gotcha above).
 
 ### Cross-component events
 
@@ -243,6 +298,7 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 
 | # | Screen | Route / Location | Status |
 |---|--------|-----------------|--------|
+| 0.0 | Agents Introduction | — | Not built |
 | 1.0 | Apex is running (scan overlay) | `/apex` (overlay) | Built |
 | 1.0.1 | Apex run complete | `/apex` (overlay final state) | Built |
 | 1.1 | Apex Admin Dashboard | `/apex` | Built |
@@ -253,11 +309,11 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 | 1.2.2 | Microcourse Page | — | Not built |
 | 2.0 | Founder checks Gmail inbox | — | External |
 | 2.1 | Founder opens BuildParty email | — | External |
-| 3.0 | BuildParty Sign-Up Screen | — | Not built |
-| 3.1 | BuildParty Profile Details | — | Not built |
-| 3.2 | "What to Expect" Screen | — | Not built |
-| 3.3 | Slot Selection Screen | — | Not built |
-| 3.4 | Session Confirmation Screen | — | Not built |
+| 3.0 | BuildParty Sign-Up Screen | `/signup` | Built |
+| 3.1 | BuildParty Profile Details | `/profile-details` | Built |
+| 3.2 | "What to Expect" Screen | `/what-to-expect` | Built |
+| 3.3 | Slot Selection Screen | `/slot-selection` | Built |
+| 3.4 | Session Confirmation Screen | `/session-confirmation` | Built |
 | 4.0 | Luma Event Page Live | — | External |
 | 5.0 | Discovery Page | `/discover` | Built |
 | 5.0.1 | Session preview panel + RSVP | `/discover` (panel) | Built |
@@ -272,7 +328,7 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 - **Three artifacts must stay in sync** when adding, removing, or renaming screens:
   1. **FigJam board** — workflow diagram with numbered labels (file key: `lHeDvpwvVswnuSVF0tAcao`, section `252:1435`)
   2. **Figma design file** — frame with taxonomy badge + colored border (file key: `Fl5XvddT3QsN2VRokrFuqs`, section `7975:2252`, page "THUMBNAIL")
-  3. **Screen inventory spreadsheet** — (to be created) central record of all screens with taxonomy #, name, route, and build status
+  3. **Screen inventory spreadsheet** — `Investor Sequence.xlsx` at `bp-investor-demo-current/Investor Sequence.xlsx`. Columns: `#`, `Screen`, `Notes` (Rob's feedback per screen), `Estimates (hrs)`.
 - **Border colors in the Figma design file** indicate build status:
   - **Gray** — Not started
   - **Orange** — In development
@@ -283,7 +339,9 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 
 If you add, remove, rename, or restructure a screen:
 1. Update the taxonomy table above in this file
-2. Note what changed so the FigJam board, Figma design file, and inventory spreadsheet can be updated (these require the Figma MCP tools or manual edits)
+2. Update the **FigJam board** using `use_figma` on file key `lHeDvpwvVswnuSVF0tAcao`: create a `ShapeWithTextNode` (shapeType `SQUARE`, salmon fill matching existing nodes), a text label for the taxonomy number, and a connector to the adjacent node. Nodes are spaced ~336px apart horizontally at y=256; taxonomy labels sit at y=408.
+3. Update the **Figma design file** using `use_figma` on file key `Fl5XvddT3QsN2VRokrFuqs`, appending to section `7975:2252`: add a `[Taxonomy] #.#` frame (320×150, y=231), a `[Placeholder] #.# – Name` frame (2962×1547, y=441), and a `[Border] #.#` rectangle (same dimensions, no fill, colored stroke). Screens are spaced 3212px apart (2962px content + 250px gap). Border stroke color: **gray** = not started, **orange** = in development, **red** = Rob to review, **green** = Rob approved.
+4. Update `Investor Sequence.xlsx` — add a row with the taxonomy number, screen name, notes, and estimate.
 
 ## Product Context
 

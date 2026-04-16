@@ -1,6 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import Link from 'next/link'
 import { phProducts } from '@/lib/fixtures/products'
 import { founders } from '@/lib/fixtures/founders'
 import CommunityProfile from '@/components/apex/CommunityProfile'

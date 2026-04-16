@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velo Microcourse — Master AI Demo Videos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --velo-primary: #1A6BFF;
+      --velo-dark:    #0A1628;
+      --sidebar-bg:   #0D1B33;
+      --bg:           #F4F7FF;
+      --surface:      #FFFFFF;
+      --accent:       #1A6BFF;
+      --accent-tint:  rgba(26,107,255,0.07);
+      --accent-border:rgba(26,107,255,0.2);
+      --success:      #22C55E;
+      --text:         #0A1628;
+      --muted:        #64748B;
+      --border:       #E2E8F0;
+      --outcome-bg:   rgba(26,107,255,0.06);
+      --exercise-bg:  #EEF4FF;
+      --concept-bg:   #F8FAFF;
+      --code-bg:      #0F172A;
+      --sidebar-width: 280px;
+      --radius:       12px;
+      --radius-sm:    8px;
+      --shadow-sm:    0 1px 4px rgba(10,22,40,0.08);
+      --shadow-md:    0 4px 20px rgba(10,22,40,0.10);
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-display: 'Sora', system-ui, sans-serif;
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      display: flex;
+      padding-left: var(--sidebar-width);
+      min-height: 100vh;
+    }
+
+    /* ─── Sidebar ─── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--sidebar-bg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 28px 20px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar-logo span { color: var(--velo-primary); }
+
+    .sidebar-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .progress-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .progress-track {
+      height: 5px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--velo-primary);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.12) transparent;
+    }
+
+    .sidebar-nav::-webkit-scrollbar { width: 3px; }
+    .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+
+    .nav-item:hover { background: rgba(255,255,255,0.05); }
+
+    .nav-item.active {
+      background: rgba(26,107,255,0.15);
+      border-left-color: var(--velo-primary);
+    }
+
+    .nav-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--font-display);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-item.done .nav-badge {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .nav-item.active .nav-badge {
+      background: var(--velo-primary);
+      color: #fff;
+    }
+
+    .nav-title {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.35;
+      transition: color 0.15s;
+      flex: 1;
+    }
+
+    .nav-item:hover .nav-title,
+    .nav-item.active .nav-title { color: rgba(255,255,255,0.9); }
+    .nav-item.done .nav-title { color: rgba(255,255,255,0.7); }
+
+    .nav-check {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--success);
+      opacity: 0;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    .nav-item.done .nav-check { opacity: 1; }
+
+    /* ─── Main Content ─── */
+    .main {
+      flex: 1;
+      padding: 40px 48px 80px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .course-hero {
+      margin-bottom: 40px;
+    }
+
+    .course-hero h1 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--velo-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .course-hero p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* ─── Module Cards ─── */
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left-width: 4px;
+      border-left-color: transparent;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow 0.2s, border-left-color 0.3s;
+      scroll-margin-top: 24px;
+    }
+
+    .module-card:hover { box-shadow: var(--shadow-md); }
+
+    .module-card.done {
+      border-left-color: var(--success);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .card-header:hover { background: #FAFBFF; }
+
+    .card-module-badge {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--velo-primary);
+      background: var(--accent-tint);
+      border: 1px solid var(--accent-border);
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .card-module-badge.capstone {
+      color: #7C3AED;
+      background: rgba(124,58,237,0.07);
+      border-color: rgba(124,58,237,0.2);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+      letter-spacing: -0.2px;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .card-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--muted);
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .module-card.open .card-chevron { transform: rotate(180deg); }
+
+    .card-body {
+      display: none;
+      padding: 0 24px 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .module-card.open .card-body { display: block; }
+
+    /* ─── Content Components ─── */
+
+    /* Outcome */
+    .outcome-block {
+      background: var(--outcome-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .outcome-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--velo-primary);
+      margin-bottom: 6px;
+    }
+
+    .outcome-text {
+      font-size: 15px;
+      color: var(--velo-dark);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* Section headings */
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--velo-dark);
+      margin: 28px 0 10px;
+      letter-spacing: -0.2px;
+    }
+
+    /* Body paragraphs */
+    .card-body p {
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    /* Concept cards */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .concept-card {
+      background: var(--concept-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .concept-card-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--velo-primary);
+      margin-bottom: 6px;
+    }
+
+    .concept-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Numbered steps */
+    .steps-list {
+      counter-reset: step;
+      list-style: none;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .steps-list li {
+      counter-increment: step;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .steps-list li::before {
+      content: counter(step);
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--velo-primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .steps-list li .step-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+    .steps-list li .step-text strong { color: var(--velo-dark); }
+
+    /* Bullet lists */
+    .bullet-list {
+      list-style: none;
+      margin: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      align-items: flex-start;
+    }
+
+    .bullet-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--velo-primary);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* Info / warning boxes */
+    .info-box {
+      background: #EEF4FF;
+      border-left: 3px solid var(--velo-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--velo-dark);
+    }
+
+    .warn-box {
+      background: #FFFBEB;
+      border-left: 3px solid #F59E0B;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #78350F;
+    }
+
+    .warn-box strong, .info-box strong { display: block; margin-bottom: 3px; }
+
+    /* Decision table */
+    .decision-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .decision-table th {
+      background: var(--velo-dark);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .decision-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .decision-table tr:last-child td { border-bottom: none; }
+    .decision-table tr:nth-child(even) td { background: var(--concept-bg); }
+
+    .decision-table .mode-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--velo-primary);
+      background: var(--accent-tint);
+      border: 1px solid var(--accent-border);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    /* Key Terms */
+    .key-terms {
+      margin-top: 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .key-terms-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .term-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .term-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--velo-dark);
+      list-style: none;
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .term-item summary:hover { background: var(--concept-bg); }
+    .term-item summary::-webkit-details-marker { display: none; }
+
+    .term-arrow {
+      font-size: 11px;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+
+    .term-item[open] .term-arrow { transform: rotate(180deg); }
+
+    .term-item .term-def {
+      padding: 0 14px 12px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Exercise Block */
+    .exercise-block {
+      background: var(--exercise-bg);
+      border: 1px solid rgba(26,107,255,0.2);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      margin-top: 24px;
+    }
+
+    .exercise-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--velo-primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exercise-label::before {
+      content: '✦';
+      font-size: 12px;
+    }
+
+    .exercise-block h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--velo-dark);
+      margin-bottom: 10px;
+    }
+
+    .exercise-block p {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .exercise-block ol {
+      padding-left: 0;
+      list-style: none;
+      counter-reset: ex;
+    }
+
+    .exercise-block ol li {
+      counter-increment: ex;
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 8px;
+      align-items: flex-start;
+      line-height: 1.55;
+    }
+
+    .exercise-block ol li::before {
+      content: counter(ex);
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--velo-primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Mark Complete Button */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      gap: 12px;
+    }
+
+    .complete-status {
+      font-size: 13px;
+      color: var(--success);
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .module-card.done .complete-status { opacity: 1; }
+
+    .mark-complete-btn {
+      padding: 9px 20px;
+      border-radius: 8px;
+      border: 1.5px solid var(--velo-primary);
+      background: transparent;
+      color: var(--velo-primary);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+    }
+
+    .mark-complete-btn:hover {
+      background: var(--velo-primary);
+      color: #fff;
+    }
+
+    .mark-complete-btn:active { transform: scale(0.97); }
+
+    .module-card.done .mark-complete-btn {
+      background: var(--success);
+      border-color: var(--success);
+      color: #fff;
+    }
+
+    /* Plan tier badges */
+    .plan-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin: 0 2px;
+      vertical-align: middle;
+    }
+
+    .plan-free { background: #F3F4F6; color: #6B7280; }
+    .plan-pro  { background: #EEF4FF; color: #1A6BFF; }
+    .plan-ultra{ background: #F5F3FF; color: #7C3AED; }
+
+    /* Code blocks */
+    .code-block-wrapper {
+      position: relative;
+      margin: 10px 0;
+    }
+
+    .code-block-wrapper pre {
+      background: var(--code-bg);
+      color: #E2E8F0;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Courier New', monospace;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #94A3B8;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    /* ─── Focus Styles (Accessibility) ─── */
+    .card-header:focus-visible {
+      outline: 2px solid var(--velo-primary);
+      outline-offset: -2px;
+      background: #FAFBFF;
+    }
+
+    .mark-complete-btn:focus-visible,
+    .copy-btn:focus-visible {
+      outline: 2px solid var(--velo-primary);
+      outline-offset: 2px;
+    }
+
+    .term-item summary:focus-visible {
+      outline: 2px solid var(--velo-primary);
+      outline-offset: -2px;
+      background: var(--concept-bg);
+    }
+
+    .nav-item:focus-visible {
+      outline: 2px solid var(--velo-primary);
+      outline-offset: -2px;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><span>Velo</span> Microcourse</div>
+      <div class="sidebar-sub">AI Demo Video Mastery</div>
+      <div class="progress-label">
+        <span>Progress</span>
+        <span id="progress-label-count">0 / 9 modules</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" data-module="0" tabindex="0">
+        <div class="nav-badge">0</div>
+        <div class="nav-title">Mental Model &amp; Orientation</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="1" tabindex="0">
+        <div class="nav-badge">1</div>
+        <div class="nav-title">Screen Capture Mode</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="2" tabindex="0">
+        <div class="nav-badge">2</div>
+        <div class="nav-title">All Four Input Modes</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="3" tabindex="0">
+        <div class="nav-badge">3</div>
+        <div class="nav-title">The Editor</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="4" tabindex="0">
+        <div class="nav-badge">4</div>
+        <div class="nav-title">VeloTwin Avatar</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="5" tabindex="0">
+        <div class="nav-badge">5</div>
+        <div class="nav-title">Script Mastery</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="6" tabindex="0">
+        <div class="nav-badge">6</div>
+        <div class="nav-title">Production Quality</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="7" tabindex="0">
+        <div class="nav-badge">7</div>
+        <div class="nav-title">Workflow &amp; Pricing</div>
+        <div class="nav-check">✓</div>
+      </div>
+      <div class="nav-item" data-module="capstone" tabindex="0">
+        <div class="nav-badge">★</div>
+        <div class="nav-title">Capstone Project</div>
+        <div class="nav-check">✓</div>
+      </div>
+    </nav>
+  </aside>
+  <main class="main" id="main">
+    <div class="course-hero">
+      <h1>Master AI Demo Videos with Velo</h1>
+      <p>9 modules from zero experience to production-quality, brand-consistent demos. Complete each module at your own pace — progress saves automatically.</p>
+    </div>
+
+    <!-- Module 0 -->
+    <div class="module-card" data-module="0" id="module-0">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 0</div>
+        <div class="card-title">Velo Mental Model &amp; Orientation</div>
+        <div class="card-meta">20–30 min</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Understand what Velo is, how its AI pipeline works, and which plan you need before touching the app.</div>
+        </div>
+
+        <p>Before you record your first video, it helps to understand what Velo actually does under the hood. Velo is not a screen recorder like Loom or Zoom. It is an <strong>AI video production tool</strong> — you give it raw input (a recording, slides, or a URL), and it returns a polished video with a script, an AI voice, and an AI avatar.</p>
+
+        <h3 class="section-heading">What Velo Is (and Is Not)</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Velo IS</div>
+            <p>An AI pipeline that takes raw input and produces a script + voice + avatar composited video. Great for product demos, onboarding, and sales content.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Velo is NOT</div>
+            <p>A basic screen recorder (not Loom), a video editor (not Camtasia), or an audio enhancer. It rewrites the narrative from scratch.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">The Full AI Pipeline</h3>
+        <p>Every Velo video — no matter which input mode you use — travels through the same five-step pipeline:</p>
+        <ol class="steps-list">
+          <li><div class="step-text"><strong>Raw Input</strong> — You provide a screen recording, uploaded file, slides, or a URL.</div></li>
+          <li><div class="step-text"><strong>Script Generation</strong> — Velo's AI analyzes what it sees (cursor movement, UI elements, timing) and writes a narration script.</div></li>
+          <li><div class="step-text"><strong>Voice Cloning</strong> — The script is read aloud using your VeloTwin voice (or a public voice if you don't have one yet).</div></li>
+          <li><div class="step-text"><strong>Avatar Compositing</strong> — Your AI face is overlaid on the video, lip-synced to the voice.</div></li>
+          <li><div class="step-text"><strong>Share Link</strong> — Velo publishes the finished video and gives you a shareable URL — no download required.</div></li>
+        </ol>
+
+        <h3 class="section-heading">The 4 Input Modes at a Glance</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Screen Capture</div>
+            <p>Record your screen live using the Chrome extension. Best for live product walkthroughs with any login-gated flow.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Upload a Recording</div>
+            <p>Upload an existing MP4, MOV, or WEBM (from Zoom, Gong, etc.). Velo writes a brand-new script from your footage.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Upload PDFs &amp; PNGs</div>
+            <p>Slide decks, mockups, feature screenshots. Velo navigates the slides and generates per-slide narration. Currently Beta.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Paste a Link</div>
+            <p>Give Velo a public URL. Its AI browser agent navigates the product autonomously and records a demo. Pro/Ultra only.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Requirements Before You Start</h3>
+        <ul class="bullet-list">
+          <li><strong>Browser:</strong> Chrome only — Safari, Firefox, and Edge are not supported.</li>
+          <li><strong>Extension:</strong> Velo Companion must be installed and pinned from the Chrome Web Store.</li>
+          <li><strong>Microphone:</strong> Required for voice cloning and live screen capture. Test it before your first recording.</li>
+          <li><strong>Device:</strong> Desktop only — Velo does not support mobile recording.</li>
+        </ul>
+
+        <h3 class="section-heading">Pricing Decoded</h3>
+        <table class="decision-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Price</th>
+              <th>Minutes / Month</th>
+              <th>Key Limits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="plan-badge plan-free">Free</span></td>
+              <td>$0</td>
+              <td>15 min</td>
+              <td>1 avatar video/mo, watermarked downloads</td>
+            </tr>
+            <tr>
+              <td><span class="plan-badge plan-pro">Pro</span></td>
+              <td>$20/mo</td>
+              <td>60 min</td>
+              <td>5 link-to-video/mo, 3 script retries/video, 3 voice regenerations/video</td>
+            </tr>
+            <tr>
+              <td><span class="plan-badge plan-ultra">Ultra</span></td>
+              <td>$200/mo</td>
+              <td>600 min</td>
+              <td>Custom VeloTwin, unlimited agentic, 10 retries/video</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="info-box">
+          <strong>What are Velo Minutes?</strong>
+          Velo Minutes measure the length of your <em>finished video output</em>, not your recording time. A 3-minute product demo costs 3 Velo Minutes. Minutes reset on your billing date each month.
+        </div>
+
+        <div class="warn-box">
+          <strong>Custom VeloTwin requires Ultra.</strong>
+          If you want your own face and voice as the avatar, you need the Ultra plan ($200/mo). Free and Pro plans give you access to public avatars — pre-built faces and voices from Velo's library.
+        </div>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>VeloTwin <span class="term-arrow">▾</span></summary>
+            <div class="term-def">Your AI avatar inside Velo. It combines a photo of your face with a clone of your voice. A <strong>public VeloTwin</strong> is a pre-built avatar from Velo's library — available on all plans. A <strong>custom VeloTwin</strong> uses your own face and voice and requires the Ultra plan.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Velo Companion <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The Chrome browser extension required to use Velo. It enables screen capture recording and the PDF/PNG input mode (Beta). Install it once from the Chrome Web Store and pin it to your toolbar so it's always accessible.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Velo Minutes <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The unit of consumption on your Velo plan. Each minute of finished video output costs one Velo Minute. They are not tied to how long you spent recording — only to the final video duration. They reset on your billing cycle.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>AI Pipeline <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The five automated steps Velo runs after you provide input: (1) analyze content, (2) generate script, (3) clone voice, (4) composite avatar, (5) produce share link. You guide them through the editor after the pipeline completes — you don't control each step directly during processing.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Agentic Mode <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The "Paste a Link" input mode. Velo's AI browser agent navigates a URL autonomously based on plain-English instructions you write, then records itself doing so. Available on Pro (5 uses/month) and Ultra (unlimited). Cannot access Cloudflare-protected or login-gated pages.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Plan Your Setup Before Your First Recording</h4>
+          <p>Complete this 5-minute orientation checklist before moving to Module 1:</p>
+          <ol>
+            <li>Open Chrome. If you don't have Chrome installed, download it now — it's required for Velo.</li>
+            <li>Search "Velo Companion" in the Chrome Web Store. Click Add to Chrome, then pin the icon to your toolbar.</li>
+            <li>Go to velo.video and sign up for the plan that matches your goals. If you want a custom VeloTwin, you need Ultra.</li>
+            <li>Write down your plan tier and your monthly Velo Minute allowance. You'll refer to this throughout the course.</li>
+            <li>Identify one product, feature, or workflow you'd like to demo for your capstone project. Write a one-sentence description of it.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 1 -->
+    <div class="module-card" data-module="1" id="module-1">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 1</div>
+        <div class="card-title">Your First Velo: Screen Capture Mode</div>
+        <div class="card-meta">45–60 min</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Record, process, and publish a complete Velo video end-to-end using Screen Capture — all in one sitting.</div>
+        </div>
+
+        <p>Screen Capture is Velo's most direct input mode: you share your screen, narrate what you're doing, and Velo handles everything else. This module walks you through every step — from installing the Chrome extension to seeing your finished share link in the browser.</p>
+
+        <h3 class="section-heading">Step 1: Install &amp; Pin the Velo Companion Extension</h3>
+        <ol class="steps-list">
+          <li><div class="step-text">Open Chrome and go to the Chrome Web Store. Search <strong>"Velo Companion"</strong>.</div></li>
+          <li><div class="step-text">Click <strong>Add to Chrome</strong>. When prompted, click <strong>Add extension</strong>.</div></li>
+          <li><div class="step-text">In your Chrome toolbar, click the puzzle piece icon (Extensions menu). Find Velo Companion and click the <strong>pin icon</strong> so it always shows in your toolbar.</div></li>
+          <li><div class="step-text">Confirm the Velo icon appears in your toolbar. If it doesn't, the extension didn't install — try again in a fresh Chrome window.</div></li>
+        </ol>
+
+        <h3 class="section-heading">Step 2: Set Up Your Recording</h3>
+        <p>Click the Velo Companion icon to open the recording launcher. Before you hit Record, configure three things:</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Window / Tab Selection</div>
+            <p>Choose <strong>Tab</strong> to capture a single browser tab (recommended — cleaner background). Use <strong>Window</strong> only if your demo spans multiple apps.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Resolution</div>
+            <p>Record at your screen's native resolution. Don't zoom in your browser before recording — Velo handles visual zoom in the editor afterward.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Microphone Check</div>
+            <p>Confirm the correct mic is selected. Speak a test phrase. If the level bar doesn't move, switch input devices before proceeding.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Step 3: Record Well</h3>
+        <p>Your narration and cursor movement directly shape the AI script Velo generates. Use this technique:</p>
+        <ul class="bullet-list">
+          <li><strong>Slow your clicks.</strong> Pause 1–2 seconds after each click so Velo can recognize the action before you move on.</li>
+          <li><strong>Narrate naturally.</strong> Speak like you're showing a colleague — avoid scripting or over-enunciating. The AI rewrites it anyway.</li>
+          <li><strong>Pause before transitions.</strong> When moving between sections of the product, take a breath. This gives Velo clean segment breaks.</li>
+          <li><strong>Filler words are fine.</strong> "Um", "uh", and "so" are stripped by the AI. Long mid-sentence pauses are more disruptive than filler words.</li>
+        </ul>
+
+        <h3 class="section-heading">Step 4: What Happens After You Stop Recording</h3>
+        <p>When you click <strong>Stop</strong>, Velo's AI pipeline starts immediately. Do not close the tab. Here's what's happening:</p>
+        <ol class="steps-list">
+          <li><div class="step-text">Velo analyzes your recording — cursor position, click events, timing, and UI content visible on screen.</div></li>
+          <li><div class="step-text">A script is generated: one line per segment, one segment per distinct action.</div></li>
+          <li><div class="step-text">The script is passed to the voice engine, which reads it using your selected VeloTwin voice.</div></li>
+          <li><div class="step-text">The avatar is composited over the video — face, lip sync, and eye movement all happen at this stage.</div></li>
+          <li><div class="step-text">You're placed into the Velo editor with the finished draft ready to review.</div></li>
+        </ol>
+
+        <div class="info-box">
+          <strong>Processing time:</strong> A 3-minute recording typically takes 3–8 minutes to process, depending on server load. Don't refresh the page — processing continues in the background even if the progress indicator looks stuck.
+        </div>
+
+        <h3 class="section-heading">Step 5: Your First Look at the Editor</h3>
+        <p>In this module, accept the auto-generated script as-is. Don't edit yet — script editing is covered in Module 5. For now, just observe:</p>
+        <ul class="bullet-list">
+          <li>The <strong>Scripts panel</strong> (right sidebar) shows the narration text broken into segments. Each line corresponds to one video chunk.</li>
+          <li>The <strong>timeline</strong> at the bottom shows your video laid out over time. Each segment appears as a block.</li>
+          <li>The <strong>Face panel</strong> (right sidebar) lets you choose or switch your VeloTwin voice and avatar.</li>
+        </ul>
+
+        <h3 class="section-heading">Step 6: Choose a Public VeloTwin &amp; Publish</h3>
+        <p>If you don't have a custom VeloTwin yet, open the Face panel and choose one of Velo's public avatars. Pick one whose tone matches your content — professional and neutral is a safe default for a first video.</p>
+        <p>Once you've selected a voice, click <strong>Publish</strong>. Velo finalizes the render and generates your <strong>share link</strong>. Copy it and open it in a new tab to see exactly what your recipients will see.</p>
+
+        <h3 class="section-heading">Common Failure Points</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Connection Drops</div>
+            <p>If your internet disconnects mid-recording, the upload fails silently. Record on a stable connection and keep the browser tab active throughout.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Blocked Permissions</div>
+            <p>If Chrome doesn't ask to use your mic, permissions are blocked. Go to Chrome Settings → Privacy → Microphone and allow velo.video.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Full Desktop vs. Tab</div>
+            <p>Sharing full desktop includes your taskbar, notifications, and other apps. Always share a specific tab unless you genuinely need multi-app coverage in your demo.</p>
+          </div>
+        </div>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>Screen Capture Mode <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The Velo input mode where you record your screen live using the Velo Companion Chrome extension. You narrate while recording. Velo analyzes the video afterward and generates a script from what it observed on screen.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Share Link <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The URL Velo generates after you publish a video. Anyone with the link can watch the video in a browser without logging into Velo. Share links are always watermark-free, regardless of your plan tier.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Public VeloTwin <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A pre-built avatar (face + voice) from Velo's library, available on all plans including Free. Useful for testing the platform before setting up a custom avatar. Custom avatars require the Ultra plan.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Processing Pipeline <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The automated sequence Velo runs after you stop recording: analysis → script → voice → avatar → output. Typically takes 2–3× the video duration to complete. Keep the browser tab open and don't refresh during processing.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Record &amp; Publish Your First Velo</h4>
+          <p>Goal: complete a full Velo production loop — from recording to share link — in one session.</p>
+          <ol>
+            <li>Open Chrome and navigate to any product or app you know well. It can be a simple settings page or a website you use daily.</li>
+            <li>Click the Velo Companion icon, configure your recording (select the tab, confirm mic is active), and click Record.</li>
+            <li>Record a 60–90 second walkthrough. Narrate naturally, slow your clicks, and pause between sections. Stop the recording when done.</li>
+            <li>Wait for processing to complete. Do not close the tab or refresh.</li>
+            <li>When the editor loads, open the Scripts panel and read the auto-generated script. Note what the AI captured accurately and where it missed the point — you'll learn to fix this in Module 5.</li>
+            <li>Select any public VeloTwin voice from the Face panel.</li>
+            <li>Click Publish. Copy the share link and open it in a new browser tab. Confirm the video plays correctly.</li>
+            <li>Write down 2–3 observations: How accurate was the script? How natural does the avatar look? What would you change on your next recording?</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 2 -->
+    <div class="module-card" data-module="2" id="module-2">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 2</div>
+        <div class="card-title">All Four Input Modes</div>
+        <div class="card-meta">1.5–2 hrs</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Confidently execute all 4 input modes and choose the right one for any production scenario.</div>
+        </div>
+
+        <p>You used Screen Capture in Module 1. Now you'll learn the other three modes — when to use each, how each feeds into the same AI pipeline, and how to pick the right mode every time without defaulting to Screen Capture out of habit.</p>
+
+        <h3 class="section-heading">Mode 2: Upload a Recording</h3>
+        <p>You already have footage — a Zoom call, a Gong session, a QuickTime recording, an OBS capture. Instead of re-recording, upload it directly to Velo.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Accepted Formats</div>
+            <p>MP4, MOV, WEBM. Maximum file size: 1 GB. Convert other formats using QuickTime (Mac) or HandBrake (Windows) before uploading.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">What Velo Does With It</div>
+            <p>Velo generates a <em>brand-new script</em> from your footage visuals. It does not clean up your original audio or enhance your narration — it replaces it entirely.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Best Sources</div>
+            <p>Zoom call recordings, Gong session clips, Fathom highlights, QuickTime screen recordings, OBS captures.</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Key insight:</strong> Upload mode is ideal for repurposing existing recordings. If your original video has good screen content but rambling narration, Upload mode is the right call — Velo discards the narration and writes a clean script from what it sees on screen.
+        </div>
+
+        <h3 class="section-heading">Mode 3: Upload PDFs &amp; PNGs (Beta)</h3>
+        <p>Have a slide deck, feature mockup, or unreleased UI you want to narrate? Upload it as a PDF or image file — no live product needed.</p>
+        <ul class="bullet-list">
+          <li><strong>Accepted formats:</strong> PDF, PNG, JPG, GIF, WebP</li>
+          <li><strong>Limits:</strong> Up to 10 files, 100 MB each</li>
+          <li><strong>How it works:</strong> Velo treats each slide or image as a scene. It navigates through them in order and generates per-slide narration automatically.</li>
+          <li><strong>Requires:</strong> Velo Companion Chrome Extension (currently Beta)</li>
+          <li><strong>Bonus option:</strong> For slide decks, Velo also offers an agentic browser recording — it opens your slides in a browser and records itself presenting them.</li>
+        </ul>
+
+        <h3 class="section-heading">Mode 4: Paste a Link (Agentic Mode)</h3>
+        <p>This is the most powerful — and most temperamental — input mode. Give Velo a URL and a plain-English description of the flow you want, and Velo's AI browser agent navigates the product on its own and records a demo.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">How It Works</div>
+            <p>You write a plain-English description of the flow you want demonstrated. Velo's agent opens a real browser, navigates the site autonomously, and records what it does.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Writing Good Instructions</div>
+            <p>Be specific. <em>Bad:</em> "show the app." <em>Good:</em> "Navigate to the Pricing page, click Compare Plans, highlight the Pro column, then click Start Free Trial."</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Limitations</div>
+            <p>Cannot access Cloudflare-protected sites, login-gated pages, or pages behind authentication walls. Beta status means occasional failures — have a Screen Capture fallback ready.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Usage Limits</div>
+            <p><span class="plan-badge plan-pro">Pro</span> 5 uses/month &nbsp; <span class="plan-badge plan-ultra">Ultra</span> Unlimited &nbsp; <span class="plan-badge plan-free">Free</span> Not available</p>
+          </div>
+        </div>
+        <div class="warn-box">
+          <strong>When Agentic fails, don't retry blindly.</strong> If Velo's agent gets stuck or produces a broken demo, switch to Screen Capture instead. Agentic mode is powerful for public URLs but unreliable for anything requiring a login or Cloudflare challenge.
+        </div>
+
+        <h3 class="section-heading">The Input Mode Decision Framework</h3>
+        <p>Use this table every time you start a new video. Pick the mode that matches your situation.</p>
+        <table class="decision-table">
+          <thead>
+            <tr>
+              <th>Your Situation</th>
+              <th>Best Mode</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fresh live product walkthrough, any login-gated flow</td>
+              <td><span class="mode-tag">Screen Capture</span></td>
+              <td>You control the flow exactly. Works behind any authentication.</td>
+            </tr>
+            <tr>
+              <td>Existing Zoom, Gong, or OBS recording to repurpose</td>
+              <td><span class="mode-tag">Upload</span></td>
+              <td>Saves re-recording time. Velo writes a fresh script from your footage.</td>
+            </tr>
+            <tr>
+              <td>Pitch deck, QBR slides, feature mockup, unreleased UI</td>
+              <td><span class="mode-tag">PDF / PNG</span></td>
+              <td>No live product needed. Works directly from design assets or slides.</td>
+            </tr>
+            <tr>
+              <td>Public SaaS URL with a flow you can describe in plain English</td>
+              <td><span class="mode-tag">Paste a Link</span></td>
+              <td>Fully automated — no screen time required. Best for public marketing pages.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>Agentic Mode <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The "Paste a Link" input mode. Velo uses an AI browser agent to autonomously navigate a URL based on natural language instructions you write. The agent records itself performing the demo. Pro plan: 5/month. Ultra: unlimited. Free plan: not available.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>PDF / PNG Mode (Beta) <span class="term-arrow">▾</span></summary>
+            <div class="term-def">Upload static image assets (PDFs, PNGs, JPGs, GIFs, WebPs) to Velo. Velo treats each file as a slide or scene, navigates through them in order, and generates per-slide narration. Requires the Chrome Extension. Currently in Beta — expect occasional quirks.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Upload Mode <span class="term-arrow">▾</span></summary>
+            <div class="term-def">Provide an existing video file (MP4, MOV, or WEBM, max 1 GB) recorded elsewhere. Velo generates a brand-new script from the visual content of your footage. Your original audio narration is discarded and replaced — not enhanced.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Try Two More Input Modes</h4>
+          <p>By the end of this exercise, you'll have used at least 3 of the 4 input modes.</p>
+          <ol>
+            <li><strong>Upload Mode:</strong> Find any existing screen recording on your computer — even a short Zoom clip. Upload it to Velo. Watch the pipeline run. Compare the AI-generated script to what was actually said in the original. Notice what Velo kept, rewrote, or missed.</li>
+            <li><strong>PDF Mode:</strong> Take any slide deck (even 3–5 slides exported as PNGs). Upload it to Velo using the PDF/PNG input mode. Review how Velo creates narration for each slide. Ask yourself: does the script match the message each slide was designed to convey?</li>
+            <li><strong>Agentic Mode (Pro/Ultra only):</strong> Pick a public SaaS website you want to demo. Write a specific 3–5 step instruction set (e.g., "Go to the pricing page, click Compare Plans, scroll down to the FAQ section"). Paste the URL and instructions into Velo. Watch the agent work — note where it succeeds and where it hesitates.</li>
+            <li>For each mode you tried: write one sentence about what surprised you and one thing you'd do differently next time.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 3 -->
+    <div class="module-card" data-module="3" id="module-3">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 3</div>
+        <div class="card-title">The Editor: Every Panel, Timeline &amp; Toolbar</div>
+        <div class="card-meta">1–1.5 hrs</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Navigate and operate every control surface in the Velo editor with confidence — right sidebar panels, timeline tracks, and toolbar tools.</div>
+        </div>
+
+        <p>After Velo processes your recording, you land in the editor. It has three main areas: the <strong>right sidebar</strong> (8 panels for video settings), the <strong>timeline</strong> at the bottom (6 track layers), and the <strong>toolbar</strong> above the timeline (editing tools). This module covers all of them.</p>
+
+        <h3 class="section-heading">Right Sidebar — 8 Panels</h3>
+        <p>The right sidebar is where you configure everything about how your video looks and sounds. Click each panel name to open it.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Screen / Background</div>
+            <p>Set your background style: <strong>Wallpaper</strong> (preset images), <strong>Gradient</strong>, or <strong>Solid color</strong>. Adjust the <strong>blur slider</strong> to soften the background behind your recording. Use the <strong>padding slider</strong> to add breathing room around your screen content. Set <strong>aspect ratio</strong>: 16:9, 9:16, 1:1, or 4:3.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Scripts</div>
+            <p>View your auto-generated transcript. Click the <strong>lock icon</strong> to unlock editing. You can edit up to <strong>+20% more words</strong> than the original script. After editing, click <strong>Re-render</strong> to update the voice — editing text alone doesn't change the audio.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Insert</div>
+            <p>Add visual elements: <strong>Text boxes</strong>, <strong>images</strong>, <strong>shapes</strong>, <strong>arrows</strong>. Add effects: <strong>Callout</strong> boxes (highlight a UI element) and <strong>Spotlight</strong> (dim surrounding areas). Add focus tools: <strong>Mask</strong> (hide sensitive content) and <strong>Zoom</strong> (draw attention to an area).</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Cards</div>
+            <p>Control your <strong>intro card</strong> — the title screen that appears at the start. Toggle it on/off, choose <strong>light or dark mode</strong>, set your <strong>Name/Role</strong>, <strong>Title</strong> (30-character limit), and <strong>Description</strong> (200-character limit).</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Face</div>
+            <p>Toggle your avatar on/off. Switch between <strong>VeloTwins</strong>. Use the <strong>9-point position grid</strong> to place the avatar (corners, edges, or center). Adjust <strong>size slider</strong>. Choose avatar <strong>shape</strong>: original, square, or round bubble. Enable <strong>zoom shrink</strong> behavior so the avatar shrinks when zoom blocks are active.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Audio</div>
+            <p>Browse and add <strong>background music</strong> from Velo's library. Adjust the <strong>master volume</strong> and control <strong>narration volume</strong> independently from music volume. Best practice: keep music at 20–30% of narration level.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Settings</div>
+            <p>Set your video's <strong>title</strong>, <strong>description</strong>, and upload a <strong>logo</strong> for the share page. This metadata appears when someone opens your share link.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Cursor</div>
+            <p>Toggle cursor <strong>visibility</strong>. Choose cursor <strong>style</strong>: classic, hand, or high-contrast. Adjust <strong>size</strong>. Enable <strong>hide-when-still</strong> with a delay. Turn on <strong>Smart Rotate</strong> for a natural feel. Add <strong>click effects</strong>: Circle or Ripple (with adjustable volume for click sounds).</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Timeline — 6 Track Layers</h3>
+        <p>The timeline runs along the bottom of the editor. It shows your video broken into tracks stacked on top of each other. Think of each track as a separate layer of your video.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Camera Track</div>
+            <p>Shows your VeloTwin face segments. You can toggle the avatar on or off for individual segments — useful for sections where the avatar would block important UI.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Video Track</div>
+            <p>The primary track — your original screen recording. This is the base layer everything else sits on top of. You can't remove it, but you can cut and crop it.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Zoom Track</div>
+            <p>Zoom blocks live here. Each block zooms into a specific area of your screen for its duration. Use <strong>Auto mode</strong> for cursor-following zoom, or <strong>Manual mode</strong> to lock the zoom target. Choose <strong>Instant</strong> or <strong>Smooth</strong> transition between zoom levels.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Masking Track</div>
+            <p>Mask blocks obscure a region of your screen for their duration. Place them over any email addresses, passwords, private dashboard numbers, or PII visible in your recording. The masked area appears as a blurred or solid block.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Spotlight Track</div>
+            <p>Spotlight blocks dim the area <em>around</em> the spotlight, drawing the viewer's eye to a specific UI element. Adjust <strong>border radius</strong> (circular vs. rectangular) and <strong>opacity</strong> (60–80% is usually readable without being too dark).</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Callout Track</div>
+            <p>Callout blocks add a labeled highlight box over a specific UI element. Useful for labeling buttons or fields the viewer needs to find on their own later. Adjust <strong>scale</strong>, <strong>opacity</strong>, <strong>color</strong>, and <strong>border radius</strong>. Keep duration short: 2–4 seconds is ideal.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Toolbar</h3>
+        <p>The toolbar sits above the timeline and gives you editing controls:</p>
+        <ul class="bullet-list">
+          <li><strong>Undo / Redo</strong> — Step backward or forward through your edit history.</li>
+          <li><strong>Playback controls</strong> — Play, pause, and scrub through the timeline to preview your video.</li>
+          <li><strong>Cut tool (✂)</strong> — Splits the video at the playhead position. Use this to remove sections or create clean segment breaks.</li>
+          <li><strong>Crop tool (⊡)</strong> — Trim the start or end of your video using handles. Drag inward to shorten, drag outward to restore.</li>
+          <li><strong>Timeline zoom slider</strong> — Zoom in on the timeline for precise block placement. Zoom out to see the full video at once.</li>
+          <li><strong>Fullscreen preview</strong> — Preview your video at full size to check how it will look on the share page.</li>
+        </ul>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>Zoom Track <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A timeline layer that contains zoom blocks. Each zoom block magnifies a region of your screen during its duration. Auto mode follows the cursor; Manual mode locks to a fixed target area. You can choose instant or smooth transitions between zoom levels.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Masking Track <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A timeline layer for placing mask blocks that obscure regions of your screen. Use it to hide PII (personally identifiable information), passwords, email addresses, or private dashboard data before sharing a video. Masks are time-based — they apply only during the block's duration on the timeline.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Spotlight Track <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A timeline layer for spotlight blocks that dim everything around a focused region. The effect draws viewer attention to a specific UI element without hiding the rest of the screen. Opacity of 60–80% is typically the right balance between readable and focused.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Callout Track <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A timeline layer for callout blocks — labeled highlight boxes that point to specific UI elements. Best used when you want viewers to locate a specific button or field on their own. Keep callout duration to 2–4 seconds so it doesn't linger.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Camera Track <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A timeline layer that controls the VeloTwin avatar. Each segment in the camera track can be toggled independently — enabling or disabling the avatar for that portion of the video. Useful when the avatar would otherwise block a key area of your screen content.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Scripts Panel <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The right sidebar panel showing your auto-generated narration, divided into segments. You can view, unlock, and edit the script here. After editing, you must re-render the audio — text changes alone don't update the voice output. Edits are capped at +20% over the original word count.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Tour Every Panel in Your Module 1 Video</h4>
+          <p>Open the Velo video you created in Module 1 and spend 10–15 minutes exploring the editor systematically:</p>
+          <ol>
+            <li>Open each of the 8 right sidebar panels one at a time. In each panel, move at least one slider or toggle one setting to understand what it controls.</li>
+            <li>In the Scripts panel, click the lock icon to unlock editing. Read the first 3 lines of the script. Don't change anything yet — just observe the segment structure.</li>
+            <li>In the Face panel, try repositioning the avatar using the 9-point grid. Move it to 3 different positions and note which placement feels most natural for your recording.</li>
+            <li>Look at the timeline. Identify all 6 track layers. Note which layers have content and which are empty.</li>
+            <li>Use the zoom slider in the toolbar to zoom into a specific moment in your video. Identify a click or action you'd want to zoom in on for a viewer.</li>
+            <li>Write down which editor panel or timeline track you find most confusing — that's your focus area for Modules 5 and 6.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 4 -->
+    <div class="module-card" data-module="4" id="module-4">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 4</div>
+        <div class="card-title">VeloTwin: Create, Calibrate &amp; Polish Your AI Avatar</div>
+        <div class="card-meta">1–1.5 hrs</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Create a photorealistic, well-calibrated custom VeloTwin that produces natural, professional output across every video.</div>
+        </div>
+
+        <p>Your VeloTwin is your AI avatar — the face and voice that appear in every Velo video. Getting it right is a one-time investment that pays off on every video you publish afterward. This module walks through the full setup: face capture, voice cloning, and in-editor calibration.</p>
+
+        <h3 class="section-heading">Public VeloTwins vs. Custom VeloTwins</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Public VeloTwins</div>
+            <p>Pre-built avatars from Velo's library. Available on <span class="plan-badge plan-free">Free</span> and <span class="plan-badge plan-pro">Pro</span> plans. No setup required. Good for testing the platform before committing to a custom avatar. You share the face with other Velo users.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Custom VeloTwin</div>
+            <p>Your own face + your own voice, permanently tied to your account. <span class="plan-badge plan-ultra">Ultra only</span>. One-time setup. Produces a professional, recognizable presence across all your videos. This is what makes Velo compelling for a personal brand.</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Not on Ultra yet?</strong> Complete this module with a public avatar. The calibration steps (positioning, size, shape, zoom shrink) apply to public VeloTwins too. When you upgrade, just re-run the face capture and voice cloning steps.
+        </div>
+
+        <h3 class="section-heading">Face Capture (One-Time Setup)</h3>
+        <p>Velo's face capture takes a series of photos to build your animated AI face. Before you start the countdown flow inside Velo, set up your environment correctly:</p>
+        <ul class="bullet-list">
+          <li><strong>Lighting:</strong> Even, front-facing light — no harsh shadows, no backlit windows. A ring light or a lamp placed in front of you both work well.</li>
+          <li><strong>Background:</strong> Neutral, solid color. Avoid white (blows out in the composite) and avoid anything patterned or busy.</li>
+          <li><strong>Camera position:</strong> Eye level. Your face should fill the frame without being cropped. Center yourself.</li>
+        </ul>
+        <p>Follow Velo's countdown photo flow inside the app. What Velo generates from your photos: natural <strong>blinks</strong>, <strong>head movement</strong>, <strong>eye gestures</strong>, and <strong>lip sync</strong> matched to your voice clone.</p>
+
+        <h3 class="section-heading">Voice Cloning</h3>
+        <p>Velo clones your voice from a training script you read aloud. The quality of your clone depends almost entirely on how you record it:</p>
+        <ol class="steps-list">
+          <li><div class="step-text"><strong>Read naturally.</strong> Use your normal speaking voice, at your normal pace. Do not over-enunciate — the clone captures your natural cadence, and exaggerated speech produces an unnatural clone.</div></li>
+          <li><div class="step-text"><strong>Use a quiet room.</strong> Background noise (AC hum, traffic, keyboard clicks) gets baked into the clone and becomes audible in every video.</div></li>
+          <li><div class="step-text"><strong>Maintain consistent distance.</strong> Keep the same distance from your mic for the entire training session. Distance changes produce inconsistent audio levels in the clone.</div></li>
+          <li><div class="step-text"><strong>Read the full script.</strong> Don't skip sentences. Velo uses every sample to build the model — partial readings produce a weaker clone.</div></li>
+        </ol>
+        <div class="warn-box">
+          <strong>Tonality matters.</strong> The voice clone captures your accent, cadence, and vocal character. If you're having a flat, monotone day, reschedule the recording. Your clone will reflect exactly the energy you bring to the training session.
+        </div>
+
+        <h3 class="section-heading">In-Editor Calibration (Face Panel)</h3>
+        <p>After your VeloTwin is created, you calibrate its appearance in every video using the Face panel in the editor:</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Positioning (9-Point Grid)</div>
+            <p>Use the rule of thirds: place the avatar in a corner or edge, not the center. The avatar should frame your screen content — not compete with it. Bottom corners work well for most product demos.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Size</div>
+            <p>Large enough to read as a human face (viewer should be able to see your expressions), but small enough not to block key UI elements. A good starting point: 15–20% of the video width.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Shape</div>
+            <p>Choose <strong>round bubble</strong> for a casual, friendly feel (great for onboarding and internal videos). Choose <strong>rectangular</strong> for a more formal, documentary-style look (better for executive briefings and sales demos).</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Zoom Shrink</div>
+            <p>Enable this if you're using zoom blocks frequently. When a zoom block is active, the avatar automatically shrinks out of the way so it doesn't block the zoomed-in area you're highlighting.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Avatar Length Limits</h3>
+        <table class="decision-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Max Avatar Video Length</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="plan-badge plan-pro">Pro</span></td>
+              <td>3 minutes</td>
+              <td>Sufficient for most product demos and feature updates</td>
+            </tr>
+            <tr>
+              <td><span class="plan-badge plan-ultra">Ultra</span></td>
+              <td>30 minutes</td>
+              <td>Required for long-form onboarding, training, or full product tours</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="section-heading">When to Re-Record</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Re-take the Face Capture If…</div>
+            <p>The lighting was uneven (one side of your face darker), shadows cut across your face, your background was cluttered, or the initial capture looks flat or unnatural in the editor.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Re-record the Voice If…</div>
+            <p>The clone sounds monotone compared to your normal speech, it struggles with your name or company terms, the background noise is audible in the clone output, or you've changed your speaking style significantly.</p>
+          </div>
+        </div>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>VeloTwin <span class="term-arrow">▾</span></summary>
+            <div class="term-def">Your AI avatar: a combination of a photo-based animated face and a cloned voice model. Public VeloTwins use pre-built faces and voices from Velo's library. Custom VeloTwins use your own face and voice and require the Ultra plan.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Voice Clone <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The AI model trained on your voice. It captures your accent, cadence, and vocal character. The clone is used to read your generated script aloud in every video. Quality depends heavily on recording environment and natural speech during training.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Face Capture <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The one-time photo session inside Velo that creates your animated AI face. From your photos, Velo generates a model that can blink, move its head, track eyes, and lip-sync to your voice clone. Lighting and background quality directly affect the realism of the output.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Zoom Shrink <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A Face panel setting that automatically reduces the avatar's size when a zoom block is active on the timeline. Prevents the avatar from blocking the UI area being highlighted during the zoom. Recommended when using frequent zoom blocks.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>9-Point Position Grid <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A placement control in the Face panel with 9 positions: 4 corners, 4 edges, and center. Use it to position the VeloTwin avatar relative to your screen content. Bottom corners are the most common choice for product demos.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Set Up Your VeloTwin</h4>
+          <p>Complete whichever path applies to your plan:</p>
+          <ol>
+            <li><strong>Ultra plan:</strong> Complete your custom VeloTwin setup — face capture first (set up lighting and background, run the countdown flow), then voice cloning (quiet room, normal pace, full training script). Allow up to 24 hours for processing after completion.</li>
+            <li><strong>Free or Pro plan:</strong> Open the Face panel in the editor and browse Velo's public avatar library. Choose one that best fits your use case. Document which one you chose and why — what about its voice, appearance, or tone made it feel right for your content?</li>
+            <li>Regardless of plan: calibrate the avatar in your Module 1 video. Open the Face panel, try all 9 position grid options, and settle on one. Adjust the size so the avatar is visible but doesn't block key UI. Choose your shape (round vs. rectangular). Toggle Zoom Shrink on and observe the difference when a zoom block is active.</li>
+            <li>Write one sentence describing how you'd explain your calibration choices to a teammate who's about to set up their first Velo video.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 5 -->
+    <div class="module-card" data-module="5" id="module-5">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 5</div>
+        <div class="card-title">Script Mastery: Generation, Editing &amp; Prompting</div>
+        <div class="card-meta">1–1.5 hrs</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Produce predictable, on-tone scripts by mastering manual editing, context prompting, retries, and voice regeneration.</div>
+        </div>
+
+        <p>The script is the core of every Velo video. Everything else — voice, avatar, timeline effects — is presentation. If the script is wrong, the video is wrong. This module gives you four tools to control script quality: editing, context prompting, retries, and voice regeneration.</p>
+
+        <h3 class="section-heading">How Velo Generates Scripts</h3>
+        <p>Understanding how Velo writes your first draft helps you predict where it'll go wrong — and fix it faster.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">What It Analyzes</div>
+            <p>Velo reads your cursor position, click events, screen content, and timing. It uses visual cues — what's on screen, what you clicked, when you paused — not your spoken narration.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Script Structure</div>
+            <p>One line = one segment = one video chunk. Each line in the Scripts panel corresponds to one block on the timeline. Editing a line changes that chunk's narration.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Where First Drafts Fall Short</div>
+            <p>Typical issues: too much technical jargon, wrong emphasis (describing what you clicked instead of why), and occasional factual errors about what the UI actually does.</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Expect 80% accuracy on first draft.</strong> Velo's AI is good at describing what it sees, but it doesn't know your audience or your message. Manual tuning and context prompting close the gap.
+        </div>
+
+        <h3 class="section-heading">Manual Script Editing</h3>
+        <ol class="steps-list">
+          <li><div class="step-text">Open the Scripts panel in the right sidebar. Click the <strong>lock icon</strong> to unlock editing.</div></li>
+          <li><div class="step-text">Edit the text directly. You can change, remove, or rewrite any line — but stay within the <strong>+20% word count limit</strong>. Adding more than 20% over the original word count per segment is not allowed.</div></li>
+          <li><div class="step-text">After editing, click <strong>Re-render audio</strong>. Editing the text alone does not update the voice — you must explicitly trigger a re-render for changes to take effect in the audio.</div></li>
+        </ol>
+        <p>What to edit: Remove filler phrases ("so basically", "what we're going to do here is"). Fix jargon that your audience won't recognize. Correct wrong emphasis. Adjust pacing — shorter sentences speak more naturally than long ones.</p>
+
+        <h3 class="section-heading">Context Prompting — Rewrite with a Tone</h3>
+        <p>Instead of editing line by line, you can give Velo a <strong>context prompt</strong> — a description of your audience, tone, and goal — and have it rewrite the entire script at once. This is faster than manual editing for tone corrections.</p>
+        <p>Use these three prompt templates as your starting point. Copy each one and customize it for your video:</p>
+
+        <div class="code-block-wrapper">
+          <pre>Executive audience — skip technical steps, focus on business outcomes and time-to-value</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="code-block-wrapper">
+          <pre>Sales demo tone — benefit-led opening, focus on pain point solved, close with a clear next step</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="code-block-wrapper">
+          <pre>Tutorial tone — instructional, step-by-step, patient pace, name every UI element the viewer needs to find</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="info-box">
+          <strong>Build a prompt library.</strong> Save your 3 most-used context prompts in a doc (see Module 7 for the full playbook approach). The goal: never write a new context prompt from scratch for a video type you've done before.
+        </div>
+
+        <h3 class="section-heading">Script Retries</h3>
+        <p>A script retry asks Velo to generate a completely fresh script from your original recording — different word choice, emphasis, and structure. Use retries when the first draft is fundamentally off, not when you just need to tweak a few lines.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">When to Retry</div>
+            <p>The script missed the point entirely. The structure is wrong. The tone is completely off. A retry has a chance of getting the structure right from scratch.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">When to Edit Manually</div>
+            <p>The script is basically right but specific lines need fixing. Manual editing is faster and targeted — don't burn a retry on a 2-line problem.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Retry Limits</div>
+            <p><span class="plan-badge plan-pro">Pro</span> 3 retries per video &nbsp; <span class="plan-badge plan-ultra">Ultra</span> 10 retries per video. Use retries strategically — don't run through them speculatively.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Voice Regenerations</h3>
+        <p>After editing the script text, you must re-render the voice. This is called a <strong>voice regeneration</strong>. It is separate from a script retry:</p>
+        <ul class="bullet-list">
+          <li><strong>Script retry:</strong> Velo rewrites the script from scratch. Costs one retry. Does NOT cost a voice regeneration.</li>
+          <li><strong>Voice regeneration:</strong> Velo re-reads the current script with the voice model. Required after any manual text edit. Costs one regeneration.</li>
+          <li><strong>Limits:</strong> <span class="plan-badge plan-pro">Pro</span> 3 regenerations/video &nbsp; <span class="plan-badge plan-ultra">Ultra</span> 10 regenerations/video</li>
+        </ul>
+        <div class="warn-box">
+          <strong>Don't burn regenerations on minor edits.</strong> Make all your text changes at once, then regenerate once. Regenerating after each individual line edit wastes your budget.
+        </div>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>Script Retry <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A complete script regeneration from your original recording. Velo generates a brand-new script — different word choice, structure, and emphasis. Pro: 3 per video. Ultra: 10 per video. Use when the first draft is fundamentally wrong, not for minor tweaks.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Context Prompt <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A plain-English description of your audience, tone, and goal that you give to Velo before it generates (or regenerates) a script. Example: "Executive audience — skip technical steps, focus on business outcomes." Context prompts steer the tone and structure of the entire script at once.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Voice Regeneration <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The process of re-recording the script audio with the voice model after you've edited the script text. Required whenever you change script text — Velo does not automatically update the audio when you type. Pro: 3 per video. Ultra: 10 per video.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Word Count Limit <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The constraint on manual script editing: you can add up to +20% more words than the original segment's word count. Going over this limit is not allowed. If you need to say significantly more than the original script, consider splitting the segment or using a context prompt to restructure.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Script Segment <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A single chunk of video content — one line in the Scripts panel, one block on the timeline. Each segment has its own narration text and corresponding video clip. Editing one segment's text only changes that chunk's audio.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Edit and Prompt Your Module 1 Script</h4>
+          <p>Open the Velo video you created in Module 1 and run through the full script improvement workflow:</p>
+          <ol>
+            <li>Open the Scripts panel. Unlock editing by clicking the lock icon. Read all the lines. Identify 3 lines that feel off — too technical, wrong emphasis, or awkward phrasing.</li>
+            <li>Edit those 3 lines manually. Rewrite them in plain, natural language. Stay within the +20% word count limit per segment.</li>
+            <li>Click Re-render audio. Wait for the regeneration to complete. Listen to the updated segments and compare them to the originals.</li>
+            <li>Now use a context prompt. Apply the "sales demo tone" template above (customize it if needed). Observe how the entire script structure changes vs. your manual edits.</li>
+            <li>Compare the two versions: manual edits vs. context-prompted script. Which sounds better for your intended audience? Which approach was faster?</li>
+            <li>Write down the context prompt you'd use for your capstone video. Save it — you'll use it in the capstone module.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 6 -->
+    <div class="module-card" data-module="6" id="module-6">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 6</div>
+        <div class="card-title">Production Quality: Brand Kit &amp; Strategic Timeline Layers</div>
+        <div class="card-meta">1.5–2 hrs</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Produce videos that look consistent, professional, and brand-aligned using brand kit, intro cards, and strategic annotation tools.</div>
+        </div>
+
+        <p>A technically correct video that looks inconsistent or unpolished undermines your credibility. This module covers the visual and audio production layer: brand kit setup, intro cards, background decisions, cursor customization, and strategic use of the six timeline annotation tools.</p>
+
+        <h3 class="section-heading">Brand Kit Setup</h3>
+        <p>Your brand kit is the visual identity that appears across every video. Set it up once and apply it as your default so you never start from zero.</p>
+        <ul class="bullet-list">
+          <li><strong>Logo:</strong> Upload your company or personal logo. It appears on the share page when anyone opens your share link.</li>
+          <li><strong>Brand colors:</strong> Set your primary and secondary colors. These are applied to backgrounds, intro cards, and callout styling throughout the editor.</li>
+          <li><strong>Personas:</strong> A persona bundles a brand kit configuration — colors, logo, avatar, and default settings — under a named profile. Create one persona per brand, product line, or client if you're producing videos for multiple contexts.</li>
+          <li><strong>Set as default:</strong> Make your configured brand kit the default for all new videos so you never have to reapply it manually.</li>
+        </ul>
+
+        <h3 class="section-heading">Intro Cards</h3>
+        <p>An intro card is a title screen that plays at the start of your video before the screen recording begins. It sets context and adds immediate professionalism.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Light vs. Dark Mode</div>
+            <p>Match your brand. Dark mode feels premium and modern. Light mode feels cleaner and more approachable. Choose one and use it consistently across your video library.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Copywriting the Card</div>
+            <p><strong>Name/Role:</strong> Your name and title. <strong>Title:</strong> 30-character limit — make it the video's core topic, not your name. <strong>Description:</strong> 200-character limit — one sentence on what the viewer will learn or see.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">When to Skip It</div>
+            <p>Intro cards work best for external videos (prospects, stakeholders). For quick internal screen recordings or informal team updates, they can add unnecessary formality. Use judgment.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Background &amp; Format Decisions</h3>
+        <table class="decision-table">
+          <thead>
+            <tr>
+              <th>Setting</th>
+              <th>Options</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Background style</td>
+              <td>Wallpaper, Gradient, Solid color</td>
+              <td>Wallpaper for brand storytelling; Gradient for modern demos; Solid for minimal distraction</td>
+            </tr>
+            <tr>
+              <td>Blur slider</td>
+              <td>0–100%</td>
+              <td>Creates visual depth behind the recording. 60–80% softens the background without losing context.</td>
+            </tr>
+            <tr>
+              <td>Padding slider</td>
+              <td>0–max</td>
+              <td>Adds breathing room around the screen content. More padding = smaller recording within the frame.</td>
+            </tr>
+            <tr>
+              <td>Aspect ratio</td>
+              <td>16:9, 9:16, 1:1, 4:3</td>
+              <td>16:9 for desktop and email; 9:16 for LinkedIn and mobile; 1:1 for social posts; 4:3 for legacy contexts</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="section-heading">Cursor Customization</h3>
+        <ul class="bullet-list">
+          <li><strong>Cursor style:</strong> Classic (standard arrow), Hand (pointing finger), or High-contrast (for viewers with accessibility needs or small screens).</li>
+          <li><strong>Smart Rotate:</strong> Rotates the cursor to follow movement direction. Adds a natural, fluid feel — enable for most product demos.</li>
+          <li><strong>Click effects:</strong> Circle (subtle, professional) or Ripple (more visible, can distract). Use click effects sparingly — one effect throughout, not mixed.</li>
+          <li><strong>Hide when still:</strong> Hides the cursor after a set delay when you're not moving. Reduces visual clutter during static moments where you're just narrating.</li>
+        </ul>
+
+        <h3 class="section-heading">Strategic Timeline Layers — When &amp; How</h3>
+        <p>You learned what each layer is in Module 3. Now you'll learn when to use each one — and which combinations work vs. which ones create noise.</p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Zoom Blocks</div>
+            <p><strong>When:</strong> Use to draw attention to a specific UI element during a key step. <strong>Auto mode</strong> for cursor-following demos — the zoom tracks wherever you click. <strong>Manual mode</strong> to lock focus on a specific area regardless of cursor movement.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Spotlight</div>
+            <p><strong>When:</strong> Use for complex UIs with a lot of noise around the element you're demonstrating. Sets opacity carefully — <strong>60–80%</strong> dims enough to focus attention without making the rest of the screen unreadable.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Callout Boxes</div>
+            <p><strong>When:</strong> Use to label UI elements the viewer will need to find on their own after watching. Duration: <strong>2–4 seconds</strong> — long enough to register, short enough not to linger. Don't use callouts on things the camera is already on.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Masks</div>
+            <p><strong>Always:</strong> Mask any PII, passwords, email addresses, private dashboard numbers, or internal data before publishing. Place mask blocks on the timeline (not as static overlays) so they cover the sensitive data only during the frames where it appears.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <strong>Layering strategy:</strong> Zoom + Callout together = maximum clarity on a key step (zoom in, then label the element). Avoid Zoom + Spotlight together — two focus effects compete and create visual noise.
+        </div>
+
+        <div class="warn-box">
+          <strong>Always mask PII before publishing.</strong> Any video with an email address, password, or private dashboard data visible in the recording must have those elements masked before you share the link. Review your video frame by frame for sensitive content before hitting Publish.
+        </div>
+
+        <h3 class="section-heading">Audio Balance</h3>
+        <ul class="bullet-list">
+          <li><strong>Background music:</strong> Use sparingly for product demos — music can undermine the professional feel. Reserve it for showcase or announcement videos.</li>
+          <li><strong>Narration vs. music volume:</strong> Narration should dominate completely. Set music to 20–30% of the narration level — it should be ambient, not noticeable.</li>
+          <li><strong>Test on headphones:</strong> Background music that sounds subtle in your speakers can be loud and distracting on headphones. Always check before publishing.</li>
+        </ul>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>Brand Kit <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A reusable visual identity configuration in Velo: your logo, brand colors, default avatar, and persona settings. Set it as your default so every new video starts with consistent branding applied automatically.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Persona <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A named bundle of brand kit settings — colors, logo, avatar, and defaults — inside Velo. Useful when producing videos for multiple brands, clients, or contexts. Switch personas to instantly apply a different visual identity to a video.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Intro Card <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A title screen that plays at the beginning of a Velo video before the screen recording starts. Contains your name/role, a title (30-char max), and a description (200-char max). Adds perceived professionalism to external-facing videos.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Aspect Ratio <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The width-to-height ratio of your video frame. 16:9 is standard for desktop and email. 9:16 (vertical) is optimized for LinkedIn and mobile viewing. 1:1 (square) works for social media posts. 4:3 is used in legacy or presentation contexts.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Zoom Shrink <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A Face panel setting that shrinks the VeloTwin avatar automatically when a zoom block is active on the timeline, preventing it from blocking the zoomed-in UI area. Covered in detail in Module 4.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>PII (Personally Identifiable Information) <span class="term-arrow">▾</span></summary>
+            <div class="term-def">Any data that could identify a real person: email addresses, names, phone numbers, account numbers, or private dashboard data. Must always be masked in Velo videos before publishing. Use the Masking track to cover these elements on the timeline.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Apply Production Polish to Your Module 1 Video</h4>
+          <p>Open your Module 1 video in the editor and apply every production layer covered in this module:</p>
+          <ol>
+            <li>Set up a brand kit: upload a logo (or use a placeholder), set at least two brand colors. Make it your default.</li>
+            <li>Enable the intro card. Write a title (under 30 characters) that describes what the video demonstrates. Write a description (under 200 characters) that tells the viewer what they'll learn.</li>
+            <li>Choose a background: pick Gradient or Solid to keep the background clean. Adjust the padding slider to give your recording room to breathe.</li>
+            <li>Review the video frame by frame for any PII (email addresses, private data, internal names). Place a mask block over anything sensitive.</li>
+            <li>Add at least one zoom block over the most important click or action in your demo. Use Auto mode first; switch to Manual if the zoom doesn't track correctly.</li>
+            <li>If applicable, add a callout box over one UI element the viewer will need to find independently.</li>
+            <li>Publish the updated video. Open the share link and review it as if you were the recipient. Would you send this to a real prospect or stakeholder?</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 7 -->
+    <div class="module-card" data-module="7" id="module-7">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge">Module 7</div>
+        <div class="card-title">Workflow Playbook &amp; Pricing Optimization</div>
+        <div class="card-meta">1–1.5 hrs</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Module Outcome</div>
+          <div class="outcome-text">Build and document a personal Velo workflow playbook that makes every new video faster, more consistent, and strategically within your plan limits.</div>
+        </div>
+
+        <p>By now you have all the tools. This module is about systematizing them — turning what you've learned into a repeatable workflow so that the third video is as good as the tenth, and you never waste Velo Minutes on preventable mistakes.</p>
+
+        <h3 class="section-heading">Your Repeatable Production Workflow</h3>
+        <p>Every Velo video should follow the same loop. The goal is to reduce decision fatigue — you decide once, then execute every time.</p>
+        <ol class="steps-list">
+          <li><div class="step-text"><strong>Pre-production checklist:</strong> Flow planned and tested. Talking points ready. Chrome extension pinned. Mic tested. Brand kit set as default.</div></li>
+          <li><div class="step-text"><strong>Record or input:</strong> Choose your input mode (use the decision framework below). Execute the recording or upload.</div></li>
+          <li><div class="step-text"><strong>Review script:</strong> Read all lines. Identify what's wrong before touching anything.</div></li>
+          <li><div class="step-text"><strong>Apply context prompt:</strong> Use your saved prompt template for this video type. Re-render audio after changes.</div></li>
+          <li><div class="step-text"><strong>Set avatar and brand kit:</strong> Confirm the right VeloTwin is selected. Confirm brand kit is applied (logo, colors, persona).</div></li>
+          <li><div class="step-text"><strong>Apply timeline effects:</strong> Zoom on key clicks, mask any PII, add callouts where needed, enable intro card.</div></li>
+          <li><div class="step-text"><strong>Publish and verify:</strong> Generate share link. Open it in a new tab. Confirm it plays correctly and looks exactly as intended.</div></li>
+        </ol>
+
+        <h3 class="section-heading">Time Benchmarks by Video Type</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Sales Demo</div>
+            <p>30–45 minutes total. ~10 min recording, ~20–30 min editing (script + timeline effects). Most of the time goes to script and zoom placement.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Onboarding Video</div>
+            <p>45–60 minutes total. Longer recording (multiple features), more masking and callouts needed. Budget more time for timeline polish.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Feature Update</div>
+            <p>20–30 minutes total. Focused scope, usually 1–2 features. Fastest production type when your workflow is established.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">Input Mode Decision Matrix</h3>
+        <table class="decision-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Best Mode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>New live product walkthrough, any auth-gated flow</td>
+              <td><span class="mode-tag">Screen Capture</span></td>
+            </tr>
+            <tr>
+              <td>Repurposing a Zoom, Gong, or OBS recording</td>
+              <td><span class="mode-tag">Upload</span></td>
+            </tr>
+            <tr>
+              <td>Pitch deck or slide deck</td>
+              <td><span class="mode-tag">PDF / PNG</span></td>
+            </tr>
+            <tr>
+              <td>Public SaaS product, new browser-accessible flow</td>
+              <td><span class="mode-tag">Paste a Link</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="section-heading">Script Prompt Library</h3>
+        <p>Save these four prompts. Use the one that matches your video type — customize the details, but keep the structural frame.</p>
+
+        <div class="code-block-wrapper">
+          <pre>Sales demo: benefit-led opening, focus on the pain point this solves, close with a clear next step for the viewer</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="code-block-wrapper">
+          <pre>Executive briefing: outcomes only, no step-by-step instructions, frame everything in terms of business impact and time-to-value</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="code-block-wrapper">
+          <pre>Onboarding tutorial: patient pace, name every UI element the viewer needs to find, repeat key actions before moving on</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="code-block-wrapper">
+          <pre>Feature announcement: what's new and why it matters, demonstrate it in 3 clear steps, end with how to access it</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <h3 class="section-heading">Brand Kit Defaults to Lock In</h3>
+        <ul class="bullet-list">
+          <li><strong>Logo:</strong> Uploaded and set as default — appears on every share page automatically.</li>
+          <li><strong>Brand colors:</strong> At least two colors set (primary and secondary).</li>
+          <li><strong>Default VeloTwin:</strong> Your custom avatar (or chosen public avatar) set as the default so you never start with an unintended face.</li>
+          <li><strong>Default persona:</strong> If you produce videos for multiple contexts, create and name separate personas — one per brand or client.</li>
+          <li><strong>Naming convention:</strong> Name your videos consistently: [Product] — [Video Type] — [Date] (e.g., "Acme — Sales Demo — 2026-04").</li>
+        </ul>
+
+        <h3 class="section-heading">Pricing Optimization</h3>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-card-title">Free Plan</div>
+            <p>15 Velo Minutes/month. Good for evaluation only — you'll hit the limit in one or two 5-minute demos. Not suitable for regular production.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Pro Plan ($20/mo)</div>
+            <p>60 minutes/month. At a 3-minute demo average, that's ~20 demos per month. Budget your 3 retries and 3 voice regenerations per video for important content. Don't use retries speculatively.</p>
+          </div>
+          <div class="concept-card">
+            <div class="concept-card-title">Ultra Plan ($200/mo)</div>
+            <p>600 minutes/month + custom VeloTwin + unlimited agentic + 10 retries. Warranted when you're producing daily, need 30-min demos, or are using Velo across a team.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <strong>Watermark strategy:</strong> Share links are always watermark-free on all plans — including Free. Only direct downloads from Free are watermarked. When sharing externally, always use share links, never raw file downloads.
+        </div>
+
+        <h3 class="section-heading">Velo Minutes Math</h3>
+        <p>Estimate your monthly minute consumption before you upgrade:</p>
+        <ul class="bullet-list">
+          <li>Sales demos (avg 3 min each): 3 × [demos/month] = minutes consumed</li>
+          <li>Onboarding videos (avg 5–7 min each): 6 × [videos/month] = minutes consumed</li>
+          <li>Feature updates (avg 2 min each): 2 × [updates/month] = minutes consumed</li>
+          <li>Add a 20% buffer for retries and regenerations that produce slightly longer output</li>
+          <li>If total exceeds 60 min/month consistently, upgrade to Ultra</li>
+        </ul>
+
+        <h3 class="section-heading">Video Library System</h3>
+        <ul class="bullet-list">
+          <li><strong>Naming conventions:</strong> Use a consistent format: [Context] — [Type] — [YYYY-MM]. Makes searching your library fast.</li>
+          <li><strong>Reuse vs. re-record:</strong> Re-share an existing video if the product hasn't changed. Re-record if the UI, flow, or message has changed meaningfully.</li>
+          <li><strong>Regenerate vs. start fresh:</strong> Use voice regeneration if only the script needs updating. Start fresh if the recording itself is outdated.</li>
+        </ul>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>Production Loop <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The repeatable 7-step workflow for producing every Velo video: pre-production → record → review script → context prompt → avatar + brand kit → timeline effects → publish and verify. Following the same loop every time reduces errors and speeds up production.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Prompt Library <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A saved collection of your most-used context prompts, organized by video type (sales demo, executive briefing, onboarding tutorial, feature announcement). The goal is to never write a context prompt from scratch for a familiar video type.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Brand Kit Default <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The brand kit configuration set as your account default so every new video starts with your logo, colors, persona, and avatar pre-applied. You should never have to manually apply your brand kit to a new video once the default is set.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Velo Minutes Math <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The calculation for estimating monthly Velo Minute consumption: (avg video length × videos per month per type) + 20% buffer for retries/regenerations. Use this to determine whether Free, Pro, or Ultra is the right plan for your production volume.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Watermark-Free Sharing <span class="term-arrow">▾</span></summary>
+            <div class="term-def">On all Velo plans (including Free), share links generate watermark-free videos. Only direct file downloads from the Free plan include a Velo watermark. Always share via link for external-facing content.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Hands-On Exercise</div>
+          <h4>Write Your Personal Playbook</h4>
+          <p>Create a simple document (Google Doc, Notion page, or text file) that contains your personal Velo production system. This is Deliverable 2 of your capstone:</p>
+          <ol>
+            <li>Write your default input mode and the one-sentence reason why it's your default.</li>
+            <li>Copy the 3–4 context prompt templates from this module that match the types of videos you produce. Customize each one for your product, audience, and tone.</li>
+            <li>Write your pre-production checklist: the specific steps you complete before every recording session (extension pinned, mic tested, flow rehearsed, etc.).</li>
+            <li>Document your brand kit defaults: logo location, primary/secondary brand colors, default VeloTwin name, default persona name.</li>
+            <li>Write your Velo Minutes math: how many videos you produce per month, average length, estimated monthly consumption. Are you on the right plan?</li>
+            <li>Add a naming convention section: the exact format you'll use to name all your Velo projects going forward.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Module complete</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capstone -->
+    <div class="module-card" data-module="capstone" id="module-capstone">
+      <div class="card-header" tabindex="0" role="button">
+        <div class="card-module-badge capstone">Capstone</div>
+        <div class="card-title">Your Production-Ready Demo</div>
+        <div class="card-meta">Self-paced</div>
+        <svg class="card-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="outcome-block">
+          <div class="outcome-label">Capstone Outcome</div>
+          <div class="outcome-text">Prove the full 8/10 transformation by producing and sharing a real video you'd actually send to a prospect or stakeholder — plus a written playbook you can reuse.</div>
+        </div>
+
+        <p>The capstone is not a test. It is proof. If you can complete both deliverables below and check every item in the self-evaluation rubric, you are operating at <strong>8/10 Velo proficiency</strong>: consistent production-quality output, systematic workflow, and confident use of every core tool.</p>
+
+        <h3 class="section-heading">Deliverable 1: A Polished Velo Video</h3>
+        <p>Produce and publish a <strong>2–4 minute</strong> Velo video on a subject that matters to you — a product you sell, a feature you want to announce, a workflow you want to document. Use a real audience: someone you'd actually send this to.</p>
+        <div class="info-box">
+          <strong>Required elements in Deliverable 1:</strong> Custom VeloTwin (or a public avatar with deliberate positioning), brand kit applied, script context-prompted for the correct audience and tone, at least one zoom block used intentionally, sensitive data masked if applicable, intro card present and well-copywritten, audio balanced, share link verified in a browser.
+        </div>
+
+        <h3 class="section-heading">Deliverable 2: Your Written Playbook</h3>
+        <p>The playbook you started building in Module 7. It should be a document you can hand to a new teammate or pull up before your next recording session. Minimum contents:</p>
+        <ul class="bullet-list">
+          <li>Your default input mode and the one-sentence reason why</li>
+          <li>3–4 context prompt templates, customized for your product and audience</li>
+          <li>Your pre-production checklist (the exact steps before every recording)</li>
+          <li>Your brand kit defaults: colors, logo, default VeloTwin, persona name</li>
+          <li>Your Velo Minutes math and monthly budget</li>
+          <li>A naming convention for your Velo video library</li>
+        </ul>
+
+        <h3 class="section-heading">Self-Evaluation Rubric — 8/10 Checklist</h3>
+        <p>Before marking the capstone complete, check every item below against your finished video:</p>
+        <ul class="bullet-list">
+          <li>Used a custom VeloTwin <em>or</em> a public avatar with deliberate, consistent positioning throughout</li>
+          <li>Brand kit applied: at least two brand colors set, logo uploaded if available</li>
+          <li>Script context-prompted for the correct audience and tone — not just the raw first draft</li>
+          <li>At least one zoom block used intentionally on a key UI element (not randomly placed)</li>
+          <li>Any sensitive data (emails, passwords, internal numbers, PII) masked before publishing</li>
+          <li>Intro card present with a clear title (under 30 characters) and a compelling description</li>
+          <li>Audio balanced: narration dominates, background music (if used) at 20–30% of narration level</li>
+          <li>Share link verified: opens correctly in a browser tab, plays from start to finish without errors</li>
+          <li>Personal playbook exists as a reusable document — not just notes in your head</li>
+        </ul>
+
+        <div class="info-box">
+          <strong>What does 8/10 mean?</strong> You produce real, shareable work efficiently and consistently. 10/10 would require months of daily production and custom integrations beyond the scope of this course. 8/10 is the point where Velo becomes a genuine productivity multiplier for your work.
+        </div>
+
+        <div class="key-terms">
+          <div class="key-terms-label">Key Terms</div>
+
+          <details class="term-item">
+            <summary>8/10 Proficiency <span class="term-arrow">▾</span></summary>
+            <div class="term-def">The target outcome for this course: consistent production-quality output, a systematic workflow, and confident use of every core Velo tool. At this level, you produce videos that look professional, run on a repeatable process, and stay within your plan limits — without guessing.</div>
+          </details>
+
+          <details class="term-item">
+            <summary>Production Playbook <span class="term-arrow">▾</span></summary>
+            <div class="term-def">A personal documented system that tells you exactly what to do every time you start a new Velo video. Includes your input mode defaults, script prompt templates, pre-production checklist, and brand kit settings. The goal: never start from zero again.</div>
+          </details>
+        </div>
+
+        <div class="exercise-block">
+          <div class="exercise-label">Capstone Project</div>
+          <h4>Produce Your Production-Ready Demo</h4>
+          <p>Use everything you've learned. Run your own playbook. Check every rubric item before marking this complete.</p>
+          <ol>
+            <li>Choose your demo subject: a product you sell, a workflow your team uses, or a feature you want to announce. This should be something you'd genuinely send to someone.</li>
+            <li>Run your pre-production checklist: flow planned and tested, brand kit ready, mic tested, Chrome extension pinned, context prompt selected.</li>
+            <li>Record or input using the mode that best fits your subject. Apply your context prompt as soon as the script is generated.</li>
+            <li>In the editor: confirm your VeloTwin is set, brand kit is applied, intro card is filled in, zoom blocks are placed on key steps, and any sensitive data is masked.</li>
+            <li>Publish. Open the share link in a new tab. Watch the full video from start to finish as if you are the recipient.</li>
+            <li>Check every item in the self-evaluation rubric above. Fix anything that doesn't pass.</li>
+            <li>Confirm your playbook document is complete and contains all six minimum sections from Deliverable 2.</li>
+            <li>Mark this module complete. You're at 8/10.</li>
+          </ol>
+        </div>
+
+        <div class="card-footer">
+          <div class="complete-status">✓ Course complete — you're at 8/10</div>
+          <button class="mark-complete-btn">Mark as Complete</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    /* ─── 1. Constants ─── */
+    const STORAGE_KEY = 'veloProgress';
+    const TOTAL_MODULES = 9; // modules 0-7 + capstone
+
+    /* ─── 2. Load/save progress ─── */
+    function loadProgress() {
+      try {
+        const val = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return (val && typeof val === 'object' && !Array.isArray(val)) ? val : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveProgress(progress) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+      } catch {
+        // storage unavailable (private mode, quota exceeded) — state persists only this session
+      }
+    }
+
+    /* ─── 3. Render progress bar + nav states ─── */
+    function renderProgress(progress) {
+      const done = Object.values(progress).filter(Boolean).length;
+      const pct = Math.round((done / TOTAL_MODULES) * 100);
+
+      const fill = document.getElementById('progress-fill');
+      if (fill) fill.style.width = pct + '%';
+
+      const label = document.getElementById('progress-label-count');
+      if (label) label.textContent = `${done} / ${TOTAL_MODULES} modules`;
+
+      document.querySelectorAll('.nav-item').forEach(item => {
+        const id = item.dataset.module;
+        item.classList.toggle('done', !!progress[id]);
+      });
+
+      document.querySelectorAll('.module-card').forEach(card => {
+        const id = card.dataset.module;
+        const isDone = !!progress[id];
+        card.classList.toggle('done', isDone);
+        const btn = card.querySelector('.mark-complete-btn');
+        if (btn) {
+          btn.textContent = isDone ? '✓ Completed' : 'Mark as Complete';
+          btn.title = isDone ? 'Click to un-mark this module' : '';
+        }
+      });
+    }
+
+    /* ─── 4. Collapsible cards ─── */
+    document.querySelectorAll('.card-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const card = header.closest('.module-card');
+        const isOpen = card.classList.toggle('open');
+        if (isOpen) {
+          const id = card.dataset.module;
+          document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+          const navItem = document.querySelector(`.nav-item[data-module="${id}"]`);
+          if (navItem) navItem.classList.add('active');
+        }
+      });
+      header.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+
+    /* ─── 5. Sidebar nav → scroll to card ─── */
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const id = item.dataset.module;
+        const card = document.querySelector(`.module-card[data-module="${id}"]`);
+        if (!card) return;
+        card.classList.add('open');
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    /* ─── 6. Mark as Complete buttons ─── */
+    document.querySelectorAll('.mark-complete-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const card = btn.closest('.module-card');
+        const id = card.dataset.module;
+        const progress = loadProgress();
+        progress[id] = !progress[id];
+        saveProgress(progress);
+        renderProgress(progress);
+      });
+    });
+
+    /* ─── 7. Copy buttons ─── */
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pre = btn.closest('.code-block-wrapper')?.querySelector('pre');
+        const text = pre?.textContent || '';
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.style.background = '#22C55E';
+          btn.style.color = '#fff';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.color = '';
+          }, 1800);
+        }).catch(() => {
+          // Clipboard API blocked (file:// or non-HTTPS) — try legacy fallback
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            const orig2 = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.style.background = '#22C55E';
+            btn.style.color = '#fff';
+            setTimeout(() => { btn.textContent = orig2; btn.style.background = ''; btn.style.color = ''; }, 1800);
+          } catch {
+            btn.textContent = 'Copy failed';
+            setTimeout(() => { btn.textContent = originalText; }, 1800);
+          }
+        });
+      });
+    });
+
+    /* ─── 8. Init ─── */
+    (function init() {
+      const progress = loadProgress();
+      renderProgress(progress);
+
+      // Open first incomplete module (or Module 0 on first load)
+      const firstIncomplete = [...document.querySelectorAll('.module-card')]
+        .find(c => !progress[c.dataset.module]);
+      if (firstIncomplete) {
+        firstIncomplete.classList.add('open');
+        const id = firstIncomplete.dataset.module;
+        const navItem = document.querySelector(`.nav-item[data-module="${id}"]`);
+        if (navItem) navItem.classList.add('active');
+      }
+    })();
+  </script>
+</body>
+</html>

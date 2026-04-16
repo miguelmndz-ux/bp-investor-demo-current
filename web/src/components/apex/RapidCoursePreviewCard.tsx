@@ -2,14 +2,16 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import Link from 'next/link'
 
 interface RapidCoursePreviewCardProps {
   productName: string
   rapidCourseUrl: string
+  slug: string
   isOwner?: boolean
 }
 
-export default function RapidCoursePreviewCard({ productName, rapidCourseUrl, isOwner = false }: RapidCoursePreviewCardProps) {
+export default function RapidCoursePreviewCard({ productName, rapidCourseUrl, slug, isOwner = false }: RapidCoursePreviewCardProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [menuPos, setMenuPos] = useState({ top: 0, right: 0 })
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -92,10 +94,8 @@ export default function RapidCoursePreviewCard({ productName, rapidCourseUrl, is
               )}
             </>
           )}
-          <a
-            href={rapidCourseUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={`/apex/community/${slug}/microcourse`}
             className="inline-block font-jakarta font-bold text-sm rounded-full px-6 py-2.5 transition-all duration-300 active:scale-95 no-underline"
             style={{
               background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
@@ -107,7 +107,7 @@ export default function RapidCoursePreviewCard({ productName, rapidCourseUrl, is
             }}
           >
             View Course
-          </a>
+          </Link>
         </div>
       </div>
 

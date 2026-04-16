@@ -107,8 +107,8 @@ export default function PrePartyPage() {
       className="fixed inset-0 z-[44] overflow-hidden"
       style={{ background: 'linear-gradient(160deg, #fffaf7 0%, #fff1e6 100%)' }}
     >
-      {/* ── 3-column content area — starts below header (top-20) and right of sidebar (left-20) ── */}
-      <div className="absolute top-20 left-20 right-0 bottom-0 flex overflow-hidden">
+      {/* ── 3-column content area — starts below header (top-16) and right of sidebar (left-20) ── */}
+      <div className="absolute top-16 left-20 right-0 bottom-0 flex overflow-hidden">
 
         {/* Ambient blobs */}
         <div className="absolute -top-10 right-0 w-[55%] h-[55%] rounded-full pointer-events-none" style={{ background: 'rgba(255,122,47,0.07)', filter: 'blur(120px)' }} />

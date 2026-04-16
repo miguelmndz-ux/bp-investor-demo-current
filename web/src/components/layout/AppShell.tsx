@@ -1,3 +1,6 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import SideNav from './SideNav'
 import TopNav from './TopNav'
 
@@ -5,7 +8,15 @@ interface AppShellProps {
   children: React.ReactNode
 }
 
+const BARE_ROUTES = ['/signup', '/profile-details', '/what-to-expect', '/slot-selection', '/session-confirmation']
+
 export default function AppShell({ children }: AppShellProps) {
+  const pathname = usePathname()
+
+  if (BARE_ROUTES.includes(pathname)) {
+    return <>{children}</>
+  }
+
   return (
     <>
       <SideNav />
@@ -13,12 +24,12 @@ export default function AppShell({ children }: AppShellProps) {
       {/* ── Header bottom border ── */}
       <div
         className="fixed pointer-events-none"
-        style={{ top: 80, left: 112, right: 0, height: 1, background: 'rgba(0,0,0,0.06)', zIndex: 47 }}
+        style={{ top: 64, left: 112, right: 0, height: 1, background: 'rgba(0,0,0,0.06)', zIndex: 55 }}
       />
       {/* ── Sidebar right border ── */}
       <div
         className="fixed pointer-events-none"
-        style={{ top: 112, left: 80, width: 1, bottom: 0, background: 'rgba(0,0,0,0.06)', zIndex: 47 }}
+        style={{ top: 96, left: 80, width: 1, bottom: 0, background: 'rgba(0,0,0,0.06)', zIndex: 55 }}
       />
       {/* ── Concave corner ──
           Two overlapping 32×32 divs at (80,80):
@@ -29,12 +40,12 @@ export default function AppShell({ children }: AppShellProps) {
              that bridge to where the header/sidebar borders start at x=112 / y=112. */}
       <div
         className="fixed pointer-events-none"
-        style={{ top: 80, left: 80, width: 32, height: 32, zIndex: 47 }}
+        style={{ top: 64, left: 80, width: 32, height: 32, zIndex: 55 }}
       >
         <div
           className="absolute inset-0"
           style={{
-            background: 'white',
+            background: 'rgba(255, 255, 255, 0.88)',
             clipPath: 'path("M 24 0 A 24 24 0 0 0 0 24 L 0 0 Z")',
           }}
         />
@@ -42,17 +53,17 @@ export default function AppShell({ children }: AppShellProps) {
       <div
         className="fixed pointer-events-none"
         style={{
-          top: 80,
+          top: 64,
           left: 80,
           width: 32,
           height: 32,
           borderTopLeftRadius: 24,
           borderTop: '1px solid rgba(0,0,0,0.06)',
           borderLeft: '1px solid rgba(0,0,0,0.06)',
-          zIndex: 47,
+          zIndex: 55,
         }}
       />
-      <main className="ml-20 pt-32 px-12 pb-12">
+      <main className="ml-20 pt-28 px-12 pb-12">
         <div className="max-w-[1400px] mx-auto space-y-10">
           {children}
         </div>

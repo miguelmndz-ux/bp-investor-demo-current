@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Velo — Complete Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
   :root {
     --blue-50: #EFF6FF;
@@ -41,99 +42,138 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', system-ui, sans-serif;
-    background: #FFFFFF;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fffaf7;
     color: var(--text-primary);
     font-size: 15px;
     line-height: 1.65;
   }
 
-  /* NAVIGATION */
-  nav {
+  /* TAB BAR */
+  .tab-bar {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--gray-100);
-    padding: 0 2rem;
-  }
-
-  .nav-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    height: 60px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--velo-primary);
-    text-decoration: none;
-  }
-
-  .logo-icon {
-    width: 32px;
-    height: 32px;
-    background: var(--velo-primary);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    padding: 40px 2rem 10px;
+  }
+
+  .tab-bar.is-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding: 12px 2rem;
+  }
+
+  .tab-bar-inner {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 9999px;
+    padding: 4px;
+    gap: 1px;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+    position: relative;
+  }
+
+  /* Sliding active indicator — moves between tabs */
+  .tab-indicator {
+    position: absolute;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(219, 234, 254, 0.95) 0%, rgba(147, 197, 253, 0.6) 100%);
+    box-shadow: 0 1px 8px rgba(26, 107, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Light sheen that sweeps across on each tab change */
+  .tab-indicator::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.55) 50%, transparent 90%);
+    transform: translateX(-150%);
+    border-radius: 9999px;
+  }
+
+  .tab-indicator.sheen::after {
+    animation: tab-sheen 0.45s ease-out forwards;
+  }
+
+  @keyframes tab-sheen {
+    from { transform: translateX(-150%); }
+    to   { transform: translateX(150%); }
+  }
+
+  .tab-link {
+    text-decoration: none;
+    color: #6B7280;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    transition: color 0.2s;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tab-link:hover {
+    color: #1C1917;
+  }
+
+  .tab-link.active {
+    color: var(--velo-primary);
+  }
+
+  /* HERO CTA */
+  .hero-cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--velo-primary);
     color: white;
     font-size: 14px;
     font-weight: 700;
-    letter-spacing: -1px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 4px;
-    list-style: none;
-  }
-
-  .nav-links a {
+    padding: 11px 28px;
+    border-radius: 9999px;
     text-decoration: none;
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: all 0.15s;
-  }
-
-  .nav-links a:hover {
-    background: var(--blue-50);
-    color: var(--velo-primary);
-  }
-
-  .nav-badge {
-    background: var(--velo-primary);
-    color: white;
-    font-size: 12px;
-    padding: 5px 14px;
-    border-radius: 20px;
-    font-weight: 600;
-    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.01em;
+    box-shadow: 0 4px 14px rgba(26,107,255,0.35);
     transition: opacity 0.15s;
   }
 
-  .nav-badge:hover { opacity: 0.88; }
+  .hero-cta:hover { opacity: 0.88; }
 
   /* HERO */
   .hero {
     background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 40%, #EFF6FF 100%);
-    padding: 80px 2rem 72px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     position: relative;
-    overflow: hidden;
+  }
+
+  .hero-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 72px;
   }
 
   .hero::before {
@@ -173,7 +213,7 @@
   }
 
   .hero h1 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(36px, 5vw, 58px);
     font-weight: 700;
     color: var(--velo-dark);
@@ -207,7 +247,7 @@
   }
 
   .stat-number {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 28px;
     font-weight: 700;
     color: var(--velo-primary);
@@ -258,7 +298,7 @@
   }
 
   .section-title {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(26px, 3vw, 34px);
     font-weight: 700;
     color: var(--velo-dark);
@@ -284,34 +324,36 @@
   }
 
   .overview-card {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
     padding: 22px;
+    box-shadow: 0 4px 24px -4px rgba(26, 107, 255, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
     transition: all 0.2s;
   }
 
   .overview-card:hover {
-    background: var(--blue-50);
-    border-color: var(--blue-200);
+    box-shadow: 0 8px 32px -4px rgba(26, 107, 255, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
   }
 
   .card-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: var(--blue-100);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(26, 107, 255, 0.1);
+    border: 1px solid rgba(26, 107, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
-    font-size: 18px;
+    color: var(--velo-primary);
   }
 
   .overview-card h3 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: var(--velo-dark);
@@ -332,15 +374,19 @@
   }
 
   .accordion-item {
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
     overflow: hidden;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px -2px rgba(26, 107, 255, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .accordion-item.open {
-    border-color: var(--blue-300);
-    box-shadow: var(--shadow-sm);
+    border-color: rgba(26, 107, 255, 0.2);
+    box-shadow: 0 4px 20px -4px rgba(26, 107, 255, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .accordion-header {
@@ -349,18 +395,18 @@
     justify-content: space-between;
     padding: 18px 20px;
     cursor: pointer;
-    background: white;
+    background: transparent;
     transition: background 0.15s;
     user-select: none;
     gap: 12px;
   }
 
   .accordion-header:hover {
-    background: var(--gray-50);
+    background: rgba(255, 255, 255, 0.35);
   }
 
   .accordion-item.open .accordion-header {
-    background: var(--blue-50);
+    background: rgba(26, 107, 255, 0.04);
   }
 
   .acc-left {
@@ -370,24 +416,28 @@
   }
 
   .acc-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: var(--blue-100);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(26, 107, 255, 0.08);
+    border: 1px solid rgba(26, 107, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
     flex-shrink: 0;
-    transition: background 0.2s;
+    color: var(--velo-primary);
+    transition: background 0.2s, color 0.2s;
   }
 
   .accordion-item.open .acc-icon {
     background: var(--velo-primary);
+    color: white;
+    border-color: transparent;
   }
 
   .acc-title {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: var(--velo-dark);
@@ -415,7 +465,7 @@
   .accordion-body {
     display: none;
     padding: 0 20px 20px;
-    background: white;
+    background: transparent;
   }
 
   .accordion-item.open .accordion-body {
@@ -440,22 +490,25 @@
     gap: 11px;
     align-items: flex-start;
     padding: 14px;
-    background: var(--gray-50);
-    border-radius: 9px;
-    border: 1px solid var(--gray-100);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
   }
 
   .feature-check {
     width: 20px;
     height: 20px;
-    background: var(--blue-100);
+    background: rgba(26, 107, 255, 0.1);
+    border: 1px solid rgba(26, 107, 255, 0.12);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     margin-top: 1px;
-    font-size: 11px;
     color: var(--velo-primary);
   }
 
@@ -464,7 +517,7 @@
     font-weight: 600;
     color: var(--velo-dark);
     margin-bottom: 3px;
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
   .feature-text p {
@@ -540,12 +593,12 @@
     font-size: 11px;
     font-weight: 700;
     color: white;
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     box-shadow: 0 0 0 4px var(--blue-50);
   }
 
   .step-title {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: var(--velo-dark);
@@ -585,10 +638,13 @@
   }
 
   .prof-card {
-    border-radius: var(--radius);
+    border-radius: 16px;
     padding: 24px 20px;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 4px 20px -4px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .prof-card::before {
@@ -598,17 +654,17 @@
     height: 3px;
   }
 
-  .prof-5 { background: var(--blue-50); border: 1px solid var(--blue-100); }
+  .prof-5 { background: rgba(239, 246, 255, 0.7); border: 1px solid rgba(96, 165, 250, 0.2); }
   .prof-5::before { background: var(--blue-400); }
 
-  .prof-8 { background: #EDE9FE; border: 1px solid #C4B5FD; }
+  .prof-8 { background: rgba(237, 233, 254, 0.7); border: 1px solid rgba(196, 181, 253, 0.3); }
   .prof-8::before { background: #7C3AED; }
 
-  .prof-10 { background: #FFF7ED; border: 1px solid #FED7AA; }
+  .prof-10 { background: rgba(255, 247, 237, 0.7); border: 1px solid rgba(254, 215, 170, 0.4); }
   .prof-10::before { background: #EA580C; }
 
   .prof-level {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 1;
@@ -632,7 +688,7 @@
   .prof-10 .prof-label { color: #EA580C; }
 
   .prof-hours {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 4px;
@@ -676,29 +732,32 @@
   }
 
   .usecase-card {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
     padding: 18px 16px;
     transition: all 0.2s;
     text-align: center;
+    box-shadow: 0 2px 12px -2px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .usecase-card:hover {
-    border-color: var(--blue-300);
-    background: var(--blue-50);
+    border-color: rgba(26, 107, 255, 0.2);
+    box-shadow: 0 6px 20px -4px rgba(26, 107, 255, 0.1), inset 0 1px 0 rgba(255,255,255,0.8);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
   }
 
   .usecase-card .uc-icon {
-    font-size: 28px;
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
-    display: block;
+    color: var(--velo-primary);
   }
 
   .usecase-card h4 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--velo-dark);
@@ -721,19 +780,22 @@
 
   @media (max-width: 640px) {
     .plan-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
   }
 
   .plan-card {
-    border-radius: var(--radius);
+    border-radius: 16px;
     padding: 24px 20px;
-    border: 1px solid var(--gray-200);
-    background: white;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 24px -4px rgba(26, 107, 255, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .plan-card.featured {
-    border-color: var(--blue-400);
-    background: var(--blue-50);
+    background: rgba(219, 234, 254, 0.5);
+    border-color: rgba(26, 107, 255, 0.25);
+    box-shadow: 0 8px 32px -4px rgba(26, 107, 255, 0.15), inset 0 1px 0 rgba(255,255,255,0.8);
     position: relative;
   }
 
@@ -750,7 +812,7 @@
   }
 
   .plan-name {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -760,7 +822,7 @@
   }
 
   .plan-price {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 32px;
     font-weight: 700;
     color: var(--velo-dark);
@@ -809,18 +871,21 @@
   }
 
   .minor-item {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
     padding: 12px 14px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
   }
 
   .minor-icon {
-    font-size: 16px;
     flex-shrink: 0;
+    color: var(--velo-primary);
     margin-top: 1px;
   }
 
@@ -829,7 +894,7 @@
     font-size: 13px;
     font-weight: 600;
     color: var(--velo-dark);
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     margin-bottom: 2px;
   }
 
@@ -852,20 +917,23 @@
     align-items: center;
     gap: 6px;
     text-decoration: none;
-    background: white;
-    border: 1px solid var(--gray-200);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: var(--text-secondary);
     font-size: 13px;
     font-weight: 500;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 9999px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
     transition: all 0.15s;
   }
 
   .resource-link:hover {
-    border-color: var(--blue-400);
+    border-color: rgba(26, 107, 255, 0.25);
     color: var(--velo-primary);
-    background: var(--blue-50);
+    box-shadow: 0 2px 8px rgba(26,107,255,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
   }
 
   /* FOOTER */
@@ -910,15 +978,18 @@
   @media (max-width: 600px) { .col-2 { column-count: 1; } }
 
   .tip-box {
-    background: var(--blue-50);
-    border: 1px solid var(--blue-200);
+    background: rgba(239, 246, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(26, 107, 255, 0.12);
     border-left: 3px solid var(--velo-primary);
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 12px 12px 0;
     padding: 14px 16px;
     font-size: 13.5px;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-top: 14px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
   }
 
   .tip-box strong {
@@ -929,50 +1000,48 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <div class="logo-icon">V</div>
-      Velo Field Guide
-    </a>
-    <ul class="nav-links">
-      <li><a href="#what-is-velo">Overview</a></li>
-      <li><a href="#major-features">Features</a></li>
-      <li><a href="#editor">Editor</a></li>
-      <li><a href="#velotwin">VeloTwin</a></li>
-      <li><a href="#learning-path">Learning Path</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-    </ul>
-    <a href="https://app.usevelo.ai" class="nav-badge" target="_blank">Try Velo →</a>
-  </div>
-</nav>
-
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">
-    <span class="section-dot"></span>
-    Complete Reference Guide · April 2026
+
+  <!-- TAB BAR — sticky inside hero so it floats on the blue gradient -->
+  <div class="tab-bar">
+    <div class="tab-bar-inner">
+      <div class="tab-indicator"></div>
+      <a href="#what-is-velo" class="tab-link">Overview</a>
+      <a href="#major-features" class="tab-link">Features</a>
+      <a href="#editor" class="tab-link">Editor</a>
+      <a href="#velotwin" class="tab-link">VeloTwin</a>
+      <a href="#learning-path" class="tab-link">Learning Path</a>
+      <a href="#pricing" class="tab-link">Pricing</a>
+    </div>
   </div>
-  <h1>Everything you need to know<br>about <span>Velo</span></h1>
-  <p class="hero-sub">AI-native product demo and walkthrough generator. Raw recordings in, studio-quality video messages out.</p>
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-number">4</div>
-      <div class="stat-label">Input modes</div>
+
+  <div class="hero-body">
+    <div class="hero-tag">
+      <span class="section-dot"></span>
+      Complete Reference Guide · April 2026
     </div>
-    <div class="stat-item">
-      <div class="stat-number">14+</div>
-      <div class="stat-label">Editor tools</div>
+    <h1>Everything you need to know<br>about <span>Velo</span></h1>
+    <p class="hero-sub">AI-native product demo and walkthrough generator. Raw recordings in, studio-quality video messages out.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Input modes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">14+</div>
+        <div class="stat-label">Editor tools</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">55min</div>
+        <div class="stat-label">Avg. time saved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Pricing tiers</div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">55min</div>
-      <div class="stat-label">Avg. time saved</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">3</div>
-      <div class="stat-label">Pricing tiers</div>
-    </div>
+    <a href="https://app.usevelo.ai" class="hero-cta" target="_blank">Try Velo →</a>
   </div>
 </div>
 
@@ -986,45 +1055,45 @@
 
   <div class="overview-grid">
     <div class="overview-card">
-      <div class="card-icon">🎬</div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">movie_creation</span></div>
       <h3>Auto Script Generation</h3>
       <p>Velo analyzes your raw recording and writes a professional narration script from scratch, optimized for clarity and engagement.</p>
     </div>
     <div class="overview-card">
-      <div class="card-icon">🤖</div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">smart_toy</span></div>
       <h3>Browser Agent Recording</h3>
       <p>Velo's agentic screen recorder works inside Chrome — it listens to your instructions, reads your clicks, and records the demo for you.</p>
     </div>
     <div class="overview-card">
-      <div class="card-icon">👤</div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">face</span></div>
       <h3>VeloTwin AI Avatar</h3>
       <p>Your personal AI presenter — hyper-realistic with natural lip sync, eye blinks, and hand gestures. Built from a single photo and short voice sample.</p>
     </div>
     <div class="overview-card">
-      <div class="card-icon">✂️</div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">content_cut</span></div>
       <h3>Timeline-based Editor</h3>
       <p>Fine-tune every layer — zoom, masks, spotlights, callouts, background, cursor style, audio — all from a multi-track timeline interface.</p>
     </div>
     <div class="overview-card">
-      <div class="card-icon">🔗</div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">share</span></div>
       <h3>Instant Sharing</h3>
       <p>Share via shareable link or download as MP4. No watermarks on paid plans. No production team needed.</p>
     </div>
     <div class="overview-card">
-      <div class="card-icon">🎨</div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">palette</span></div>
       <h3>Brand Kit</h3>
       <p>Apply your brand's colors, logos, and personas consistently across every video you produce.</p>
     </div>
   </div>
 
-  <h3 style="font-family:'Sora',sans-serif;font-size:17px;font-weight:600;color:var(--velo-dark);margin-top:40px;margin-bottom:16px;">Who uses Velo?</h3>
+  <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:600;color:var(--velo-dark);margin-top:40px;margin-bottom:16px;">Who uses Velo?</h3>
   <div class="usecase-grid">
-    <div class="usecase-card"><span class="uc-icon">💼</span><h4>Sales</h4><p>Polished video pitches without twelve takes</p></div>
-    <div class="usecase-card"><span class="uc-icon">⚙️</span><h4>Product</h4><p>Feature walkthroughs & updates your team watches</p></div>
-    <div class="usecase-card"><span class="uc-icon">🎓</span><h4>Customer Support</h4><p>Onboarding guides without a production team</p></div>
-    <div class="usecase-card"><span class="uc-icon">📹</span><h4>Creators</h4><p>Product reviews & tutorials for YouTube, X</p></div>
-    <div class="usecase-card"><span class="uc-icon">📢</span><h4>Marketing</h4><p>Launch videos & product walkthroughs in minutes</p></div>
-    <div class="usecase-card"><span class="uc-icon">📚</span><h4>Educators</h4><p>Professional courses & lectures from day one</p></div>
+    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">handshake</span></span><h4>Sales</h4><p>Polished video pitches without twelve takes</p></div>
+    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">widgets</span></span><h4>Product</h4><p>Feature walkthroughs & updates your team watches</p></div>
+    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">support_agent</span></span><h4>Customer Support</h4><p>Onboarding guides without a production team</p></div>
+    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">videocam</span></span><h4>Creators</h4><p>Product reviews & tutorials for YouTube, X</p></div>
+    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">campaign</span></span><h4>Marketing</h4><p>Launch videos & product walkthroughs in minutes</p></div>
+    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">menu_book</span></span><h4>Educators</h4><p>Professional courses & lectures from day one</p></div>
   </div>
 </section>
 
@@ -1040,7 +1109,7 @@
     <div class="accordion-item open" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🖥️</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">screen_share</span></div>
           <div>
             <div class="acc-title">Capture Screen Recording</div>
             <div class="acc-subtitle">Record your screen live · Chrome Extension required</div>
@@ -1053,27 +1122,27 @@
         <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">Record your screen live while walking through your product. After capturing, Velo auto-generates a script and produces a polished video. This is the primary path for fresh, live walkthroughs.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Chrome Extension Launch</h4><p>One-click recording from the browser toolbar. Captures full desktop or tab.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Setup Configuration</h4><p>Choose window/tab, resolution, and microphone input before starting.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>AI Script Generation</h4><p>Post-capture, Velo analyzes the recording and writes a new narration script automatically.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Script Review &amp; Edit</h4><p>Review the generated script, make edits, rewrite with AI context, or retry up to 3–10× depending on plan.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Voice Selection</h4><p>Choose from public voice presets or use your cloned VeloTwin voice to narrate the demo.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>VeloTwin Face Overlay</h4><p>Optionally add your AI avatar face overlay during the capture flow.</p></div>
           </div>
         </div>
@@ -1085,7 +1154,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">⬆️</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">upload</span></div>
           <div>
             <div class="acc-title">Upload a Recording</div>
             <div class="acc-subtitle">Zoom, Gong, Fathom, MP4 · Repurpose existing content</div>
@@ -1098,19 +1167,19 @@
         <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">Already have a screen recording? Upload it and Velo writes a new script from scratch, syncs voiceover to the existing video, and delivers a share-ready output. Works with Zoom, Gong, Fathom, and any raw MP4.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Multi-source Upload</h4><p>Accept MP4 files from Zoom, Gong, Fathom, or any local recording.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>New Script from Scratch</h4><p>Velo doesn't enhance the old audio — it writes a fresh narration based on what it sees in the video.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Script Review &amp; Retry</h4><p>Same script review loop as screen capture — edit, retry, or rewrite with context.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Voice &amp; Avatar Options</h4><p>Select voice, toggle VeloTwin face overlay, apply personas to the finished video.</p></div>
           </div>
         </div>
@@ -1124,7 +1193,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">📄</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">description</span></div>
           <div>
             <div class="acc-title">Upload PDFs &amp; PNGs</div>
             <div class="acc-subtitle">Decks, slides, screenshots · Narrated walkthroughs</div>
@@ -1137,19 +1206,19 @@
         <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">Upload static decks, screenshots, or slide exports and turn them into narrated video walkthroughs. Velo's agent can even record a browser-based navigation of your content automatically.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>PDF &amp; PNG Upload</h4><p>Upload multi-page PDFs or a sequence of PNGs representing your presentation.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Narration Scripting</h4><p>Velo generates a narration for each slide/page, then syncs the voiceover to the visual.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Agent Recording Mode</h4><p>Optionally trigger the agentic browser recorder to navigate and record the content live.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>VeloTwin &amp; Script Review</h4><p>Full script + avatar workflow identical to other input modes.</p></div>
           </div>
         </div>
@@ -1160,7 +1229,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🔗</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">link</span></div>
           <div>
             <div class="acc-title">Paste a Link</div>
             <div class="acc-subtitle">URL input · Agent auto-records the live site</div>
@@ -1173,15 +1242,15 @@
         <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">Paste any URL, narrate the walkthrough in plain language (e.g., "show the onboarding flow and click through checkout"), and Velo's browser agent navigates the live site and records the demo for you. Available 5×/month on Pro, unlimited on Ultra.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Agentic Navigation</h4><p>Describe the steps in natural language — the agent clicks through the live product automatically.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Narration Setup</h4><p>Pre-set focus areas and talking points before the agent records.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Script &amp; Avatar Integration</h4><p>Output follows the full script-review-avatar pipeline after agent recording completes.</p></div>
           </div>
         </div>
@@ -1193,7 +1262,7 @@
     <div class="accordion-item" id="velotwin" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🧬</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">psychology</span></div>
           <div>
             <div class="acc-title">VeloTwin — AI Avatar System</div>
             <div class="acc-subtitle">Custom AI presenter · Your face &amp; voice · One-time setup</div>
@@ -1206,27 +1275,27 @@
         <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">A VeloTwin is your personal AI presenter. Created once, available instantly across every project. It combines a photorealistic face (from one photo) with a cloned voice (from a short reading sample) to produce a talking head that looks and sounds like you — including lip sync, eye blinks, and natural head movement.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Public VeloTwins Library</h4><p>Pre-built generic presenters available immediately on all plans. No setup needed.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Custom VeloTwin (Ultra)</h4><p>One-time creation from your photo + voice sample. Saved permanently to your account.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Photorealistic Face Capture</h4><p>Single in-app photo taken via Velo's camera capture flow. Auto-generates natural expressions.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Voice Cloning</h4><p>Short training script read-aloud; Velo clones tone, pace, and vocal character.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Natural Biometrics</h4><p>Auto lip sync, eye blinks, nodding, and hand gestures — no additional setup.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Avatar Length Limits</h4><p>Pro: 3 min avatar/video. Ultra: up to 30 min avatar/video.</p></div>
           </div>
         </div>
@@ -1248,7 +1317,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">📐</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">view_sidebar</span></div>
           <div>
             <div class="acc-title">Right Sidebar — All Panels</div>
             <div class="acc-subtitle">Background · Scripts · Insert · Cards · Face · Audio · Settings</div>
@@ -1260,31 +1329,31 @@
         <div class="accordion-divider"></div>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Screen / Background</h4><p>Change background style (solid, gradient, image), output format, blur level, and padding around the recording.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Scripts</h4><p>View and edit the narration script. Retry generation, rewrite with context prompts, or edit manually.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Insert</h4><p>Add text boxes, images, shapes, arrows, callouts, spotlights, masks, and zoom blocks to the timeline.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Cards</h4><p>Enable and customize an intro card that plays at the beginning of the video.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Face (VeloTwin)</h4><p>Toggle avatar face overlay on/off. Reposition, resize, and choose shape (circle, rounded rect, etc.).</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Audio</h4><p>Control background music, master volume, and narration track volume independently.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Settings</h4><p>Update video title, description, and logo for sharing metadata.</p></div>
           </div>
         </div>
@@ -1294,7 +1363,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🎞️</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">linear_scale</span></div>
           <div>
             <div class="acc-title">Timeline — Track Layers</div>
             <div class="acc-subtitle">Camera · Video · Zoom · Masking · Spotlight · Callout</div>
@@ -1307,27 +1376,27 @@
         <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">The timeline shows all visual layers as stacked tracks. Drag the playhead to scrub. Click any block to open its settings in the right sidebar. Zoom the timeline horizontally for precision editing.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Camera Track</h4><p>VeloTwin face overlay segments. Toggle segments on/off or move them in time.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Video Track</h4><p>The primary screen recording waveform. Main playback bar.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Zoom Track</h4><p>Zoom blocks that control when and how the viewport zooms in on a region.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Masking Track</h4><p>Mask segments that hide sensitive UI areas (passwords, private data) during playback.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Spotlight Track</h4><p>Dims the surrounding area to focus viewer attention on a specific screen region.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Callout Track</h4><p>Draws a highlighted box around a specific UI area to direct attention with a visual label.</p></div>
           </div>
         </div>
@@ -1337,7 +1406,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🛠️</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">tune</span></div>
           <div>
             <div class="acc-title">Toolbar — Playback &amp; Editing Controls</div>
             <div class="acc-subtitle">Cut · Crop · Undo/Redo · Zoom slider · Fullscreen</div>
@@ -1349,27 +1418,27 @@
         <div class="accordion-divider"></div>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Undo / Redo</h4><p>Full edit history — step back or forward through all changes.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Playback Controls</h4><p>Play, pause, and skip through the video at any point during editing.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Cut (✂)</h4><p>Splits the video at the current playhead position to remove a segment.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Crop (⊡)</h4><p>Opens crop modal to trim the start and end of the recording.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Timeline Zoom Slider</h4><p>Adjusts the horizontal zoom of the timeline for frame-accurate precision editing.</p></div>
           </div>
           <div class="feature-item">
-            <div class="feature-check">✓</div>
+            <div class="feature-check"><span class="material-symbols-outlined" style="font-size:12px">check</span></div>
             <div class="feature-text"><h4>Fullscreen Preview</h4><p>Expands the video preview to fill the entire browser window.</p></div>
           </div>
         </div>
@@ -1390,7 +1459,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🎨</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">palette</span></div>
           <div>
             <div class="acc-title">Visual Polish &amp; Branding</div>
             <div class="acc-subtitle">Cursor · Brand kit · Background · Personas</div>
@@ -1401,12 +1470,12 @@
       <div class="accordion-body">
         <div class="accordion-divider"></div>
         <div class="minor-grid">
-          <div class="minor-item"><span class="minor-icon">🖱️</span><div><strong>Cursor Style &amp; Size</strong><span>Change the cursor appearance and scale in the video playback for clarity.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🏷️</span><div><strong>Brand Kit</strong><span>Upload your logo, set brand colors, and apply them across every video output.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🖼️</span><div><strong>Background Styles</strong><span>Solid color, gradient, blurred, or custom image backgrounds around the recording.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">👥</span><div><strong>Personas</strong><span>Predefined presenter styles — apply a persona to swap voice and avatar quickly.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🎴</span><div><strong>Intro Cards</strong><span>Animated title card at the start of your video with custom text and branding.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">📐</span><div><strong>Padding &amp; Format</strong><span>Adjust screen padding, aspect ratio, and output format from the Background panel.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">mouse</span></span><div><strong>Cursor Style &amp; Size</strong><span>Change the cursor appearance and scale in the video playback for clarity.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">style</span></span><div><strong>Brand Kit</strong><span>Upload your logo, set brand colors, and apply them across every video output.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">wallpaper</span></span><div><strong>Background Styles</strong><span>Solid color, gradient, blurred, or custom image backgrounds around the recording.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">group</span></span><div><strong>Personas</strong><span>Predefined presenter styles — apply a persona to swap voice and avatar quickly.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">view_carousel</span></span><div><strong>Intro Cards</strong><span>Animated title card at the start of your video with custom text and branding.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">aspect_ratio</span></span><div><strong>Padding &amp; Format</strong><span>Adjust screen padding, aspect ratio, and output format from the Background panel.</span></div></div>
         </div>
       </div>
     </div>
@@ -1414,7 +1483,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">📝</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">edit_note</span></div>
           <div>
             <div class="acc-title">Script &amp; Audio Management</div>
             <div class="acc-subtitle">Script retries · Voice regen · Background music</div>
@@ -1425,11 +1494,11 @@
       <div class="accordion-body">
         <div class="accordion-divider"></div>
         <div class="minor-grid">
-          <div class="minor-item"><span class="minor-icon">🔄</span><div><strong>Script Retries</strong><span>Regenerate the entire script. Pro: 3 retries/video. Ultra: 10 retries/video.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🎙️</span><div><strong>Voice Regenerations</strong><span>Re-render the voice for a scene. Pro: 3×/video. Ultra: 10×/video.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">✍️</span><div><strong>Rewrite Scripts with Context</strong><span>Provide additional context (tone, audience, focus) and Velo rewrites accordingly.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🎵</span><div><strong>Background Music</strong><span>Choose from a library of tracks; adjust volume relative to narration independently.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🔊</span><div><strong>Volume Controls</strong><span>Master, narration, and music volume controlled separately in the Audio panel.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">refresh</span></span><div><strong>Script Retries</strong><span>Regenerate the entire script. Pro: 3 retries/video. Ultra: 10 retries/video.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">mic</span></span><div><strong>Voice Regenerations</strong><span>Re-render the voice for a scene. Pro: 3×/video. Ultra: 10×/video.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">edit</span></span><div><strong>Rewrite Scripts with Context</strong><span>Provide additional context (tone, audience, focus) and Velo rewrites accordingly.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">music_note</span></span><div><strong>Background Music</strong><span>Choose from a library of tracks; adjust volume relative to narration independently.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">volume_up</span></span><div><strong>Volume Controls</strong><span>Master, narration, and music volume controlled separately in the Audio panel.</span></div></div>
         </div>
       </div>
     </div>
@@ -1437,7 +1506,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🔗</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">share</span></div>
           <div>
             <div class="acc-title">Sharing &amp; Export</div>
             <div class="acc-subtitle">Shareable links · Watermark control · MP4 download</div>
@@ -1448,10 +1517,10 @@
       <div class="accordion-body">
         <div class="accordion-divider"></div>
         <div class="minor-grid">
-          <div class="minor-item"><span class="minor-icon">🌐</span><div><strong>Shareable Links</strong><span>Instant share URL — no account needed to watch. Works across all plans.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">💧</span><div><strong>Watermark Control</strong><span>All shared links are watermark-free. Downloads are watermarked on Free; clean on Pro/Ultra.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">⬇️</span><div><strong>MP4 Download</strong><span>Export final video as MP4. Remove watermark from one download for $9.99 on Free plan.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">📋</span><div><strong>Video Title &amp; Description</strong><span>Set metadata for the share page via the Settings panel in the editor.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">public</span></span><div><strong>Shareable Links</strong><span>Instant share URL — no account needed to watch. Works across all plans.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">water_drop</span></span><div><strong>Watermark Control</strong><span>All shared links are watermark-free. Downloads are watermarked on Free; clean on Pro/Ultra.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">download</span></span><div><strong>MP4 Download</strong><span>Export final video as MP4. Remove watermark from one download for $9.99 on Free plan.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">article</span></span><div><strong>Video Title &amp; Description</strong><span>Set metadata for the share page via the Settings panel in the editor.</span></div></div>
         </div>
       </div>
     </div>
@@ -1459,7 +1528,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🔧</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">extension</span></div>
           <div>
             <div class="acc-title">Chrome Extension</div>
             <div class="acc-subtitle">Installation · Recording · Updates · Reinstall</div>
@@ -1470,9 +1539,9 @@
       <div class="accordion-body">
         <div class="accordion-divider"></div>
         <div class="minor-grid">
-          <div class="minor-item"><span class="minor-icon">📥</span><div><strong>One-Click Install</strong><span>Install from Chrome Web Store; links from Velo's docs. Required for screen capture mode.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">⏺️</span><div><strong>Toolbar Recording</strong><span>Launch recording from the extension icon. No Velo app tab required to start.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🔁</span><div><strong>Update &amp; Reinstall</strong><span>Documented update path and full reinstall guide in case of extension conflicts.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">download</span></span><div><strong>One-Click Install</strong><span>Install from Chrome Web Store; links from Velo's docs. Required for screen capture mode.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">fiber_manual_record</span></span><div><strong>Toolbar Recording</strong><span>Launch recording from the extension icon. No Velo app tab required to start.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">update</span></span><div><strong>Update &amp; Reinstall</strong><span>Documented update path and full reinstall guide in case of extension conflicts.</span></div></div>
         </div>
       </div>
     </div>
@@ -1480,7 +1549,7 @@
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <div class="acc-left">
-          <div class="acc-icon">🔍</div>
+          <div class="acc-icon"><span class="material-symbols-outlined" style="font-size:18px">search</span></div>
           <div>
             <div class="acc-title">Annotation &amp; Focus Tools</div>
             <div class="acc-subtitle">Zoom · Masks · Spotlight · Callout · Insert</div>
@@ -1491,11 +1560,11 @@
       <div class="accordion-body">
         <div class="accordion-divider"></div>
         <div class="minor-grid">
-          <div class="minor-item"><span class="minor-icon">🔎</span><div><strong>Zoom Blocks</strong><span>Zoom into any screen region at a point in time. Controlled via the Zoom timeline track.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">🙈</span><div><strong>Masks</strong><span>Hide sensitive UI areas (passwords, emails, PII) by placing mask blocks on the timeline.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">💡</span><div><strong>Spotlight</strong><span>Dims the entire screen except a chosen region to direct viewer focus.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">📦</span><div><strong>Callout Boxes</strong><span>Highlight a UI element with an animated labeled box for emphasis.</span></div></div>
-          <div class="minor-item"><span class="minor-icon">➕</span><div><strong>Insert (Shapes, Text, Arrows)</strong><span>Add overlaid text boxes, arrows, shapes, and images at any point in the video.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">zoom_in</span></span><div><strong>Zoom Blocks</strong><span>Zoom into any screen region at a point in time. Controlled via the Zoom timeline track.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">visibility_off</span></span><div><strong>Masks</strong><span>Hide sensitive UI areas (passwords, emails, PII) by placing mask blocks on the timeline.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">highlight</span></span><div><strong>Spotlight</strong><span>Dims the entire screen except a chosen region to direct viewer focus.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">crop_square</span></span><div><strong>Callout Boxes</strong><span>Highlight a UI element with an animated labeled box for emphasis.</span></div></div>
+          <div class="minor-item"><span class="minor-icon"><span class="material-symbols-outlined" style="font-size:16px">add_circle</span></span><div><strong>Insert (Shapes, Text, Arrows)</strong><span>Add overlaid text boxes, arrows, shapes, and images at any point in the video.</span></div></div>
         </div>
       </div>
     </div>
@@ -1516,66 +1585,66 @@
       <div class="step-dot">1</div>
       <div class="step-title">Read the Introduction &amp; Quickstart Docs</div>
       <p class="step-desc">Start at docs.usevelo.ai. Read the Introduction and Quickstart pages. Understand the four input modes and what makes Velo different from Loom or Camtasia. Orient yourself to the mental model before touching the app.</p>
-      <span class="step-time">⏱ 20–30 min</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>20–30 min</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">2</div>
       <div class="step-title">Create your first Velo via Screen Capture</div>
       <p class="step-desc">Install the Chrome Extension. Record a simple 2–3 minute product walkthrough of anything familiar. Accept the AI-generated script without editing it the first time — just see the full output pipeline end to end. Share via link.</p>
-      <span class="step-time">⏱ 45–60 min</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>45–60 min</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">3</div>
       <div class="step-title">Explore the Editor — Every Panel</div>
       <p class="step-desc">Open the output from step 2 in the editor. Systematically click through every right sidebar panel and every timeline track. Change the background, adjust cursor style, add a callout, try a zoom block. You're mapping the terrain, not producing anything.</p>
-      <span class="step-time">⏱ 30–45 min</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>30–45 min</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">4</div>
       <div class="step-title">Try all four Input Modes</div>
       <p class="step-desc">Create one Velo from each mode: upload an existing MP4 (a Zoom recording works well), upload a PDF deck, and paste a URL for a simple SaaS product. This gives you intuition for when to use each mode vs. the others.</p>
-      <span class="step-time">⏱ 1.5–2 hrs</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>1.5–2 hrs</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">5</div>
       <div class="step-title">Create &amp; Calibrate Your VeloTwin</div>
       <p class="step-desc">Go to the VeloTwin section and create your custom avatar. Read the best practices first (lighting, background, eye contact, voice pacing). Create it, then produce one Velo using your VeloTwin face and voice. Evaluate the output critically and tweak if needed.</p>
-      <span class="step-time">⏱ 45–90 min</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>45–90 min</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">6</div>
       <div class="step-title">Master Script Editing &amp; Context Prompting</div>
       <p class="step-desc">Produce a real-world demo for your product or project. This time: edit the AI script before generating, use the rewrite-with-context feature to align tone (e.g., "executive audience, skip technical detail"), and try at least 2 retries to understand how different scripts diverge.</p>
-      <span class="step-time">⏱ 1–2 hrs</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>1–2 hrs</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">7</div>
       <div class="step-title">Build a Production-Quality Demo</div>
       <p class="step-desc">Create a demo you'd actually send to a prospect or stakeholder. Use brand kit, a proper intro card, custom cursor, appropriate zoom blocks and spotlights, clean masking of any sensitive data, and your VeloTwin. Share it and collect feedback.</p>
-      <span class="step-time">⏱ 2–3 hrs</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>2–3 hrs</span>
     </div>
 
     <div class="step-item">
       <div class="step-dot">8</div>
       <div class="step-title">Develop Workflow Patterns &amp; Templates</div>
       <p class="step-desc">After 5–10 real demos, identify your repeatable patterns: which input mode works best for your content type, what brand kit settings you prefer, standard zoom/spotlight sequences, script tone guidance you always provide. Document these as your personal Velo playbook.</p>
-      <span class="step-time">⏱ Ongoing</span>
+      <span class="step-time"><span class="material-symbols-outlined" style="font-size:12px">schedule</span>Ongoing</span>
     </div>
 
   </div>
 
   <div class="resource-row">
-    <a class="resource-link" href="https://docs.usevelo.ai/getting-started/quickstart" target="_blank">📋 Quickstart Guide</a>
-    <a class="resource-link" href="https://docs.usevelo.ai/creating-velotwin/best-practices" target="_blank">👤 VeloTwin Best Practices</a>
-    <a class="resource-link" href="https://docs.usevelo.ai/editing-velo/overview" target="_blank">🎞️ Editor Overview</a>
-    <a class="resource-link" href="https://docs.usevelo.ai/faq/faq" target="_blank">❓ FAQ</a>
-    <a class="resource-link" href="https://app.usevelo.ai" target="_blank">🚀 Launch Velo App</a>
+    <a class="resource-link" href="https://docs.usevelo.ai/getting-started/quickstart" target="_blank"><span class="material-symbols-outlined" style="font-size:14px">description</span> Quickstart Guide</a>
+    <a class="resource-link" href="https://docs.usevelo.ai/creating-velotwin/best-practices" target="_blank"><span class="material-symbols-outlined" style="font-size:14px">face</span> VeloTwin Best Practices</a>
+    <a class="resource-link" href="https://docs.usevelo.ai/editing-velo/overview" target="_blank"><span class="material-symbols-outlined" style="font-size:14px">movie</span> Editor Overview</a>
+    <a class="resource-link" href="https://docs.usevelo.ai/faq/faq" target="_blank"><span class="material-symbols-outlined" style="font-size:14px">help</span> FAQ</a>
+    <a class="resource-link" href="https://app.usevelo.ai" target="_blank"><span class="material-symbols-outlined" style="font-size:14px">rocket_launch</span> Launch Velo App</a>
   </div>
 </section>
 
@@ -1702,10 +1771,75 @@
 </footer>
 
 <script>
+// ── Accordion ──
 function toggleAccordion(item) {
   const isOpen = item.classList.contains('open');
   item.classList.toggle('open', !isOpen);
 }
+
+// ── Sticky / fixed tab bar ──
+// While hero is partially scrolled: sticky (glass bg via is-sticky).
+// Once hero fully exits: fixed at top (is-fixed).
+const tabBar = document.querySelector('.tab-bar');
+const hero = document.querySelector('.hero');
+
+function updateTabState() {
+  const heroRect = hero.getBoundingClientRect();
+  // Once the hero has fully scrolled away, fix the tab bar at the top
+  tabBar.classList.toggle('is-fixed', heroRect.bottom <= 0);
+}
+
+window.addEventListener('scroll', updateTabState, { passive: true });
+
+// ── Active tab tracking ──
+const sectionIds = ['what-is-velo', 'major-features', 'editor', 'velotwin', 'learning-path', 'pricing'];
+const tabLinks = document.querySelectorAll('.tab-link');
+const indicator = document.querySelector('.tab-indicator');
+
+function moveIndicator(link) {
+  const inner = link.closest('.tab-bar-inner');
+  const innerRect = inner.getBoundingClientRect();
+  const linkRect = link.getBoundingClientRect();
+  indicator.style.left   = (linkRect.left - innerRect.left) + 'px';
+  indicator.style.top    = (linkRect.top  - innerRect.top)  + 'px';
+  indicator.style.width  = linkRect.width  + 'px';
+  indicator.style.height = linkRect.height + 'px';
+  // Re-trigger sheen sweep
+  indicator.classList.remove('sheen');
+  void indicator.offsetWidth;
+  indicator.classList.add('sheen');
+}
+
+function setActive(id) {
+  tabLinks.forEach(link => {
+    const isActive = link.getAttribute('href') === '#' + id;
+    link.classList.toggle('active', isActive);
+    if (isActive) moveIndicator(link);
+  });
+}
+
+// Fire when a section enters the top portion of the viewport
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) setActive(entry.target.id);
+  });
+}, { rootMargin: '0px 0px -85% 0px', threshold: 0 });
+
+sectionIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
+
+// Immediate active on click (don't wait for scroll callback)
+tabLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    tabLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+// Set initial active state — defer one frame so layout is painted
+requestAnimationFrame(() => setActive('what-is-velo'));
 </script>
 
 </body>
