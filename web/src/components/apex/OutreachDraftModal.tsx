@@ -144,7 +144,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
                 {/* Subject line */}
                 <div className="px-8 pt-6 pb-4 border-b border-white/40">
                   <p className="text-sm font-bold text-on-background">
-                    <span className="text-stone-500 font-medium">Subject:</span> Velo just hit #1 - we built a live launch and more for you!
+                    <span className="text-stone-500 font-medium">Subject:</span> Velo just hit #1 — BuildParty built a live launch session for you!
                   </p>
                 </div>
                 {/* Email preview — exact match via iframe */}
