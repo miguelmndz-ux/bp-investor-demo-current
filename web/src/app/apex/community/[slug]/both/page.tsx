@@ -12,7 +12,7 @@ export default function BothPage() {
     <>
       <CommunityNav slug={slug} active="both" />
       <div className="fixed top-[132px] left-20 right-0 bottom-0 flex gap-2 p-2">
-        <div className="flex-1 rounded-2xl overflow-hidden">
+        <div className="flex-1 rounded-tl-3xl rounded-tr-2xl rounded-br-2xl rounded-bl-2xl overflow-hidden">
           <iframe
             src={product.decodeUrl}
             title={`${product.name} — Decode`}
