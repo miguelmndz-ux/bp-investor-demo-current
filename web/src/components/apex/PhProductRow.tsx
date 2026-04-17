@@ -24,7 +24,12 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
       <div className="col-span-1 flex items-center justify-center">
         <span className="text-[11px] font-black text-stone-400">{rank}</span>
       </div>
-      <div className="col-span-6 flex items-center gap-3">
+      <div className="col-span-1 flex items-center justify-center">
+        <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-[6px] whitespace-nowrap bg-white text-on-background ${status.className}`}>
+          {status.label}
+        </span>
+      </div>
+      <div className="col-span-5 flex items-center gap-3">
         <div className="w-9 h-9 rounded-md overflow-hidden shadow-md shrink-0 bg-white border border-stone-100">
           <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
         </div>
@@ -46,15 +51,10 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
           </button>
         )}
       </div>
-      <div className="col-span-5 grid grid-cols-4">
+      <div className="col-span-5 grid grid-cols-3">
         <div className="text-center"><span className="text-sm font-black text-on-background">{product.votes.toLocaleString()}</span></div>
         <div className="text-center"><span className="text-sm font-black text-on-background">{product.comments}</span></div>
         <div className="text-center"><span className="text-sm font-black text-primary">{product.score}</span></div>
-        <div className="flex items-center justify-center">
-          <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-[6px] whitespace-nowrap bg-white text-on-background ${status.className}`}>
-            {status.label}
-          </span>
-        </div>
       </div>
     </div>
   )
