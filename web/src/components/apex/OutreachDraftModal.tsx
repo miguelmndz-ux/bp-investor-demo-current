@@ -1,8 +1,36 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import GmailFlowOverlay from './GmailFlowOverlay'
+
+function EmailIframe() {
+  const ref = useRef<HTMLIFrameElement>(null)
+  const [height, setHeight] = useState(600)
+
+  useEffect(() => {
+    const iframe = ref.current
+    if (!iframe) return
+    const onLoad = () => {
+      try {
+        const h = iframe.contentDocument?.body?.scrollHeight
+        if (h) setHeight(h)
+      } catch {}
+    }
+    iframe.addEventListener('load', onLoad)
+    return () => iframe.removeEventListener('load', onLoad)
+  }, [])
+
+  return (
+    <iframe
+      ref={ref}
+      src="/gmail-flow/email-body.html"
+      sandbox="allow-scripts allow-same-origin"
+      scrolling="no"
+      style={{ width: '100%', height, border: 'none', display: 'block' }}
+    />
+  )
+}
 
 interface OutreachDraftModalProps {
   onClose: () => void
@@ -112,25 +140,15 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
                   <span className="material-symbols-outlined text-stone-400">expand_less</span>
                 </div>
               </div>
-              <div className="p-8 bg-white/10 space-y-6">
-                <div className="border-b border-white/40 pb-4">
+              <div className="bg-white/10">
+                {/* Subject line */}
+                <div className="px-8 pt-6 pb-4 border-b border-white/40">
                   <p className="text-sm font-bold text-on-background">
-                    <span className="text-stone-500 font-medium">Subject:</span> Velo hit #1 on Product Hunt — here&apos;s what we built for you
+                    <span className="text-stone-500 font-medium">Subject:</span> Velo just hit #1 - we built a live launch and more for you!
                   </p>
                 </div>
-                <div className="space-y-4 text-sm leading-relaxed text-on-surface">
-                  <p className="font-bold">Ajay —</p>
-                  <p>Velo hit #1 on Product Hunt today with 617 upvotes. I&apos;ve been reading the comments — builders are genuinely excited about async video finally feeling instant, not like a chore.</p>
-                  <p>I decoded your launch and put together a live session built around the question your community is actually asking: what does a real async workflow look like when video is as fast as text?</p>
-                  <p>It&apos;s not a webinar. It&apos;s a 50-minute live build session on BuildParty — you demo Velo in a real workflow, your community asks questions in real time, and we close with a 10-minute challenge where attendees replace every Slack message with a Velo clip.</p>
-                  <p>We handle everything: the event page, the community, and Nova (our AI host) briefs you 15 minutes before you go live. You just show up and build.</p>
-                  <div className="py-4 flex justify-center">
-                    <button className="bg-gradient-to-r from-primary-container to-primary text-white font-bold px-6 py-3 rounded-2xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center gap-2">
-                      See what&apos;s waiting for you <span className="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                  </div>
-                  <p className="text-stone-600 italic text-center">Takes about 3 minutes to create your account and book a time.</p>
-                </div>
+                {/* Email preview — exact match via iframe */}
+                <EmailIframe />
               </div>
             </div>
 

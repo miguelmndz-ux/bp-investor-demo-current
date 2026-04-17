@@ -7,6 +7,8 @@ export interface Community {
   type: CommunityType
 }
 
+export type LifecycleStatus = 'pending' | 'draft_sent' | 'signed_up' | 'session_confirmed'
+
 export interface PhProduct {
   name: string
   slug: string
@@ -22,6 +24,7 @@ export interface PhProduct {
   makerName: string | null
   decodeUrl: string | null
   rapidCourseUrl: string | null
+  lifecycleStatus: LifecycleStatus
 }
 
 export interface Founder {

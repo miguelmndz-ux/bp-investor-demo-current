@@ -1,0 +1,461 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - link "home" [ref=e4] [cursor=pointer]:
+        - /url: /apex
+        - generic [ref=e5]: home
+      - link "explore" [ref=e6] [cursor=pointer]:
+        - /url: /discover
+        - generic [ref=e7]: explore
+      - link "calendar_today" [ref=e8] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e9]: calendar_today
+      - link "auto_awesome" [ref=e11] [cursor=pointer]:
+        - /url: /apex
+        - generic [ref=e12]: auto_awesome
+    - generic [ref=e14]:
+      - link "Nate Herk" [ref=e15] [cursor=pointer]:
+        - /url: https://www.nateherk.com/
+        - img "Nate Herk" [ref=e16]
+      - link "The AI Collective" [ref=e17] [cursor=pointer]:
+        - /url: https://www.aicollective.com/
+        - img "The AI Collective" [ref=e18]
+      - link "Sabrina Ramonov" [ref=e19] [cursor=pointer]:
+        - /url: https://substack.com/@sabrinaramonov
+        - img "Sabrina Ramonov" [ref=e20]
+      - link "Ben's Bites" [ref=e21] [cursor=pointer]:
+        - /url: https://www.bensbites.com/
+        - img "Ben's Bites" [ref=e22]
+      - link "Liam Ottley" [ref=e23] [cursor=pointer]:
+        - /url: https://www.liamottley.com/
+        - img "Liam Ottley" [ref=e24]
+      - link "Every.to" [ref=e25] [cursor=pointer]:
+        - /url: https://every.to/
+        - img "Every.to" [ref=e26]
+      - link "Claude" [ref=e27] [cursor=pointer]:
+        - /url: https://claude.ai/
+        - img "Claude" [ref=e28]
+      - link "LiveKit" [ref=e29] [cursor=pointer]:
+        - /url: https://livekit.io/
+        - img "LiveKit" [ref=e30]
+  - banner [ref=e31]:
+    - generic [ref=e32]: BuildParty
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: search
+        - textbox "Search insights, founders, or drafts…" [ref=e36]
+      - button "notifications" [ref=e37] [cursor=pointer]:
+        - generic [ref=e38]: notifications
+      - button "help" [ref=e40] [cursor=pointer]:
+        - generic [ref=e41]: help
+      - img "Profile" [ref=e43]
+  - main [ref=e44]:
+    - iframe [ref=e46]:
+      - generic [active] [ref=f1e1]:
+        - generic [ref=f1e2]:
+          - link "← Back" [ref=f1e3] [cursor=pointer]:
+            - /url: /apex/community/velo/owner
+          - generic [ref=f1e4]:
+            - generic [ref=f1e5]: BuildParty
+            - generic [ref=f1e7]: Decode
+          - link "Try Velo" [ref=f1e8] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=f1e10]:
+          - heading "Everything you need to know about Velo" [level=1] [ref=f1e11]:
+            - text: Everything you need to know
+            - text: about Velo
+          - paragraph [ref=f1e12]: AI-native product demo and walkthrough generator. Raw recordings in, studio-quality video messages out.
+          - generic [ref=f1e14]:
+            - generic [ref=f1e15]:
+              - generic [ref=f1e16]: "4"
+              - generic [ref=f1e17]: Input modes
+            - generic [ref=f1e18]:
+              - generic [ref=f1e19]: 14+
+              - generic [ref=f1e20]: Editor tools
+            - generic [ref=f1e21]:
+              - generic [ref=f1e22]: 55min
+              - generic [ref=f1e23]: Avg. time saved
+            - generic [ref=f1e24]:
+              - generic [ref=f1e25]: "3"
+              - generic [ref=f1e26]: Pricing tiers
+        - generic [ref=f1e27]:
+          - generic [ref=f1e28]:
+            - generic [ref=f1e29]: What is Velo
+            - heading "AI-native video messaging, end to end" [level=2] [ref=f1e31]
+            - paragraph [ref=f1e32]: Velo is an AI-powered tool that transforms raw screen recordings, uploads, PDFs, slides, and URLs into polished, share-ready video messages — no manual editing required.
+            - generic [ref=f1e33]:
+              - generic [ref=f1e34]:
+                - generic [ref=f1e36]: movie_creation
+                - heading "Auto Script Generation" [level=3] [ref=f1e37]
+                - paragraph [ref=f1e38]: Velo analyzes your raw recording and writes a professional narration script from scratch, optimized for clarity and engagement.
+              - generic [ref=f1e39]:
+                - generic [ref=f1e41]: smart_toy
+                - heading "Browser Agent Recording" [level=3] [ref=f1e42]
+                - paragraph [ref=f1e43]: Velo’s agentic screen recorder works inside Chrome — it listens to your instructions, reads your clicks, and records the demo for you.
+              - generic [ref=f1e44]:
+                - generic [ref=f1e46]: face
+                - heading "VeloTwin AI Avatar" [level=3] [ref=f1e47]
+                - paragraph [ref=f1e48]: Your personal AI presenter — hyper-realistic with natural lip sync, eye blinks, and hand gestures. Built from a single photo and short voice sample.
+              - generic [ref=f1e49]:
+                - generic [ref=f1e51]: content_cut
+                - heading "Timeline-based Editor" [level=3] [ref=f1e52]
+                - paragraph [ref=f1e53]: Fine-tune every layer — zoom, masks, spotlights, callouts, background, cursor style, audio — all from a multi-track timeline interface.
+              - generic [ref=f1e54]:
+                - generic [ref=f1e56]: share
+                - heading "Instant Sharing" [level=3] [ref=f1e57]
+                - paragraph [ref=f1e58]: Share via shareable link or download as MP4. No watermarks on paid plans. No production team needed.
+              - generic [ref=f1e59]:
+                - generic [ref=f1e61]: palette
+                - heading "Brand Kit" [level=3] [ref=f1e62]
+                - paragraph [ref=f1e63]: Apply your brand’s colors, logos, and personas consistently across every video you produce.
+            - generic [ref=f1e64]: Use Cases
+            - heading "Who uses Velo?" [level=2] [ref=f1e66]
+            - generic [ref=f1e67]:
+              - generic [ref=f1e68]:
+                - generic [ref=f1e70]: handshake
+                - heading "Sales" [level=4] [ref=f1e71]
+                - paragraph [ref=f1e72]: Polished video pitches without twelve takes
+              - generic [ref=f1e73]:
+                - generic [ref=f1e75]: widgets
+                - heading "Product" [level=4] [ref=f1e76]
+                - paragraph [ref=f1e77]: Feature walkthroughs & updates your team watches
+              - generic [ref=f1e78]:
+                - generic [ref=f1e80]: support_agent
+                - heading "Customer Support" [level=4] [ref=f1e81]
+                - paragraph [ref=f1e82]: Onboarding guides without a production team
+              - generic [ref=f1e83]:
+                - generic [ref=f1e85]: videocam
+                - heading "Creators" [level=4] [ref=f1e86]
+                - paragraph [ref=f1e87]: Product reviews & tutorials for YouTube, X
+              - generic [ref=f1e88]:
+                - generic [ref=f1e90]: campaign
+                - heading "Marketing" [level=4] [ref=f1e91]
+                - paragraph [ref=f1e92]: Launch videos & product walkthroughs in minutes
+              - generic [ref=f1e93]:
+                - generic [ref=f1e95]: menu_book
+                - heading "Educators" [level=4] [ref=f1e96]
+                - paragraph [ref=f1e97]: Professional courses & lectures from day one
+          - generic [ref=f1e98]:
+            - generic [ref=f1e99]: Major Functionality
+            - heading "Core feature modules" [level=2] [ref=f1e101]
+            - paragraph [ref=f1e102]: The four primary input modes and the main systems that power Velo. Expand each to see the full workflow and what's included.
+            - generic [ref=f1e103]:
+              - generic [ref=f1e104]:
+                - generic [ref=f1e105] [cursor=pointer]:
+                  - generic [ref=f1e106]:
+                    - generic [ref=f1e108]: screen_share
+                    - generic [ref=f1e109]:
+                      - generic [ref=f1e110]: Capture Screen Recording
+                      - generic [ref=f1e111]: Record your screen live · Chrome Extension required
+                  - img [ref=f1e112]
+                - generic [ref=f1e114]:
+                  - paragraph [ref=f1e116]: Record your screen live while walking through your product. After capturing, Velo auto-generates a script and produces a polished video. This is the primary path for fresh, live walkthroughs.
+                  - generic [ref=f1e117]:
+                    - generic [ref=f1e118]:
+                      - generic [ref=f1e120]: check
+                      - generic [ref=f1e121]:
+                        - heading "Chrome Extension Launch" [level=4] [ref=f1e122]
+                        - paragraph [ref=f1e123]: One-click recording from the browser toolbar. Captures full desktop or tab.
+                    - generic [ref=f1e124]:
+                      - generic [ref=f1e126]: check
+                      - generic [ref=f1e127]:
+                        - heading "Setup Configuration" [level=4] [ref=f1e128]
+                        - paragraph [ref=f1e129]: Choose window/tab, resolution, and microphone input before starting.
+                    - generic [ref=f1e130]:
+                      - generic [ref=f1e132]: check
+                      - generic [ref=f1e133]:
+                        - heading "AI Script Generation" [level=4] [ref=f1e134]
+                        - paragraph [ref=f1e135]: Post-capture, Velo analyzes the recording and writes a new narration script automatically.
+                    - generic [ref=f1e136]:
+                      - generic [ref=f1e138]: check
+                      - generic [ref=f1e139]:
+                        - heading "Script Review & Edit" [level=4] [ref=f1e140]
+                        - paragraph [ref=f1e141]: Review the generated script, make edits, rewrite with AI context, or retry up to 3–10× depending on plan.
+                    - generic [ref=f1e142]:
+                      - generic [ref=f1e144]: check
+                      - generic [ref=f1e145]:
+                        - heading "Voice Selection" [level=4] [ref=f1e146]
+                        - paragraph [ref=f1e147]: Choose from public voice presets or use your cloned VeloTwin voice to narrate the demo.
+                    - generic [ref=f1e148]:
+                      - generic [ref=f1e150]: check
+                      - generic [ref=f1e151]:
+                        - heading "VeloTwin Face Overlay" [level=4] [ref=f1e152]
+                        - paragraph [ref=f1e153]: Optionally add your AI avatar face overlay during the capture flow.
+                  - generic [ref=f1e154]:
+                    - strong [ref=f1e155]: "Pro tip:"
+                    - text: Pause and go slowly when clicking — the agentic recorder reads your intent, and clear deliberate clicks produce cleaner scripts.
+              - generic [ref=f1e157] [cursor=pointer]:
+                - generic [ref=f1e158]:
+                  - generic [ref=f1e160]: upload
+                  - generic [ref=f1e161]:
+                    - generic [ref=f1e162]: Upload a Recording
+                    - generic [ref=f1e163]: Zoom, Gong, Fathom, MP4 · Repurpose existing content
+                - img [ref=f1e164]
+              - generic [ref=f1e167] [cursor=pointer]:
+                - generic [ref=f1e168]:
+                  - generic [ref=f1e170]: description
+                  - generic [ref=f1e171]:
+                    - generic [ref=f1e172]: Upload PDFs & PNGs
+                    - generic [ref=f1e173]: Decks, slides, screenshots · Narrated walkthroughs
+                - img [ref=f1e174]
+              - generic [ref=f1e177] [cursor=pointer]:
+                - generic [ref=f1e178]:
+                  - generic [ref=f1e180]: link
+                  - generic [ref=f1e181]:
+                    - generic [ref=f1e182]: Paste a Link
+                    - generic [ref=f1e183]: URL input · Agent auto-records the live site
+                - img [ref=f1e184]
+              - generic [ref=f1e187] [cursor=pointer]:
+                - generic [ref=f1e188]:
+                  - generic [ref=f1e190]: psychology
+                  - generic [ref=f1e191]:
+                    - generic [ref=f1e192]: VeloTwin — AI Avatar System
+                    - generic [ref=f1e193]: Custom AI presenter · Your face & voice · One-time setup
+                - img [ref=f1e194]
+          - generic [ref=f1e196]:
+            - generic [ref=f1e197]: Editor
+            - heading "The Velo editor, fully mapped" [level=2] [ref=f1e199]
+            - paragraph [ref=f1e200]: "Three interface zones: right sidebar panels, timeline tracks, and toolbar controls. Every tool is accessible from these three surfaces."
+            - generic [ref=f1e201]:
+              - generic [ref=f1e203] [cursor=pointer]:
+                - generic [ref=f1e204]:
+                  - generic [ref=f1e206]: view_sidebar
+                  - generic [ref=f1e207]:
+                    - generic [ref=f1e208]: Right Sidebar — All Panels
+                    - generic [ref=f1e209]: Background · Scripts · Insert · Cards · Face · Audio · Settings
+                - img [ref=f1e210]
+              - generic [ref=f1e213] [cursor=pointer]:
+                - generic [ref=f1e214]:
+                  - generic [ref=f1e216]: linear_scale
+                  - generic [ref=f1e217]:
+                    - generic [ref=f1e218]: Timeline — Track Layers
+                    - generic [ref=f1e219]: Camera · Video · Zoom · Masking · Spotlight · Callout
+                - img [ref=f1e220]
+              - generic [ref=f1e223] [cursor=pointer]:
+                - generic [ref=f1e224]:
+                  - generic [ref=f1e226]: tune
+                  - generic [ref=f1e227]:
+                    - generic [ref=f1e228]: Toolbar — Playback & Editing Controls
+                    - generic [ref=f1e229]: Cut · Crop · Undo/Redo · Zoom slider · Fullscreen
+                - img [ref=f1e230]
+          - generic [ref=f1e232]:
+            - generic [ref=f1e233]: Minor Functionality
+            - heading "Polishing & convenience features" [level=2] [ref=f1e235]
+            - paragraph [ref=f1e236]: Every finishing touch and convenience capability available in the Velo editor and platform. Click each group to expand.
+            - generic [ref=f1e237]:
+              - generic [ref=f1e239] [cursor=pointer]:
+                - generic [ref=f1e240]:
+                  - generic [ref=f1e242]: palette
+                  - generic [ref=f1e243]:
+                    - generic [ref=f1e244]: Visual Polish & Branding
+                    - generic [ref=f1e245]: Cursor · Brand kit · Background · Personas
+                - img [ref=f1e246]
+              - generic [ref=f1e249] [cursor=pointer]:
+                - generic [ref=f1e250]:
+                  - generic [ref=f1e252]: edit_note
+                  - generic [ref=f1e253]:
+                    - generic [ref=f1e254]: Script & Audio Management
+                    - generic [ref=f1e255]: Script retries · Voice regen · Background music
+                - img [ref=f1e256]
+              - generic [ref=f1e259] [cursor=pointer]:
+                - generic [ref=f1e260]:
+                  - generic [ref=f1e262]: share
+                  - generic [ref=f1e263]:
+                    - generic [ref=f1e264]: Sharing & Export
+                    - generic [ref=f1e265]: Shareable links · Watermark control · MP4 download
+                - img [ref=f1e266]
+              - generic [ref=f1e269] [cursor=pointer]:
+                - generic [ref=f1e270]:
+                  - generic [ref=f1e272]: extension
+                  - generic [ref=f1e273]:
+                    - generic [ref=f1e274]: Chrome Extension
+                    - generic [ref=f1e275]: Installation · Recording · Updates · Reinstall
+                - img [ref=f1e276]
+              - generic [ref=f1e279] [cursor=pointer]:
+                - generic [ref=f1e280]:
+                  - generic [ref=f1e282]: search
+                  - generic [ref=f1e283]:
+                    - generic [ref=f1e284]: Annotation & Focus Tools
+                    - generic [ref=f1e285]: Zoom · Masks · Spotlight · Callout · Insert
+                - img [ref=f1e286]
+          - generic [ref=f1e288]:
+            - generic [ref=f1e289]: Learning Path
+            - heading "Your Velo learning journey" [level=2] [ref=f1e291]
+            - paragraph [ref=f1e292]: An opinionated, experience-optimized path to go from zero to Velo expert. Designed for practitioners who learn by doing.
+            - generic [ref=f1e293]:
+              - generic [ref=f1e295]:
+                - generic [ref=f1e296]: "1"
+                - generic [ref=f1e297]: Read the Introduction & Quickstart Docs
+                - paragraph [ref=f1e298]: Start at docs.usevelo.ai. Read the Introduction and Quickstart pages. Understand the four input modes and what makes Velo different from Loom or Camtasia. Orient yourself to the mental model before touching the app.
+                - generic [ref=f1e299]:
+                  - generic [ref=f1e300]: schedule
+                  - text: 20–30 min
+              - generic [ref=f1e301]:
+                - generic [ref=f1e302]: "2"
+                - generic [ref=f1e303]: Create your first Velo via Screen Capture
+                - paragraph [ref=f1e304]: Install the Chrome Extension. Record a simple 2–3 minute product walkthrough of anything familiar. Accept the AI-generated script without editing it the first time — just see the full output pipeline end to end. Share via link.
+                - generic [ref=f1e305]:
+                  - generic [ref=f1e306]: schedule
+                  - text: 45–60 min
+              - generic [ref=f1e307]:
+                - generic [ref=f1e308]: "3"
+                - generic [ref=f1e309]: Explore the Editor — Every Panel
+                - paragraph [ref=f1e310]: Open the output from step 2 in the editor. Systematically click through every right sidebar panel and every timeline track. Change the background, adjust cursor style, add a callout, try a zoom block. You're mapping the terrain, not producing anything.
+                - generic [ref=f1e311]:
+                  - generic [ref=f1e312]: schedule
+                  - text: 30–45 min
+              - generic [ref=f1e313]:
+                - generic [ref=f1e314]: "4"
+                - generic [ref=f1e315]: Try all four Input Modes
+                - paragraph [ref=f1e316]: "Create one Velo from each mode: upload an existing MP4 (a Zoom recording works well), upload a PDF deck, and paste a URL for a simple SaaS product. This gives you intuition for when to use each mode vs. the others."
+                - generic [ref=f1e317]:
+                  - generic [ref=f1e318]: schedule
+                  - text: 1.5–2 hrs
+              - generic [ref=f1e319]:
+                - generic [ref=f1e320]: "5"
+                - generic [ref=f1e321]: Create & Calibrate Your VeloTwin
+                - paragraph [ref=f1e322]: Go to the VeloTwin section and create your custom avatar. Read the best practices first (lighting, background, eye contact, voice pacing). Create it, then produce one Velo using your VeloTwin face and voice. Evaluate the output critically and tweak if needed.
+                - generic [ref=f1e323]:
+                  - generic [ref=f1e324]: schedule
+                  - text: 45–90 min
+              - generic [ref=f1e325]:
+                - generic [ref=f1e326]: "6"
+                - generic [ref=f1e327]: Master Script Editing & Context Prompting
+                - paragraph [ref=f1e328]: "Produce a real-world demo for your product or project. This time: edit the AI script before generating, use the rewrite-with-context feature to align tone (e.g., \"executive audience, skip technical detail\"), and try at least 2 retries to understand how different scripts diverge."
+                - generic [ref=f1e329]:
+                  - generic [ref=f1e330]: schedule
+                  - text: 1–2 hrs
+              - generic [ref=f1e331]:
+                - generic [ref=f1e332]: "7"
+                - generic [ref=f1e333]: Build a Production-Quality Demo
+                - paragraph [ref=f1e334]: Create a demo you'd actually send to a prospect or stakeholder. Use brand kit, a proper intro card, custom cursor, appropriate zoom blocks and spotlights, clean masking of any sensitive data, and your VeloTwin. Share it and collect feedback.
+                - generic [ref=f1e335]:
+                  - generic [ref=f1e336]: schedule
+                  - text: 2–3 hrs
+              - generic [ref=f1e337]:
+                - generic [ref=f1e338]: "8"
+                - generic [ref=f1e339]: Develop Workflow Patterns & Templates
+                - paragraph [ref=f1e340]: "After 5–10 real demos, identify your repeatable patterns: which input mode works best for your content type, what brand kit settings you prefer, standard zoom/spotlight sequences, script tone guidance you always provide. Document these as your personal Velo playbook."
+                - generic [ref=f1e341]:
+                  - generic [ref=f1e342]: schedule
+                  - text: Ongoing
+            - generic [ref=f1e343]:
+              - link "description Quickstart Guide" [ref=f1e344] [cursor=pointer]:
+                - /url: https://docs.usevelo.ai/getting-started/quickstart
+                - generic [ref=f1e345]: description
+                - text: Quickstart Guide
+              - link "face VeloTwin Best Practices" [ref=f1e346] [cursor=pointer]:
+                - /url: https://docs.usevelo.ai/creating-velotwin/best-practices
+                - generic [ref=f1e347]: face
+                - text: VeloTwin Best Practices
+              - link "movie Editor Overview" [ref=f1e348] [cursor=pointer]:
+                - /url: https://docs.usevelo.ai/editing-velo/overview
+                - generic [ref=f1e349]: movie
+                - text: Editor Overview
+              - link "help FAQ" [ref=f1e350] [cursor=pointer]:
+                - /url: https://docs.usevelo.ai/faq/faq
+                - generic [ref=f1e351]: help
+                - text: FAQ
+              - link "rocket_launch Launch Velo App" [ref=f1e352] [cursor=pointer]:
+                - /url: https://app.usevelo.ai
+                - generic [ref=f1e353]: rocket_launch
+                - text: Launch Velo App
+          - generic [ref=f1e354]:
+            - generic [ref=f1e355]: Proficiency Estimates
+            - heading "How long to become a Velo expert?" [level=2] [ref=f1e357]
+            - paragraph [ref=f1e358]: For an experienced developer who already understands AI coding/tooling best practices — context management, prompting, workflow structuring. Hours are cumulative active practice time, not calendar time.
+            - generic [ref=f1e359]:
+              - generic [ref=f1e360]:
+                - generic [ref=f1e361]: "5"
+                - generic [ref=f1e362]: / 10 — Proficient
+                - generic [ref=f1e363]: 3–5 hrs
+                - generic [ref=f1e364]: cumulative practice
+                - list [ref=f1e365]:
+                  - listitem [ref=f1e366]: – Completed all 4 input modes at least once
+                  - listitem [ref=f1e367]: – Can navigate every editor panel
+                  - listitem [ref=f1e368]: – Understands VeloTwin setup flow
+                  - listitem [ref=f1e369]: – Produces shareable output reliably
+                  - listitem [ref=f1e370]: – Knows when to use each input mode
+                  - listitem [ref=f1e371]: – Can edit & retry scripts confidently
+              - generic [ref=f1e372]:
+                - generic [ref=f1e373]: "8"
+                - generic [ref=f1e374]: / 10 — Advanced
+                - generic [ref=f1e375]: 12–20 hrs
+                - generic [ref=f1e376]: cumulative practice
+                - list [ref=f1e377]:
+                  - listitem [ref=f1e378]: – Consistent production-quality output
+                  - listitem [ref=f1e379]: – Custom VeloTwin calibrated & polished
+                  - listitem [ref=f1e380]: – Brand kit applied systematically
+                  - listitem [ref=f1e381]: – Strategic use of zoom, masks, spotlight
+                  - listitem [ref=f1e382]: – Context prompting produces predictable tone
+                  - listitem [ref=f1e383]: – Personal workflow playbook documented
+                  - listitem [ref=f1e384]: – Agentic link-to-video used confidently
+              - generic [ref=f1e385]:
+                - generic [ref=f1e386]: "10"
+                - generic [ref=f1e387]: / 10 — Expert
+                - generic [ref=f1e388]: 40–60 hrs
+                - generic [ref=f1e389]: cumulative practice
+                - list [ref=f1e390]:
+                  - listitem [ref=f1e391]: – Can teach others the full Velo system
+                  - listitem [ref=f1e392]: – Builds reusable demo templates & personas
+                  - listitem [ref=f1e393]: – Pushes edge cases (long-form, complex flows)
+                  - listitem [ref=f1e394]: – Understands all plan limits & workarounds
+                  - listitem [ref=f1e395]: – Masters every annotation tool precisely
+                  - listitem [ref=f1e396]: – Produces broadcast-ready content first take
+                  - listitem [ref=f1e397]: – Integrates Velo into broader content pipeline
+                  - listitem [ref=f1e398]: – Handles troubleshooting independently
+            - generic [ref=f1e399]:
+              - strong [ref=f1e400]: Why these estimates?
+              - text: Velo's core loop is shallow and fast — the 5/10 threshold is genuinely low because the AI handles the hard parts. Getting from 5 → 8 requires real repetition to develop taste for script quality and output calibration. The 8 → 10 jump is mostly about accumulated edge case experience and building systematic reuse patterns, not learning new buttons.
+          - generic [ref=f1e401]:
+            - generic [ref=f1e402]: Pricing
+            - heading "Plans & Velo Minutes" [level=2] [ref=f1e404]
+            - paragraph [ref=f1e405]: All plans include full editor access and watermark-free sharing links. Velo Minutes are consumed by the length of recordings and videos generated each month.
+            - generic [ref=f1e406]:
+              - generic [ref=f1e407]:
+                - generic [ref=f1e408]: Free
+                - generic [ref=f1e409]: $0/month
+                - list [ref=f1e410]:
+                  - listitem [ref=f1e411]: ✓ 15 Velo minutes / month
+                  - listitem [ref=f1e412]: ✓ Full editor access
+                  - listitem [ref=f1e413]: ✓ Share links — no watermark
+                  - listitem [ref=f1e414]: ✓ 1 avatar video/month
+                  - listitem [ref=f1e415]: ✓ Public VeloTwins
+                  - listitem [ref=f1e416]: ✓ Downloads watermarked (remove for $9.99)
+              - generic [ref=f1e417]:
+                - text: Most Popular
+                - generic [ref=f1e418]: Pro
+                - generic [ref=f1e419]: $20/month
+                - list [ref=f1e420]:
+                  - listitem [ref=f1e421]: ✓ 60 Velo minutes / month
+                  - listitem [ref=f1e422]: ✓ Up to 3 min avatar / video
+                  - listitem [ref=f1e423]: ✓ All public avatars
+                  - listitem [ref=f1e424]: ✓ No watermarks on downloads
+                  - listitem [ref=f1e425]: ✓ 3 script retries / video
+                  - listitem [ref=f1e426]: ✓ 3 voice regenerations / video
+                  - listitem [ref=f1e427]: ✓ 5 link-to-video / month
+                - button "Upgrade to Pro →" [ref=f1e428] [cursor=pointer]
+              - generic [ref=f1e429]:
+                - generic [ref=f1e430]: Ultra
+                - generic [ref=f1e431]: $200/month
+                - list [ref=f1e432]:
+                  - listitem [ref=f1e433]: ✓ 600 Velo minutes / month
+                  - listitem [ref=f1e434]: ✓ Up to 30 min avatar / video
+                  - listitem [ref=f1e435]: ✓ Custom VeloTwins (your face & voice)
+                  - listitem [ref=f1e436]: ✓ 10 script retries / video
+                  - listitem [ref=f1e437]: ✓ 10 voice regenerations / video
+                  - listitem [ref=f1e438]: ✓ Unlimited link-to-video
+            - generic [ref=f1e439]:
+              - strong [ref=f1e440]: Which plan should you start on?
+              - text: Free is enough to evaluate Velo and complete the learning path through step 4. You'll need Pro to use the agentic link-to-video mode and get meaningful script retry budget. Ultra is only warranted at high-volume production (daily demos, long avatar segments, or team-wide usage).
+        - contentinfo [ref=f1e441]:
+          - generic [ref=f1e442]:
+            - paragraph [ref=f1e443]:
+              - text: This Decode was created by
+              - strong [ref=f1e444]: BuildParty
+              - text: · Based on
+              - link "usevelo.ai" [ref=f1e445] [cursor=pointer]:
+                - /url: https://www.usevelo.ai
+            - paragraph [ref=f1e446]: Velo is a product of FlowFrame Inc. · BuildParty is not affiliated with FlowFrame Inc.
+  - button "Open Next.js Dev Tools" [ref=e52] [cursor=pointer]:
+    - img [ref=e53]

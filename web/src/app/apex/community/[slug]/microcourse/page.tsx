@@ -15,7 +15,7 @@ export default function MicrocoursePage() {
         src={product.rapidCourseUrl}
         title={`${product.name} — Microcourse`}
         className="w-full h-full border-0"
-        sandbox="allow-scripts allow-same-origin"
+        sandbox="allow-scripts allow-same-origin allow-top-navigation"
       />
     </div>
   )

@@ -3,14 +3,15 @@ import FounderCard from './FounderCard'
 
 interface FounderGridProps {
   founders: Founder[]
+  onOutreachDraft?: () => void
 }
 
-export default function FounderGrid({ founders }: FounderGridProps) {
+export default function FounderGrid({ founders, onOutreachDraft }: FounderGridProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-5">
         {founders.map((founder) => (
-          <FounderCard key={founder.name} founder={founder} />
+          <FounderCard key={founder.name} founder={founder} onOutreachDraft={onOutreachDraft} />
         ))}
       </div>
       <div className="flex justify-center pt-2">

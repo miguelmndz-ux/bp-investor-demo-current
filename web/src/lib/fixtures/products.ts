@@ -26,6 +26,7 @@ export const phProducts: PhProduct[] = [
     makerName: 'Ajay Kumar',
     decodeUrl: '/apex/velo-decode.html',
     rapidCourseUrl: '/apex/velo-microcourse.html',
+    lifecycleStatus: 'session_confirmed',
   },
   {
     name: 'Chrome Vertical Tabs',
@@ -36,6 +37,7 @@ export const phProducts: PhProduct[] = [
     score: 61,
     logo: 'https://ph-files.imgix.net/f27f20c5-816f-4210-bbfa-8bdf797ffa3b.jpeg',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'signed_up',
   },
   {
     name: 'Flint',
@@ -46,6 +48,7 @@ export const phProducts: PhProduct[] = [
     score: 58,
     logo: 'https://ph-files.imgix.net/9c15287e-cffa-466c-80e8-85a03721354d.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'draft_sent',
   },
   {
     name: 'LookAway 2',
@@ -56,6 +59,7 @@ export const phProducts: PhProduct[] = [
     score: 44,
     logo: 'https://ph-files.imgix.net/6662a41b-1fc4-4ef1-97de-682533b0020c.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'draft_sent',
   },
   {
     name: 'MindsDB Anton',
@@ -66,6 +70,7 @@ export const phProducts: PhProduct[] = [
     score: 31,
     logo: 'https://ph-files.imgix.net/4a8b9470-4b71-466c-a8dd-8e27ee706f17.gif',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'draft_sent',
   },
   {
     name: 'Browser Arena',
@@ -76,6 +81,7 @@ export const phProducts: PhProduct[] = [
     score: 29,
     logo: 'https://ph-files.imgix.net/a5d945d7-db55-4fd6-a412-0b332c5cc687.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'pending',
   },
   {
     name: 'Career-Ops on Claude',
@@ -86,6 +92,7 @@ export const phProducts: PhProduct[] = [
     score: 23,
     logo: 'https://ph-files.imgix.net/0ec7ef46-3cb1-4694-bb9a-6b4a6c8450cb.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'pending',
   },
   {
     name: 'Keeby',
@@ -96,6 +103,7 @@ export const phProducts: PhProduct[] = [
     score: 23,
     logo: 'https://ph-files.imgix.net/fb80aea5-1784-4115-ba24-3ebb42e83db0.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'pending',
   },
   {
     name: 'PassportReader',
@@ -106,6 +114,7 @@ export const phProducts: PhProduct[] = [
     score: 19,
     logo: 'https://ph-files.imgix.net/48e83c11-841f-40f6-975f-b20c548ed680.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'pending',
   },
   {
     name: 'FeatDrop',
@@ -116,5 +125,6 @@ export const phProducts: PhProduct[] = [
     score: 18,
     logo: 'https://ph-files.imgix.net/3fa5cb0b-6684-485c-8935-5706d51c4ebb.png',
     tagline: null, briefOverview: null, description: null, images: [], makerName: null, decodeUrl: null, rapidCourseUrl: null,
+    lifecycleStatus: 'pending',
   },
 ]

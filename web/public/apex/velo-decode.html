@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velo — Complete Field Guide</title>
+<title>BuildParty Decode — Velo Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
   :root {
-    --blue-50: #EFF6FF;
-    --blue-100: #DBEAFE;
-    --blue-200: #BFDBFE;
-    --blue-400: #60A5FA;
-    --blue-500: #3B82F6;
-    --blue-600: #2563EB;
-    --blue-700: #1D4ED8;
-    --blue-800: #1E40AF;
-    --blue-900: #1E3A8A;
-    --velo-primary: #1A6BFF;
-    --velo-dark: #0A1628;
-    --velo-mid: #1E3A8A;
+    --blue-50: #fffaf7;
+    --blue-100: #fff1e6;
+    --blue-200: #ffe4cc;
+    --blue-400: #ff9a5c;
+    --blue-500: #ff7a2f;
+    --blue-600: #e05a00;
+    --blue-700: #c24e00;
+    --blue-800: #9c3f00;
+    --blue-900: #7a2e00;
+    --velo-primary: #ff7a2f;
+    --velo-dark: #7a2e00;
+    --velo-mid: #9c3f00;
     --gray-50: #F8FAFC;
     --gray-100: #F1F5F9;
     --gray-200: #E2E8F0;
@@ -29,12 +29,12 @@
     --gray-700: #334155;
     --gray-900: #0F172A;
     --text-primary: #0A1628;
-    --text-secondary: #4A5B7A;
-    --text-muted: #8094B4;
+    --text-secondary: #7a4a35;
+    --text-muted: #b07a5a;
     --radius: 12px;
     --radius-sm: 8px;
-    --shadow-sm: 0 1px 3px rgba(26,107,255,0.08), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 16px rgba(26,107,255,0.1), 0 2px 6px rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 3px rgba(255,122,47,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(255,122,47,0.1), 0 2px 6px rgba(0,0,0,0.05);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,96 +47,10 @@
     color: var(--text-primary);
     font-size: 15px;
     line-height: 1.65;
+    padding-top: 68px;
   }
 
-  /* TAB BAR */
-  .tab-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 2rem 10px;
-  }
 
-  .tab-bar.is-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 200;
-    padding: 12px 2rem;
-  }
-
-  .tab-bar-inner {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    border-radius: 9999px;
-    padding: 4px;
-    gap: 1px;
-    box-shadow: 0 1px 10px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.8);
-    position: relative;
-  }
-
-  /* Sliding active indicator — moves between tabs */
-  .tab-indicator {
-    position: absolute;
-    border-radius: 9999px;
-    background: linear-gradient(135deg, rgba(219, 234, 254, 0.95) 0%, rgba(147, 197, 253, 0.6) 100%);
-    box-shadow: 0 1px 8px rgba(26, 107, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Light sheen that sweeps across on each tab change */
-  .tab-indicator::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.55) 50%, transparent 90%);
-    transform: translateX(-150%);
-    border-radius: 9999px;
-  }
-
-  .tab-indicator.sheen::after {
-    animation: tab-sheen 0.45s ease-out forwards;
-  }
-
-  @keyframes tab-sheen {
-    from { transform: translateX(-150%); }
-    to   { transform: translateX(150%); }
-  }
-
-  .tab-link {
-    text-decoration: none;
-    color: #6B7280;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 7px 16px;
-    border-radius: 9999px;
-    transition: color 0.2s;
-    white-space: nowrap;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: -0.01em;
-    position: relative;
-    z-index: 1;
-  }
-
-  .tab-link:hover {
-    color: #1C1917;
-  }
-
-  .tab-link.active {
-    color: var(--velo-primary);
-  }
 
   /* HERO CTA */
   .hero-cta {
@@ -151,7 +65,7 @@
     text-decoration: none;
     font-family: 'Plus Jakarta Sans', sans-serif;
     letter-spacing: -0.01em;
-    box-shadow: 0 4px 14px rgba(26,107,255,0.35);
+    box-shadow: 0 4px 14px rgba(255,122,47,0.35);
     transition: opacity 0.15s;
   }
 
@@ -159,7 +73,7 @@
 
   /* HERO */
   .hero {
-    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 40%, #EFF6FF 100%);
+    background: linear-gradient(135deg, #fffaf7 0%, #fff1e6 40%, #fffaf7 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -181,7 +95,7 @@
     position: absolute;
     top: -60px; right: -60px;
     width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(26,107,255,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,122,47,0.08) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
   }
@@ -191,7 +105,7 @@
     position: absolute;
     bottom: -40px; left: -40px;
     width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(26,107,255,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,122,47,0.08) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
   }
@@ -324,18 +238,18 @@
   }
 
   .overview-card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 16px;
     padding: 22px;
-    box-shadow: 0 4px 24px -4px rgba(26, 107, 255, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 4px 24px -4px rgba(255, 122, 47, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
     transition: all 0.2s;
   }
 
   .overview-card:hover {
-    box-shadow: 0 8px 32px -4px rgba(26, 107, 255, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 8px 32px -4px rgba(255, 122, 47, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
     transform: translateY(-1px);
   }
 
@@ -343,13 +257,13 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    background: rgba(26, 107, 255, 0.1);
-    border: 1px solid rgba(26, 107, 255, 0.12);
+    background: rgba(255, 122, 47, 0.1);
+    border: 1px solid rgba(255, 122, 47, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
-    color: var(--velo-primary);
+    color: #c24e00;
   }
 
   .overview-card h3 {
@@ -381,12 +295,12 @@
     border-radius: 16px;
     overflow: hidden;
     transition: border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 12px -2px rgba(26, 107, 255, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 2px 12px -2px rgba(255, 122, 47, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .accordion-item.open {
-    border-color: rgba(26, 107, 255, 0.2);
-    box-shadow: 0 4px 20px -4px rgba(26, 107, 255, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    border-color: rgba(255, 122, 47, 0.2);
+    box-shadow: 0 4px 20px -4px rgba(255, 122, 47, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .accordion-header {
@@ -406,7 +320,7 @@
   }
 
   .accordion-item.open .accordion-header {
-    background: rgba(26, 107, 255, 0.04);
+    background: rgba(255, 122, 47, 0.04);
   }
 
   .acc-left {
@@ -419,8 +333,8 @@
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: rgba(26, 107, 255, 0.08);
-    border: 1px solid rgba(26, 107, 255, 0.1);
+    background: rgba(255, 122, 47, 0.08);
+    border: 1px solid rgba(255, 122, 47, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -501,8 +415,8 @@
   .feature-check {
     width: 20px;
     height: 20px;
-    background: rgba(26, 107, 255, 0.1);
-    border: 1px solid rgba(26, 107, 255, 0.12);
+    background: rgba(255, 122, 47, 0.1);
+    border: 1px solid rgba(255, 122, 47, 0.12);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -744,8 +658,8 @@
   }
 
   .usecase-card:hover {
-    border-color: rgba(26, 107, 255, 0.2);
-    box-shadow: 0 6px 20px -4px rgba(26, 107, 255, 0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+    border-color: rgba(255, 122, 47, 0.2);
+    box-shadow: 0 6px 20px -4px rgba(255, 122, 47, 0.1), inset 0 1px 0 rgba(255,255,255,0.8);
     transform: translateY(-2px);
   }
 
@@ -758,16 +672,16 @@
 
   .usecase-card h4 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--velo-dark);
-    margin-bottom: 5px;
+    margin-bottom: 7px;
   }
 
   .usecase-card p {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.5;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 
   /* PLAN GRID */
@@ -789,13 +703,13 @@
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 4px 24px -4px rgba(26, 107, 255, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 4px 24px -4px rgba(255, 122, 47, 0.07), inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .plan-card.featured {
     background: rgba(219, 234, 254, 0.5);
-    border-color: rgba(26, 107, 255, 0.25);
-    box-shadow: 0 8px 32px -4px rgba(26, 107, 255, 0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+    border-color: rgba(255, 122, 47, 0.25);
+    box-shadow: 0 8px 32px -4px rgba(255, 122, 47, 0.15), inset 0 1px 0 rgba(255,255,255,0.8);
     position: relative;
   }
 
@@ -931,9 +845,9 @@
   }
 
   .resource-link:hover {
-    border-color: rgba(26, 107, 255, 0.25);
+    border-color: rgba(255, 122, 47, 0.25);
     color: var(--velo-primary);
-    box-shadow: 0 2px 8px rgba(26,107,255,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
+    box-shadow: 0 2px 8px rgba(255,122,47,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
   }
 
   /* FOOTER */
@@ -981,7 +895,7 @@
     background: rgba(239, 246, 255, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(26, 107, 255, 0.12);
+    border: 1px solid rgba(255, 122, 47, 0.12);
     border-left: 3px solid var(--velo-primary);
     border-radius: 0 12px 12px 0;
     padding: 14px 16px;
@@ -996,34 +910,273 @@
     color: var(--velo-primary);
     font-weight: 600;
   }
+
+  #bp-nav-back:hover { border-color: rgba(156,63,0,0.5) !important; background: rgba(156,63,0,0.05) !important; }
+  #bp-nav-back:active { transform: scale(0.97); }
+  #try-velo-btn:hover { filter: brightness(1.08); transform: scale(1.02); }
+  #try-velo-btn:active { transform: scale(0.97); }
+
+  /* ═══ DECODE SECTION IMPROVEMENTS ═══ */
+
+  /* 3D neumorphic icon containers */
+  .card-icon {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f4 100%) !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+    box-shadow:
+      -2px -2px 6px rgba(255,255,255,0.9),
+      2px 2px 8px rgba(156,63,0,0.08),
+      inset 1px 1px 2px rgba(255,255,255,1) !important;
+    margin-bottom: 20px !important;
+  }
+  .overview-card h3 {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin-bottom: 10px !important;
+  }
+  .overview-card p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Whiter, more opaque glass cards */
+  /* ── Stitch-style feature cards ── */
+  .overview-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    margin-top: 36px !important;
+  }
+  .overview-card {
+    background: rgba(255,255,255,0.90) !important;
+    border: 1px solid rgba(255,255,255,0.80) !important;
+    box-shadow: 0 4px 24px -4px rgba(255,122,47,0.07), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+    padding: 28px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+  .overview-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 40px -8px rgba(194,78,0,0.14), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+  }
+  .card-glow-blob {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,122,47,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: background 0.3s;
+  }
+  .overview-card:hover .card-glow-blob {
+    background: radial-gradient(circle, rgba(255,122,47,0.15) 0%, transparent 70%);
+  }
+
+  /* Usecase cards — same glass as overview cards */
+  .usecase-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+  }
+  .usecase-card {
+    position: relative !important;
+    overflow: hidden !important;
+    background: rgba(255,255,255,0.78) !important;
+    border: 1px solid rgba(255,255,255,0.75) !important;
+    box-shadow: 0 4px 24px -4px rgba(255,122,47,0.07), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+    padding: 28px !important;
+    text-align: left !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+  .usecase-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 40px -8px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+  }
+  .usecase-card .uc-icon {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 122, 47, 0.1) !important;
+    border: 1px solid rgba(255, 122, 47, 0.12) !important;
+    box-shadow: none !important;
+    margin-bottom: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--velo-primary) !important;
+  }
+
+  /* Minor feature items */
+  .minor-item {
+    background: rgba(255,255,255,0.68) !important;
+    border: 1px solid rgba(255,255,255,0.7) !important;
+  }
+
+  /* Feature items */
+  .feature-item {
+    background: rgba(255,255,255,0.65) !important;
+    border: 1px solid rgba(255,255,255,0.7) !important;
+  }
+
+  /* Center headers for symmetric sections */
+  #what-is-velo > .section-label,
+  #proficiency > .section-label,
+  #pricing > .section-label {
+    display: flex;
+    justify-content: center;
+  }
+  #what-is-velo > .section-title,
+  #what-is-velo > .section-desc,
+  #proficiency > .section-title,
+  #proficiency > .section-desc,
+  #pricing > .section-title,
+  #pricing > .section-desc {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Softer section dividers */
+  section {
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+  }
+
+  /* ── Proficiency — orange palette (replaces blue/purple) ── */
+  .prof-5 {
+    background: rgba(255,252,250,0.88) !important;
+    border: 1px solid rgba(0,0,0,0.07) !important;
+  }
+  .prof-5::before { background: #d1d5db !important; }
+  .prof-5 .prof-level { color: #78716c !important; }
+  .prof-5 .prof-label { color: #78716c !important; }
+
+  .prof-8 {
+    background: rgba(255,247,240,0.88) !important;
+    border: 1px solid rgba(255,122,47,0.2) !important;
+  }
+  .prof-8::before { background: #ff7a2f !important; }
+  .prof-8 .prof-level { color: #9c3f00 !important; }
+  .prof-8 .prof-label { color: #9c3f00 !important; }
+
+  .prof-10 {
+    background: rgba(255,241,230,0.88) !important;
+    border: 1px solid rgba(194,78,0,0.25) !important;
+    box-shadow: 0 4px 24px -4px rgba(194,78,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+  }
+  .prof-10::before {
+    background: linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%) !important;
+  }
+  .prof-10 .prof-level { color: #7a2e00 !important; }
+  .prof-10 .prof-label { color: #7a2e00 !important; }
+
+  /* ── Pricing — orange featured card ── */
+  .plan-card.featured {
+    background: rgba(255,247,240,0.92) !important;
+    border: 1px solid rgba(255,122,47,0.28) !important;
+    box-shadow: 0 12px 48px -4px rgba(194,78,0,0.18), inset 0 1px 0 rgba(255,255,255,0.95) !important;
+    transform: translateY(-10px);
+  }
+  .plan-card.featured::before {
+    content: 'Most Popular' !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    background: linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%) !important;
+    border-radius: 0 0 10px 10px !important;
+    padding: 5px 18px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+  }
+  .plan-card.featured .plan-price {
+    color: #9c3f00 !important;
+  }
+
+  /* Gradient CTA button for Pro plan */
+  .featured-cta {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    background: linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 13px 24px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px -2px rgba(194,78,0,0.35);
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .featured-cta:hover { filter: brightness(1.07); transform: scale(1.02); }
+  .featured-cta:active { transform: scale(0.97); }
+
+  /* Resource links row */
+  .resource-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #9c3f00;
+    text-decoration: none;
+    box-shadow: 0 2px 10px -2px rgba(156,63,0,0.07), inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .resource-link:hover {
+    background: rgba(255,255,255,0.92);
+    border-color: rgba(255,122,47,0.3);
+    box-shadow: 0 4px 16px -2px rgba(156,63,0,0.12), inset 0 1px 0 rgba(255,255,255,0.95);
+    transform: translateY(-1px);
+  }
+
+  /* Footer */
+  footer {
+    background: rgba(255,255,255,0.5) !important;
+    border-top: 1px solid rgba(0,0,0,0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+  }
+
 </style>
 </head>
 <body>
+<!-- BUILDPARTY NAVIGATION BAR -->
+<div id="bp-nav" style="position:fixed;top:0;left:0;right:0;z-index:9999;height:68px;background:rgba(255,255,255,0.45);display:flex;align-items:center;padding:0 24px;gap:16px;backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-bottom:1px solid rgba(0,0,0,0.08);">
+  <a id="bp-nav-back" href="/apex/community/velo/owner" target="_parent" style="position:relative;z-index:1;display:flex;align-items:center;gap:6px;text-decoration:none;background:transparent;border:2px solid rgba(156,63,0,0.3);border-radius:9999px;padding:6px 16px;color:#9c3f00;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;transition:all 0.2s;">← Back</a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);z-index:1;display:flex;align-items:center;gap:10px;">
+    <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#1c1917;letter-spacing:-0.02em;">BuildParty</span>
+    <span style="width:1px;height:14px;background:rgba(156,63,0,0.2);flex-shrink:0;"></span>
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1c1917;font-family:'Inter',sans-serif;">Decode</span>
+  </div>
+  <div style="flex:1;"></div>
+  <a href="#" id="try-velo-btn" style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:linear-gradient(135deg,#ff7a2f 0%,#c24e00 100%);border-radius:9999px;padding:8px 20px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;box-shadow:0 4px 14px -2px rgba(194,78,0,0.35);transition:all 0.2s;">Try Velo</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
 
-  <!-- TAB BAR — sticky inside hero so it floats on the blue gradient -->
-  <div class="tab-bar">
-    <div class="tab-bar-inner">
-      <div class="tab-indicator"></div>
-      <a href="#what-is-velo" class="tab-link">Overview</a>
-      <a href="#major-features" class="tab-link">Features</a>
-      <a href="#editor" class="tab-link">Editor</a>
-      <a href="#velotwin" class="tab-link">VeloTwin</a>
-      <a href="#learning-path" class="tab-link">Learning Path</a>
-      <a href="#pricing" class="tab-link">Pricing</a>
-    </div>
-  </div>
 
   <div class="hero-body">
-    <div class="hero-tag">
-      <span class="section-dot"></span>
-      Complete Reference Guide · April 2026
-    </div>
     <h1>Everything you need to know<br>about <span>Velo</span></h1>
     <p class="hero-sub">AI-native product demo and walkthrough generator. Raw recordings in, studio-quality video messages out.</p>
-    <div class="hero-stats">
+    <div style="display:inline-block;background:rgba(255,255,255,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.85);border-radius:9999px;box-shadow:0 4px 24px -4px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.9);padding:16px 36px;">
+      <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-number">4</div>
         <div class="stat-label">Input modes</div>
@@ -1041,7 +1194,7 @@
         <div class="stat-label">Pricing tiers</div>
       </div>
     </div>
-    <a href="https://app.usevelo.ai" class="hero-cta" target="_blank">Try Velo →</a>
+    </div>
   </div>
 </div>
 
@@ -1054,46 +1207,89 @@
   <p class="section-desc">Velo is an AI-powered tool that transforms raw screen recordings, uploads, PDFs, slides, and URLs into polished, share-ready video messages — no manual editing required.</p>
 
   <div class="overview-grid">
-    <div class="overview-card">
-      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">movie_creation</span></div>
+
+    <!-- Card 1 -->
+    <div class="overview-card" style="position:relative;overflow:hidden;">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">movie_creation</span></div>
       <h3>Auto Script Generation</h3>
       <p>Velo analyzes your raw recording and writes a professional narration script from scratch, optimized for clarity and engagement.</p>
     </div>
-    <div class="overview-card">
-      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">smart_toy</span></div>
+
+    <!-- Card 2 -->
+    <div class="overview-card" style="position:relative;overflow:hidden;">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">smart_toy</span></div>
       <h3>Browser Agent Recording</h3>
-      <p>Velo's agentic screen recorder works inside Chrome — it listens to your instructions, reads your clicks, and records the demo for you.</p>
+      <p>Velo’s agentic screen recorder works inside Chrome — it listens to your instructions, reads your clicks, and records the demo for you.</p>
     </div>
-    <div class="overview-card">
-      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">face</span></div>
+
+    <!-- Card 3 -->
+    <div class="overview-card" style="position:relative;overflow:hidden;">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">face</span></div>
       <h3>VeloTwin AI Avatar</h3>
       <p>Your personal AI presenter — hyper-realistic with natural lip sync, eye blinks, and hand gestures. Built from a single photo and short voice sample.</p>
     </div>
-    <div class="overview-card">
-      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">content_cut</span></div>
+
+    <!-- Card 4 -->
+    <div class="overview-card" style="position:relative;overflow:hidden;">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">content_cut</span></div>
       <h3>Timeline-based Editor</h3>
       <p>Fine-tune every layer — zoom, masks, spotlights, callouts, background, cursor style, audio — all from a multi-track timeline interface.</p>
     </div>
-    <div class="overview-card">
-      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">share</span></div>
+
+    <!-- Card 5 -->
+    <div class="overview-card" style="position:relative;overflow:hidden;">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">share</span></div>
       <h3>Instant Sharing</h3>
       <p>Share via shareable link or download as MP4. No watermarks on paid plans. No production team needed.</p>
     </div>
-    <div class="overview-card">
-      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:20px">palette</span></div>
+
+    <!-- Card 6 -->
+    <div class="overview-card" style="position:relative;overflow:hidden;">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">palette</span></div>
       <h3>Brand Kit</h3>
-      <p>Apply your brand's colors, logos, and personas consistently across every video you produce.</p>
+      <p>Apply your brand’s colors, logos, and personas consistently across every video you produce.</p>
     </div>
+
   </div>
 
-  <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:600;color:var(--velo-dark);margin-top:40px;margin-bottom:16px;">Who uses Velo?</h3>
-  <div class="usecase-grid">
-    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">handshake</span></span><h4>Sales</h4><p>Polished video pitches without twelve takes</p></div>
-    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">widgets</span></span><h4>Product</h4><p>Feature walkthroughs & updates your team watches</p></div>
-    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">support_agent</span></span><h4>Customer Support</h4><p>Onboarding guides without a production team</p></div>
-    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">videocam</span></span><h4>Creators</h4><p>Product reviews & tutorials for YouTube, X</p></div>
-    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">campaign</span></span><h4>Marketing</h4><p>Launch videos & product walkthroughs in minutes</p></div>
-    <div class="usecase-card"><span class="uc-icon"><span class="material-symbols-outlined" style="font-size:26px">menu_book</span></span><h4>Educators</h4><p>Professional courses & lectures from day one</p></div>
+  <h2 class="section-title" style="margin-top:56px;">Who uses Velo?</h2>
+  <div class="usecase-grid" style="margin-top:32px;">
+    <div class="usecase-card">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">handshake</span></div>
+      <h4>Sales</h4><p>Polished video pitches without twelve takes</p>
+    </div>
+    <div class="usecase-card">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">widgets</span></div>
+      <h4>Product</h4><p>Feature walkthroughs &amp; updates your team watches</p>
+    </div>
+    <div class="usecase-card">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">support_agent</span></div>
+      <h4>Customer Support</h4><p>Onboarding guides without a production team</p>
+    </div>
+    <div class="usecase-card">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">videocam</span></div>
+      <h4>Creators</h4><p>Product reviews &amp; tutorials for YouTube, X</p>
+    </div>
+    <div class="usecase-card">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">campaign</span></div>
+      <h4>Marketing</h4><p>Launch videos &amp; product walkthroughs in minutes</p>
+    </div>
+    <div class="usecase-card">
+      <div class="card-glow-blob"></div>
+      <div class="card-icon"><span class="material-symbols-outlined" style="font-size:28px;font-variation-settings:'FILL' 1">menu_book</span></div>
+      <h4>Educators</h4><p>Professional courses &amp; lectures from day one</p>
+    </div>
   </div>
 </section>
 
@@ -1742,6 +1938,7 @@
         <li>3 voice regenerations / video</li>
         <li>5 link-to-video / month</li>
       </ul>
+      <button class="featured-cta">Upgrade to Pro &rarr;</button>
     </div>
     <div class="plan-card">
       <div class="plan-name">Ultra</div>
@@ -1765,9 +1962,13 @@
 </div><!-- end page-wrap -->
 
 <!-- FOOTER -->
-<footer>
-  <p>This guide is a reference document based on <a href="https://www.usevelo.ai" target="_blank">usevelo.ai</a> and <a href="https://docs.usevelo.ai" target="_blank">docs.usevelo.ai</a>. Not affiliated with FlowFrame Inc.</p>
-  <p style="margin-top:6px;font-size:12px;opacity:0.6;">Velo is a product of FlowFrame Inc. · 2261 Market Street, San Francisco</p>
+<footer style="text-align:center;padding:48px 2rem;margin-top:0;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#9c3f00;">
+      This Decode was created by <strong>BuildParty</strong> &nbsp;·&nbsp; Based on <a href="https://www.usevelo.ai" target="_blank" style="color:#ff7a2f;text-decoration:none;">usevelo.ai</a>
+    </p>
+    <p style="margin-top:8px;font-size:12px;color:#b07a5a;opacity:0.8;">Velo is a product of FlowFrame Inc. &nbsp;·&nbsp; BuildParty is not affiliated with FlowFrame Inc.</p>
+  </div>
 </footer>
 
 <script>
@@ -1777,69 +1978,7 @@ function toggleAccordion(item) {
   item.classList.toggle('open', !isOpen);
 }
 
-// ── Sticky / fixed tab bar ──
-// While hero is partially scrolled: sticky (glass bg via is-sticky).
-// Once hero fully exits: fixed at top (is-fixed).
-const tabBar = document.querySelector('.tab-bar');
-const hero = document.querySelector('.hero');
 
-function updateTabState() {
-  const heroRect = hero.getBoundingClientRect();
-  // Once the hero has fully scrolled away, fix the tab bar at the top
-  tabBar.classList.toggle('is-fixed', heroRect.bottom <= 0);
-}
-
-window.addEventListener('scroll', updateTabState, { passive: true });
-
-// ── Active tab tracking ──
-const sectionIds = ['what-is-velo', 'major-features', 'editor', 'velotwin', 'learning-path', 'pricing'];
-const tabLinks = document.querySelectorAll('.tab-link');
-const indicator = document.querySelector('.tab-indicator');
-
-function moveIndicator(link) {
-  const inner = link.closest('.tab-bar-inner');
-  const innerRect = inner.getBoundingClientRect();
-  const linkRect = link.getBoundingClientRect();
-  indicator.style.left   = (linkRect.left - innerRect.left) + 'px';
-  indicator.style.top    = (linkRect.top  - innerRect.top)  + 'px';
-  indicator.style.width  = linkRect.width  + 'px';
-  indicator.style.height = linkRect.height + 'px';
-  // Re-trigger sheen sweep
-  indicator.classList.remove('sheen');
-  void indicator.offsetWidth;
-  indicator.classList.add('sheen');
-}
-
-function setActive(id) {
-  tabLinks.forEach(link => {
-    const isActive = link.getAttribute('href') === '#' + id;
-    link.classList.toggle('active', isActive);
-    if (isActive) moveIndicator(link);
-  });
-}
-
-// Fire when a section enters the top portion of the viewport
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) setActive(entry.target.id);
-  });
-}, { rootMargin: '0px 0px -85% 0px', threshold: 0 });
-
-sectionIds.forEach(id => {
-  const el = document.getElementById(id);
-  if (el) sectionObserver.observe(el);
-});
-
-// Immediate active on click (don't wait for scroll callback)
-tabLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    tabLinks.forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
-
-// Set initial active state — defer one frame so layout is painted
-requestAnimationFrame(() => setActive('what-is-velo'));
 </script>
 
 </body>

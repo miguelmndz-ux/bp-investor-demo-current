@@ -1,0 +1,88 @@
+- generic [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - link "home" [ref=e4] [cursor=pointer]:
+        - /url: /apex
+        - generic [ref=e5]: home
+      - link "explore" [ref=e6] [cursor=pointer]:
+        - /url: /discover
+        - generic [ref=e7]: explore
+      - link "calendar_today" [ref=e8] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e9]: calendar_today
+      - generic [ref=e10]:
+        - generic:
+          - img
+        - link "auto_awesome" [ref=e11] [cursor=pointer]:
+          - /url: /apex
+          - generic [ref=e12]: auto_awesome
+    - generic [ref=e14]:
+      - link "Nate Herk" [ref=e15] [cursor=pointer]:
+        - /url: https://www.nateherk.com/
+        - img "Nate Herk" [ref=e16]
+      - link "The AI Collective" [ref=e17] [cursor=pointer]:
+        - /url: https://www.aicollective.com/
+        - img "The AI Collective" [ref=e18]
+      - link "Sabrina Ramonov" [ref=e19] [cursor=pointer]:
+        - /url: https://substack.com/@sabrinaramonov
+        - img "Sabrina Ramonov" [ref=e20]
+      - link "Ben's Bites" [ref=e21] [cursor=pointer]:
+        - /url: https://www.bensbites.com/
+        - img "Ben's Bites" [ref=e22]
+      - link "Liam Ottley" [ref=e23] [cursor=pointer]:
+        - /url: https://www.liamottley.com/
+        - img "Liam Ottley" [ref=e24]
+      - link "Every.to" [ref=e25] [cursor=pointer]:
+        - /url: https://every.to/
+        - img "Every.to" [ref=e26]
+      - link "Claude" [ref=e27] [cursor=pointer]:
+        - /url: https://claude.ai/
+        - img "Claude" [ref=e28]
+      - link "LiveKit" [ref=e29] [cursor=pointer]:
+        - /url: https://livekit.io/
+        - img "LiveKit" [ref=e30]
+  - banner [ref=e31]:
+    - generic [ref=e32]: BuildParty
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: search
+        - textbox "Search insights, founders, or drafts…" [ref=e36]
+      - button "notifications" [ref=e37] [cursor=pointer]:
+        - generic [ref=e38]: notifications
+      - button "help" [ref=e40] [cursor=pointer]:
+        - generic [ref=e41]: help
+      - img "Profile" [ref=e43]
+  - main [ref=e44]:
+    - generic [ref=e45]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - heading "Apex has drafted 10 new outreaches." [level=1] [ref=e83]:
+            - text: Apex has drafted
+            - generic [ref=e84]: 10 new
+            - text: outreaches.
+          - generic [ref=e85]:
+            - button "Review Drafts" [ref=e86] [cursor=pointer]
+            - paragraph [ref=e87]: Scanned 420+ products in last 24h
+        - generic:
+          - generic: auto_awesome
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]
+            - generic [ref=e97]
+            - generic [ref=e109]
+          - generic [ref=e241]:
+            - generic [ref=e242]
+            - button "View all founders arrow_forward" [ref=e335] [cursor=pointer]
+        - generic [ref=e337]:
+          - generic [ref=e338]:
+            - heading "Live Stats" [level=2] [ref=e340]
+            - generic [ref=e341]
+            - generic [ref=e349]
+          - generic [ref=e376]:
+            - generic [ref=e377]
+            - generic [ref=e381]
+            - button "View full log arrow_forward" [ref=e417] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e424] [cursor=pointer]:
+    - img [ref=e425]
+  - alert [ref=e428]

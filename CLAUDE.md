@@ -77,6 +77,14 @@ style={{
 }}
 ```
 
+**Outlined status badges:** Used for lifecycle/status labels in tables and data views. Style: `border-2` colored border, `bg-white`, `text-on-background` (black text), `rounded-[6px]`, `px-2.5 py-1`, `text-[10px] font-extrabold`. Border color distinguishes the status — never fill the background with color. Use `rounded-[6px]` (not `rounded-full`) to match the reference style.
+
+```tsx
+<span className="border-2 border-emerald-400 bg-white text-on-background text-[10px] font-extrabold px-2.5 py-1 rounded-[6px] whitespace-nowrap">
+  Confirmed
+</span>
+```
+
 **Animations:** Use `.fade-up`, `.fade-up-1` through `.fade-up-4` for page-load entrance animations.
 
 **Mode:** Light mode only. No dark mode.
@@ -174,6 +182,7 @@ Files like `web/public/apex/luma-event.html` can exceed 1MB and cannot be read d
 - **CSS is base64-encoded:** Styles are stored as data URIs in `<link href="data:text/css;base64,...">` tags — injecting a `<style>` override block is not reliable.
 - **CSS custom property cascade:** `!important` on a custom property set on an ancestor does **not** override the same property declared directly on a descendant element. If colors persist after an injected override, the fix is to decode all base64 CSS blocks with Python, replace the hex values, and re-encode them.
 - **Unicode in Python scripts:** Add `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')` to avoid `UnicodeEncodeError` on Windows when printing non-ASCII characters.
+- **`email-body.html` must stay in sync with `email.html`:** `web/public/gmail-flow/email-body.html` is extracted from `web/public/gmail-flow/email.html` via `input/rev/extract_email_body.py`. They share the same email body HTML. Always update both files together — run the Python replacement against both paths in the same script. Never edit one without the other.
 
 ### One-sided overflow clipping with `clip-path`
 

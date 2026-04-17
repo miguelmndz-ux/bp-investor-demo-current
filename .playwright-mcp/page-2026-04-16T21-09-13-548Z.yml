@@ -1,0 +1,251 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "← Back to BuildParty" [ref=e3] [cursor=pointer]:
+      - /url: /apex
+    - generic [ref=e4]:
+      - generic [ref=e5]: BuildParty
+      - generic [ref=e7]: Microcourse
+  - complementary [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]: Velo Microcourse
+      - generic [ref=e11]:
+        - generic [ref=e12]: Progress
+        - generic [ref=e13]: 1 / 9 modules
+    - navigation [ref=e16]:
+      - generic [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: "0"
+        - generic [ref=e19]: Mental Model & Orientation
+        - generic [ref=e21]: check
+      - generic [ref=e22] [cursor=pointer]:
+        - generic [ref=e23]: "1"
+        - generic [ref=e24]: Screen Capture Mode
+        - generic [ref=e26]: check
+      - generic [ref=e27] [cursor=pointer]:
+        - generic [ref=e28]: "2"
+        - generic [ref=e29]: All Four Input Modes
+        - generic [ref=e31]: check
+      - generic [ref=e32] [cursor=pointer]:
+        - generic [ref=e33]: "3"
+        - generic [ref=e34]: The Editor
+        - generic [ref=e36]: check
+      - generic [ref=e37] [cursor=pointer]:
+        - generic [ref=e38]: "4"
+        - generic [ref=e39]: VeloTwin Avatar
+        - generic [ref=e41]: check
+      - generic [ref=e42] [cursor=pointer]:
+        - generic [ref=e43]: "5"
+        - generic [ref=e44]: Script Mastery
+        - generic [ref=e46]: check
+      - generic [ref=e47] [cursor=pointer]:
+        - generic [ref=e48]: "6"
+        - generic [ref=e49]: Production Quality
+        - generic [ref=e51]: check
+      - generic [ref=e52] [cursor=pointer]:
+        - generic [ref=e53]: "7"
+        - generic [ref=e54]: Workflow & Pricing
+        - generic [ref=e56]: check
+      - generic [ref=e57] [cursor=pointer]:
+        - generic [ref=e59]: star
+        - generic [ref=e60]: Capstone Project
+        - generic [ref=e62]: check
+  - main [ref=e63]:
+    - generic [ref=e64]:
+      - heading "Master AI Demo Videos with Velo" [level=1] [ref=e65]
+      - paragraph [ref=e66]: 9 modules from zero experience to production-quality, brand-consistent demos. Complete each module at your own pace — progress saves automatically.
+    - button "Module 0 Velo Mental Model & Orientation check 20–30 min" [ref=e68] [cursor=pointer]:
+      - generic [ref=e69]: Module 0
+      - generic [ref=e70]:
+        - text: Velo Mental Model & Orientation
+        - generic [ref=e72]: check
+      - generic [ref=e73]: 20–30 min
+      - img [ref=e74]
+    - generic [ref=e76]:
+      - 'button "Module 1 Your First Velo: Screen Capture Mode 45–60 min" [ref=e77] [cursor=pointer]':
+        - generic [ref=e78]: Module 1
+        - generic [ref=e79]: "Your First Velo: Screen Capture Mode"
+        - generic [ref=e80]: 45–60 min
+        - img [ref=e81]
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: Module Outcome
+          - generic [ref=e86]: Record, process, and publish a complete Velo video end-to-end using Screen Capture — all in one sitting.
+        - paragraph [ref=e87]: "Screen Capture is Velo's most direct input mode: you share your screen, narrate what you're doing, and Velo handles everything else. This module walks you through every step — from installing the Chrome extension to seeing your finished share link in the browser."
+        - 'heading "Step 1: Install & Pin the Velo Companion Extension" [level=3] [ref=e88]'
+        - list [ref=e89]:
+          - listitem [ref=e90]:
+            - generic [ref=e91]:
+              - text: Open Chrome and go to the Chrome Web Store. Search
+              - strong [ref=e92]: "\"Velo Companion\""
+              - text: .
+          - listitem [ref=e93]:
+            - generic [ref=e94]:
+              - text: Click
+              - strong [ref=e95]: Add to Chrome
+              - text: . When prompted, click
+              - strong [ref=e96]: Add extension
+              - text: .
+          - listitem [ref=e97]:
+            - generic [ref=e98]:
+              - text: In your Chrome toolbar, click the puzzle piece icon (Extensions menu). Find Velo Companion and click the
+              - strong [ref=e99]: pin icon
+              - text: so it always shows in your toolbar.
+          - listitem [ref=e100]:
+            - generic [ref=e101]: Confirm the Velo icon appears in your toolbar. If it doesn't, the extension didn't install — try again in a fresh Chrome window.
+        - 'heading "Step 2: Set Up Your Recording" [level=3] [ref=e102]'
+        - paragraph [ref=e103]: "Click the Velo Companion icon to open the recording launcher. Before you hit Record, configure three things:"
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e106]: Window / Tab Selection
+            - paragraph [ref=e107]:
+              - text: Choose
+              - strong [ref=e108]: Tab
+              - text: to capture a single browser tab (recommended — cleaner background). Use
+              - strong [ref=e109]: Window
+              - text: only if your demo spans multiple apps.
+          - generic [ref=e110]:
+            - generic [ref=e111]: Resolution
+            - paragraph [ref=e112]: Record at your screen's native resolution. Don't zoom in your browser before recording — Velo handles visual zoom in the editor afterward.
+          - generic [ref=e113]:
+            - generic [ref=e114]: Microphone Check
+            - paragraph [ref=e115]: Confirm the correct mic is selected. Speak a test phrase. If the level bar doesn't move, switch input devices before proceeding.
+        - 'heading "Step 3: Record Well" [level=3] [ref=e116]'
+        - paragraph [ref=e117]: "Your narration and cursor movement directly shape the AI script Velo generates. Use this technique:"
+        - list [ref=e118]:
+          - listitem [ref=e119]:
+            - strong [ref=e120]: Slow your clicks.
+            - text: Pause 1–2 seconds after each click so Velo can recognize the action before you move on.
+          - listitem [ref=e121]:
+            - strong [ref=e122]: Narrate naturally.
+            - text: Speak like you're showing a colleague — avoid scripting or over-enunciating. The AI rewrites it anyway.
+          - listitem [ref=e123]:
+            - strong [ref=e124]: Pause before transitions.
+            - text: When moving between sections of the product, take a breath. This gives Velo clean segment breaks.
+          - listitem [ref=e125]:
+            - strong [ref=e126]: Filler words are fine.
+            - text: "\"Um\", \"uh\", and \"so\" are stripped by the AI. Long mid-sentence pauses are more disruptive than filler words."
+        - 'heading "Step 4: What Happens After You Stop Recording" [level=3] [ref=e127]'
+        - paragraph [ref=e128]:
+          - text: When you click
+          - strong [ref=e129]: Stop
+          - text: ", Velo's AI pipeline starts immediately. Do not close the tab. Here's what's happening:"
+        - list [ref=e130]:
+          - listitem [ref=e131]:
+            - generic [ref=e132]: Velo analyzes your recording — cursor position, click events, timing, and UI content visible on screen.
+          - listitem [ref=e133]:
+            - generic [ref=e134]: "A script is generated: one line per segment, one segment per distinct action."
+          - listitem [ref=e135]:
+            - generic [ref=e136]: The script is passed to the voice engine, which reads it using your selected VeloTwin voice.
+          - listitem [ref=e137]:
+            - generic [ref=e138]: The avatar is composited over the video — face, lip sync, and eye movement all happen at this stage.
+          - listitem [ref=e139]:
+            - generic [ref=e140]: You're placed into the Velo editor with the finished draft ready to review.
+        - generic [ref=e141]:
+          - strong [ref=e142]: "Processing time:"
+          - text: A 3-minute recording typically takes 3–8 minutes to process, depending on server load. Don't refresh the page — processing continues in the background even if the progress indicator looks stuck.
+        - 'heading "Step 5: Your First Look at the Editor" [level=3] [ref=e143]'
+        - paragraph [ref=e144]: "In this module, accept the auto-generated script as-is. Don't edit yet — script editing is covered in Module 5. For now, just observe:"
+        - list [ref=e145]:
+          - listitem [ref=e146]:
+            - text: The
+            - strong [ref=e147]: Scripts panel
+            - text: (right sidebar) shows the narration text broken into segments. Each line corresponds to one video chunk.
+          - listitem [ref=e148]:
+            - text: The
+            - strong [ref=e149]: timeline
+            - text: at the bottom shows your video laid out over time. Each segment appears as a block.
+          - listitem [ref=e150]:
+            - text: The
+            - strong [ref=e151]: Face panel
+            - text: (right sidebar) lets you choose or switch your VeloTwin voice and avatar.
+        - 'heading "Step 6: Choose a Public VeloTwin & Publish" [level=3] [ref=e152]'
+        - paragraph [ref=e153]: If you don't have a custom VeloTwin yet, open the Face panel and choose one of Velo's public avatars. Pick one whose tone matches your content — professional and neutral is a safe default for a first video.
+        - paragraph [ref=e154]:
+          - text: Once you've selected a voice, click
+          - strong [ref=e155]: Publish
+          - text: . Velo finalizes the render and generates your
+          - strong [ref=e156]: share link
+          - text: . Copy it and open it in a new tab to see exactly what your recipients will see.
+        - heading "Common Failure Points" [level=3] [ref=e157]
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]: Connection Drops
+            - paragraph [ref=e161]: If your internet disconnects mid-recording, the upload fails silently. Record on a stable connection and keep the browser tab active throughout.
+          - generic [ref=e162]:
+            - generic [ref=e163]: Blocked Permissions
+            - paragraph [ref=e164]: If Chrome doesn't ask to use your mic, permissions are blocked. Go to Chrome Settings → Privacy → Microphone and allow velo.video.
+          - generic [ref=e165]:
+            - generic [ref=e166]: Full Desktop vs. Tab
+            - paragraph [ref=e167]: Sharing full desktop includes your taskbar, notifications, and other apps. Always share a specific tab unless you genuinely need multi-app coverage in your demo.
+        - generic [ref=e168]:
+          - generic [ref=e169]: Key Terms
+          - group [ref=e170]:
+            - generic "Screen Capture Mode ▾" [ref=e171] [cursor=pointer]:
+              - text: Screen Capture Mode
+              - generic [ref=e172]: ▾
+          - group [ref=e173]:
+            - generic "Share Link ▾" [ref=e174] [cursor=pointer]:
+              - text: Share Link
+              - generic [ref=e175]: ▾
+          - group [ref=e176]:
+            - generic "Public VeloTwin ▾" [ref=e177] [cursor=pointer]:
+              - text: Public VeloTwin
+              - generic [ref=e178]: ▾
+          - group [ref=e179]:
+            - generic "Processing Pipeline ▾" [ref=e180] [cursor=pointer]:
+              - text: Processing Pipeline
+              - generic [ref=e181]: ▾
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - generic [ref=e184]: edit_note
+            - text: Hands-On Exercise
+          - heading "Record & Publish Your First Velo" [level=4] [ref=e185]
+          - paragraph [ref=e186]: "Goal: complete a full Velo production loop — from recording to share link — in one session."
+          - list [ref=e187]:
+            - listitem [ref=e188]: Open Chrome and navigate to any product or app you know well. It can be a simple settings page or a website you use daily.
+            - listitem [ref=e189]: Click the Velo Companion icon, configure your recording (select the tab, confirm mic is active), and click Record.
+            - listitem [ref=e190]: Record a 60–90 second walkthrough. Narrate naturally, slow your clicks, and pause between sections. Stop the recording when done.
+            - listitem [ref=e191]: Wait for processing to complete. Do not close the tab or refresh.
+            - listitem [ref=e192]: When the editor loads, open the Scripts panel and read the auto-generated script. Note what the AI captured accurately and where it missed the point — you'll learn to fix this in Module 5.
+            - listitem [ref=e193]: Select any public VeloTwin voice from the Face panel.
+            - listitem [ref=e194]: Click Publish. Copy the share link and open it in a new browser tab. Confirm the video plays correctly.
+            - listitem [ref=e195]: "Write down 2–3 observations: How accurate was the script? How natural does the avatar look? What would you change on your next recording?"
+        - generic [ref=e196]:
+          - generic [ref=e197]:
+            - generic [ref=e198]: check
+            - text: Module complete
+          - button "Mark as Complete" [ref=e199] [cursor=pointer]
+    - button "Module 2 All Four Input Modes 1.5–2 hrs" [ref=e201] [cursor=pointer]:
+      - generic [ref=e202]: Module 2
+      - generic [ref=e203]: All Four Input Modes
+      - generic [ref=e204]: 1.5–2 hrs
+      - img [ref=e205]
+    - 'button "Module 3 The Editor: Every Panel, Timeline & Toolbar 1–1.5 hrs" [ref=e208] [cursor=pointer]':
+      - generic [ref=e209]: Module 3
+      - generic [ref=e210]: "The Editor: Every Panel, Timeline & Toolbar"
+      - generic [ref=e211]: 1–1.5 hrs
+      - img [ref=e212]
+    - 'button "Module 4 VeloTwin: Create, Calibrate & Polish Your AI Avatar 1–1.5 hrs" [ref=e215] [cursor=pointer]':
+      - generic [ref=e216]: Module 4
+      - generic [ref=e217]: "VeloTwin: Create, Calibrate & Polish Your AI Avatar"
+      - generic [ref=e218]: 1–1.5 hrs
+      - img [ref=e219]
+    - 'button "Module 5 Script Mastery: Generation, Editing & Prompting 1–1.5 hrs" [ref=e222] [cursor=pointer]':
+      - generic [ref=e223]: Module 5
+      - generic [ref=e224]: "Script Mastery: Generation, Editing & Prompting"
+      - generic [ref=e225]: 1–1.5 hrs
+      - img [ref=e226]
+    - 'button "Module 6 Production Quality: Brand Kit & Strategic Timeline Layers 1.5–2 hrs" [ref=e229] [cursor=pointer]':
+      - generic [ref=e230]: Module 6
+      - generic [ref=e231]: "Production Quality: Brand Kit & Strategic Timeline Layers"
+      - generic [ref=e232]: 1.5–2 hrs
+      - img [ref=e233]
+    - button "Module 7 Workflow Playbook & Pricing Optimization 1–1.5 hrs" [ref=e236] [cursor=pointer]:
+      - generic [ref=e237]: Module 7
+      - generic [ref=e238]: Workflow Playbook & Pricing Optimization
+      - generic [ref=e239]: 1–1.5 hrs
+      - img [ref=e240]
+    - button "Capstone Your Production-Ready Demo Self-paced" [ref=e243] [cursor=pointer]:
+      - generic [ref=e244]: Capstone
+      - generic [ref=e245]: Your Production-Ready Demo
+      - generic [ref=e246]: Self-paced
+      - img [ref=e247]

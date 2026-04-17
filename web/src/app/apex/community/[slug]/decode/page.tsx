@@ -15,7 +15,7 @@ export default function DecodePage() {
         src={product.decodeUrl}
         title={`${product.name} — Apex Decode`}
         className="w-full h-full border-0"
-        sandbox="allow-scripts allow-same-origin"
+        sandbox="allow-scripts allow-same-origin allow-top-navigation"
       />
     </div>
   )

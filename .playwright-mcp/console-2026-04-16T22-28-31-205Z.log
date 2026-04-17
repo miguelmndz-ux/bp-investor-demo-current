@@ -1,0 +1,33 @@
+[     710ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[     767ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[     998ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[    5320ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[    5493ms] [LOG] [Fast Refresh] done in 281ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[   21361ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[   21409ms] [LOG] [Fast Refresh] done in 162ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[   35685ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[   35765ms] [LOG] [Fast Refresh] done in 182ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[   92525ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[  102803ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  102850ms] [LOG] [Fast Refresh] done in 161ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  209825ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[  219692ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  219786ms] [LOG] [Fast Refresh] done in 197ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  307783ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[  318208ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  318286ms] [LOG] [Fast Refresh] done in 181ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  508928ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[  515249ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  515327ms] [LOG] [Fast Refresh] done in 178ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  526041ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  526090ms] [LOG] [Fast Refresh] done in 159ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  605466ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  605467ms] [LOG] [Fast Refresh] done in 113ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  712873ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[  718468ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  718531ms] [LOG] [Fast Refresh] done in 168ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  777998ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  778092ms] [LOG] [Fast Refresh] done in 206ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  796310ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ http://localhost:3000/apex/velo-decode.html:0
+[  815616ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[  815681ms] [LOG] [Fast Refresh] done in 166ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
