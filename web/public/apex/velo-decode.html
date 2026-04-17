@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BuildParty Decode — Velo Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
   :root {
@@ -47,7 +48,7 @@
     color: var(--text-primary);
     font-size: 15px;
     line-height: 1.65;
-    padding-top: 68px;
+    overflow-x: hidden;
   }
 
 
@@ -911,8 +912,6 @@
     font-weight: 600;
   }
 
-  #bp-nav-back:hover { border-color: rgba(156,63,0,0.5) !important; background: rgba(156,63,0,0.05) !important; }
-  #bp-nav-back:active { transform: scale(0.97); }
   #try-velo-btn:hover { filter: brightness(1.08); transform: scale(1.02); }
   #try-velo-btn:active { transform: scale(0.97); }
 
@@ -1156,23 +1155,34 @@
 </style>
 </head>
 <body>
-<!-- BUILDPARTY NAVIGATION BAR -->
-<div id="bp-nav" style="position:fixed;top:0;left:0;right:0;z-index:9999;height:68px;background:rgba(255,255,255,0.45);display:flex;align-items:center;padding:0 24px;gap:16px;backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-bottom:1px solid rgba(0,0,0,0.08);">
-  <a id="bp-nav-back" href="/apex/community/velo/owner" target="_parent" style="position:relative;z-index:1;display:flex;align-items:center;gap:6px;text-decoration:none;background:transparent;border:2px solid rgba(156,63,0,0.3);border-radius:9999px;padding:6px 16px;color:#9c3f00;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;transition:all 0.2s;">← Back</a>
-  <div style="position:absolute;left:50%;transform:translateX(-50%);z-index:1;display:flex;align-items:center;gap:10px;">
-    <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#1c1917;letter-spacing:-0.02em;">BuildParty</span>
-    <span style="width:1px;height:14px;background:rgba(156,63,0,0.2);flex-shrink:0;"></span>
-    <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1c1917;font-family:'Inter',sans-serif;">Decode</span>
-  </div>
-  <div style="flex:1;"></div>
-  <a href="#" id="try-velo-btn" style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:linear-gradient(135deg,#ff7a2f 0%,#c24e00 100%);border-radius:9999px;padding:8px 20px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;box-shadow:0 4px 14px -2px rgba(194,78,0,0.35);transition:all 0.2s;">Try Velo</a>
-</div>
-
 <!-- HERO -->
 <div class="hero">
 
 
   <div class="hero-body">
+    <div style="margin-bottom: 24px; display: inline-block;">
+      <p style="
+        font-family: 'VCR OSD Mono', 'Share Tech Mono', monospace;
+        font-size: 42px;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.1;
+        margin-bottom: 6px;
+      ">VELO DECODED</p>
+      <p style="
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #b07a5a;
+      ">by BuildParty</p>
+    </div>
     <h1>Everything you need to know<br>about <span>Velo</span></h1>
     <p class="hero-sub">AI-native product demo and walkthrough generator. Raw recordings in, studio-quality video messages out.</p>
     <div style="display:inline-block;background:rgba(255,255,255,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.85);border-radius:9999px;box-shadow:0 4px 24px -4px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.9);padding:16px 36px;">

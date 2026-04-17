@@ -48,7 +48,7 @@ export default function RapidCoursePreviewCard({ productName, rapidCourseUrl, sl
             <span className="text-xs font-bold text-primary uppercase tracking-wider">Apex Rapid Course</span>
           </div>
           <h3 className="text-lg font-black font-jakarta text-on-background">
-            {productName} — Microcourse
+            {productName} — Course
           </h3>
         </div>
         <div className="flex items-center gap-2 shrink-0">
@@ -95,7 +95,7 @@ export default function RapidCoursePreviewCard({ productName, rapidCourseUrl, sl
             </>
           )}
           <Link
-            href={`/apex/community/${slug}/microcourse`}
+            href={`/apex/community/${slug}/courses`}
             className="inline-block font-jakarta font-bold text-sm rounded-full px-6 py-2.5 transition-all duration-300 active:scale-95 no-underline"
             style={{
               background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',

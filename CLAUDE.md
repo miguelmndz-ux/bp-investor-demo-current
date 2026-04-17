@@ -315,7 +315,8 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 | 1.1.2 | Outreach Sent Success Overlay | `/apex` (overlay) | Built |
 | 1.2 | Community Profile Page | `/apex/community/[slug]/owner` | Built |
 | 1.2.1 | Decode Page | — | Not built |
-| 1.2.2 | Microcourse Page | — | Not built |
+| 1.2.2 | Course Page | `/apex/community/[slug]/courses` | Built |
+| 1.2.3 | Both View (Split Decode + Course) | `/apex/community/[slug]/both` | Built |
 | 2.0 | Founder checks Gmail inbox | — | External |
 | 2.1 | Founder opens BuildParty email | — | External |
 | 3.0 | BuildParty Sign-Up Screen | `/signup` | Built |
