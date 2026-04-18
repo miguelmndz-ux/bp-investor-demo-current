@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Hero V2 — BuildParty Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="/helper.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f5f0eb;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 32px 24px 48px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: #1a0a00;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    font-size: 13px;
+    color: #9f6c47;
+    line-height: 1.5;
+  }
+
+  /* Selection bar */
+  #selection-indicator {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(255,122,47,0.95);
+    color: #fff;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+    z-index: 999;
+  }
+  #selection-indicator.visible { transform: translateY(0); }
+
+  /* Layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /* Card wrapper */
+  .variant-wrap {
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2.5px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    background: transparent;
+  }
+  .variant-wrap:hover { border-color: rgba(255,122,47,0.4); box-shadow: 0 8px 32px rgba(255,122,47,0.15); }
+  .variant-wrap.selected { border-color: #ff7a2f; box-shadow: 0 0 0 4px rgba(255,122,47,0.18); }
+
+  .variant-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9f6c47;
+    padding: 10px 16px 6px;
+  }
+  .variant-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: #1a0a00;
+    padding: 0 16px 6px;
+  }
+  .variant-desc {
+    font-size: 11px;
+    color: #9f6c47;
+    padding: 0 16px 14px;
+    line-height: 1.5;
+  }
+
+  /* ── EMAIL SHELL ── */
+  .email {
+    background: #fffaf7;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+  }
+
+  /* ── HERO (dark, on-brand) ── */
+  .hero {
+    background: linear-gradient(145deg, #1A0A00 0%, #2d1200 60%, #3d1800 100%);
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 122, 47, 0.12);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(229, 161, 2, 0.08);
+    filter: blur(50px);
+    pointer-events: none;
+  }
+
+  .hero-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: -0.02em;
+  }
+  .hero-brand span { color: #ff7a2f; }
+  .hero-apex-tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,122,47,0.15);
+    border: 1px solid rgba(255,122,47,0.25);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,167,100,0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .hero-apex-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #ff7a2f;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+  /* Velo logo row */
+  .hero-product {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .velo-logo-mark {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff7a2f 0%, #e5a102 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(255,122,47,0.4);
+  }
+  .velo-logo-mark svg { width: 24px; height: 24px; }
+  .velo-product-info {}
+  .velo-product-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+  }
+  .velo-product-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+  }
+  .ph-badge {
+    margin-left: auto;
+    background: linear-gradient(135deg, rgba(255,122,47,0.2) 0%, rgba(229,161,2,0.15) 100%);
+    border: 1px solid rgba(255,122,47,0.3);
+    border-radius: 10px;
+    padding: 6px 10px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .ph-badge-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ff7a2f;
+    line-height: 1;
+  }
+  .ph-badge-label {
+    font-size: 8px;
+    font-weight: 700;
+    color: rgba(255,167,100,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    margin-top: 1px;
+  }
+
+  /* Hero headline */
+  .hero-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-headline .highlight { color: #ff7a2f; }
+  .hero-subtext {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── ASSETS SECTION ── */
+  .assets-section {
+    padding: 20px 24px 16px;
+    background: #fffaf7;
+  }
+  .section-eyebrow {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #9f6c47;
+    margin-bottom: 12px;
+  }
+  .assets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .asset-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(156,63,0,0.12);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+  }
+  .asset-thumb {
+    height: 68px;
+    position: relative;
+    overflow: hidden;
+  }
+  .asset-thumb-decode {
+    background: linear-gradient(135deg, #0f1432 0%, #1e2b6e 100%);
+  }
+  .asset-thumb-course {
+    background: linear-gradient(135deg, #0f2d1a 0%, #1a5c36 100%);
+  }
+  .asset-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .asset-chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 9999px;
+    padding: 3px 8px;
+    font-size: 8px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.06em;
+  }
+  .asset-body {
+    padding: 10px 12px 12px;
+  }
+  .asset-type-tag {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 9999px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+  }
+  .asset-type-decode { background: rgba(37,99,235,0.1); color: #2563eb; }
+  .asset-type-course { background: rgba(16,185,129,0.1); color: #059669; }
+  .asset-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #1a0a00;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+  .asset-meta {
+    font-size: 9px;
+    color: #9f6c47;
+    line-height: 1.4;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: rgba(156,63,0,0.08);
+    margin: 0 24px;
+  }
+
+  /* ── SESSION ROW ── */
+  .session-row {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .session-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255,122,47,0.2) 0%, rgba(194,78,0,0.15) 100%);
+    border: 1px solid rgba(255,122,47,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #ff7a2f;
+    font-size: 16px;
+  }
+  .session-info { flex: 1; }
+  .session-label {
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ff7a2f;
+    margin-bottom: 2px;
+  }
+  .session-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #1a0a00;
+    letter-spacing: -0.01em;
+  }
+  .session-meta { font-size: 9px; color: #9f6c47; margin-top: 1px; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 4px 24px 20px; }
+  .cta-btn {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%);
+    color: #fff0ea;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px 0;
+    border-radius: 9999px;
+    letter-spacing: -0.01em;
+    box-shadow: 0 6px 20px rgba(194,78,0,0.25), inset 0 1px 0 rgba(255,255,255,0.18);
+    text-decoration: none;
+  }
+  .cta-note {
+    text-align: center;
+    font-size: 9px;
+    color: rgba(156,63,0,0.4);
+    margin-top: 8px;
+  }
+
+  /* ── FOOTER ── */
+  .email-footer {
+    padding: 12px 24px 16px;
+    border-top: 1px solid rgba(156,63,0,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-powered {
+    font-size: 9px;
+    color: rgba(156,63,0,0.35);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .footer-links {
+    font-size: 9px;
+    color: rgba(156,63,0,0.3);
+  }
+
+  /* ── ANNOTATIONS ── */
+  .annotation-list {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 14px;
+    border: 1px solid rgba(156,63,0,0.1);
+  }
+  .annotation-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #1a0a00;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .annotation-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .annotation-num {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff7a2f, #c24e00);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .annotation-text {
+    font-size: 11px;
+    color: #4a2506;
+    line-height: 1.5;
+  }
+  .annotation-text strong { color: #1a0a00; }
+
+  /* Variant B extras */
+  .velo-cover-bg {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 40%;
+    opacity: 0.12;
+    background-size: cover;
+    background-position: center;
+    mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-title">Screen 2.1 — BuildParty Email</div>
+  <div class="page-sub">B-style dark hero, on design system. Click a variant to select it.</div>
+</div>
+
+<div class="layout">
+
+  <!-- ── LEFT: The Email Mockup ── -->
+  <div class="variant-wrap selected" data-choice="email-v2" onclick="toggleSelect(this)">
+    <div class="email">
+
+      <!-- HERO -->
+      <div class="hero">
+        <!-- Top bar -->
+        <div class="hero-topbar">
+          <div class="hero-brand">Build<span>Party</span></div>
+          <div class="hero-apex-tag">
+            <div class="hero-apex-dot"></div>
+            Powered by Apex
+          </div>
+        </div>
+
+        <!-- Velo product + PH stat -->
+        <div class="hero-product">
+          <div class="velo-logo-mark">
+            <!-- Velo "V" wordmark placeholder — swap for real SVG in Stitch -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 5L12 19L20 5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="velo-product-info">
+            <div class="velo-product-name">Velo Live</div>
+            <div class="velo-product-sub">Async Video AI</div>
+          </div>
+          <div class="ph-badge">
+            <div class="ph-badge-num">#1</div>
+            <div class="ph-badge-label">Product<br>Hunt</div>
+          </div>
+        </div>
+
+        <!-- Headline + sub -->
+        <div class="hero-headline">
+          We decoded your launch.<br>
+          Here's what we built for <span class="highlight">your demo.</span>
+        </div>
+        <div class="hero-subtext">
+          A custom Decode file, a micro-course, and 50 AI builders ready to go deep on Velo.
+        </div>
+      </div>
+
+      <!-- ASSETS -->
+      <div class="assets-section">
+        <div class="section-eyebrow">Built for Ajay · Velo</div>
+        <div class="assets-grid">
+
+          <!-- Decode -->
+          <div class="asset-card">
+            <div class="asset-thumb asset-thumb-decode">
+              <div class="asset-thumb-overlay">
+                <span class="asset-chip">AI Pipeline</span>
+                <span class="asset-chip">Avatar Synthesis</span>
+              </div>
+            </div>
+            <div class="asset-body">
+              <div class="asset-type-tag asset-type-decode">Decode</div>
+              <div class="asset-name">Velo Decoded</div>
+              <div class="asset-meta">Technical breakdown of your AI pipeline</div>
+            </div>
+          </div>
+
+          <!-- Course -->
+          <div class="asset-card">
+            <div class="asset-thumb asset-thumb-course">
+              <div class="asset-thumb-overlay">
+                <span class="asset-chip">Demo Capture</span>
+                <span class="asset-chip">Ship & Share</span>
+              </div>
+            </div>
+            <div class="asset-body">
+              <div class="asset-type-tag asset-type-course">Course</div>
+              <div class="asset-name">Velo Course</div>
+              <div class="asset-meta">3-module hands-on with builders</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="divider"></div>
+
+      <!-- SESSION -->
+      <div class="session-row">
+        <div class="session-icon">▶</div>
+        <div class="session-info">
+          <div class="session-label">Live Session · Nova hosts</div>
+          <div class="session-name">Build with Video AI</div>
+          <div class="session-meta">60 min · 50 AI builders · Nov 12–15</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section">
+        <a class="cta-btn" href="#">Accept Invite</a>
+        <div class="cta-note">No account needed — takes 60 seconds to set up</div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="email-footer">
+        <div class="footer-powered">BuildParty · Powered by Apex</div>
+        <div class="footer-links">Unsubscribe · Privacy</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── RIGHT: Design Notes ── -->
+  <div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:900;color:#1a0a00;letter-spacing:-0.02em;margin-bottom:6px;">Design decisions</div>
+    <div style="font-size:12px;color:#9f6c47;margin-bottom:20px;line-height:1.5;">What's new in this iteration and why it works.</div>
+
+    <div class="annotation-list">
+      <div class="annotation-title">What changed</div>
+
+      <div class="annotation-item">
+        <div class="annotation-num">1</div>
+        <div class="annotation-text"><strong>Dark hero uses #1A0A00</strong> — the deepest brown in our palette, not a generic black. Warm orange glow orbs keep it on-brand. The PH badge sits top-right of the Velo row.</div>
+      </div>
+      <div class="annotation-item">
+        <div class="annotation-num">2</div>
+        <div class="annotation-text"><strong>Velo logo mark</strong> — "V" chevron in an orange gradient tile. Swap for the real Velo SVG/PNG in Stitch. The tile style works whether it's a wordmark or icon.</div>
+      </div>
+      <div class="annotation-item">
+        <div class="annotation-num">3</div>
+        <div class="annotation-text"><strong>Copy from Option A</strong> — "We decoded your launch. Here's what we built for your demo." Orange highlight on "your demo" draws the eye to the personal angle.</div>
+      </div>
+      <div class="annotation-item">
+        <div class="annotation-num">4</div>
+        <div class="annotation-text"><strong>Asset thumbnails</strong> lead with a color-coded preview band. Decode = blue-navy gradient. Course = green gradient. Real screenshots from /apex/ slot in here in Stitch.</div>
+      </div>
+      <div class="annotation-item">
+        <div class="annotation-num">5</div>
+        <div class="annotation-text"><strong>"Accept Invite" CTA</strong> — full-width orange pill, same liquid glass style as the rest of the app. Sub-copy reduces friction: "No account needed."</div>
+      </div>
+      <div class="annotation-item">
+        <div class="annotation-num">6</div>
+        <div class="annotation-text"><strong>Zero wasted space</strong> — no AI team section, no checklist. The email's single job: show the assets, book the slot. Everything else lives on the What to Expect screen.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:16px 20px;background:rgba(255,122,47,0.07);border-radius:14px;border:1px solid rgba(255,122,47,0.15);">
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:800;color:#9c3f00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Open question for you</div>
+      <div style="font-size:12px;color:#4a2506;line-height:1.6;">
+        Should the asset thumbnails show <strong>real screenshots</strong> of the Decode/Course pages (like a browser preview), or stay as these <strong>styled gradient cards</strong>? Real screenshots look more impressive but need the pages to be ready first.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div id="selection-indicator">✓ Selected — reply in the terminal to continue</div>
+
+<script>
+function toggleSelect(el) {
+  const wasSelected = el.classList.contains('selected');
+  document.querySelectorAll('.variant-wrap').forEach(c => c.classList.remove('selected'));
+  if (!wasSelected) {
+    el.classList.add('selected');
+    document.getElementById('selection-indicator').classList.add('visible');
+    if (window.__recordChoice) window.__recordChoice(el.dataset.choice, el.querySelector('.variant-title')?.textContent || el.dataset.choice);
+  } else {
+    document.getElementById('selection-indicator').classList.remove('visible');
+  }
+}
+</script>
+</body>
+</html>

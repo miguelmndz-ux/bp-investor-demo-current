@@ -1,0 +1,201 @@
+<style>
+  .q { font-size: 15px; color: #6b7280; margin-bottom: 28px; line-height: 1.5; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  .card { border-radius: 16px; border: 2px solid #e5e7eb; overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
+  .card:hover { border-color: #f97316; box-shadow: 0 4px 20px rgba(249,115,22,0.15); }
+  .card.selected { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,0.2); }
+  .card-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 12px 16px 0; color: #9ca3af; }
+  .card-title { font-size: 15px; font-weight: 700; padding: 6px 16px 12px; color: #111827; }
+  .card-desc { font-size: 12px; color: #6b7280; padding: 0 16px 14px; line-height: 1.5; }
+
+  /* Email mockup styles */
+  .em { background: #fffaf7; border-radius: 12px; overflow: hidden; font-family: Inter, sans-serif; }
+  .em-hero { padding: 28px 24px 20px; }
+  .em-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(156,63,0,0.08); border-radius: 9999px; padding: 3px 10px; font-size: 9px; font-weight: 700; color: #9c3f00; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .em-dot { width: 6px; height: 6px; border-radius: 50%; background: #9c3f00; }
+  .em-h1 { font-size: 18px; font-weight: 900; color: #1a0a00; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 6px; font-family: 'Georgia', serif; }
+  .em-sub { font-size: 11px; color: #9e6b47; line-height: 1.5; margin-bottom: 14px; }
+  .em-stat { font-size: 11px; font-weight: 700; color: #4a2506; background: rgba(255,122,47,0.12); border-radius: 6px; padding: 4px 8px; display: inline-block; margin-bottom: 14px; }
+  .em-btn { display: inline-block; background: linear-gradient(135deg, #ff7a2f, #c24e00); color: #fff; font-size: 11px; font-weight: 700; padding: 9px 18px; border-radius: 9999px; }
+  .em-assets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 24px 16px; }
+  .em-asset { border-radius: 10px; overflow: hidden; border: 1px solid rgba(156,63,0,0.12); }
+  .em-asset-img { height: 60px; background: linear-gradient(135deg, #1a0a00 0%, #3d1500 100%); display: flex; align-items: center; justify-content: center; }
+  .em-asset-img span { font-size: 20px; }
+  .em-asset-body { padding: 8px 10px; background: rgba(255,255,255,0.7); }
+  .em-asset-label { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9c3f00; margin-bottom: 2px; }
+  .em-asset-name { font-size: 10px; font-weight: 700; color: #1a0a00; }
+  .em-divider { height: 1px; background: rgba(156,63,0,0.08); margin: 0 24px 14px; }
+  .em-session { padding: 0 24px 16px; display: flex; align-items: center; gap: 12px; }
+  .em-session-img { width: 72px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #0f172a, #1e3a5f); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .em-session-play { width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; }
+  .em-session-body {}
+  .em-session-label { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9c3f00; margin-bottom: 2px; }
+  .em-session-name { font-size: 11px; font-weight: 700; color: #1a0a00; margin-bottom: 4px; }
+  .em-cta { padding: 12px 24px 20px; }
+  .em-cta-btn { display: block; text-align: center; background: linear-gradient(135deg, #ff7a2f, #c24e00); color: #fff; font-size: 11px; font-weight: 700; padding: 11px; border-radius: 9999px; }
+  .em-footer { padding: 10px 24px 16px; }
+  .em-footer-text { font-size: 9px; color: #9e6b47; line-height: 1.5; }
+
+  /* Option A: Assets-first */
+  .em-a-hero { padding: 20px 24px 14px; border-bottom: 1px solid rgba(156,63,0,0.07); }
+  .em-a-brand { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+  .em-a-logo { font-size: 12px; font-weight: 900; color: #1a0a00; font-family: Georgia, serif; }
+  .em-a-badge { font-size: 8px; background: rgba(156,63,0,0.08); color: #9c3f00; border-radius: 9999px; padding: 2px 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* Option B: Stats-hero */
+  .em-b-hero { background: linear-gradient(135deg, #1a0a00 0%, #3d1500 100%); padding: 24px; }
+  .em-b-rank { font-size: 32px; font-weight: 900; color: #ff7a2f; line-height: 1; margin-bottom: 2px; }
+  .em-b-rankLabel { font-size: 9px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 10px; }
+  .em-b-product { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .em-b-sub { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+
+  /* Option C: Side-by-side */
+  .em-c-split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px 20px; }
+  .em-c-col {}
+  .em-c-label { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9c3f00; margin-bottom: 6px; }
+  .em-c-card { border-radius: 10px; border: 1px solid rgba(156,63,0,0.12); overflow: hidden; }
+  .em-c-img { height: 54px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .em-c-img-decode { background: linear-gradient(135deg, #0f1a3d 0%, #1e2d6e 100%); }
+  .em-c-img-course { background: linear-gradient(135deg, #0f2d1a 0%, #1e6e3d 100%); }
+  .em-c-body { padding: 8px 10px; }
+  .em-c-name { font-size: 10px; font-weight: 700; color: #1a0a00; }
+  .em-c-meta { font-size: 9px; color: #9e6b47; margin-top: 2px; }
+</style>
+
+<h2>How should the email open?</h2>
+<p class="q">This is above the fold — what a founder sees in the first 2 seconds before scrolling. Which opening best captures attention and signals "we did real work for you"?</p>
+
+<div class="cards">
+
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="em">
+      <!-- Brand bar -->
+      <div class="em-a-hero">
+        <div class="em-a-brand">
+          <span class="em-a-logo">BuildParty</span>
+          <span class="em-a-badge">for Ajay · Velo</span>
+        </div>
+        <div style="font-size:14px;font-weight:900;color:#1a0a00;letter-spacing:-0.02em;line-height:1.2;margin-bottom:4px;font-family:Georgia,serif;">We decoded your launch.<br>Here's what Apex built.</div>
+        <div style="font-size:10px;color:#9e6b47;line-height:1.4;">Two custom assets + a live session with 50 AI builders.</div>
+      </div>
+      <!-- Assets grid immediately after hero -->
+      <div class="em-assets" style="padding-top:12px;">
+        <div class="em-asset">
+          <div class="em-asset-img">📊</div>
+          <div class="em-asset-body">
+            <div class="em-asset-label">Decode</div>
+            <div class="em-asset-name">Velo Decoded</div>
+          </div>
+        </div>
+        <div class="em-asset">
+          <div class="em-asset-img" style="background:linear-gradient(135deg,#0f2d1a,#1e6e3d);">🎓</div>
+          <div class="em-asset-body">
+            <div class="em-asset-label">Course</div>
+            <div class="em-asset-name">Velo Course</div>
+          </div>
+        </div>
+      </div>
+      <!-- Divider + CTA -->
+      <div class="em-divider"></div>
+      <div style="padding:0 24px 18px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:10px;color:#9e6b47;">Join the live session →</div>
+        <div class="em-btn">Pick your slot</div>
+      </div>
+    </div>
+    <div class="card-label">Option A</div>
+    <div class="card-title">Assets first, CTA at bottom</div>
+    <div class="card-desc">Leads with "here's what we built" — assets are the hook. CTA follows naturally after value is shown.</div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="em">
+      <!-- Dark hero with launch stat -->
+      <div class="em-b-hero">
+        <div class="em-b-rank">#1</div>
+        <div class="em-b-rankLabel">Product of the Day · Product Hunt</div>
+        <div class="em-b-product">Velo Live: Async Video AI</div>
+        <div class="em-b-sub">Apex scanned your launch and built two custom assets for your BuildParty session.</div>
+      </div>
+      <!-- Assets below dark hero -->
+      <div class="em-assets" style="padding-top:12px;">
+        <div class="em-asset">
+          <div class="em-asset-img">📊</div>
+          <div class="em-asset-body">
+            <div class="em-asset-label">Decode</div>
+            <div class="em-asset-name">Velo Decoded</div>
+          </div>
+        </div>
+        <div class="em-asset">
+          <div class="em-asset-img" style="background:linear-gradient(135deg,#0f2d1a,#1e6e3d);">🎓</div>
+          <div class="em-asset-body">
+            <div class="em-asset-label">Course</div>
+            <div class="em-asset-name">Velo Course</div>
+          </div>
+        </div>
+      </div>
+      <div class="em-cta" style="padding-top:4px;">
+        <div class="em-cta-btn">Pick your session slot</div>
+      </div>
+    </div>
+    <div class="card-label">Option B</div>
+    <div class="card-title">Dark stat hero + assets</div>
+    <div class="card-desc">Grabs attention with the PH launch result, then reveals the work. Signals "we know your context."</div>
+  </div>
+
+  <!-- Option C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="em">
+      <!-- Brand + greeting -->
+      <div style="padding:18px 20px 10px;border-bottom:1px solid rgba(156,63,0,0.07);">
+        <div style="font-size:11px;font-weight:900;color:#1a0a00;font-family:Georgia,serif;margin-bottom:3px;">BuildParty</div>
+        <div style="font-size:13px;font-weight:700;color:#1a0a00;line-height:1.2;">Your Velo launch kit is ready, Ajay.</div>
+        <div style="font-size:10px;color:#9e6b47;margin-top:3px;">Apex built these ahead of your session.</div>
+      </div>
+      <!-- Side-by-side decode + course -->
+      <div class="em-c-split">
+        <div class="em-c-col">
+          <div class="em-c-label">Decode</div>
+          <div class="em-c-card">
+            <div class="em-c-img em-c-img-decode">📊</div>
+            <div class="em-c-body">
+              <div class="em-c-name">Velo Decoded</div>
+              <div class="em-c-meta">AI pipeline breakdown</div>
+            </div>
+          </div>
+        </div>
+        <div class="em-c-col">
+          <div class="em-c-label">Course</div>
+          <div class="em-c-card">
+            <div class="em-c-img em-c-img-course">🎓</div>
+            <div class="em-c-body">
+              <div class="em-c-name">Velo Course</div>
+              <div class="em-c-meta">3-module hands-on</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Session row -->
+      <div class="em-divider"></div>
+      <div class="em-session">
+        <div class="em-session-img"><div class="em-session-play">▶</div></div>
+        <div class="em-session-body">
+          <div class="em-session-label">Live Session</div>
+          <div class="em-session-name">Build with Video AI · 60 min</div>
+          <div style="font-size:9px;color:#9e6b47;">50 AI builders · Nova hosts</div>
+        </div>
+      </div>
+      <div class="em-cta" style="padding-top:4px;padding-bottom:16px;">
+        <div class="em-cta-btn">Pick your slot</div>
+      </div>
+    </div>
+    <div class="card-label">Option C</div>
+    <div class="card-title">Assets + session in one view</div>
+    <div class="card-desc">Both deliverables and the session invite visible before scrolling. Fullest picture above the fold.</div>
+  </div>
+
+</div>

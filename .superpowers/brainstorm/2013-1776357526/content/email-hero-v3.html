@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email V3 — BuildParty</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="/helper.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0ebe4;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 32px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+  .page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: #1a0a00;
+    letter-spacing: -0.03em;
+    margin-bottom: 5px;
+  }
+  .page-sub { font-size: 12px; color: #9f6c47; }
+
+  /* ── EMAIL SHELL ── */
+  .email {
+    background: #fffaf7;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 520px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #1A0A00;
+    padding: 28px 32px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Single subtle warm glow, top-right only */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255, 122, 47, 0.09);
+    filter: blur(70px);
+    pointer-events: none;
+  }
+
+  /* Brand line */
+  .hero-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-brand span { color: rgba(255,122,47,0.8); }
+
+  /* Velo product row */
+  .hero-product {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .velo-mark {
+    width: 58px; height: 58px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .velo-mark svg { width: 30px; height: 30px; }
+  .velo-info { flex: 1; }
+  .velo-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .velo-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+  .ph-chip {
+    flex-shrink: 0;
+    border: 1px solid rgba(255,122,47,0.3);
+    border-radius: 12px;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  .ph-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #ff7a2f;
+    line-height: 1;
+  }
+  .ph-label {
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,122,47,0.55);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  /* Headline */
+  .hero-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-headline .accent { color: #ff7a2f; }
+
+  /* Invite explanation */
+  .hero-invite {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    max-width: 380px;
+  }
+
+  /* ── BODY SECTION ── */
+  .body-section {
+    padding: 24px 32px 20px;
+    background: #fffaf7;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #9f6c47;
+    margin-bottom: 14px;
+  }
+
+  /* Asset cards — matches What to Expect style */
+  .assets-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .asset-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.55);
+    box-shadow: 0 4px 20px -4px rgba(0,0,0,0.08);
+  }
+
+  /* Browser chrome frame */
+  .browser-chrome {
+    background: rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .browser-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.12);
+  }
+  .browser-dot:nth-child(2) { background: rgba(0,0,0,0.09); }
+  .browser-dot:nth-child(3) { background: rgba(0,0,0,0.07); }
+  .browser-bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 9999px;
+    background: rgba(0,0,0,0.06);
+    margin-left: 6px;
+  }
+
+  /* Screenshot */
+  .asset-screenshot {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  /* Asset info */
+  .asset-body {
+    padding: 10px 14px 13px;
+  }
+  .asset-badge {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 9999px;
+    padding: 2px 8px;
+    margin-bottom: 5px;
+  }
+  .badge-decode { background: rgba(37,99,235,0.09); color: #2563eb; }
+  .badge-course { background: rgba(16,185,129,0.09); color: #059669; }
+  .asset-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a0a00;
+    letter-spacing: -0.015em;
+    margin-bottom: 2px;
+  }
+  .asset-desc {
+    font-size: 10px;
+    color: #9f6c47;
+    line-height: 1.45;
+  }
+
+  /* ── DIVIDER ── */
+  .em-divider {
+    height: 1px;
+    background: rgba(156,63,0,0.08);
+    margin: 0 32px;
+  }
+
+  /* ── SESSION ROW ── */
+  .session-row {
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .live-dot-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .live-dot {
+    position: relative;
+    width: 8px; height: 8px;
+  }
+  .live-dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #9c3f00;
+    opacity: 0.5;
+    animation: ping 1.4s cubic-bezier(0,0,0.2,1) infinite;
+  }
+  .live-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #9c3f00;
+  }
+  @keyframes ping { 75%,100%{ transform:scale(2.2); opacity:0; } }
+  .live-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9c3f00;
+  }
+
+  .session-info { flex: 1; }
+  .session-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a0a00;
+    letter-spacing: -0.015em;
+    margin-bottom: 2px;
+  }
+  .session-meta { font-size: 10px; color: #9f6c47; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 4px 32px 22px; }
+  .cta-btn {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%);
+    color: #fff0ea;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 13px 0;
+    border-radius: 9999px;
+    letter-spacing: -0.01em;
+    box-shadow: 0 6px 24px rgba(194,78,0,0.25), inset 0 1px 0 rgba(255,255,255,0.18);
+    text-decoration: none;
+  }
+
+  /* ── FOOTER ── */
+  .email-footer {
+    padding: 12px 32px 16px;
+    border-top: 1px solid rgba(156,63,0,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(156,63,0,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .footer-links { font-size: 9px; color: rgba(156,63,0,0.25); }
+
+  /* ── SELECTION RING ── */
+  #selection-indicator {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(255,122,47,0.95);
+    color: #fff;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 13px;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+    z-index: 999;
+  }
+  #selection-indicator.visible { transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-title">Screen 2.1 — BuildParty Email · v3</div>
+  <div class="page-sub">Dark hero · real screenshots · design system aligned</div>
+</div>
+
+<div class="email">
+
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <div class="hero-brand">Build<span>Party</span></div>
+
+    <div class="hero-product">
+      <div class="velo-mark">
+        <!-- Velo "V" chevron — swap for real logo in Stitch -->
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 7L15 23L25 7" stroke="#ff7a2f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="velo-info">
+        <div class="velo-name">Velo Live</div>
+        <div class="velo-sub">Async Video AI</div>
+      </div>
+      <div class="ph-chip">
+        <div class="ph-num">#1</div>
+        <div class="ph-label">Product<br>Hunt</div>
+      </div>
+    </div>
+
+    <div class="hero-headline">
+      We decoded your launch.<br>
+      Here's what we built for <span class="accent">your demo.</span>
+    </div>
+
+    <div class="hero-invite">
+      We're inviting you to demo Velo live to a room of 50 AI builders on BuildParty — a live platform where founders show their product, builders go hands-on, and Nova, our AI host, runs the room.
+    </div>
+  </div>
+
+  <!-- ═══ ASSETS ═══ -->
+  <div class="body-section">
+    <div class="section-label">Built for Ajay · Velo</div>
+    <div class="assets-row">
+
+      <!-- Decode -->
+      <div class="asset-card">
+        <div class="browser-chrome">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-bar"></div>
+        </div>
+        <img
+          class="asset-screenshot"
+          src="http://localhost:3000/apex/velo-decode-preview.png"
+          alt="Velo Decoded"
+          onerror="this.style.background='linear-gradient(135deg,#0f1432,#1e2b6e)';this.style.height='90px';this.removeAttribute('src')"
+        />
+        <div class="asset-body">
+          <div class="asset-badge badge-decode">Decode</div>
+          <div class="asset-name">Velo Decoded</div>
+          <div class="asset-desc">Technical breakdown of your AI video pipeline</div>
+        </div>
+      </div>
+
+      <!-- Course -->
+      <div class="asset-card">
+        <div class="browser-chrome">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-bar"></div>
+        </div>
+        <img
+          class="asset-screenshot"
+          src="http://localhost:3000/apex/velo-microcourse-preview.png"
+          alt="Velo Course"
+          onerror="this.style.background='linear-gradient(135deg,#0f2d1a,#1a5c36)';this.style.height='90px';this.removeAttribute('src')"
+        />
+        <div class="asset-body">
+          <div class="asset-badge badge-course">Course</div>
+          <div class="asset-name">Velo Course</div>
+          <div class="asset-desc">3-module hands-on workshop for builders</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ DIVIDER ═══ -->
+  <div class="em-divider"></div>
+
+  <!-- ═══ SESSION ═══ -->
+  <div class="session-row">
+    <div class="live-dot-wrap">
+      <div class="live-dot"></div>
+      <div class="live-label">Live Event</div>
+    </div>
+    <div class="session-info">
+      <div class="session-name">Build with Video AI · 60 min</div>
+      <div class="session-meta">50 AI builders · Nova hosts · Nov 12–15</div>
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div class="cta-section">
+    <a class="cta-btn" href="#">Accept Invite</a>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div class="email-footer">
+    <div class="footer-brand">BuildParty</div>
+    <div class="footer-links">Unsubscribe · Privacy</div>
+  </div>
+
+</div>
+
+<div id="selection-indicator">✓ Selected</div>
+<script>
+function toggleSelect(el) {
+  el.classList.toggle('selected');
+  document.getElementById('selection-indicator').classList.toggle('visible', el.classList.contains('selected'));
+  if (window.__recordChoice) window.__recordChoice(el.dataset.choice, 'email-v3');
+}
+</script>
+</body>
+</html>

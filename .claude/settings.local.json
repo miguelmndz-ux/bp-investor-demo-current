@@ -4,7 +4,17 @@
       "Bash(git rm:*)",
       "Bash(rm -rf web/.git)",
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)"
+      "Bash(git commit -m ':*)",
+      "Bash(mkdir -p ~/.claude/plugins/local/buildparty-design-update/skills ~/.claude/plugins/local/buildparty-design-update/scripts ~/.claude/plugins/local/buildparty-design-update/output)",
+      "Bash(touch ~/.claude/plugins/local/buildparty-design-update/output/.gitkeep)",
+      "Read(//c/Users/mmcon/.claude/plugins/local/**)",
+      "Bash(mkdir -p \"C:/Users/mmcon/.claude/skills/buildparty-design-update\")",
+      "Bash(mv \"C:/Users/mmcon/.claude/skills/buildparty-design-update.md\" \"C:/Users/mmcon/.claude/skills/buildparty-design-update/SKILL.md\")",
+      "Bash(mkdir -p \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update\")",
+      "Bash(cp \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update.md\" \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update/SKILL.md\")",
+      "Bash(rm \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update.md\")",
+      "Bash(rm -rf \"C:/Users/mmcon/.claude/skills/buildparty-design-update\")",
+      "Bash(npx skills *)"
     ]
   }
 }

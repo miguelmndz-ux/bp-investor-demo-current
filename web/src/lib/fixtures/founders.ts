@@ -3,9 +3,15 @@ import type { Founder } from './types'
 export const founders: Founder[] = [
   {
     name: 'Ajay Kumar',
-    role: 'Maker, Velo',
+    role: 'Co-founder, Velo',
     quote: "Video is the most human form of async communication. We're making it instant.",
     avatar: 'https://ph-avatars.imgix.net/5672627/e909456b-451a-4305-a963-a7bae3bba563.jpeg',
+  },
+  {
+    name: 'Sourav S.',
+    role: 'Co-founder, Velo',
+    quote: 'A very large enthusiast of technology and people.',
+    avatar: 'https://ph-avatars.imgix.net/1699657/b971469f-f10c-45ac-a15f-a060cd12f38a.jpeg',
   },
   {
     name: 'Michelle Lim',

@@ -1,0 +1,120 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: Build
+        - generic [ref=e6]: Party
+    - main [ref=e7]:
+      - generic [ref=e8]:
+        - heading "Here's what we built for your launch, Ajay." [level=1] [ref=e9]
+        - paragraph [ref=e10]:
+          - text: "Velo Live: Async Video AI hit"
+          - strong [ref=e11]: "#1 Product of the Day"
+          - text: on Product Hunt. Let's show the builder community the AI pipeline turning raw recordings into share-ready video messages — in one take.
+      - generic [ref=e12]:
+        - link "psychology Velo Decoded" [ref=e13] [cursor=pointer]:
+          - /url: "#decode"
+          - generic [ref=e14]: psychology
+          - paragraph [ref=e15]: Velo Decoded
+        - link "bolt Velo Course" [ref=e16] [cursor=pointer]:
+          - /url: "#course"
+          - generic [ref=e17]: bolt
+          - paragraph [ref=e18]: Velo Course
+        - link "live_tv Build with Video AI" [ref=e19] [cursor=pointer]:
+          - /url: "#session"
+          - generic [ref=e20]: live_tv
+          - paragraph [ref=e21]: Build with Video AI
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e28]: Live Event
+          - heading "Build with Video AI" [level=2] [ref=e29]
+          - paragraph [ref=e30]: A live deep-dive into how Velo turns raw screen recordings into polished video messages using a browser agent, AI avatar, and automated script generation — all in one take.
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - generic [ref=e34]: smart_toy
+              - generic [ref=e35]: Browser Agent
+            - generic [ref=e36]:
+              - generic [ref=e38]: face
+              - generic [ref=e39]: AI Avatar Demo
+            - generic [ref=e40]:
+              - generic [ref=e42]: construction
+              - generic [ref=e43]: Builder Challenge
+            - generic [ref=e44]:
+              - generic [ref=e46]: video_library
+              - generic [ref=e47]: Recap
+        - generic [ref=e49] [cursor=pointer]:
+          - img "Session Preview" [ref=e50]
+          - generic [ref=e53]: play_arrow
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e57]: Decode Theme
+          - heading "Velo Decoded" [level=2] [ref=e58]
+          - paragraph [ref=e59]: A technical breakdown of Velo's AI video pipeline — from browser agent capture to AI avatar synthesis and automated script generation.
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: account_tree
+              - generic [ref=e63]: AI Pipeline
+            - generic [ref=e64]:
+              - generic [ref=e65]: smart_toy
+              - generic [ref=e66]: Browser Agent
+            - generic [ref=e67]:
+              - generic [ref=e68]: face_retouching_natural
+              - generic [ref=e69]: Avatar Synthesis
+        - img "Velo Live Decode File" [ref=e72]
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e76]: Learning & Interaction
+          - heading "Velo Course" [level=2] [ref=e77]
+          - paragraph [ref=e78]: An interactive course where participants go hands-on with Velo's core workflow — capturing demos, generating AI avatars, and shipping polished video messages without retakes.
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - generic [ref=e81]: videocam
+              - generic [ref=e82]: Demo Capture
+            - generic [ref=e83]:
+              - generic [ref=e84]: auto_fix_high
+              - generic [ref=e85]: Avatar Setup
+            - generic [ref=e86]:
+              - generic [ref=e87]: send
+              - generic [ref=e88]: Share & Ship
+        - img "Velo Live Course File" [ref=e91]
+      - paragraph [ref=e92]: Managed by Your AI Team
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e98]: mic
+          - heading "Nova" [level=4] [ref=e99]
+          - paragraph [ref=e100]: AI Host
+          - paragraph [ref=e101]: Nova runs the live session — managing the flow, fielding questions, and keeping the builder audience engaged throughout.
+        - generic [ref=e104]:
+          - generic [ref=e108]: psychology
+          - heading "Echo" [level=4] [ref=e109]
+          - paragraph [ref=e110]: Session Memory
+          - paragraph [ref=e111]: Echo captures every insight from the session, generating searchable notes and highlight clips automatically.
+        - generic [ref=e114]:
+          - generic [ref=e118]: bolt
+          - heading "Apex" [level=4] [ref=e119]
+          - paragraph [ref=e120]: Launch Agent
+          - paragraph [ref=e121]: Apex amplifies the broadcast across Product Hunt and builder communities, tracking reach and viral engagement in real time.
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - heading "What you need to do" [level=3] [ref=e126]
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e130]: check
+              - generic [ref=e131]: Pick a time from the availability window
+            - generic [ref=e134]: Show up 5 mins early for AI calibration
+            - generic [ref=e137]: Prepare your local demo environment
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - paragraph [ref=e141]: Availability
+              - paragraph [ref=e142]: Nov 12 — Nov 15
+            - generic [ref=e143]:
+              - paragraph [ref=e144]: Duration
+              - paragraph [ref=e145]: 60 Mins
+          - button "Pick your time calendar_today" [ref=e146] [cursor=pointer]:
+            - text: Pick your time
+            - generic [ref=e147]: calendar_today
+          - paragraph [ref=e148]: No account required. Apex handles the calendar sync.
+  - button "Open Next.js Dev Tools" [ref=e154] [cursor=pointer]:
+    - img [ref=e155]
+  - alert [ref=e158]
