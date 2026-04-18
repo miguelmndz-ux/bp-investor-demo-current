@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 interface CommunityNavProps {
   slug: string
-  active: 'community' | 'decode' | 'courses'
+  active: 'community' | 'decode' | 'courses' | 'both'
 }
 
 const pills: { key: 'community' | 'decode' | 'courses'; label: string; icon: string; href: (slug: string) => string }[] = [
