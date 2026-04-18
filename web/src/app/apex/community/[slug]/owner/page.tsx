@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import { phProducts } from '@/lib/fixtures/products'
 import { founders } from '@/lib/fixtures/founders'
 import CommunityProfile from '@/components/apex/CommunityProfile'
+import CommunityNav from '@/components/apex/CommunityNav'
 
 export default function CommunityOwnerPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -21,13 +22,16 @@ export default function CommunityOwnerPage() {
   const productFounders = founders.filter(f => f.role.includes(product.name))
 
   return (
-    <div className="fade-up">
-      <CommunityProfile
-        product={product}
-        founders={productFounders}
-        isOwner={true}
-        slug={slug}
-      />
-    </div>
+    <>
+      <CommunityNav slug={slug} active="community" />
+      <div className="fade-up !mt-20">
+        <CommunityProfile
+          product={product}
+          founders={productFounders}
+          isOwner={true}
+          slug={slug}
+        />
+      </div>
+    </>
   )
 }

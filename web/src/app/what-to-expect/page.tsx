@@ -86,7 +86,7 @@ export default function WhatToExpectPage() {
       />
 
       {/* Header */}
-      <header style={{ paddingTop: 48, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+      <header style={{ paddingTop: 28, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
         <div className="flex items-baseline">
           <span
             className="font-jakarta font-black"
@@ -101,10 +101,10 @@ export default function WhatToExpectPage() {
       </header>
 
       {/* Main content */}
-      <main style={{ padding: '48px 24px 96px', maxWidth: 960, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <main style={{ padding: '24px 24px 96px', maxWidth: 960, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* Hero */}
-        <header style={{ textAlign: 'center', marginBottom: 56 }}>
+        <header style={{ textAlign: 'center', marginBottom: 24 }}>
           <h1
             className="font-jakarta font-black"
             style={{
@@ -125,8 +125,35 @@ export default function WhatToExpectPage() {
           </p>
         </header>
 
+        {/* TOC strip */}
+        <div className="flex gap-4 justify-center" style={{ marginTop: 24, marginBottom: 40 }}>
+          {[
+            { href: '#decode',  icon: 'psychology', label: 'Velo Decoded',        color: '#2563eb' },
+            { href: '#course',  icon: 'bolt',       label: 'Velo Course',          color: '#059669' },
+            { href: '#session', icon: 'live_tv',    label: 'Build with Video AI',  color: '#c2780a' },
+          ].map(({ href, icon, label, color }) => (
+            <a
+              key={href}
+              href={href}
+              className="premium-glass rounded-2xl hover:opacity-80 transition-opacity"
+              style={{ minWidth: 160, padding: 16, textDecoration: 'none', display: 'block' }}
+            >
+              <span
+                className="material-symbols-outlined"
+                style={{ fontSize: 28, color, display: 'block', marginBottom: 8, lineHeight: 1 }}
+              >
+                {icon}
+              </span>
+              <p className="font-jakarta font-black text-sm text-on-background" style={{ lineHeight: 1.3 }}>
+                {label}
+              </p>
+            </a>
+          ))}
+        </div>
+
         {/* ── Live Session card ── */}
         <section
+          id="session"
           className="premium-glass"
           style={{
             borderRadius: 24, padding: '40px 48px', marginBottom: 20,
@@ -224,6 +251,7 @@ export default function WhatToExpectPage() {
 
         {/* ── Decode File card ── */}
         <section
+          id="decode"
           className="premium-glass"
           style={{
             borderRadius: 24, padding: '40px 48px', marginBottom: 20,
@@ -294,6 +322,7 @@ export default function WhatToExpectPage() {
 
         {/* ── Course File card ── */}
         <section
+          id="course"
           className="premium-glass"
           style={{
             borderRadius: 24, padding: '40px 48px', marginBottom: 56,

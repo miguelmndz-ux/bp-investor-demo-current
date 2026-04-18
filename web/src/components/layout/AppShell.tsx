@@ -45,7 +45,7 @@ export default function AppShell({ children }: AppShellProps) {
         <div
           className="absolute inset-0"
           style={{
-            background: 'rgba(255, 255, 255, 0.88)',
+            background: '#ffffff',
             clipPath: 'path("M 24 0 A 24 24 0 0 0 0 24 L 0 0 Z")',
           }}
         />

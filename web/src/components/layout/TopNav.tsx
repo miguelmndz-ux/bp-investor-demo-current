@@ -5,9 +5,7 @@ export default function TopNav() {
     <header
       className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 z-[55] h-16"
       style={{
-        background: 'rgba(255, 255, 255, 0.88)',
-        backdropFilter: 'blur(16px) saturate(150%)',
-        WebkitBackdropFilter: 'blur(16px) saturate(150%)',
+        background: '#ffffff',
       }}
     >
       {/* Logo — z-[55] puts TopNav above SideNav (z-50) in the header zone,

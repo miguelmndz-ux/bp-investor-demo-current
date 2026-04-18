@@ -24,12 +24,12 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
       <div className="col-span-1 flex items-center justify-center">
         <span className="text-[11px] font-black text-stone-400">{rank}</span>
       </div>
-      <div className="col-span-1 flex items-center justify-center">
-        <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-[6px] whitespace-nowrap bg-white text-on-background ${status.className}`}>
+      <div className="col-span-1 flex items-center">
+        <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-[6px] whitespace-nowrap bg-white text-on-background text-center inline-block w-[72px] ${status.className}`}>
           {status.label}
         </span>
       </div>
-      <div className="col-span-5 flex items-center gap-3">
+      <div className="col-span-5 flex items-center gap-3 pl-7">
         <div className="w-9 h-9 rounded-md overflow-hidden shadow-md shrink-0 bg-white border border-stone-100">
           <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
         </div>

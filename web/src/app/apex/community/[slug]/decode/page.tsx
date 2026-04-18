@@ -11,7 +11,7 @@ export default function DecodePage() {
   return (
     <>
       <CommunityNav slug={slug} active="decode" />
-      <div className="fixed top-[132px] left-20 right-0 bottom-0 rounded-tl-3xl overflow-hidden !mt-0">
+      <div className="fixed top-16 left-20 right-0 bottom-0 rounded-tl-3xl overflow-hidden !mt-0">
         <iframe
           src={product.decodeUrl}
           title={`${product.name} — Apex Decode`}

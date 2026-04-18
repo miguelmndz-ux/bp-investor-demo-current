@@ -5542,3 +5542,462 @@ WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 527308: C:\Users
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 527308: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\7b739bf9-e3e4-4155-9757-c4af400d6230.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 527308: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\7b739bf9-e3e4-4155-9757-c4af400d6230.jsonl
 WARNING:cc_tracer_lib.state:Notification received without an active episode
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 167: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 170: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 177: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 181: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 167: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 170: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 177: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 181: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 167: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 170: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 177: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 181: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 167: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-29-722Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 170: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...f4hc6Iuy38sOWv5pf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 177: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...-21-55-510Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid JSON at line 181: 2 validation errors for TranscriptEntry
+toolUseResult.dict[str,any]
+  Input should be an object [type=dict_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+toolUseResult.str
+  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...oDlEQAiIoJuVlEWosf/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.state:Ignoring subagent stop: agent `a02df55f3dea982c8` is not known.
+INFO:root:Started new session: 2aa4dcbb-8bc0-4cec-a61f-734589f060e3
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 44349dd5-b48a-4c3e-95e3-e398009835cc
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 1552555d-f1c7-4216-a0bf-029155611683
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 1ff70a9d-7020-4198-a4a6-43343dbc7927
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: d379d165-0ed7-4466-ba63-c9769ec327ad
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Ignoring tool stop: tool `toolu_01WVxAqN7XriNsAc8WRuiffR` is not known.
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 7eea0891-1c74-4219-a116-1c2f290bbe44
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: fe611c7c-63e2-44f8-af21-2155dd34ebd2
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 59547794-26a3-462d-b59d-2987f0b6d08d
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+ERROR:opentelemetry.exporter.otlp.proto.http.trace_exporter:Failed to export span batch code: None, reason: HTTPSConnectionPool(host='bench.silverstream.ai', port=443): Read timed out. (read timeout=1.999995231628418)
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: befd21c1-0652-4a57-a82a-6da031593cb8
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: f8c1d56e-824b-4e20-bb61-294b1f6c8abf
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 821b6e34-0446-4440-94cc-8a687309a918
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 4246a7a7-7f9c-49fc-9a5e-d66b7fcc2562
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 8f6e7655-43ee-4782-a7ac-c610ed9d5a2a
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 24f1ed0a-d7fe-484f-acc3-11796e47561d
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 6112a0c3-f77a-4e8d-a3e4-d15d02ccf14d
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 5e8f7d38-3d20-4c37-8bff-49d5037a3cd5
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 0411faff-2641-4756-82db-1a23637644f5
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 15a940a6-0964-4f00-b79a-dedcf6004b3b
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 96369612-29ee-4dfd-886f-9f776e1e6620
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 6269aa37-f6a7-4dac-98e8-824df704ba82
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.state:Ignoring subagent stop: agent `aa29bfc8c1f1c2f31` is not known.
+INFO:root:Started new session: 2aa4dcbb-8bc0-4cec-a61f-734589f060e3
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 9c80d2c9-57f6-4d9c-829f-d6f61c80b71c
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 7507b875-5265-4372-bbcf-d6613bb722c8
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 374ae93c-af1e-44e8-a09d-c5a76ffeb953
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 103a3f6d-b501-48dd-8fb1-c837d3cd525a
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: b2835430-f00d-4195-b560-1e454593d36c
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: 82a10692-c18e-4321-bfc0-e81318185b3d
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: e1a6d926-fc41-4a3e-920c-30dc3df5669a
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 0fcb4ff2-a34a-417c-aba3-74efa278c050, span id: 78e6ecc6-b592-42a3-94c4-e29ae87413c9
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 0fcb4ff2-a34a-417c-aba3-74efa278c050, span id: 80b6c1f0-0db5-433e-bcce-e1194eb0ebd1
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 82117: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\d4daa410-a9e4-47bd-a066-79f0bfc58eb8.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: a84f3927-c78d-4717-bfa7-3de441ffbbe9
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: 39f6f5ea-7f8b-4cf0-8282-a9a7e211f83b, span id: cae95012-41d4-47d5-a4b8-842afece8c78
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1045658: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\2aa4dcbb-8bc0-4cec-a61f-734589f060e3.jsonl

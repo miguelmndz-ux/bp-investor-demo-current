@@ -17,8 +17,8 @@ export default function CommunityProfile({ product, founders, isOwner = false, s
   return (
     <div className="flex items-start gap-10">
       {/* Left column — sticky wrapper (no overflow:hidden so sticky works) */}
-      <div className="w-[30%] shrink-0 sticky top-24">
-        <div className="premium-glass rounded-2xl p-6 flex flex-col min-h-[calc(100vh-10rem)]">
+      <div className="w-[30%] shrink-0 sticky top-[168px]">
+        <div className="premium-glass rounded-2xl p-6 flex flex-col min-h-[640px]">
           {/* Product logo */}
           <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg border border-orange-100/40 mb-5 bg-white">
             <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
@@ -106,13 +106,6 @@ export default function CommunityProfile({ product, founders, isOwner = false, s
 
       {/* Right column — scrollable content */}
       <div className="flex-1 space-y-8">
-        {/* Filter pills */}
-        <div className="flex items-center gap-2">
-          {(['Overview', 'Programs', 'Sessions', 'Team'] as const).map((tab) => (
-            <PillButton key={tab} label={tab} active={tab === 'Overview'} />
-          ))}
-        </div>
-
         {/* Full description */}
         {product.description && (
           <div>

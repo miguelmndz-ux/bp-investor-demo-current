@@ -4,8 +4,14 @@ import Link from 'next/link'
 
 interface CommunityNavProps {
   slug: string
-  active: 'decode' | 'courses' | 'both'
+  active: 'community' | 'decode' | 'courses'
 }
+
+const pills: { key: 'community' | 'decode' | 'courses'; label: string; icon: string; href: (slug: string) => string }[] = [
+  { key: 'community', label: 'Community', icon: 'groups', href: (s) => `/apex/community/${s}/owner` },
+  { key: 'decode', label: 'Decode', icon: 'analytics', href: (s) => `/apex/community/${s}/decode` },
+  { key: 'courses', label: 'Course', icon: 'school', href: (s) => `/apex/community/${s}/courses` },
+]
 
 export default function CommunityNav({ slug, active }: CommunityNavProps) {
   const liquidGlass = {
@@ -17,51 +23,27 @@ export default function CommunityNav({ slug, active }: CommunityNavProps) {
     color: '#7a2e00',
   }
 
-  const pills: { key: 'decode' | 'courses' | 'both'; label: string; href: string }[] = [
-    { key: 'decode', label: 'Decode', href: `/apex/community/${slug}/decode` },
-    { key: 'courses', label: 'Course', href: `/apex/community/${slug}/courses` },
-    { key: 'both', label: 'Both', href: `/apex/community/${slug}/both` },
-  ]
-
   return (
     <div
-      className="fixed top-16 left-20 right-0 h-[68px] z-[46] flex items-center justify-center"
-      style={{
-        background: 'rgba(255,255,255,0.45)',
-        backdropFilter: 'blur(40px)',
-        WebkitBackdropFilter: 'blur(40px)',
-        borderBottom: '1px solid rgba(255,122,47,0.15)',
-      }}
+      className="fixed top-[88px] left-20 right-0 h-[68px] z-[46] flex items-center justify-center"
     >
-      {/* Toggle pill group */}
-      <div
-        className="glass-button rounded-full px-1 py-1 flex items-center gap-1"
-      >
-        {pills.map(({ key, label, href }) => (
+      <div className="rounded-full px-1.5 py-1.5 flex items-center gap-1.5" style={{ background: '#ffffff', border: '1px solid #e7e5e4' }}>
+        {pills.map(({ key, label, icon, href }) => (
           <Link
             key={key}
-            href={href}
-            className="rounded-full px-5 py-1.5 text-sm font-extrabold font-jakarta transition-all"
+            href={href(slug)}
+            className="rounded-full px-5 py-2.5 font-extrabold font-jakarta transition-all flex items-center gap-2"
             style={
               active === key
-                ? liquidGlass
-                : { color: '#b07a5a' }
+                ? { ...liquidGlass, fontSize: '15px' }
+                : { color: '#b07a5a', fontSize: '15px' }
             }
           >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px', lineHeight: '1' }}>{icon}</span>
             {label}
           </Link>
         ))}
       </div>
-
-      {/* Community link */}
-      <Link
-        href={`/apex/community/${slug}/owner`}
-        className="absolute right-6 flex items-center gap-1.5 text-sm font-bold font-jakarta"
-        style={{ color: '#b07a5a' }}
-      >
-        <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>group</span>
-        Community
-      </Link>
     </div>
   )
 }

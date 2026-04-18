@@ -137,6 +137,10 @@ function Tooltip({ label, y }: { label: string; y: number }) {
 
 See `web/src/components/layout/SideNav.tsx` for the full pattern.
 
+### `premium-glass` warm tint from `saturate(180%)`
+
+`premium-glass` applies `backdrop-filter: saturate(180%)`, which amplifies the page's orange/cream gradient into a visible warm peach tint behind the element. For panels or cards where you want a neutral white/transparent background, skip `premium-glass` and set the background directly instead (e.g. `background: 'rgba(255,255,255,0.85)'`).
+
 ### `premium-glass` breaks `sticky` positioning
 
 `premium-glass` sets `overflow: hidden`, which breaks `position: sticky` on the same element or its ancestors. When you need a sticky glass card, use two nested divs:
@@ -183,6 +187,20 @@ Files like `web/public/apex/luma-event.html` can exceed 1MB and cannot be read d
 - **CSS custom property cascade:** `!important` on a custom property set on an ancestor does **not** override the same property declared directly on a descendant element. If colors persist after an injected override, the fix is to decode all base64 CSS blocks with Python, replace the hex values, and re-encode them.
 - **Unicode in Python scripts:** Add `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')` to avoid `UnicodeEncodeError` on Windows when printing non-ASCII characters.
 - **`email-body.html` must stay in sync with `email.html`:** `web/public/gmail-flow/email-body.html` is extracted from `web/public/gmail-flow/email.html` via `input/rev/extract_email_body.py`. They share the same email body HTML. Always update both files together — run the Python replacement against both paths in the same script. Never edit one without the other.
+
+### Resetting component state across renders with `key`
+
+`useState(initialValue)` only uses the initial value on *first mount* — it doesn't reset when the parent re-renders with new props. If you need a child to always start fresh (e.g. an overlay that must begin at `opacity: 1` on every phase change), extract it as its own component and pass a changing `key`:
+
+```tsx
+// ✅ Each phase gets a fresh component — useState(1) is guaranteed on first paint
+<PhaseOverlay key={activePhaseIndex} />
+
+// ❌ Reuses the same instance — state carries over from the previous phase
+<PhaseOverlay activePhaseIndex={activePhaseIndex} />
+```
+
+This is especially useful for animations that must start from a fixed initial value on every trigger. See `PhaseOverlay` in `web/src/components/apex/ApexScanOverlay.tsx`.
 
 ### One-sided overflow clipping with `clip-path`
 
@@ -280,6 +298,17 @@ Community profile pages use a sticky left panel (30%) + scrollable right content
 Static HTML files go in `web/public/apex/` and are embedded via `<iframe>` with `sandbox="allow-scripts allow-same-origin"`. Wrap in a `rounded-lg overflow-hidden border` container. Link out to the full file with `target="_blank"`. See `DecodePreviewCard.tsx`.
 
 For full-screen iframes (pages that render the iframe as the entire content area), always add `rounded-tl-3xl overflow-hidden` to the wrapper div so the AppShell concave corner renders correctly (see gotcha above).
+
+### Canvas-based animations
+
+For pixel/particle animations, use an HTML Canvas with `requestAnimationFrame` inside `useEffect`. Key details:
+
+- **Sizing:** Measure the canvas with `canvas.offsetWidth / offsetHeight` inside `useEffect` (after first paint), then assign to `canvas.width / canvas.height`. Never rely on CSS `width: 100%` alone — the canvas drawing buffer stays at its default 300×150 until explicitly set.
+- **Time origin:** Capture `t0` from the first RAF timestamp (`if (t0 < 0) t0 = now`) rather than `Date.now()` to avoid drift between the animation loop and the browser's rendering pipeline.
+- **Cleanup:** Always return `() => cancelAnimationFrame(rafId)` from the effect.
+- **Performance:** With many canvas instances running in parallel (e.g. 10 loading cards), skip invisible pixels early: `if (intensity < 0.02) continue`.
+
+See `DotGridCard` in `web/src/components/apex/ApexScanOverlay.tsx` for the reference implementation.
 
 ### Cross-component events
 

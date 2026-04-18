@@ -148,9 +148,7 @@ export default function SideNav() {
     <aside
       className="fixed left-0 top-0 h-full flex flex-col items-center pt-[5.5rem] pb-6 px-4 z-50 w-20"
       style={{
-        background: 'rgba(255, 255, 255, 0.88)',
-        backdropFilter: 'blur(16px) saturate(150%)',
-        WebkitBackdropFilter: 'blur(16px) saturate(150%)',
+        background: '#ffffff',
       }}
     >
       <div className="space-y-3 flex flex-col items-center w-full shrink-0">
