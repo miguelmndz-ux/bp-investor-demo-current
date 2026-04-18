@@ -17,8 +17,8 @@ const PHASES = [
 ] as const
 
 const PHASE_DURATION_MS    = 8000
-const PHASE_0_DURATION_MS  = 14000
-const PHASE_0_INTERVAL_MS  = 1200
+const PHASE_0_DURATION_MS  = 24000
+const PHASE_0_INTERVAL_MS  = 2000
 const PHASE_0_INITIAL_DELAY_MS = 1500
 const FADE_DURATION_MS  = 600
 
@@ -91,10 +91,11 @@ function DotGridCard() {
         if (intensity < 0.02) continue
 
         const capped = Math.min(1, intensity)
-        const gray = Math.round(225 - 20 * capped) // 225→205 (light gray)
-        const a = Math.min(0.6, 0.08 + intensity * 0.55)
+        const g = Math.round(160 - 15 * capped) // 160→145
+        const b = Math.round(100 - 10 * capped) // 100→90
+        const a = Math.min(0.35, 0.04 + intensity * 0.32)
 
-        ctx.fillStyle = `rgba(${gray},${gray},${gray},${a.toFixed(2)})`
+        ctx.fillStyle = `rgba(255,${g},${b},${a.toFixed(2)})`
         ctx.fillRect(px.x, px.y, PIX, PIX)
       }
 
@@ -229,7 +230,7 @@ function StepPreview({ activePhaseIndex, scanPhase, visibleCount }: StepPreviewP
                         <DotGridCard />
                         <span
                           className="relative z-10 font-jakarta font-black text-sm w-7 text-center shrink-0"
-                          style={{ color: 'rgba(156,63,0,0.18)' }}
+                          style={{ color: 'rgba(156,63,0,0.38)' }}
                         >
                           #{i + 1}
                         </span>
