@@ -145,4 +145,12 @@ That raises…" data-next-head=""><meta property="og:url" content="https://luma.
   }
   window.addEventListener('resize', fit);
 })();
-</script></body></html>
+</script><script>
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    window.location.href = '/discover';
+  }
+});
+</script>
+</body></html>

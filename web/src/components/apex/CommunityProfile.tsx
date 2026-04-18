@@ -5,6 +5,8 @@ import DecodePreviewCard from './DecodePreviewCard'
 import RapidCoursePreviewCard from './RapidCoursePreviewCard'
 import ImageCarousel from './ImageCarousel'
 import PillButton from '@/components/ui/PillButton'
+import OutlineButton from '@/components/ui/OutlineButton'
+import PrimaryButton from '@/components/ui/PrimaryButton'
 
 interface CommunityProfileProps {
   product: PhProduct
@@ -77,30 +79,18 @@ export default function CommunityProfile({ product, founders, isOwner = false, s
 
           {/* Secondary button */}
           {isOwner ? (
-            <a
-              href={slug ? `/apex/community/${slug}` : '#'}
-              className="block w-full text-center text-primary font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all mb-3"
-            >
+            <OutlineButton href={slug ? `/apex/community/${slug}` : '#'} fullWidth className="mb-3">
               See public view
-            </a>
+            </OutlineButton>
           ) : (
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center text-primary font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm border-2 border-primary/30 hover:border-primary/50 hover:bg-primary/5 active:scale-95 transition-all mb-3"
-            >
+            <OutlineButton href="#" target="_blank" rel="noopener noreferrer" fullWidth className="mb-3">
               Visit website
-            </a>
+            </OutlineButton>
           )}
 
-          {/* Primary button */}
-          <button
-            className="block w-full text-center text-white font-extrabold font-jakarta px-8 py-3.5 rounded-full text-sm shadow-xl hover:shadow-2xl active:scale-95 transition-all"
-            style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)' }}
-          >
+          <PrimaryButton fullWidth>
             {isOwner ? 'Community settings' : 'Join community'}
-          </button>
+          </PrimaryButton>
         </div>
       </div>
 

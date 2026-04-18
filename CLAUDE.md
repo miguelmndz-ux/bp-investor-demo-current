@@ -40,7 +40,7 @@ npm run lint         # ESLint
 - **Framework:** Next.js 15 (App Router, client components throughout)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v3 with custom design tokens
-- **Icons:** Material Symbols Outlined (Google CDN)
+- **Icons:** Phosphor Icons (`@phosphor-icons/react`) — use for all new icons. Material Symbols Outlined (Google CDN) still present in legacy layout components (SideNav, TopNav) but do not use for new work.
 - **Fonts:** Plus Jakarta Sans (headlines), Inter (body/labels) via next/font
 - **Video:** LiveKit React SDK (for live session screen, not yet built)
 - **Testing:** Vitest + React Testing Library
@@ -84,6 +84,16 @@ style={{
   Confirmed
 </span>
 ```
+
+**Icons:** Use `@phosphor-icons/react` for all new icons. Import named components and pass `weight="regular"` for outline style, `weight="bold"` for heavier strokes. Size via the `size` prop — never use className-based sizing.
+
+```tsx
+import { PaperPlaneTilt, Check } from '@phosphor-icons/react'
+
+<PaperPlaneTilt size={20} weight="regular" />
+```
+
+Do not add new Material Symbols icons. Existing ones in layout components are grandfathered in.
 
 **Animations:** Use `.fade-up`, `.fade-up-1` through `.fade-up-4` for page-load entrance animations.
 
@@ -202,6 +212,32 @@ Files like `web/public/apex/luma-event.html` can exceed 1MB and cannot be read d
 
 This is especially useful for animations that must start from a fixed initial value on every trigger. See `PhaseOverlay` in `web/src/components/apex/ApexScanOverlay.tsx`.
 
+### `padding-bottom` clipped in `overflow-y-auto` containers
+
+Browsers ignore `padding-bottom` when calculating the scrollable area of an `overflow-y-auto` element — content appears cut off at the bottom even when padding is set. Never rely on shorthand `p-*` for bottom spacing in scroll containers. Instead, add a spacer div as the last child:
+
+```tsx
+// ✅ spacer div — always included in scroll height
+<div className="flex-1 overflow-y-auto px-8 pt-8">
+  {/* content */}
+  <div className="pb-8" />
+</div>
+
+// ❌ padding-bottom on the scroll container — gets ignored
+<div className="flex-1 overflow-y-auto p-8">
+  {/* content appears cut off */}
+</div>
+```
+
+### TypeScript `canvas.getContext('2d')` null inside nested functions
+
+A null check like `if (!ctx) return` satisfies TypeScript at the call site, but if `ctx` is used inside a nested function (e.g., a `render` RAF callback defined below the check), TypeScript can't infer it's non-null there. Use a non-null assertion on `getContext`:
+
+```tsx
+const ctx = canvas.getContext('2d')!  // assert non-null
+if (!ctx) return                       // still guard at runtime
+```
+
 ### One-sided overflow clipping with `clip-path`
 
 `overflow: hidden` clips all four sides, which breaks elements that intentionally extend past one edge (e.g., a carousel whose left fade/arrow use negative positioning to reach the sidebar). Use `clip-path: inset()` with a large negative value on the side you want to keep open:
@@ -237,6 +273,9 @@ When a UI pattern appears in more than one page, extract it to `web/src/componen
 
 Existing shared components:
 - `PillButton` — liquid glass filter pill used on discover page and community profile. Always use this instead of inlining the pill style.
+- `OutlineButton` — bordered pill button (`border-2 border-primary/30`, primary color text). Accepts `href` to render as `<a>`. Pass Phosphor icon components via the `icon` prop (`ReactNode`, not a string). Use `fullWidth` to stretch to container width.
+- `PrimaryButton` — gradient orange pill button (white text). Same API as `OutlineButton`.
+- `SuccessToast` — slide-in success toast, renders via `createPortal` at `z-[200]`.
 
 ### SideNav active state
 

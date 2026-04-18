@@ -3,6 +3,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import GmailFlowOverlay from './GmailFlowOverlay'
+import OutlineButton from '@/components/ui/OutlineButton'
+import PrimaryButton from '@/components/ui/PrimaryButton'
+import {
+  EnvelopeSimple,
+  LinkedinLogo,
+  XLogo,
+  DiscordLogo,
+  SlackLogo,
+  Check,
+  X,
+  CaretUp,
+  CaretDown,
+  PencilSimple,
+  PaperPlaneTilt,
+} from '@phosphor-icons/react'
 
 function EmailIframe() {
   const ref = useRef<HTMLIFrameElement>(null)
@@ -32,6 +47,70 @@ function EmailIframe() {
   )
 }
 
+const CHANNELS = [
+  { id: 'email',    label: 'Email',      sublabel: 'ajay@velo.video',    Icon: EnvelopeSimple },
+  { id: 'linkedin', label: 'LinkedIn',   sublabel: 'Ajay Kumar',         Icon: LinkedinLogo   },
+  { id: 'x',        label: 'X (Twitter)',sublabel: '@ajaykumar',         Icon: XLogo          },
+  { id: 'discord',  label: 'Discord',    sublabel: 'Velo server',        Icon: DiscordLogo    },
+  { id: 'slack',    label: 'Slack',      sublabel: '#launches channel',  Icon: SlackLogo      },
+]
+
+function LinkedInDraft() {
+  return (
+    <div className="px-8 py-6 space-y-4 text-sm leading-relaxed text-on-surface">
+      <p>Hey Ajay — congrats on hitting #1 on Product Hunt today.</p>
+      <p>I decoded your launch and noticed something: builders aren't just excited about Velo as a tool — they're excited about a workflow shift. Async video that actually feels fast enough to replace Slack messages is a new category, and your PH comments prove it.</p>
+      <p>We built something around that insight: a live 60-minute BuildParty session where you demo Velo in a real async workflow, your community builds alongside you, and Nova — our AI host — runs the entire show.</p>
+      <p>We handle the event page, the community, and the brief. You just show up and build. Takes about 2 minutes to confirm a slot.</p>
+      <p>Would love to have Velo on BuildParty.</p>
+    </div>
+  )
+}
+
+function XDraft() {
+  return (
+    <div className="px-8 py-6 space-y-3 text-sm leading-relaxed text-on-surface">
+      <p>congrats on #1 ajay 🎉</p>
+      <p>saw the velo launch — the async video angle is hitting different with builders right now.</p>
+      <p>we decoded your launch and built a live session around it on buildparty. 60 min, your community builds a real workflow using velo, nova (our ai host) runs the whole thing.</p>
+      <p>you just show up. 2 min to book → [link]</p>
+      <div className="pt-2">
+        <span className="text-[11px] font-bold text-stone-400 uppercase tracking-widest">Character count</span>
+        <div className="mt-1.5 flex items-center gap-2">
+          <div className="flex-1 h-1.5 rounded-full bg-stone-100 overflow-hidden">
+            <div className="h-full rounded-full bg-green-400" style={{ width: '62%' }} />
+          </div>
+          <span className="text-[11px] font-bold text-stone-500">218 / 280</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DiscordDraft() {
+  return (
+    <div className="px-8 py-6 space-y-4 text-sm leading-relaxed text-on-surface">
+      <p>Hey @Ajay 👋 huge congrats on #1 today — the PH comments are full of builders who want to actually use Velo in their workflows, not just upvote it.</p>
+      <p>We decoded your launch and put together a live BuildParty session built around the question your community is actually asking: <span className="font-semibold">what does a real async workflow look like when video is as fast as text?</span></p>
+      <p>60-minute live session. Your community builds alongside you. Nova handles the session flow. We handle everything else — event page, community, run of show.</p>
+      <p>2 min to book a slot → [link]</p>
+    </div>
+  )
+}
+
+function SlackDraft() {
+  return (
+    <div className="px-8 py-6 space-y-4 text-sm leading-relaxed text-on-surface">
+      <p>🎉 <span className="font-bold">Congrats on the #1 launch Ajay!</span></p>
+      <p>617 upvotes and a comments section full of builders who want Velo in their actual workflow — that's not just a good launch, that's product-market signal.</p>
+      <p>We decoded the launch and built a live BuildParty session around it: 60 min, you demo Velo in a real async workflow, the community goes hands-on in real time. Nova (our AI host) briefs you 15 min before you go live.</p>
+      <p>We handle the event page, the community, and the run of show. You just show up.</p>
+      <p>Confirm your slot in 2 min → [link]</p>
+      <p className="text-stone-400">— BuildParty team</p>
+    </div>
+  )
+}
+
 interface OutreachDraftModalProps {
   onClose: () => void
   onSend?: () => void
@@ -40,21 +119,27 @@ interface OutreachDraftModalProps {
 export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftModalProps) {
   const [sent, setSent] = useState(false)
   const [gmailOpen, setGmailOpen] = useState(false)
+  const [expanded, setExpanded] = useState<Set<string>>(new Set(['email']))
+
+  const toggle = (id: string) => {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
+  }
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
 
-  // Auto-close confirmation overlay after 3.2s — paused while Gmail flow is open
   useEffect(() => {
     if (!sent || gmailOpen) return
     const t = setTimeout(() => { onSend?.(); onClose() }, 3200)
     return () => clearTimeout(t)
   }, [sent, gmailOpen, onSend, onClose])
 
-  // Easter egg: Tab opens Gmail flow while confirmation overlay is showing.
-  // Once Gmail is open, GmailFlowOverlay owns Tab/Esc — we stop listening.
   useEffect(() => {
     if (!sent || gmailOpen) return
     const handler = (e: KeyboardEvent) => {
@@ -84,12 +169,12 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
             onClick={onClose}
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone-100 transition-all text-stone-600"
           >
-            <span className="material-symbols-outlined">close</span>
+            <X size={20} />
           </button>
         </div>
 
         {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto p-8 space-y-8 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary/10 [&::-webkit-scrollbar-thumb:hover]:bg-primary/20 [&::-webkit-scrollbar-thumb]:rounded-full">
+        <div className="flex-1 overflow-y-auto px-8 pt-8 space-y-8 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary/10 [&::-webkit-scrollbar-thumb:hover]:bg-primary/20 [&::-webkit-scrollbar-thumb]:rounded-full">
 
           {/* Founder row */}
           <div className="flex flex-wrap items-center justify-between gap-6">
@@ -108,9 +193,9 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
             </div>
             <div className="flex items-center gap-2 bg-orange-50/50 p-2 rounded-2xl border border-orange-100/40">
               <div className="flex -space-x-1">
-                {['mail', 'link', 'close', 'chat_bubble', 'tag'].map((icon) => (
-                  <div key={icon} className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary border border-orange-100 shadow-sm">
-                    <span className="material-symbols-outlined" style={{ fontSize: 16 }}>{icon}</span>
+                {CHANNELS.map(({ id, Icon }) => (
+                  <div key={id} className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary border border-orange-100 shadow-sm">
+                    <Icon size={16} weight="regular" />
                   </div>
                 ))}
               </div>
@@ -121,137 +206,67 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
           {/* Channel cards */}
           <div className="space-y-4">
 
-            {/* Email — expanded */}
-            <div className="bg-white/40 rounded-3xl border border-white/60 shadow-sm overflow-hidden">
-              <div className="p-5 flex items-center justify-between bg-white/30 cursor-pointer">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
-                    <span className="material-symbols-outlined">mail</span>
+            {CHANNELS.map(({ id, label, sublabel, Icon }) => {
+              const isOpen = expanded.has(id)
+              return (
+                <div
+                  key={id}
+                  className={`rounded-3xl border border-white/60 shadow-sm overflow-hidden transition-colors ${isOpen ? 'bg-white/40' : 'bg-white/30 hover:bg-white/40 cursor-pointer'}`}
+                >
+                  {/* Card header */}
+                  <div
+                    className="p-5 flex items-center justify-between cursor-pointer select-none"
+                    onClick={() => toggle(id)}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
+                        <Icon size={22} weight="regular" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-sm text-on-background">{label}</h4>
+                        <p className="text-[11px] text-stone-500 font-medium">{sublabel}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="flex items-center gap-1 border-2 border-emerald-400 bg-white text-on-background text-[12px] font-extrabold px-3 py-1.5 rounded-[6px] whitespace-nowrap">
+                        <Check size={14} weight="bold" className="text-emerald-500" /> Ready
+                      </span>
+                      {isOpen ? <CaretUp size={18} className="text-stone-400" /> : <CaretDown size={18} className="text-stone-400" />}
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-on-background">Email</h4>
-                    <p className="text-[11px] text-stone-500 font-medium">ajay@velo.video</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 font-bold text-[11px] rounded-full border border-green-100">
-                    <span className="material-symbols-outlined text-[14px]">check</span> Ready
-                  </span>
-                  <span className="material-symbols-outlined text-stone-400">expand_less</span>
-                </div>
-              </div>
-              <div className="bg-white/10">
-                {/* Subject line */}
-                <div className="px-8 pt-6 pb-4 border-b border-white/40">
-                  <p className="text-sm font-bold text-on-background">
-                    <span className="text-stone-500 font-medium">Subject:</span> Velo just hit #1 — BuildParty built a live launch session for you!
-                  </p>
-                </div>
-                {/* Email preview — exact match via iframe */}
-                <EmailIframe />
-              </div>
-            </div>
 
-            {/* LinkedIn — collapsed */}
-            <div className="bg-white/30 rounded-3xl border border-white/60 shadow-sm hover:bg-white/40 transition-colors cursor-pointer group">
-              <div className="p-5 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
-                    <span className="material-symbols-outlined">link</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-on-background">LinkedIn</h4>
-                    <p className="text-[11px] text-stone-500 font-medium">Ajay Kumar</p>
-                  </div>
+                  {/* Card body */}
+                  {isOpen && (
+                    <div className="bg-white/10 border-t border-white/40">
+                      {id === 'email' && (
+                        <>
+                          <div className="px-8 pt-6 pb-4 border-b border-white/40">
+                            <p className="text-sm font-bold text-on-background">
+                              <span className="text-stone-500 font-medium">Subject:</span> BuildParty loves Velo! Here&apos;s what we built for you
+                            </p>
+                          </div>
+                          <EmailIframe />
+                        </>
+                      )}
+                      {id === 'linkedin' && <LinkedInDraft />}
+                      {id === 'x' && <XDraft />}
+                      {id === 'discord' && <DiscordDraft />}
+                      {id === 'slack' && <SlackDraft />}
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 font-bold text-[11px] rounded-full border border-green-100">
-                    <span className="material-symbols-outlined text-[14px]">check</span> Ready
-                  </span>
-                  <span className="material-symbols-outlined text-stone-400 group-hover:text-primary">expand_more</span>
-                </div>
-              </div>
-            </div>
-
-            {/* X — collapsed */}
-            <div className="bg-white/30 rounded-3xl border border-white/60 shadow-sm hover:bg-white/40 transition-colors cursor-pointer group">
-              <div className="p-5 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
-                    <span className="material-symbols-outlined">close</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-on-background">X (Twitter)</h4>
-                    <p className="text-[11px] text-stone-500 font-medium">@ajaykumar</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 font-bold text-[11px] rounded-full border border-green-100">
-                    <span className="material-symbols-outlined text-[14px]">check</span> Ready
-                  </span>
-                  <span className="material-symbols-outlined text-stone-400 group-hover:text-primary">expand_more</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Discord — collapsed */}
-            <div className="bg-white/30 rounded-3xl border border-white/60 shadow-sm hover:bg-white/40 transition-colors cursor-pointer group">
-              <div className="p-5 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
-                    <span className="material-symbols-outlined">chat_bubble</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-on-background">Discord</h4>
-                    <p className="text-[11px] text-stone-500 font-medium">Velo server</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 font-bold text-[11px] rounded-full border border-green-100">
-                    <span className="material-symbols-outlined text-[14px]">check</span> Ready
-                  </span>
-                  <span className="material-symbols-outlined text-stone-400 group-hover:text-primary">expand_more</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Slack — collapsed */}
-            <div className="bg-white/30 rounded-3xl border border-white/60 shadow-sm hover:bg-white/40 transition-colors cursor-pointer group">
-              <div className="p-5 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
-                    <span className="material-symbols-outlined">tag</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-on-background">Slack</h4>
-                    <p className="text-[11px] text-stone-500 font-medium">#launches channel</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 font-bold text-[11px] rounded-full border border-green-100">
-                    <span className="material-symbols-outlined text-[14px]">check</span> Ready
-                  </span>
-                  <span className="material-symbols-outlined text-stone-400 group-hover:text-primary">expand_more</span>
-                </div>
-              </div>
-            </div>
+              )
+            })}
 
           </div>
+
+          <div className="pb-8" />
         </div>
 
         {/* Footer */}
         <div className="p-8 pt-6 border-t border-stone-100 bg-white/50 flex items-center gap-4 justify-end">
-          <button className="px-6 py-3.5 rounded-2xl bg-transparent border border-stone-200 text-on-background font-bold text-sm hover:bg-stone-50 transition-all flex items-center gap-2">
-            <span className="material-symbols-outlined text-[20px]">edit</span>
-            Edit drafts
-          </button>
-          <button
-            onClick={() => setSent(true)}
-            className="px-8 py-3.5 rounded-2xl bg-gradient-to-br from-primary-container to-primary text-white font-black text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2"
-          >
-            <span className="material-symbols-outlined text-[20px]">send</span>
-            Approve &amp; Send All
-          </button>
+          <OutlineButton icon={<PencilSimple size={18} />}>Edit drafts</OutlineButton>
+          <PrimaryButton icon={<PaperPlaneTilt size={18} />} onClick={() => setSent(true)}>Approve &amp; Send All</PrimaryButton>
         </div>
 
       </div>
@@ -272,7 +287,6 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
           }}
           onClick={() => { onSend?.(); onClose() }}
         >
-          {/* Icon */}
           <div
             className="confirm-icon w-20 h-20 rounded-full flex items-center justify-center mb-7 shadow-2xl"
             style={{
@@ -282,18 +296,12 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
           >
             <span className="material-symbols-outlined text-white" style={{ fontSize: 40 }}>check</span>
           </div>
-
-          {/* Title */}
           <h2 className="confirm-title font-jakarta font-black text-white text-3xl mb-3 tracking-tight">
             Outreach sent.
           </h2>
-
-          {/* Subtitle */}
           <p className="confirm-subtitle text-white/60 text-base font-medium">
             Apex sent to 5 channels across 1 founder. We&apos;ll track replies for you.
           </p>
-
-          {/* Tab hint */}
           <p className="confirm-subtitle text-white/20 text-xs font-medium mt-8 flex items-center gap-1.5" style={{ animationDelay: '0.9s' }}>
             <kbd className="px-1.5 py-0.5 rounded-[4px] border border-white/20 font-mono text-[11px]">Tab</kbd>
             see what Ajay sees
