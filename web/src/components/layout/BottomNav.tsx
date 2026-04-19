@@ -15,7 +15,7 @@ interface BottomNavItem {
 
 const NAV_ITEMS: BottomNavItem[] = [
   {
-    href: '/apex',
+    href: '/',
     label: 'Home',
     icon: <House size={24} weight="regular" />,
     activeIcon: <House size={24} weight="fill" />,
