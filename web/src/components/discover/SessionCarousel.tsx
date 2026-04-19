@@ -103,7 +103,7 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
       {isMobile ? (
         /* Mobile: simple CSS scroll-snap carousel */
         <div
-          className="flex overflow-x-auto gap-3 pb-2 pt-1"
+          className="flex overflow-x-auto gap-3 pb-2 pt-1 hide-scrollbar"
           style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
         >
           {sessions.map((session) => (

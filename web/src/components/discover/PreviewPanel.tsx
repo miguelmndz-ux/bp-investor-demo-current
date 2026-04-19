@@ -265,7 +265,22 @@ function CTAButton({ label, onClick }: { label: string; onClick?: () => void }) 
 export default function PreviewPanel({ type, data, open, onClose }: PreviewPanelProps) {
   const isMobile = useIsMobile()
 
+  useEffect(() => {
+    if (isMobile && open) {
+      document.body.style.overflow = 'hidden'
+      return () => { document.body.style.overflow = '' }
+    }
+  }, [isMobile, open])
+
   return (
+    <>
+    {isMobile && open && (
+      <div
+        className="fixed inset-0 z-[44]"
+        style={{ background: 'rgba(0,0,0,0.3)' }}
+        onClick={onClose}
+      />
+    )}
     <div
       className={
         isMobile
@@ -301,13 +316,25 @@ export default function PreviewPanel({ type, data, open, onClose }: PreviewPanel
           <div className="w-8 h-1 rounded-full bg-stone-300" />
         </div>
       )}
+      {isMobile && (
+        <div className="flex justify-end px-1 pb-2">
+          <button
+            onClick={onClose}
+            className="w-8 h-8 flex items-center justify-center rounded-full text-stone-400 hover:text-stone-600"
+            aria-label="Close"
+          >
+            <span style={{ fontSize: 20, lineHeight: 1 }}>✕</span>
+          </button>
+        </div>
+      )}
       <div
-        className={`p-6 flex flex-col relative ${isMobile ? 'overflow-visible' : 'h-full overflow-hidden'}`}
+        className={`p-6 flex flex-col relative ${isMobile ? 'overflow-y-auto' : 'h-full overflow-hidden'}`}
       >
         {type === 'session' && data && <SessionPreview session={data as DiscoverSession} onClose={onClose} />}
         {type === 'program' && data && <ProgramPreview program={data as DiscoverProgram} />}
         {type === 'community' && data && <CommunityPreview community={data as DiscoverCommunity} />}
       </div>
     </div>
+    </>
   )
 }
