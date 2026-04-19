@@ -1,6 +1,10 @@
 'use client'
 
+import { useIsMobile } from '@/hooks/useIsMobile'
+
 export default function TopNav() {
+  const isMobile = useIsMobile()
+
   return (
     <header
       className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 z-[55] h-16"
@@ -18,15 +22,17 @@ export default function TopNav() {
 
       {/* Search + actions + avatar */}
       <div className="flex items-center gap-2">
-        {/* Search */}
-        <div className="relative w-80 bg-stone-100 rounded-xl px-4 border border-stone-200 flex items-center h-10 mr-2">
-          <span className="material-symbols-outlined text-stone-400 shrink-0 mr-2" style={{ fontSize: '18px' }}>search</span>
-          <input
-            type="text"
-            placeholder="Search insights, founders, or drafts…"
-            className="w-full bg-transparent border-none py-1.5 pl-0 pr-2 text-sm focus:ring-0 text-on-background placeholder-stone-400 font-medium outline-none"
-          />
-        </div>
+        {/* Search — hidden on mobile to prevent overflow */}
+        {!isMobile && (
+          <div className="relative w-80 bg-stone-100 rounded-xl px-4 border border-stone-200 flex items-center h-10 mr-2">
+            <span className="material-symbols-outlined text-stone-400 shrink-0 mr-2" style={{ fontSize: '18px' }}>search</span>
+            <input
+              type="text"
+              placeholder="Search insights, founders, or drafts…"
+              className="w-full bg-transparent border-none py-1.5 pl-0 pr-2 text-sm focus:ring-0 text-on-background placeholder-stone-400 font-medium outline-none"
+            />
+          </div>
+        )}
 
         {/* Notifications */}
         <button className="w-9 h-9 flex items-center justify-center rounded-full text-stone-400 hover:text-primary hover:bg-stone-50 transition-all duration-200 relative shrink-0">
