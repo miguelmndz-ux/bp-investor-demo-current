@@ -48,7 +48,13 @@ export default function AppShell({ children }: AppShellProps) {
         className="fixed pointer-events-none"
         style={{ top: 96, left: 80, width: 1, bottom: 0, background: 'rgba(0,0,0,0.06)', zIndex: 55 }}
       />
-      {/* ── Concave corner ── */}
+      {/* ── Concave corner ──
+          Two overlapping 32×32 divs at (80,64):
+          1. White clip-path fill for the nav-side wedge.
+          2. CSS border-only div for the arc line — CSS borders render identically
+             to the straight div borders above, so weight/color match perfectly.
+             border-top-left-radius:24 draws the arc plus 8px straight extensions
+             that bridge to where the header/sidebar borders start at x=112 / y=96. */}
       <div
         className="fixed pointer-events-none"
         style={{ top: 64, left: 80, width: 32, height: 32, zIndex: 55 }}
