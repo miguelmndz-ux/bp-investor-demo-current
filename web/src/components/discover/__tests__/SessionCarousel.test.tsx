@@ -1,4 +1,9 @@
 import { describe, it, expect, vi } from 'vitest'
+
+vi.mock('@/hooks/useIsMobile', () => ({
+  useIsMobile: vi.fn(() => false),
+}))
+
 import { render, screen, fireEvent } from '@testing-library/react'
 import SessionCarousel from '../SessionCarousel'
 import { trendingSessions } from '@/lib/fixtures/discover-sessions'
