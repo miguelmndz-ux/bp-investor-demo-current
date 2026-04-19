@@ -271,31 +271,31 @@ export default function PrePartyPage() {
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm"
                   style={{ background: '#fff7f0', border: '1px solid rgba(255,122,47,0.3)' }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: isMobile ? '20px' : '26px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}>mic</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}>mic</span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm"
                   style={{ background: '#fff7f0', border: '1px solid rgba(255,122,47,0.3)' }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: isMobile ? '20px' : '26px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}>videocam</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}>videocam</span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                   style={{ background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(209,213,219,0.4)' }}
                 >
-                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: isMobile ? '20px' : '26px' }}>present_to_all</span>
+                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>present_to_all</span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                   style={{ background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(209,213,219,0.4)' }}
                 >
-                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: isMobile ? '20px' : '26px' }}>image</span>
+                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>image</span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                   style={{ background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(209,213,219,0.4)' }}
                 >
-                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: isMobile ? '20px' : '26px' }}>settings</span>
+                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>settings</span>
                 </button>
               </div>
 
