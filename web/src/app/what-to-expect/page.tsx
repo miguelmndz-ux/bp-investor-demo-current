@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const FEATURE_ITEMS = [
   { icon: 'smart_toy', label: 'Browser Agent' },
@@ -59,6 +60,7 @@ const CHECKLIST = [
 
 export default function WhatToExpectPage() {
   const router = useRouter()
+  const isMobile = useIsMobile()
 
   return (
     <div
@@ -108,7 +110,7 @@ export default function WhatToExpectPage() {
           <h1
             className="font-jakarta font-black"
             style={{
-              fontSize: 46,
+              fontSize: isMobile ? 28 : 46,
               color: '#1A0A00',
               letterSpacing: '-0.03em',
               lineHeight: 1.1,
@@ -156,8 +158,9 @@ export default function WhatToExpectPage() {
           id="session"
           className="premium-glass"
           style={{
-            borderRadius: 24, padding: '40px 48px', marginBottom: 20,
-            display: 'flex', alignItems: 'center', gap: 48,
+            borderRadius: 24, padding: isMobile ? '24px 20px' : '40px 48px', marginBottom: 20,
+            display: 'flex', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? 24 : 48,
+            flexDirection: isMobile ? 'column' : 'row',
             position: 'relative',
           }}
         >
@@ -194,7 +197,7 @@ export default function WhatToExpectPage() {
 
             <h2
               className="font-jakarta font-black"
-              style={{ fontSize: 36, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
+              style={{ fontSize: isMobile ? 22 : 36, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
             >
               Build with Video AI
             </h2>
@@ -202,7 +205,7 @@ export default function WhatToExpectPage() {
               A live deep-dive into how Velo turns raw screen recordings into polished video messages using a browser agent, AI avatar, and automated script generation — all in one take.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 12 }}>
               {FEATURE_ITEMS.map(({ icon, label }) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{
@@ -220,7 +223,7 @@ export default function WhatToExpectPage() {
           </div>
 
           {/* Video preview */}
-          <div style={{ width: '44%', flexShrink: 0 }}>
+          <div style={{ width: isMobile ? '100%' : '44%', flexShrink: 0 }}>
             <div style={{
               aspectRatio: '16/9', borderRadius: 16, overflow: 'hidden',
               position: 'relative', cursor: 'pointer',
@@ -254,8 +257,8 @@ export default function WhatToExpectPage() {
           id="decode"
           className="premium-glass"
           style={{
-            borderRadius: 24, padding: '40px 48px', marginBottom: 20,
-            display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', gap: 48,
+            borderRadius: 24, padding: isMobile ? '24px 20px' : '40px 48px', marginBottom: 20,
+            display: 'flex', flexDirection: isMobile ? 'column' : 'row-reverse', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? 24 : 48,
             position: 'relative',
           }}
         >
@@ -278,14 +281,14 @@ export default function WhatToExpectPage() {
             </div>
             <h2
               className="font-jakarta font-black"
-              style={{ fontSize: 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
+              style={{ fontSize: isMobile ? 22 : 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
             >
               Velo Decoded
             </h2>
             <p style={{ fontSize: 15, color: '#9e6b47', lineHeight: 1.65, marginBottom: 24 }}>
               A technical breakdown of Velo's AI video pipeline — from browser agent capture to AI avatar synthesis and automated script generation.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 10 }}>
               {DECODE_ITEMS.map(({ icon, label }) => (
                 <div key={label} style={{
                   padding: '14px 10px',
@@ -304,9 +307,9 @@ export default function WhatToExpectPage() {
             </div>
           </div>
 
-          <div style={{ width: '44%', flexShrink: 0 }}>
+          <div style={{ width: isMobile ? '100%' : '44%', flexShrink: 0 }}>
             <div style={{
-              aspectRatio: '4/3', borderRadius: 16,
+              aspectRatio: '1800/822', borderRadius: 16,
               overflow: 'hidden',
               border: '1px solid rgba(255,255,255,0.55)',
               boxShadow: '0 8px 32px -8px rgba(0,0,0,0.12)',
@@ -325,8 +328,9 @@ export default function WhatToExpectPage() {
           id="course"
           className="premium-glass"
           style={{
-            borderRadius: 24, padding: '40px 48px', marginBottom: 56,
-            display: 'flex', alignItems: 'center', gap: 48,
+            borderRadius: 24, padding: isMobile ? '24px 20px' : '40px 48px', marginBottom: 56,
+            display: 'flex', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? 24 : 48,
+            flexDirection: isMobile ? 'column' : 'row',
             position: 'relative',
           }}
         >
@@ -349,14 +353,14 @@ export default function WhatToExpectPage() {
             </div>
             <h2
               className="font-jakarta font-black"
-              style={{ fontSize: 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
+              style={{ fontSize: isMobile ? 22 : 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
             >
               Velo Course
             </h2>
             <p style={{ fontSize: 15, color: '#9e6b47', lineHeight: 1.65, marginBottom: 24 }}>
               An interactive course where participants go hands-on with Velo's core workflow — capturing demos, generating AI avatars, and shipping polished video messages without retakes.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 10 }}>
               {COURSE_ITEMS.map(({ icon, label }) => (
                 <div key={label} style={{
                   padding: '14px 10px',
@@ -375,9 +379,9 @@ export default function WhatToExpectPage() {
             </div>
           </div>
 
-          <div style={{ width: '44%', flexShrink: 0 }}>
+          <div style={{ width: isMobile ? '100%' : '44%', flexShrink: 0 }}>
             <div style={{
-              aspectRatio: '4/3', borderRadius: 16,
+              aspectRatio: '1800/822', borderRadius: 16,
               overflow: 'hidden',
               border: '1px solid rgba(255,255,255,0.55)',
               boxShadow: '0 8px 32px -8px rgba(0,0,0,0.12)',
@@ -399,7 +403,7 @@ export default function WhatToExpectPage() {
         }}>
           Managed by Your AI Team
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 56 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 20, marginBottom: 56 }}>
           {AI_TEAM.map(({ name, role, desc, icon, color, bg, aura }) => (
             <div
               key={name}
@@ -437,7 +441,7 @@ export default function WhatToExpectPage() {
         </div>
 
         {/* ── Next steps + CTA ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 24 : 40, alignItems: 'start' }}>
           {/* Checklist */}
           <div>
             <h3
