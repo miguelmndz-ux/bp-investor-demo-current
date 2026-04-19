@@ -1,10 +1,9 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 
 export function useIsMobile(breakpoint = 768): boolean {
-  const [isMobile, setIsMobile] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false
-    return window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
-  })
+  const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
