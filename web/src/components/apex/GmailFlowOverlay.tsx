@@ -54,17 +54,32 @@ export default function GmailFlowOverlay({ onClose }: GmailFlowOverlayProps) {
     return () => window.removeEventListener('message', handler)
   }, [screen, onClose, router])
 
-  // When inbox loads, wire up the BuildParty email row click
+  // On every iframe load: fix images + clip whitespace, then wire up inbox row
   function handleIframeLoad() {
-    if (screen !== 'inbox') return
     try {
       const doc = iframeRef.current?.contentDocument
       if (!doc) return
-      // The BuildParty email row has id ":2d"
-      const row = doc.getElementById(':2d')
-      if (row) {
-        row.style.cursor = 'pointer'
-        row.addEventListener('click', () => setScreen('email'))
+
+      // email.html has <base href="https://mail.google.com/..."> which hijacks
+      // root-relative /apex/ paths. Re-point any broken image srcs to our origin.
+      doc.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+        if (img.src.includes('mail.google.com') && img.src.includes('/apex/')) {
+          img.src = window.location.origin + '/apex/' + img.src.split('/apex/')[1]
+        }
+      })
+
+      // Clip horizontal overflow that creates whitespace on the right
+      const style = doc.createElement('style')
+      style.textContent = 'html,body{max-width:100%!important;overflow-x:hidden!important}'
+      doc.head.appendChild(style)
+
+      // Inbox only: wire up the BuildParty email row click
+      if (screen === 'inbox') {
+        const row = doc.getElementById(':2d')
+        if (row) {
+          row.style.cursor = 'pointer'
+          row.addEventListener('click', () => setScreen('email'))
+        }
       }
     } catch {
       // cross-origin guard — should never fire since files are same-origin
