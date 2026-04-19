@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-04-19",
+  "decisions": [],
+  "globalRules": [
+    "grid-cols-12 → grid-cols-1 md:grid-cols-6 lg:grid-cols-12",
+    "grid-cols-4  → grid-cols-2 md:grid-cols-4",
+    "grid-cols-3  → grid-cols-1 md:grid-cols-3",
+    "grid-cols-2  → grid-cols-1 md:grid-cols-2",
+    "px-12        → px-4 md:px-12",
+    "px-8         → px-4 md:px-8",
+    "gap-8        → gap-4 md:gap-8",
+    "gap-6        → gap-3 md:gap-6",
+    "text-4xl     → text-2xl md:text-4xl",
+    "text-3xl     → text-xl md:text-3xl"
+  ]
+}
