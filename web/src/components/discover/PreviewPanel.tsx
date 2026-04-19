@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { createPortal } from 'react-dom'
 import type { DiscoverSession, DiscoverProgram, DiscoverCommunity } from '@/lib/fixtures/discover-types'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 type PreviewType = 'session' | 'program' | 'community' | null
 type PreviewData = DiscoverSession | DiscoverProgram | DiscoverCommunity | null
@@ -262,21 +263,46 @@ function CTAButton({ label, onClick }: { label: string; onClick?: () => void }) 
 }
 
 export default function PreviewPanel({ type, data, open, onClose }: PreviewPanelProps) {
+  const isMobile = useIsMobile()
+
   return (
     <div
-      className={`fixed top-16 right-0 bottom-0 w-[380px] z-[45] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        open ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-      }`}
-      style={{
-        background: 'rgba(255,255,255,0.45)',
-        backdropFilter: 'blur(40px)',
-        WebkitBackdropFilter: 'blur(40px)',
-        borderLeft: '1px solid rgba(255,255,255,0.3)',
-        boxShadow: '-8px 0 40px rgba(74,37,6,0.12)',
-      }}
+      className={
+        isMobile
+          ? `fixed bottom-0 left-0 right-0 z-[45] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-t-3xl ${
+              open ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
+            }`
+          : `fixed top-16 right-0 bottom-0 w-[380px] z-[45] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              open ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
+            }`
+      }
+      style={
+        isMobile
+          ? {
+              maxHeight: '85vh',
+              overflowY: 'auto',
+              background: 'rgba(255,255,255,0.92)',
+              backdropFilter: 'blur(40px)',
+              WebkitBackdropFilter: 'blur(40px)',
+              borderTop: '1px solid rgba(255,255,255,0.3)',
+              boxShadow: '0 -8px 40px rgba(74,37,6,0.12)',
+            }
+          : {
+              background: 'rgba(255,255,255,0.45)',
+              backdropFilter: 'blur(40px)',
+              WebkitBackdropFilter: 'blur(40px)',
+              borderLeft: '1px solid rgba(255,255,255,0.3)',
+              boxShadow: '-8px 0 40px rgba(74,37,6,0.12)',
+            }
+      }
     >
+      {isMobile && (
+        <div className="flex justify-center pt-3 pb-1 shrink-0">
+          <div className="w-8 h-1 rounded-full bg-stone-300" />
+        </div>
+      )}
       <div
-        className="h-full p-6 flex flex-col relative overflow-hidden"
+        className={`p-6 flex flex-col relative ${isMobile ? 'overflow-visible' : 'h-full overflow-hidden'}`}
       >
         {type === 'session' && data && <SessionPreview session={data as DiscoverSession} onClose={onClose} />}
         {type === 'program' && data && <ProgramPreview program={data as DiscoverProgram} />}
