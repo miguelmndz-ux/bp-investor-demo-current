@@ -384,7 +384,7 @@ export default function ApexScanOverlay() {
 
   return (
     <div
-      className="fixed top-16 left-20 right-0 bottom-0 z-[45] flex items-center justify-center overflow-hidden"
+      className="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[45] flex items-center justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, #fffaf7 0%, #fff1e6 100%)',
         opacity: isExiting ? 0 : 1,
@@ -397,11 +397,11 @@ export default function ApexScanOverlay() {
 
       {/* Two-column layout */}
       <div
-        className="relative z-10 flex items-stretch gap-12 max-w-6xl w-full px-16"
+        className="relative z-10 flex flex-col md:flex-row items-stretch gap-6 md:gap-12 max-w-6xl w-full px-4 md:px-16"
         style={{ height: 'calc(100vh - 128px)' }}
       >
         {/* Left: title + steps */}
-        <div className="w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">
+        <div className="w-full md:w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">
           <h1 className="text-4xl font-black font-jakarta text-primary leading-tight">
             {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
           </h1>

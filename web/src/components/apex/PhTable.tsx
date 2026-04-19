@@ -10,7 +10,7 @@ interface PhTableProps {
 
 export default function PhTable({ products, onVeloPreview }: PhTableProps) {
   return (
-    <div className="premium-glass rounded-xl p-8">
+    <div className="premium-glass rounded-xl p-8 overflow-x-auto">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h2 className="text-2xl font-black font-jakarta text-on-background">ProductHunt Top 10</h2>
@@ -20,6 +20,7 @@ export default function PhTable({ products, onVeloPreview }: PhTableProps) {
           <span className="material-symbols-outlined text-sm">refresh</span> Refresh
         </button>
       </div>
+      <div className="min-w-[600px]">
       <div className="grid grid-cols-12 px-4 mb-3 text-[10px] uppercase font-extrabold text-stone-400 tracking-widest items-end">
         <div className="col-span-1"></div>
         <div className="col-span-1 pb-0.5">Status</div>
@@ -48,6 +49,7 @@ export default function PhTable({ products, onVeloPreview }: PhTableProps) {
             onPreviewClick={onVeloPreview}
           />
         ))}
+      </div>
       </div>
     </div>
   )
