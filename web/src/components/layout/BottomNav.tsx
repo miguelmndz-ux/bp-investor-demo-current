@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { House, Compass, CalendarBlank, Sparkle } from '@phosphor-icons/react'
@@ -7,8 +8,8 @@ import { House, Compass, CalendarBlank, Sparkle } from '@phosphor-icons/react'
 interface BottomNavItem {
   href: string
   label: string
-  icon: React.ReactNode
-  activeIcon: React.ReactNode
+  icon: ReactNode
+  activeIcon: ReactNode
   match: (pathname: string) => boolean
 }
 
@@ -18,7 +19,7 @@ const NAV_ITEMS: BottomNavItem[] = [
     label: 'Home',
     icon: <House size={24} weight="regular" />,
     activeIcon: <House size={24} weight="fill" />,
-    match: (p) => p === '/apex' || p === '/',
+    match: (p) => p === '/',
   },
   {
     href: '/discover',
@@ -47,13 +48,15 @@ export default function BottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-2 pb-safe"
+    <nav
+      className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-2"
       style={{
         background: 'rgba(255,255,255,0.92)',
         backdropFilter: 'blur(20px) saturate(180%)',
         WebkitBackdropFilter: 'blur(20px) saturate(180%)',
         borderTop: '1px solid rgba(0,0,0,0.06)',
         height: 64,
+        paddingBottom: 'max(0px, env(safe-area-inset-bottom))',
       }}
     >
       {NAV_ITEMS.map(({ href, label, icon, activeIcon, match }) => {
