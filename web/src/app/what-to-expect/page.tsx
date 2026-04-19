@@ -128,7 +128,7 @@ export default function WhatToExpectPage() {
         </header>
 
         {/* TOC strip */}
-        <div className="flex gap-4 justify-center" style={{ marginTop: 24, marginBottom: 40 }}>
+        <div className="flex gap-4 justify-center" style={{ marginTop: 24, marginBottom: 40, flexWrap: 'wrap' }}>
           {[
             { href: '#decode',  icon: 'psychology', label: 'Velo Decoded',        color: '#2563eb' },
             { href: '#course',  icon: 'bolt',       label: 'Velo Course',          color: '#059669' },

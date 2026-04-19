@@ -67,8 +67,8 @@ export default function SlotSelectionPage() {
 
       {/* ── Main three-panel card ── */}
       <main
-        className="w-full max-w-5xl premium-glass rounded-2xl flex flex-col md:flex-row relative fade-up-1"
-        style={{ overflow: 'hidden' }}
+        className="w-full max-w-5xl premium-glass rounded-2xl flex relative fade-up-1"
+        style={{ overflow: 'hidden', flexDirection: isMobile ? 'column' : 'row' }}
       >
         {/* ═══════════════════════════════════════════
             LEFT — Session info
