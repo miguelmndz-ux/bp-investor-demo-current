@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import FounderCard from './FounderCard'
 import { phProducts } from '@/lib/fixtures/products'
 import { founders } from '@/lib/fixtures/founders'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 type ScanPhase = 'scanning' | 'complete' | 'dismissed'
 
@@ -328,6 +329,7 @@ export default function ApexScanOverlay() {
   const [activePhaseIndex, setActivePhaseIndex] = useState(0)
   const [isExiting, setIsExiting]               = useState(false)
   const [visibleCount, setVisibleCount]         = useState(0)
+  const isMobile                                = useIsMobile()
 
   // Broadcast scan progress for SideNav indicator
   useEffect(() => {
@@ -398,7 +400,11 @@ export default function ApexScanOverlay() {
       {/* Two-column layout */}
       <div
         className="relative z-10 flex flex-col md:flex-row items-stretch gap-6 md:gap-12 max-w-6xl w-full px-4 md:px-16"
-        style={{ height: 'calc(100vh - 128px)' }}
+        style={{
+          height: isMobile ? 'auto' : 'calc(100vh - 128px)',
+          minHeight: isMobile ? 'calc(100vh - 128px)' : undefined,
+          overflow: isMobile ? 'auto' : 'hidden',
+        }}
       >
         {/* Left: title + steps */}
         <div className="w-full md:w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">

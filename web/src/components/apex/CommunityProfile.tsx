@@ -20,7 +20,7 @@ export default function CommunityProfile({ product, founders, isOwner = false, s
     <div className="flex flex-col md:flex-row items-start gap-10">
       {/* Left column — sticky wrapper (no overflow:hidden so sticky works) */}
       <div className="w-full md:w-[30%] shrink-0 md:sticky top-[168px]">
-        <div className="premium-glass rounded-2xl p-6 flex flex-col min-h-[640px]">
+        <div className="premium-glass rounded-2xl p-6 flex flex-col md:min-h-[640px]">
           {/* Product logo */}
           <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg border border-orange-100/40 mb-5 bg-white">
             <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
