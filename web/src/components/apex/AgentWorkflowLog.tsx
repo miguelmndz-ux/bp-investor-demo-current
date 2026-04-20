@@ -6,7 +6,7 @@ interface AgentWorkflowLogProps {
 
 export default function AgentWorkflowLog({ items }: AgentWorkflowLogProps) {
   return (
-    <div className="premium-glass rounded-xl p-7 fade-up fade-up-3">
+    <div className="premium-glass -mx-6 md:mx-0 rounded-none md:rounded-xl p-4 md:p-7 fade-up fade-up-3">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-black font-jakarta text-on-background">Agent Workflow</h2>
         <button className="p-1.5 text-stone-400 hover:text-primary hover:bg-white/60 rounded-lg transition-all">

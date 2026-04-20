@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { LockSimple } from '@phosphor-icons/react'
 
 interface AgentCardProps {
   name: string
@@ -20,27 +19,16 @@ export default function AgentCard({
   glowColor,
   href,
 }: AgentCardProps) {
-  const isActive = !!href
+  const destination = href ?? `/agents/${name.toLowerCase()}`
 
   const card = (
     <div
-      className={`premium-glass rounded-2xl p-6 flex flex-col gap-4 relative h-full${
-        isActive ? ' cursor-pointer' : ' opacity-50 cursor-not-allowed'
-      }`}
-      style={
-        isActive
-          ? { border: '1px solid rgba(255,122,47,0.3)' }
-          : undefined
-      }
+      className="premium-glass rounded-2xl p-5 md:p-8 flex flex-col gap-4 relative h-full cursor-pointer"
+      style={{ border: '1px solid rgba(255,122,47,0.3)' }}
     >
-      {!isActive && (
-        <div className="absolute top-4 right-4">
-          <LockSimple size={14} weight="bold" className="text-on-background/60" />
-        </div>
-      )}
       <div className="flex justify-center">
         <div
-          className="w-[88px] h-[88px] rounded-full shrink-0"
+          className="w-24 h-24 md:w-[128px] md:h-[128px] rounded-full shrink-0"
           style={{
             background: `radial-gradient(circle at 35% 35%, ${gradientFrom}, ${gradientTo})`,
             boxShadow: `0 8px 32px ${glowColor}`,
@@ -52,13 +40,9 @@ export default function AgentCard({
     </div>
   )
 
-  if (href) {
-    return (
-      <Link href={href} className="block transition-opacity duration-200 hover:opacity-90">
-        {card}
-      </Link>
-    )
-  }
-
-  return card
+  return (
+    <Link href={destination} className="block transition-opacity duration-200 hover:opacity-90">
+      {card}
+    </Link>
+  )
 }

@@ -17,28 +17,28 @@ const NAV_ITEMS: BottomNavItem[] = [
   {
     href: '/',
     label: 'Home',
-    icon: <House size={24} weight="regular" />,
+    icon: <House size={24} weight="bold" />,
     activeIcon: <House size={24} weight="fill" />,
     match: (p) => p === '/',
   },
   {
     href: '/discover',
     label: 'Discover',
-    icon: <Compass size={24} weight="regular" />,
+    icon: <Compass size={24} weight="bold" />,
     activeIcon: <Compass size={24} weight="fill" />,
     match: (p) => p === '/discover',
   },
   {
     href: '#',
     label: 'Calendar',
-    icon: <CalendarBlank size={24} weight="regular" />,
+    icon: <CalendarBlank size={24} weight="bold" />,
     activeIcon: <CalendarBlank size={24} weight="fill" />,
     match: () => false,
   },
   {
     href: '/apex',
     label: 'Apex',
-    icon: <Sparkle size={24} weight="regular" />,
+    icon: <Sparkle size={24} weight="bold" />,
     activeIcon: <Sparkle size={24} weight="fill" />,
     match: (p) => p.startsWith('/apex'),
   },
@@ -67,7 +67,7 @@ export default function BottomNav() {
             href={href}
             aria-label={label}
             aria-current={active ? 'page' : undefined}
-            className="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] rounded-2xl transition-all duration-200"
+            className="w-[72px] flex flex-col items-center justify-center gap-0.5 py-2 rounded-2xl transition-all duration-200"
             style={active ? {
               background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
               backdropFilter: 'blur(20px) saturate(180%)',

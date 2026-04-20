@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import type { PhProduct, LifecycleStatus } from '@/lib/fixtures/types'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface PhProductRowProps {
   product: PhProduct
@@ -17,7 +18,33 @@ const STATUS_CONFIG: Record<LifecycleStatus, { label: string; className: string 
 }
 
 export default function PhProductRow({ product, rank, onPreviewClick }: PhProductRowProps) {
+  const isMobile = useIsMobile()
   const status = STATUS_CONFIG[product.lifecycleStatus]
+
+  if (isMobile) {
+    return (
+      <div className="flex items-center gap-2 p-2.5 rounded-2xl bg-white/30 border border-orange-100/30 shadow-sm">
+        <span className="text-[11px] font-black text-stone-400 w-5 text-center shrink-0">{rank}</span>
+        <div className="w-8 h-8 rounded-md overflow-hidden shadow-sm shrink-0 bg-white border border-stone-100">
+          <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <Link
+            href={`/apex/community/${product.slug}/owner`}
+            className="font-extrabold text-sm text-on-background leading-tight block truncate hover:text-primary transition-colors"
+          >
+            {product.name}
+          </Link>
+          <p className="text-[10px] text-stone-500 font-bold truncate leading-tight">{product.category}</p>
+        </div>
+        <div className="w-[68px] flex items-center justify-center shrink-0">
+          <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded-[6px] bg-white text-on-background whitespace-nowrap ${status.className}`}>
+            {status.label}
+          </span>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="grid grid-cols-12 items-center p-3 rounded-2xl bg-white/30 hover:bg-white/55 transition-all group cursor-pointer border border-orange-100/30 shadow-sm">

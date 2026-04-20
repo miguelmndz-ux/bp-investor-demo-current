@@ -1,7 +1,107 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-19",
-  "decisions": [],
+  "lastUpdated": "2026-04-21",
+  "decisions": [
+    {
+      "component": "ApexScanOverlay",
+      "file": "web/src/components/apex/ApexScanOverlay.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Separate if (isMobile) early return + desktop return. Scanning: headline → preview (max-h-[45vh]) → single active step (max-w-sm mx-auto) → Stop button pinned to bottom. Complete (no selection): headline → all 5 steps centered (no preview). Complete (step tapped): headline → that step's preview → all steps. Centered group uses flex-1 flex-col justify-center gap-9. Button shrink-0 outside group. Guard: activePhaseIndex < PHASES.length prevents crash at scan boundary.",
+      "rationale": "User wanted preview above steps, no scrolling, compact steps without microsteps, centered wider button. Final round: show one step at a time during scan; tap-to-reveal preview after completion.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "BottomNav",
+      "file": "web/src/components/layout/BottomNav.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Each tab is w-[72px] py-2 (fixed equal width). Active liquid-glass pill is always the same size regardless of label length. Inactive: weight='bold', color #a8a29e. Active: weight='fill', liquid glass style + color #7a2e00. justify-around on nav distributes spacing between the fixed-width tabs.",
+      "rationale": "flex-1 was too wide; min-w-[44px] was too narrow and variable per label. Fixed w-[72px] gives equal pills with enough breathing room.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "TopNav",
+      "file": "web/src/components/layout/TopNav.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Desktop: search bar input + Bell + avatar. Mobile: MagnifyingGlass icon button (left of Bell) opens full-screen search overlay via createPortal. Help button removed entirely. All Phosphor icons use weight='bold'. Icon buttons are w-11 h-11 on mobile (md:w-9 md:h-9 on desktop). Search overlay: fixed inset-0 z-[200] blurred backdrop, white top bar with auto-focused input + Cancel button.",
+      "rationale": "Mobile too narrow for search bar. Help button removed in favor of search. Material Symbols replaced with Phosphor throughout.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "AppShell",
+      "file": "web/src/components/layout/AppShell.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Mobile main: pt-20 px-6 pb-24. pt-20 = 64px TopNav + 16px breathing gap. px-6 matches TopNav horizontal padding so content aligns with header.",
+      "rationale": "pt-16 left content flush against header. px-4 didn't match the px-6 header, making cards and titles misaligned.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "TrendingPrograms",
+      "file": "web/src/components/discover/TrendingPrograms.tsx",
+      "pattern": "inline-responsive",
+      "decision": "grid-cols-1 on mobile, md:grid-cols-2 on desktop. ProgramCards expand full-width as list rows.",
+      "rationale": "Cards should look like full sections on mobile — single column, edge to edge with px-6 margins.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "FeaturedCommunities",
+      "file": "web/src/components/discover/FeaturedCommunities.tsx",
+      "pattern": "inline-responsive",
+      "decision": "grid-cols-1 on mobile, md:grid-cols-4 on desktop. Community cards stack as full-width banner rows.",
+      "rationale": "Cards should look like full sections on mobile — single column, edge to edge.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "CommunityCard",
+      "file": "web/src/components/discover/CommunityCard.tsx",
+      "pattern": "inline-responsive",
+      "decision": "aspect-[16/7] on mobile (wide banner), md:aspect-[3/4] on desktop (portrait card). Uses Tailwind arbitrary aspect ratio class — no inline style.",
+      "rationale": "Portrait 3/4 in a single column is extremely tall on mobile. Landscape ratio feels like a section banner.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "SessionCarousel",
+      "file": "web/src/components/discover/SessionCarousel.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Mobile carousel uses a wrapper div with -ml-3.5 -mr-6 relative. This extends the scroll area: left edge reaches x=10px (first card image aligns with section title at px-6=24px due to SessionCard's p-3.5 internal padding), right edge reaches the screen right edge. scrollRef is attached to the mobile scroll div so scrolled state tracks correctly. Card width: w-[200px]. pr-6 trailing padding so last card scrolls fully clear of the right fade. Left fade (opacity driven by scrolled state) and right fade (always visible) are absolute overlays on the wrapper. scrollbarWidth:none + hide-scrollbar class suppress the scrollbar. scroll-snap-type: x mandatory for snapping.",
+      "rationale": "Default scroll container was clipped 24px short of screen edge. No fades meant no affordance for scrollability. First card image was misaligned with section title by 14px (SessionCard's p-3.5).",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "PreviewPanel",
+      "file": "web/src/components/discover/PreviewPanel.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Mobile bottom sheet: panel wrapper is flex flex-col with maxHeight 85vh (no overflowY on wrapper). Sticky header (shrink-0): drag handle centered + Copy Link / Event Page buttons (h-10 px-5, Phosphor icons weight='bold'). No X button, no collapse chevron on mobile. Content area is flex-1 overflow-y-auto. SessionPreview hides PreviewToolbar on mobile (!isMobile check). Cover image is w-3/5 mx-auto on mobile (not w-full) to reduce dominance while keeping 1:1 aspect ratio. Desktop sidebar panel is unchanged.",
+      "rationale": "X button and collapse button were redundant on mobile (backdrop tap closes). Toolbar scrolled out of view — sticky header keeps actions always reachable. Full-width cover image was too large on a phone.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-20"
+    },
+    {
+      "component": "AgentsPage + AgentCard",
+      "file": "web/src/app/agents/page.tsx + web/src/components/agents/AgentCard.tsx",
+      "pattern": "inline-responsive",
+      "decision": "grid-cols-5 → grid-cols-1 md:grid-cols-5 (single column on mobile). AgentCard: p-8 → p-5 md:p-8, avatar w-[128px] h-[128px] → w-24 h-24 md:w-[128px] md:h-[128px]. Headline text-4xl → text-2xl md:text-4xl.",
+      "rationale": "5-column grid is unusable on mobile. Single-column stacks all 5 agent cards cleanly. Reduced padding and avatar size keep each card compact at full width.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "HeroCard + PhTable + PhProductRow + FounderCard + LiveStatsPanel + AgentWorkflowLog",
+      "file": "web/src/components/apex/HeroCard.tsx + PhTable.tsx + PhProductRow.tsx + FounderCard.tsx + LiveStatsPanel.tsx + AgentWorkflowLog.tsx",
+      "pattern": "inline-responsive",
+      "decision": "HeroCard: stays as a card (rounded-xl), scaled down with p-6 md:p-12 and text-2xl md:text-5xl. PhTable + LiveStatsPanel + AgentWorkflowLog: -mx-6 md:mx-0 rounded-none md:rounded-xl (full-bleed sections). PhProductRow: useIsMobile two branches — mobile is a 2-row layout (row1: rank+logo+name+status badge; row2: category+votes+comments+score aligned at pl-[52px]), desktop is full grid-cols-12. FounderCard: -mx-6 md:mx-0 rounded-none md:rounded-xl p-4 md:p-6, buttons py-3 md:py-2. FounderGrid: grid-cols-1 md:grid-cols-2, gap-0 md:gap-5 (full-bleed sections butt together). ApexPage grid restructured: PhTable (order-1, md:col-start-1 md:col-span-8), right col (order-2, md:col-start-9 md:col-span-4 md:row-span-2), FounderGrid (order-3, md:col-start-1 md:col-span-8) — places FounderGrid after AgentWorkflow on mobile, preserves desktop layout via explicit col-start + row-span.",
+      "rationale": "HeroCard reverted to card per user. Status+Comments restored in PhProductRow via 2-row layout (avoids horizontal scroll). FounderCards are full-bleed stacked sections on mobile. FounderGrid moved below AgentWorkflow on mobile via CSS order; md:row-span-2 on right column keeps desktop layout intact.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    }
+  ],
   "globalRules": [
     "grid-cols-12 → grid-cols-1 md:grid-cols-6 lg:grid-cols-12",
     "grid-cols-4  → grid-cols-2 md:grid-cols-4",

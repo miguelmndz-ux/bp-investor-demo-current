@@ -195,7 +195,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
               <div className="flex -space-x-1">
                 {CHANNELS.map(({ id, Icon }) => (
                   <div key={id} className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary border border-orange-100 shadow-sm">
-                    <Icon size={16} weight="regular" />
+                    <Icon size={16} weight="bold" />
                   </div>
                 ))}
               </div>
@@ -220,7 +220,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm border border-orange-100/40">
-                        <Icon size={22} weight="regular" />
+                        <Icon size={22} weight="bold" />
                       </div>
                       <div>
                         <h4 className="font-bold text-sm text-on-background">{label}</h4>

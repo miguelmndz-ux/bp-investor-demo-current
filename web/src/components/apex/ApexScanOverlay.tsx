@@ -1,9 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
-import FounderCard from './FounderCard'
 import { phProducts } from '@/lib/fixtures/products'
-import { founders } from '@/lib/fixtures/founders'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
 type ScanPhase = 'scanning' | 'complete' | 'dismissed'
@@ -12,16 +10,59 @@ const PHASES = [
   { id: 1, name: 'Scanning Product Hunt top 10',    icon: 'travel_explore' },
   { id: 2, name: 'Enriching founder profiles',       icon: 'person_search'  },
   { id: 3, name: 'Creating community profile pages', icon: 'group'          },
-  { id: 4, name: 'Running Decode skill',             icon: 'psychology'     },
-  { id: 5, name: 'Running Rapid Course skill',       icon: 'bolt'           },
-  { id: 6, name: 'Drafting outreach messages',       icon: 'edit_note'      },
+  { id: 4, name: 'Running Decode and Course skills', icon: 'psychology'     },
+  { id: 5, name: 'Drafting outreach messages',       icon: 'edit_note'      },
 ] as const
 
-const PHASE_DURATION_MS    = 8000
-const PHASE_0_DURATION_MS  = 24000
-const PHASE_0_INTERVAL_MS  = 2000
-const PHASE_0_INITIAL_DELAY_MS = 1500
-const FADE_DURATION_MS  = 600
+const PHASE_DURATION_MS   = 8000
+const PHASE_0_DURATION_MS = 24000
+const PHASE_1_DURATION_MS = 24000
+const PHASE_2_DURATION_MS = 14000
+const PHASE_3_DURATION_MS = 14000
+const PHASE_0_INTERVAL_MS = 2000
+const FADE_DURATION_MS    = 600
+
+// Per-step reveal config: intervalMs is between cards; delayMs is before first card
+const REVEAL_CONFIGS: Record<number, { max: number; intervalMs: number; delayMs: number }> = {
+  0: { max: 10, intervalMs: PHASE_0_INTERVAL_MS,   delayMs: 1500 },
+  1: { max: 10, intervalMs: 2000,                  delayMs: 0    },
+  2: { max: 5,  intervalMs: 2000,                  delayMs: 0    },
+  3: { max: 2,  intervalMs: 4000,                  delayMs: 0    },
+  4: { max: 1,  intervalMs: 100,                   delayMs: 3000 },
+}
+
+const MICROSTEPS: Record<number, string[]> = {
+  0: [
+    'Fetching Product Hunt leaderboard',
+    'Filtering top 10 by engagement',
+  ],
+  1: [
+    'Resolving founder identities',
+    'Scoring founder–community fit',
+  ],
+  2: [
+    'Analyzing product positioning',
+    'Generating community taglines',
+    'Building topic taxonomy',
+    'Publishing profile pages',
+  ],
+  3: [
+    'Running Decode skill on Velo',
+    'Extracting key product insights',
+    'Generating course outline',
+    'Publishing Decode and Course previews',
+  ],
+  4: [
+    'Drafting personalized subject line',
+    'Finalizing and queuing for send',
+  ],
+}
+
+const CARD_BASE: React.CSSProperties = {
+  background: 'rgba(255,255,255,0.85)',
+  border: '1px solid rgba(255,237,213,0.7)',
+  borderRadius: 14,
+}
 
 function DotGridCard() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -37,15 +78,15 @@ function DotGridCard() {
     canvas.width = w
     canvas.height = h
 
-    const PIX  = 4   // square pixel size
-    const STEP = 6   // pixel + gap
+    const PIX  = 4
+    const STEP = 6
     const cols = Math.floor(w / STEP)
     const rows = Math.floor(h / STEP)
 
     interface Pix {
       x: number; y: number
-      diagNorm: number   // [0,1] diagonal position across card
-      rand: number       // static random seed
+      diagNorm: number
+      rand: number
       shimmerPhase: number
     }
 
@@ -76,15 +117,12 @@ function DotGridCard() {
       const wavePos = (t % WAVE_PERIOD) / WAVE_PERIOD
 
       for (const px of pixels) {
-        // Diagonal scan wave
         let dist = Math.abs(px.diagNorm - wavePos)
         dist = Math.min(dist, 1 - dist)
         const wave = Math.max(0, 1 - dist / WAVE_WIDTH)
 
-        // Slow per-pixel shimmer
         const shimmer = (Math.sin(t * 0.65 + px.shimmerPhase) + 1) * 0.5 * 0.1
 
-        // Rare random spark
         const sparkSignal = Math.sin(t * (0.8 + px.rand * 1.1) + px.shimmerPhase * 2.7)
         const spark = sparkSignal > 0.9 ? ((sparkSignal - 0.9) / 0.1) * 0.12 : 0
 
@@ -92,11 +130,10 @@ function DotGridCard() {
         if (intensity < 0.02) continue
 
         const capped = Math.min(1, intensity)
-        const g = Math.round(160 - 15 * capped) // 160→145
-        const b = Math.round(100 - 10 * capped) // 100→90
-        const a = Math.min(0.35, 0.04 + intensity * 0.32)
+        const ch = Math.round(160 - 20 * capped)
+        const a = Math.min(0.22, 0.03 + intensity * 0.19)
 
-        ctx.fillStyle = `rgba(255,${g},${b},${a.toFixed(2)})`
+        ctx.fillStyle = `rgba(${ch},${ch},${ch},${a.toFixed(2)})`
         ctx.fillRect(px.x, px.y, PIX, PIX)
       }
 
@@ -122,109 +159,95 @@ function DotGridCard() {
   )
 }
 
-function VeloCommunityCard() {
-  const product = phProducts[0]
+function OutreachEmailCard() {
   return (
-    <div className="p-6 h-full flex flex-col gap-4 overflow-hidden">
-      <div className="flex items-center gap-4">
-        <img
-          src={product.logo}
-          alt="Velo"
-          className="w-16 h-16 rounded-xl border border-white/60 shadow-sm"
-          style={{ objectFit: 'contain', background: '#fff' }}
-        />
-        <div>
-          <h3 className="font-jakarta font-black text-2xl text-on-background">Velo</h3>
-          <p className="text-sm font-extrabold" style={{ color: 'rgba(156,63,0,0.7)' }}>AI Video Community</p>
-        </div>
-      </div>
-      <p className="text-sm text-stone-500 leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-        {product.tagline}
-      </p>
-      <div className="grid grid-cols-3 gap-3">
-        {[
-          { label: 'Members', value: '1.2k' },
-          { label: 'PH Votes', value: String(product.votes) },
-          { label: 'Sessions', value: '8' },
-        ].map(({ label, value }) => (
-          <div key={label} className="text-center p-3 rounded-2xl" style={{ background: 'rgba(255,255,255,0.6)' }}>
-            <p className="font-jakarta font-black text-lg text-on-background">{value}</p>
-            <p className="text-[10px] font-bold text-stone-500 uppercase tracking-wide">{label}</p>
+    <div style={{
+      background: 'rgba(255,255,255,0.8)',
+      border: '1px solid rgba(255,255,255,0.5)',
+      boxShadow: '0 20px 40px rgba(163,56,0,0.08)',
+      borderRadius: 24,
+      overflow: 'hidden',
+    }}>
+      {/* Hero card */}
+      <div style={{
+        background: 'linear-gradient(135deg, #fffcf0 0%, #fff2e0 40%, #ffe8d1 70%, #fff7ed 100%)',
+        margin: 16,
+        borderRadius: 16,
+        padding: '18px 18px 14px',
+        boxShadow: '0 8px 24px -4px rgba(255,107,0,0.12), inset 0 0 0 1px rgba(255,255,255,0.7)',
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 46, height: 46, borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.12)', flexShrink: 0 }}>
+              <img
+                src="https://ph-files.imgix.net/35242a30-6f23-4a79-aa44-0a1752c38f00.png"
+                alt="Velo"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
+            <div>
+              <div style={{ fontSize: 17, fontWeight: 900, color: '#1a0a00', letterSpacing: '-0.04em', lineHeight: 1.1 }}>Velo</div>
+              <div style={{ fontSize: 11, color: '#9f6c47', fontWeight: 600, marginTop: 2 }}>Async Video AI</div>
+            </div>
           </div>
-        ))}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(163,56,0,0.2)', borderRadius: 10, padding: '5px 10px', background: 'rgba(255,255,255,0.45)', flexShrink: 0 }}>
+            <span style={{ fontSize: 17, fontWeight: 900, color: '#9c3f00', lineHeight: 1 }}>#1</span>
+            <span style={{ fontSize: 7, fontWeight: 700, color: '#9c3f00', textTransform: 'uppercase', letterSpacing: '0.1em', textAlign: 'center', marginTop: 2, lineHeight: 1.3 }}>Product<br />Hunt</span>
+          </div>
+        </div>
+        <div style={{ fontSize: 16, fontWeight: 900, color: '#1a0a00', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: 10 }}>
+          BuildParty decoded Velo.<br />
+          <span style={{ color: '#a33800' }}>Here&apos;s what we built:</span>
+        </div>
+        <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' as const, marginBottom: 12 }}>
+          {['Live Launch Session', 'Velo Decoded', 'Velo Course'].map(label => (
+            <div key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '5px 10px', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.85)', borderRadius: 9999, boxShadow: '0 4px 16px rgba(0,0,0,0.07)' }}>
+              <span style={{ fontSize: 10, fontWeight: 800, color: '#7a2e00', whiteSpace: 'nowrap' as const }}>{label}</span>
+            </div>
+          ))}
+        </div>
+        <p style={{ fontSize: 11, color: '#7a4a28', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
+          Demo your product live to a room of AI builders who ask questions and go hands-on.
+        </p>
       </div>
-      <div className="flex gap-2 flex-wrap">
-        {['Video AI', 'Async', 'Remote Teams', 'Transcription'].map(tag => (
-          <span
-            key={tag}
-            className="text-[10px] font-bold px-2.5 py-1 rounded-full"
-            style={{ background: 'rgba(255,122,47,0.1)', color: '#9c3f00' }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function PhaseOverlay({ stepName }: { stepName: string }) {
-  const [opacity, setOpacity]       = useState(1)
-  const [transition, setTransition] = useState('none')
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setTransition('opacity 1200ms ease'), 50)
-    const t2 = setTimeout(() => setOpacity(0), PHASE_DURATION_MS - 1200)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
-  }, [])
-
-  return (
-    <div
-      className="absolute inset-0 pointer-events-none overflow-hidden"
-      style={{ background: 'rgba(255,250,247,1)', opacity, transition }}
-    >
-      <div className="absolute top-4 left-4 z-10">
-        <p className="text-[11px] font-bold text-primary leading-tight">{stepName}</p>
+      {/* Decode + Course thumbnails */}
+      <div style={{ margin: '0 16px 16px', background: 'white', borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(230,220,210,0.5)', boxShadow: '0 4px 20px rgba(163,56,0,0.06)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, padding: 8 }}>
+          {['/apex/decode-preview.png', '/apex/course-preview.png'].map((src, i) => (
+            <div key={i} style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid rgba(0,0,0,0.06)' }}>
+              <img src={src} alt="" style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top' }} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
 }
 
 interface StepPreviewProps {
-  activePhaseIndex: number
-  scanPhase: ScanPhase
+  phaseIndex: number
   visibleCount: number
+  isMobile: boolean
 }
 
-function StepPreview({ activePhaseIndex, scanPhase, visibleCount }: StepPreviewProps) {
-  const displayIndex = Math.min(activePhaseIndex, PHASES.length - 1)
-
-  const iframeStyle: React.CSSProperties = {
-    border: 'none',
-    width: '200%',
-    height: '200%',
-    transform: 'scale(0.5)',
-    transformOrigin: 'top left',
-    pointerEvents: 'none',
-  }
+function StepPreview({ phaseIndex, visibleCount, isMobile }: StepPreviewProps) {
+  const displayIndex = Math.min(phaseIndex, PHASES.length - 1)
 
   function renderContent() {
     switch (displayIndex) {
+
+      // ── Step 1: PH top 10 ──────────────────────────────────────────────
       case 0:
         return (
           <div className="h-full flex flex-col justify-center items-center" style={{ pointerEvents: 'none' }}>
-            <div className="grid grid-cols-2 gap-2 w-full max-w-[740px]">
+            <div className="grid grid-cols-2 gap-1.5 md:gap-2 w-full max-w-[740px]">
               {phProducts.map((product, i) => {
                 const loaded = i < visibleCount
                 return (
                   <div
                     key={product.slug}
-                    className="relative flex items-center gap-3 rounded-[14px] px-4 py-3 overflow-hidden"
-                    style={{
-                      background: 'rgba(255,255,255,0.85)',
-                      border: '1px solid rgba(255,237,213,0.7)',
-                      minHeight: 64,
-                    }}
+                    className={`relative flex items-center gap-2 overflow-hidden px-4 py-3`}
+                    style={{ ...CARD_BASE, minHeight: 64 }}
                   >
                     {!loaded ? (
                       <>
@@ -262,64 +285,304 @@ function StepPreview({ activePhaseIndex, scanPhase, visibleCount }: StepPreviewP
             </div>
           </div>
         )
-      case 1:
+
+      // ── Step 2: Founder profiles ───────────────────────────────────────
+      case 1: {
+        // One entry per product, matched to phProducts order
+        const founderCards = [
+          { key: 'velo',              name: 'Ajay Kumar',       role: 'Co-founder, Velo',             avatar: 'https://ph-avatars.imgix.net/5672627/e909456b-451a-4305-a963-a7bae3bba563.jpeg' },
+          { key: 'chrome-vertical-tabs', name: 'Michael X. Liu', role: 'Creator, Chrome Vertical Tabs', avatar: 'https://avatars.githubusercontent.com/lxieyang' },
+          { key: 'flint',             name: 'Michelle Lim',     role: 'Co-founder, Flint',            avatar: 'https://ph-avatars.imgix.net/3569751/original.jpeg' },
+          { key: 'lookaway-2',        name: 'Kushagra Agarwal', role: 'Maker, LookAway 2',            avatar: 'https://ph-avatars.imgix.net/245831/original.jpeg' },
+          { key: 'mindsdb-anton',     name: 'Jorge Torres',     role: 'Co-founder & CEO, MindsDB',    avatar: 'https://ph-avatars.imgix.net/1630350/f356f703-e7f0-42fb-be4d-14712e6b2db6.png' },
+          { key: 'browser-arena',     name: 'Andrea Pinto',     role: 'Founder & CEO, Notte',         avatar: 'https://ph-avatars.imgix.net/6365170/e1d24e85-e471-467e-9b5c-7ab806e951de.jpeg' },
+          { key: 'career-ops-on-claude', name: 'Santiago Fernández', role: 'Maker, Career-Ops',      avatar: 'https://avatars.githubusercontent.com/santifer' },
+          { key: 'keeby',             name: 'Adrian Abelarde',  role: 'Maker, Keeby',                 avatar: 'https://avatars.githubusercontent.com/drianlarde' },
+          { key: 'passport-reader',   name: 'Iris Development', role: 'Founder, PassportReader',      avatar: phProducts[8].logo },
+          { key: 'featdrop',          name: 'Allan Jiang',      role: 'Maker, FeatDrop (YC W22)',     avatar: 'https://ph-avatars.imgix.net/14905/f705e2c7-3fa4-41de-9ce9-e819a70658c6.jpeg' },
+        ]
         return (
-          <div className="overflow-hidden h-full" style={{ pointerEvents: 'none', padding: '12px' }}>
-            <div style={{ transform: 'scale(0.72)', transformOrigin: 'top left', width: '138.9%', pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {founders.slice(0, visibleCount).map(f => (
-                <FounderCard key={f.name} founder={f} />
-              ))}
+          <div className="h-full flex flex-col justify-center items-center" style={{ pointerEvents: 'none' }}>
+            <div className="grid grid-cols-2 gap-1.5 md:gap-2 w-full max-w-[740px]">
+              {founderCards.map((f, i) => {
+                const loaded = i < visibleCount
+                return (
+                  <div
+                    key={f.key}
+                    className={`relative flex items-center gap-2 overflow-hidden px-4 py-3`}
+                    style={{ ...CARD_BASE, minHeight: 64 }}
+                  >
+                    {!loaded ? (
+                      <>
+                        <DotGridCard />
+                        <div
+                          className="relative z-10 w-8 h-8 rounded-full shrink-0"
+                          style={{ background: 'rgba(160,160,160,0.12)' }}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          src={f.avatar}
+                          alt={f.name}
+                          className="w-8 h-8 rounded-full object-cover shrink-0"
+                          style={{ border: '1.5px solid rgba(255,237,213,0.9)', animation: 'fadeUp 0.35s ease both' }}
+                        />
+                        <div className="flex-1 min-w-0 flex flex-col gap-0.5" style={{ animation: 'fadeUp 0.4s ease both 0.05s' }}>
+                          <p className="font-jakarta font-black text-sm text-on-background truncate leading-tight">{f.name}</p>
+                          <p className="text-[11px] font-bold truncate leading-tight" style={{ color: 'rgba(156,63,0,0.55)' }}>{f.role}</p>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
         )
-      case 2:
-        return <VeloCommunityCard />
-      case 3:
+      }
+
+      // ── Step 3: Community profile pages ───────────────────────────────
+      case 2: {
+        const communityData = [
+          {
+            product: phProducts[0],
+            members: '1.2k',
+            tags: ['Video AI', 'Async', 'Remote Teams'],
+            tagline: phProducts[0].tagline ?? 'AI-powered async video with instant transcription and smart summaries.',
+          },
+          {
+            product: phProducts[1],
+            members: '800',
+            tags: ['Browser', 'Productivity', 'Chrome'],
+            tagline: 'Organize your tabs vertically for faster, cleaner browsing in Chrome.',
+          },
+          {
+            product: phProducts[2],
+            members: '600',
+            tags: ['Landing Pages', 'AI', 'Marketing'],
+            tagline: 'Build campaign landing pages in minutes with AI — no designer needed.',
+          },
+          {
+            product: phProducts[3],
+            members: '420',
+            tags: ['Eye Health', 'Mac', 'Wellness'],
+            tagline: 'Smart break reminders that protect your eyes during long Mac sessions.',
+          },
+          {
+            product: phProducts[4],
+            members: '280',
+            tags: ['BI', 'AI Agent', 'Data'],
+            tagline: 'Autonomous BI agent that answers data questions and acts on them.',
+          },
+          {
+            product: phProducts[5],
+            members: '190',
+            tags: ['Browser', 'AI', 'Automation'],
+            tagline: 'AI-native browser that lets agents browse the web like a human.',
+          },
+        ]
+        if (isMobile) {
+          return (
+            <div className="h-full flex flex-col justify-center items-center" style={{ pointerEvents: 'none' }}>
+              <div className="grid grid-cols-2 gap-1.5 w-full">
+                {communityData.slice(0, 6).map(({ product, members, tagline }, i) => {
+                  const loaded = i < visibleCount
+                  return (
+                    <div
+                      key={product.slug}
+                      className="relative overflow-hidden"
+                      style={{ ...CARD_BASE, minHeight: 96 }}
+                    >
+                      {!loaded ? (
+                        <>
+                          <DotGridCard />
+                          <div className="relative z-10 flex flex-col gap-1.5 px-3 py-2.5">
+                            <div className="flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-[6px] shrink-0" style={{ background: 'rgba(160,160,160,0.12)' }} />
+                              <div className="flex flex-col gap-1 flex-1">
+                                <div className="h-2.5 rounded-full w-14" style={{ background: 'rgba(160,160,160,0.15)' }} />
+                                <div className="h-2 rounded-full w-10" style={{ background: 'rgba(160,160,160,0.10)' }} />
+                              </div>
+                            </div>
+                            <div className="h-2 rounded-full w-full" style={{ background: 'rgba(160,160,160,0.08)' }} />
+                            <div className="h-2 rounded-full w-3/4" style={{ background: 'rgba(160,160,160,0.06)' }} />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="flex flex-col gap-1 px-3 py-2.5" style={{ animation: 'fadeUp 0.35s ease both' }}>
+                          <div className="flex items-center gap-2">
+                            <img
+                              src={product.logo}
+                              alt={product.name}
+                              className="w-6 h-6 rounded-[6px] shrink-0"
+                              style={{ objectFit: 'contain', background: '#fff', border: '1px solid rgba(255,237,213,0.9)' }}
+                            />
+                            <div className="flex-1 min-w-0">
+                              <p className="font-jakarta font-black text-[12px] text-on-background truncate leading-tight">{product.name}</p>
+                              <p className="text-[10px] font-bold truncate" style={{ color: 'rgba(156,63,0,0.55)' }}>{product.category}</p>
+                            </div>
+                          </div>
+                          <p className="text-[10px] text-stone-500 leading-snug" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                            {tagline}
+                          </p>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[10px] font-bold" style={{ color: 'rgba(156,63,0,0.6)' }}>↑ {product.votes}</span>
+                            <span className="text-[10px] font-bold" style={{ color: 'rgba(156,63,0,0.6)' }}>{members} members</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        }
+
         return (
-          <div className="overflow-hidden" style={{ height: '100%', pointerEvents: 'none' }}>
-            <iframe
-              src="/apex/velo-decode.html"
-              sandbox="allow-scripts allow-same-origin"
-              style={iframeStyle}
-            />
+          <div className="h-full flex flex-col justify-center items-center" style={{ pointerEvents: 'none' }}>
+            <div className="flex flex-col gap-1.5 md:gap-2 w-full max-w-[420px]">
+              {communityData.map(({ product, members, tags, tagline }, i) => {
+                const loaded = i < visibleCount
+                return (
+                  <div
+                    key={product.slug}
+                    className="relative overflow-hidden"
+                    style={{ ...CARD_BASE, minHeight: 100 }}
+                  >
+                    {!loaded ? (
+                      <>
+                        <DotGridCard />
+                        <div className="relative z-10 flex items-center gap-3 px-4 py-3">
+                          <div
+                            className="w-8 h-8 rounded-[8px] shrink-0"
+                            style={{ background: 'rgba(160,160,160,0.12)' }}
+                          />
+                          <div className="flex flex-col gap-1.5 flex-1">
+                            <div className="h-3 rounded-full w-32" style={{ background: 'rgba(160,160,160,0.15)' }} />
+                            <div className="h-2.5 rounded-full w-20" style={{ background: 'rgba(160,160,160,0.10)' }} />
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex flex-col gap-1.5 px-4 py-3" style={{ animation: 'fadeUp 0.35s ease both' }}>
+                        <div className="flex items-center gap-2.5">
+                          <img
+                            src={product.logo}
+                            alt={product.name}
+                            className="w-8 h-8 rounded-[8px] shrink-0"
+                            style={{ objectFit: 'contain', background: '#fff', border: '1px solid rgba(255,237,213,0.9)' }}
+                          />
+                          <div className="flex-1 min-w-0">
+                            <p className="font-jakarta font-black text-sm text-on-background truncate leading-tight">{product.name}</p>
+                            <p className="text-[11px] font-bold truncate" style={{ color: 'rgba(156,63,0,0.55)' }}>{product.category}</p>
+                          </div>
+                        </div>
+                        <p
+                          className="text-[11px] text-stone-500 leading-snug"
+                          style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', animation: 'fadeUp 0.4s ease both 0.05s' }}
+                        >
+                          {tagline}
+                        </p>
+                        <div className="flex items-center gap-2" style={{ animation: 'fadeUp 0.4s ease both 0.1s' }}>
+                          <span className="text-[10px] font-bold" style={{ color: 'rgba(156,63,0,0.6)' }}>
+                            ↑ {product.votes} votes
+                          </span>
+                          <span className="text-[10px] font-bold" style={{ color: 'rgba(156,63,0,0.6)' }}>
+                            {members} members
+                          </span>
+                          {tags.map(tag => (
+                            <span
+                              key={tag}
+                              className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                              style={{ background: 'rgba(255,122,47,0.1)', color: '#9c3f00' }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )
-      case 4:
+      }
+
+      // ── Step 4: Decode + Course skills ────────────────────────────────
+      case 3: {
+        const previews = [
+          { src: '/apex/decode-preview.png', alt: 'Velo Decoded' },
+          { src: '/apex/course-preview.png', alt: 'Velo Course' },
+        ]
         return (
-          <div className="overflow-hidden" style={{ height: '100%', pointerEvents: 'none' }}>
-            <iframe
-              src="/apex/velo-microcourse.html"
-              sandbox="allow-scripts allow-same-origin"
-              style={iframeStyle}
-            />
+          <div className="h-full flex flex-col justify-center items-center" style={{ pointerEvents: 'none' }}>
+            <div className="flex flex-col gap-2 md:gap-3 w-full md:max-w-[520px]">
+              {previews.map(({ src, alt }, i) => {
+                const loaded = i < visibleCount
+                return (
+                  <div
+                    key={src}
+                    className="relative overflow-hidden"
+                    style={{ ...CARD_BASE, aspectRatio: '900 / 390' }}
+                  >
+                    {!loaded ? (
+                      <DotGridCard />
+                    ) : (
+                      <img
+                        src={src}
+                        alt={alt}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'top',
+                          display: 'block',
+                          animation: 'fadeUp 0.4s ease both',
+                        }}
+                      />
+                    )}
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )
-      case 5:
+      }
+
+      // ── Step 5: Outreach email ─────────────────────────────────────────
+      case 4: {
+        const loaded = visibleCount >= 1
         return (
-          <div className="overflow-hidden" style={{ height: '100%', pointerEvents: 'none' }}>
-            <iframe
-              src="/gmail-flow/email-body.html"
-              sandbox="allow-scripts allow-same-origin"
-              style={iframeStyle}
-            />
+          <div className="h-full flex flex-col justify-center items-center" style={{ pointerEvents: 'none' }}>
+            <div style={{ width: '100%', maxWidth: 480 }}>
+              {!loaded ? (
+                <div className="relative overflow-hidden" style={{ ...CARD_BASE, minHeight: 300 }}>
+                  <DotGridCard />
+                </div>
+              ) : (
+                <div style={{ animation: 'fadeUp 0.4s ease both' }}>
+                  <OutreachEmailCard />
+                </div>
+              )}
+            </div>
           </div>
         )
+      }
+
       default:
         return null
     }
   }
-
-  const stepName = PHASES[displayIndex]?.name ?? ''
 
   return (
     <div className="relative h-full">
       <div className="h-full">
         {renderContent()}
       </div>
-
-      {scanPhase === 'scanning' && displayIndex !== 0 && (
-        <PhaseOverlay key={activePhaseIndex} stepName={stepName} />
-      )}
     </div>
   )
 }
@@ -328,8 +591,12 @@ export default function ApexScanOverlay() {
   const [scanPhase, setScanPhase]               = useState<ScanPhase>('scanning')
   const [activePhaseIndex, setActivePhaseIndex] = useState(0)
   const [isExiting, setIsExiting]               = useState(false)
-  const [visibleCount, setVisibleCount]         = useState(0)
+  // Track both which phase owns the count so stale counts never bleed into a new step's first render
+  const [revealState, setRevealState]           = useState<{ phase: number; count: number }>({ phase: -1, count: 0 })
+  const visibleCount = revealState.phase === activePhaseIndex ? revealState.count : 0
   const isMobile                                = useIsMobile()
+  const [visibleMicrosteps, setVisibleMicrosteps]   = useState(0)
+  const [selectedPhaseIndex, setSelectedPhaseIndex] = useState<number | null>(null)
 
   // Broadcast scan progress for SideNav indicator
   useEffect(() => {
@@ -351,30 +618,53 @@ export default function ApexScanOverlay() {
       setScanPhase('complete')
       return
     }
-    const duration = activePhaseIndex === 0 ? PHASE_0_DURATION_MS : PHASE_DURATION_MS
+    const duration =
+      activePhaseIndex === 0 ? PHASE_0_DURATION_MS :
+      activePhaseIndex === 1 ? PHASE_1_DURATION_MS :
+      activePhaseIndex === 2 ? PHASE_2_DURATION_MS :
+      activePhaseIndex === 3 ? PHASE_3_DURATION_MS :
+      PHASE_DURATION_MS
     const t = setTimeout(() => setActivePhaseIndex(i => i + 1), duration)
     return () => clearTimeout(t)
   }, [scanPhase, activePhaseIndex])
 
-  // Progressive reveal for steps 0 (PH rows) and 1 (founder cards)
+  // Progressive reveal — driven by REVEAL_CONFIGS
   useEffect(() => {
-    setVisibleCount(0)
+    const phase = activePhaseIndex
+    setRevealState({ phase, count: 0 })
     if (scanPhase !== 'scanning') return
-    if (activePhaseIndex !== 0 && activePhaseIndex !== 1) return
 
-    const max = activePhaseIndex === 0 ? 10 : 3
-    const intervalMs = activePhaseIndex === 0 ? PHASE_0_INTERVAL_MS : PHASE_DURATION_MS / max
+    const cfg = REVEAL_CONFIGS[phase]
+    if (!cfg) return
+
     let count = 0
     let interval: ReturnType<typeof setInterval>
-    const delay = activePhaseIndex === 0 ? PHASE_0_INITIAL_DELAY_MS : 0
+
     const t0 = setTimeout(() => {
       interval = setInterval(() => {
         count++
-        setVisibleCount(count)
-        if (count >= max) clearInterval(interval)
-      }, intervalMs)
-    }, delay)
+        setRevealState({ phase, count })
+        if (count >= cfg.max) clearInterval(interval)
+      }, cfg.intervalMs)
+    }, cfg.delayMs)
+
     return () => { clearTimeout(t0); clearInterval(interval) }
+  }, [activePhaseIndex, scanPhase])
+
+  // Reveal microsteps progressively during each active phase
+  useEffect(() => {
+    setVisibleMicrosteps(0)
+    if (scanPhase !== 'scanning') return
+    const steps = MICROSTEPS[activePhaseIndex]
+    if (!steps?.length) return
+    const intervalMs = [3500, 3500, 2500, 2500, 1800][activePhaseIndex] ?? 2000
+    let count = 0
+    const t = setInterval(() => {
+      count++
+      setVisibleMicrosteps(count)
+      if (count >= steps.length) clearInterval(t)
+    }, intervalMs)
+    return () => clearInterval(t)
   }, [activePhaseIndex, scanPhase])
 
   const handleDismiss = useCallback(() => {
@@ -384,99 +674,207 @@ export default function ApexScanOverlay() {
 
   if (scanPhase === 'dismissed') return null
 
+  const overlayStyle: React.CSSProperties = {
+    background: 'linear-gradient(180deg, #fffaf7 0%, #fff1e6 100%)',
+    opacity: isExiting ? 0 : 1,
+    transition: `opacity ${FADE_DURATION_MS}ms ease`,
+  }
+
+  const liquidGlass: React.CSSProperties = {
+    background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
+    backdropFilter: 'blur(20px) saturate(180%)',
+    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+    border: '1px solid rgba(255, 122, 47, 0.3)',
+    boxShadow: '0 8px 32px -4px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
+    color: '#7a2e00',
+  }
+
+  // ── Mobile layout ──────────────────────────────────────────────────────────
+  if (isMobile) {
+    const mobileStep = (p: (typeof PHASES)[number], i: number, isActive: boolean, isComplete: boolean, isSelected: boolean) => (
+      <div
+        key={p.id}
+        className="transition-all duration-300 px-3 py-2 rounded-[14px]"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '36px 1fr auto',
+          columnGap: 12,
+          alignItems: 'center',
+          opacity: (!isActive && !isComplete) ? 0.35 : 1,
+          cursor: scanPhase === 'complete' ? 'pointer' : 'default',
+          ...(isActive || isSelected ? {
+            background: 'rgba(255,122,47,0.07)',
+            border: '1px solid rgba(255,122,47,0.35)',
+            boxShadow: '0 0 24px rgba(255,122,47,0.12)',
+          } : {}),
+        }}
+        onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(isSelected ? null : i) }}
+      >
+        <div className="w-9 h-9 flex items-center justify-center rounded-full" style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)' }}>
+          <span className="material-symbols-outlined text-white" style={{ fontSize: '18px', fontVariationSettings: "'FILL' 1" }}>{p.icon}</span>
+        </div>
+        <span className="text-on-background text-[14px] font-bold leading-tight">{p.name}</span>
+        <div>
+          {isActive && (
+            <svg className="animate-spin" width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="rgba(255,122,47,0.15)" strokeWidth="2" />
+              <path d="M10 3 A7 7 0 0 1 17 10" stroke="#ff7a2f" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          )}
+          {isComplete && (
+            <span className="material-symbols-outlined" style={{ fontSize: '22px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}>check_circle</span>
+          )}
+        </div>
+      </div>
+    )
+
+    return (
+      <div className="fixed top-16 left-0 right-0 bottom-0 z-[45] overflow-hidden" style={overlayStyle}>
+        <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-primary-container/5 rounded-full blur-2xl pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col w-full h-full px-4 pt-4 pb-20">
+          {/* Centered content group — title + preview + step pulled together */}
+          <div className="flex-1 flex flex-col justify-center gap-9">
+            {/* Title */}
+            <h1 className="text-2xl font-black font-jakarta text-primary text-center leading-tight shrink-0">
+              {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
+            </h1>
+
+            {/* Preview — active step during scan; selected step when complete */}
+            {(scanPhase === 'scanning' || selectedPhaseIndex !== null) && (
+              <div className="min-h-0 overflow-hidden" style={{ maxHeight: '45vh' }}>
+                <StepPreview
+                  phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? 0) : activePhaseIndex}
+                  visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
+                  isMobile={true}
+                />
+              </div>
+            )}
+
+            {/* Step list */}
+            {scanPhase === 'scanning' && activePhaseIndex < PHASES.length ? (
+              <div className="shrink-0 max-w-sm mx-auto w-full">
+                {mobileStep(PHASES[activePhaseIndex], activePhaseIndex, true, false, false)}
+              </div>
+            ) : selectedPhaseIndex !== null ? (
+              <div className="shrink-0 space-y-1 max-w-sm mx-auto w-full">
+                {PHASES.map((p, i) => mobileStep(p, i, false, true, selectedPhaseIndex === i))}
+              </div>
+            ) : (
+              <div className="shrink-0 space-y-1 max-w-sm mx-auto w-full">
+                {PHASES.map((p, i) => mobileStep(p, i, false, true, false))}
+              </div>
+            )}
+          </div>
+
+          {/* Button pinned to bottom */}
+          <button
+            onClick={handleDismiss}
+            className="shrink-0 w-full font-jakarta font-bold text-base rounded-full px-8 py-4 transition-all duration-300 active:scale-95"
+            style={liquidGlass}
+          >
+            {scanPhase === 'complete' ? 'See results' : 'Stop'}
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ── Desktop layout ─────────────────────────────────────────────────────────
   return (
     <div
-      className="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[45] flex items-center justify-center overflow-hidden"
-      style={{
-        background: 'linear-gradient(180deg, #fffaf7 0%, #fff1e6 100%)',
-        opacity: isExiting ? 0 : 1,
-        transition: `opacity ${FADE_DURATION_MS}ms ease`,
-      }}
+      className="fixed top-16 left-20 right-0 bottom-0 z-[45] flex items-center justify-center overflow-hidden"
+      style={overlayStyle}
     >
-      {/* Decorative blobs */}
       <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-primary-container/5 rounded-full blur-2xl pointer-events-none" />
 
-      {/* Two-column layout */}
       <div
-        className="relative z-10 flex flex-col md:flex-row items-stretch gap-6 md:gap-12 max-w-6xl w-full px-4 md:px-16"
-        style={{
-          height: isMobile ? 'auto' : 'calc(100vh - 128px)',
-          minHeight: isMobile ? 'calc(100vh - 128px)' : undefined,
-          overflow: isMobile ? 'auto' : 'hidden',
-        }}
+        className="relative z-10 flex flex-row items-stretch gap-12 max-w-6xl w-full px-16"
+        style={{ height: 'calc(100vh - 128px)', overflow: 'hidden' }}
       >
-        {/* Left: title + steps */}
-        <div className="w-full md:w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">
-          <h1 className="text-4xl font-black font-jakarta text-primary leading-tight">
+        {/* Left: title + steps + button */}
+        <div className="w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">
+          <h1 className="text-4xl font-black font-jakarta text-primary leading-tight pl-4">
             {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
           </h1>
 
           <div className="space-y-1 fade-up">
             {PHASES.map((p, i) => {
-              const isActive   = i === activePhaseIndex
+              const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
               const isComplete = i < activePhaseIndex || scanPhase === 'complete'
               const isWaiting  = !isActive && !isComplete
+              const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
+              const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
               return (
                 <div
                   key={p.id}
-                  className="flex items-start gap-4 transition-all duration-300 px-4 py-3 rounded-[14px]"
+                  className="transition-all duration-300 px-4 py-3 rounded-[14px]"
                   style={{
+                    display: 'grid',
+                    gridTemplateColumns: '40px 1fr auto',
+                    columnGap: 16,
+                    alignItems: 'center',
                     opacity: isWaiting ? 0.35 : 1,
-                    ...(isActive ? {
+                    cursor: scanPhase === 'complete' ? 'pointer' : 'default',
+                    ...(isActive || isSelected ? {
                       background: 'rgba(255,122,47,0.07)',
                       border: '1px solid rgba(255,122,47,0.35)',
                       boxShadow: '0 0 24px rgba(255,122,47,0.12)',
                     } : {}),
                   }}
+                  onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(i) }}
                 >
-                  {/* Icon pill */}
                   <div
-                    className="w-10 h-10 flex items-center justify-center shrink-0 rounded-full mt-0.5"
-                    style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)' }}
+                    className="w-10 h-10 flex items-center justify-center rounded-full"
+                    style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)', alignSelf: 'center' }}
                   >
-                    <span
-                      className="material-symbols-outlined text-white"
-                      style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}
-                    >
+                    <span className="material-symbols-outlined text-white" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>
                       {p.icon}
                     </span>
                   </div>
 
-                  {/* Name + tool-call annotation */}
-                  <div className="flex-1 min-w-0 pt-1">
-                    <span className="text-on-background text-sm font-semibold leading-tight block">{p.name}</span>
+                  <span className="text-on-background text-[15px] font-bold leading-tight" style={{ alignSelf: 'center' }}>
+                    {p.name}
+                  </span>
+
+                  <div style={{ alignSelf: 'center' }}>
                     {isActive && (
-                      <p className="text-[10px] font-bold mt-0.5" style={{ color: 'rgba(156,63,0,0.5)' }}>
-                        ↳ running tool…
-                      </p>
+                      <svg className="animate-spin" width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
+                        <circle cx="10" cy="10" r="7" stroke="rgba(255,122,47,0.15)" strokeWidth="2" />
+                        <path d="M10 3 A7 7 0 0 1 17 10" stroke="#ff7a2f" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                    {isComplete && (
+                      <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}>
+                        check_circle
+                      </span>
                     )}
                   </div>
 
-                  {/* Status: bouncing dots or checkmark */}
-                  {isActive && (
-                    <div className="flex items-center gap-1 mt-2 shrink-0">
-                      {[0, 1, 2].map(j => (
-                        <div
-                          key={j}
-                          style={{
-                            width: 6,
-                            height: 6,
-                            borderRadius: '50%',
-                            background: '#ff7a2f',
-                            animation: `dotBounce 1.2s ease-in-out ${j * 0.2}s infinite`,
-                          }}
-                        />
-                      ))}
+                  {isActive && microsteps.length > 0 && (
+                    <div style={{ gridColumn: '2 / 3', marginTop: -10, paddingBottom: 4 }}>
+                      <svg width="18" height="4" viewBox="0 0 18 4" fill="none" style={{ display: 'block' }}>
+                        <line x1="5" y1="0" x2="5" y2="4" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        {microsteps.map((step, j) => {
+                          const isLast = j === microsteps.length - 1
+                          return (
+                            <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 5, animation: 'fadeUp 0.3s ease both' }}>
+                              <svg width="18" height="22" viewBox="0 0 18 22" fill="none" style={{ flexShrink: 0 }}>
+                                <line x1="5" y1="0" x2="5" y2="9" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
+                                {!isLast && <line x1="5" y1="11" x2="5" y2="22" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />}
+                                <path d="M5 9 Q5 11 7 11 L15 11" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" fill="none" />
+                                <polyline points="12.5,8.5 15,11 12.5,13.5" stroke="rgba(156,63,0,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                              </svg>
+                              <span style={{ fontSize: 11, color: 'rgba(156,63,0,0.6)', fontWeight: 600 }}>{step}</span>
+                            </div>
+                          )
+                        })}
+                      </div>
                     </div>
-                  )}
-                  {isComplete && (
-                    <span
-                      className="material-symbols-outlined shrink-0 mt-0.5"
-                      style={{ fontSize: '24px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}
-                    >
-                      check_circle
-                    </span>
                   )}
                 </div>
               )
@@ -486,25 +884,18 @@ export default function ApexScanOverlay() {
           <button
             onClick={handleDismiss}
             className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)',
-              backdropFilter: 'blur(20px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-              border: '1px solid rgba(255, 122, 47, 0.3)',
-              boxShadow: '0 8px 32px -4px rgba(194, 78, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
-              color: '#7a2e00',
-            }}
+            style={liquidGlass}
           >
             {scanPhase === 'complete' ? 'See results' : 'Stop'}
           </button>
         </div>
 
-        {/* Right: output preview panel */}
+        {/* Right: output preview */}
         <div className="flex-1 min-h-0 py-4">
           <StepPreview
-            activePhaseIndex={activePhaseIndex}
-            scanPhase={scanPhase}
-            visibleCount={visibleCount}
+            phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? PHASES.length - 1) : activePhaseIndex}
+            visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
+            isMobile={false}
           />
         </div>
       </div>

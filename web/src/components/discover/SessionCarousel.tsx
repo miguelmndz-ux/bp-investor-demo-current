@@ -101,19 +101,37 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
       </div>
 
       {isMobile ? (
-        /* Mobile: simple CSS scroll-snap carousel */
-        <div
-          className="flex overflow-x-auto gap-3 pb-2 pt-1 hide-scrollbar"
-          style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
-        >
-          {sessions.map((session) => (
-            <div key={session.id} className="shrink-0 w-[280px]" style={{ scrollSnapAlign: 'start' }}>
-              <SessionCard
-                session={session}
-                onClick={() => onSelect(session)}
-              />
-            </div>
-          ))}
+        /* Mobile: scroll-snap carousel with edge fades */
+        <div className="-ml-3.5 -mr-6 relative">
+          {/* Left fade — visible once scrolled */}
+          <div
+            className="absolute left-0 top-0 bottom-2 w-12 z-10 pointer-events-none transition-opacity duration-300"
+            style={{
+              background: 'linear-gradient(to right, rgba(255,243,234,0.9) 0%, rgba(255,243,234,0.25) 70%, transparent 100%)',
+              opacity: scrolled ? 1 : 0,
+            }}
+          />
+          {/* Right fade — always visible */}
+          <div
+            className="absolute right-0 top-0 bottom-2 w-12 z-10 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to left, rgba(255,243,234,0.9) 0%, rgba(255,243,234,0.25) 70%, transparent 100%)',
+            }}
+          />
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto gap-3 pb-2 pt-1 pr-6 hide-scrollbar"
+            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+          >
+            {sessions.map((session) => (
+              <div key={session.id} className="shrink-0 w-[200px]" style={{ scrollSnapAlign: 'start' }}>
+                <SessionCard
+                  session={session}
+                  onClick={() => onSelect(session)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
         /* Desktop: JS-measured full-bleed carousel */

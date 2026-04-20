@@ -52,23 +52,25 @@ const agents = [
 
 export default function AgentsPage() {
   return (
-    <>
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-14rem)]">
+      <div className="w-full">
       <div className="mb-10 fade-up fade-up-1">
         <p className="text-xs font-extrabold tracking-widest text-primary uppercase mb-3">
           BuildParty Agents
         </p>
-        <h1 className="font-jakarta font-black text-4xl text-on-background mb-2">
+        <h1 className="font-jakarta font-black text-2xl md:text-4xl text-on-background mb-2">
           The Constellation
         </h1>
         <p className="text-base text-on-background/60">
           Five agents. One live operating layer.
         </p>
       </div>
-      <div className="grid grid-cols-5 gap-6 fade-up fade-up-2">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6 fade-up fade-up-2">
         {agents.map((agent) => (
           <AgentCard key={agent.name} {...agent} />
         ))}
       </div>
-    </>
+      </div>
+    </div>
   )
 }

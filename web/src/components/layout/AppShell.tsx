@@ -24,7 +24,7 @@ export default function AppShell({ children }: AppShellProps) {
     return (
       <>
         <TopNav />
-        <main className="pt-16 px-4 pb-24">
+        <main className="pt-20 px-6 pb-24">
           <div className="max-w-[1400px] mx-auto space-y-6">
             {children}
           </div>
