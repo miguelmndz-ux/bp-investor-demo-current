@@ -52,9 +52,9 @@ export default function AgentCard({
     </div>
   )
 
-  if (isActive && href) {
+  if (href) {
     return (
-      <Link href={href} className="block transition-transform duration-200 hover:scale-[1.02]">
+      <Link href={href} className="block transition-opacity duration-200 hover:opacity-90">
         {card}
       </Link>
     )
