@@ -85,12 +85,12 @@ style={{
 </span>
 ```
 
-**Icons:** Use `@phosphor-icons/react` for all new icons. Import named components and pass `weight="regular"` for outline style, `weight="bold"` for heavier strokes. Size via the `size` prop — never use className-based sizing.
+**Icons:** Use `@phosphor-icons/react` for all new icons. Import named components and pass `weight="bold"` as the standard weight. Use `weight="fill"` for active/selected states only. Size via the `size` prop — never use className-based sizing.
 
 ```tsx
 import { PaperPlaneTilt, Check } from '@phosphor-icons/react'
 
-<PaperPlaneTilt size={20} weight="regular" />
+<PaperPlaneTilt size={20} weight="bold" />
 ```
 
 Do not add new Material Symbols icons. Existing ones in layout components are grandfathered in.
@@ -375,7 +375,7 @@ Every screen in the investor demo has a numeric taxonomy label (e.g., `1.0`, `1.
 
 | # | Screen | Route / Location | Status |
 |---|--------|-----------------|--------|
-| 0.0 | Agents Introduction | — | Not built |
+| 0.0 | Agents Introduction | `/agents` | Built |
 | 1.0 | Apex is running (scan overlay) | `/apex` (overlay) | Built |
 | 1.0.1 | Apex run complete | `/apex` (overlay final state) | Built |
 | 1.1 | Apex Admin Dashboard | `/apex` | Built |
