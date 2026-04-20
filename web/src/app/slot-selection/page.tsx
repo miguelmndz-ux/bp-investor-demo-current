@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 // April 2026: April 1 = Wednesday → 2 leading empty cells in Mon–Sun grid
 const LEADING_EMPTY = 2
@@ -17,6 +18,7 @@ function getDayName(date: number): string {
 
 export default function SlotSelectionPage() {
   const router = useRouter()
+  const isMobile = useIsMobile()
   const [selectedDate, setSelectedDate] = useState<number>(TODAY)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
 
@@ -65,15 +67,15 @@ export default function SlotSelectionPage() {
 
       {/* ── Main three-panel card ── */}
       <main
-        className="w-full max-w-5xl premium-glass rounded-2xl flex flex-col md:flex-row relative fade-up-1"
-        style={{ overflow: 'hidden' }}
+        className="w-full max-w-5xl premium-glass rounded-2xl flex relative fade-up-1"
+        style={{ overflow: 'hidden', flexDirection: isMobile ? 'column' : 'row' }}
       >
         {/* ═══════════════════════════════════════════
             LEFT — Session info
         ═══════════════════════════════════════════ */}
         <section
-          className="flex flex-col justify-between p-10"
-          style={{ flex: '1 1 0', position: 'relative', zIndex: 1 }}
+          className="flex flex-col justify-between"
+          style={{ flex: '1 1 0', position: 'relative', zIndex: 1, padding: isMobile ? '16px' : '40px' }}
         >
           <div>
             {/* Velo product logo */}
@@ -183,8 +185,8 @@ export default function SlotSelectionPage() {
             CENTER — Calendar
         ═══════════════════════════════════════════ */}
         <section
-          className="flex flex-col items-center p-10"
-          style={{ flex: '1.25 1 0', position: 'relative', zIndex: 1 }}
+          className="flex flex-col items-center"
+          style={{ flex: '1.25 1 0', position: 'relative', zIndex: 1, padding: isMobile ? '16px' : '40px' }}
         >
           <header className="w-full mb-6">
             <h3
@@ -278,7 +280,7 @@ export default function SlotSelectionPage() {
           >
             {/* Leading empty cells */}
             {Array.from({ length: LEADING_EMPTY }).map((_, i) => (
-              <div key={`e${i}`} style={{ height: 36 }} />
+              <div key={`e${i}`} style={{ height: isMobile ? 32 : 36 }} />
             ))}
 
             {/* Date buttons */}
@@ -294,11 +296,11 @@ export default function SlotSelectionPage() {
                   disabled={!available}
                   onClick={() => handleDateClick(day)}
                   style={{
-                    width: 36,
-                    height: 36,
+                    width: isMobile ? 32 : 36,
+                    height: isMobile ? 32 : 36,
                     margin: '0 auto',
                     borderRadius: '50%',
-                    fontSize: 13,
+                    fontSize: isMobile ? 12 : 13,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -378,8 +380,8 @@ export default function SlotSelectionPage() {
             RIGHT — Time slots
         ═══════════════════════════════════════════ */}
         <section
-          className="flex flex-col p-10"
-          style={{ flex: '0.85 1 0', position: 'relative', zIndex: 1 }}
+          className="flex flex-col"
+          style={{ flex: '0.85 1 0', position: 'relative', zIndex: 1, padding: isMobile ? '16px' : '40px' }}
         >
           <header style={{ marginBottom: 24 }}>
             <h3

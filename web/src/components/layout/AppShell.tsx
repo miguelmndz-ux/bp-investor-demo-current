@@ -3,6 +3,8 @@
 import { usePathname } from 'next/navigation'
 import SideNav from './SideNav'
 import TopNav from './TopNav'
+import BottomNav from './BottomNav'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface AppShellProps {
   children: React.ReactNode
@@ -12,9 +14,24 @@ const BARE_ROUTES = ['/signup', '/profile-details', '/what-to-expect', '/slot-se
 
 export default function AppShell({ children }: AppShellProps) {
   const pathname = usePathname()
+  const isMobile = useIsMobile()
 
   if (BARE_ROUTES.includes(pathname)) {
     return <>{children}</>
+  }
+
+  if (isMobile) {
+    return (
+      <>
+        <TopNav />
+        <main className="pt-20 px-6 pb-24">
+          <div className="max-w-[1400px] mx-auto space-y-6">
+            {children}
+          </div>
+        </main>
+        <BottomNav />
+      </>
+    )
   }
 
   return (
@@ -32,12 +49,12 @@ export default function AppShell({ children }: AppShellProps) {
         style={{ top: 96, left: 80, width: 1, bottom: 0, background: 'rgba(0,0,0,0.06)', zIndex: 55 }}
       />
       {/* ── Concave corner ──
-          Two overlapping 32×32 divs at (80,80):
+          Two overlapping 32×32 divs at (80,64):
           1. White clip-path fill for the nav-side wedge.
           2. CSS border-only div for the arc line — CSS borders render identically
              to the straight div borders above, so weight/color match perfectly.
              border-top-left-radius:24 draws the arc plus 8px straight extensions
-             that bridge to where the header/sidebar borders start at x=112 / y=112. */}
+             that bridge to where the header/sidebar borders start at x=112 / y=96. */}
       <div
         className="fixed pointer-events-none"
         style={{ top: 64, left: 80, width: 32, height: 32, zIndex: 55 }}

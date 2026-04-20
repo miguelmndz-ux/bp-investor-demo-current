@@ -11,7 +11,7 @@ export default function CoursesPage() {
   return (
     <>
       <CommunityNav slug={slug} active="courses" />
-      <div className="fixed top-16 left-20 right-0 bottom-0 rounded-tl-3xl overflow-hidden !mt-0">
+      <div className="fixed top-16 left-0 md:left-20 right-0 bottom-0 rounded-tl-3xl overflow-hidden !mt-0">
         <iframe
           src={product.rapidCourseUrl}
           title={`${product.name} — Course`}

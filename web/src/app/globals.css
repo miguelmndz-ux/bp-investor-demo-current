@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: hidden;
+}
+
 body {
+  overflow-x: hidden;
   background-color: #fffaf7;
   background-image: linear-gradient(180deg, #fffaf7 0%, #fff1e6 100%);
   background-attachment: fixed;
@@ -100,3 +105,11 @@ h1, h2, h3, .font-jakarta {
 .fade-up-2 { animation-delay: 0.12s; }
 .fade-up-3 { animation-delay: 0.19s; }
 .fade-up-4 { animation-delay: 0.26s; }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

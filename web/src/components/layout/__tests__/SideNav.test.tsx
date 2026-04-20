@@ -1,15 +1,30 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
+
+vi.mock('next/navigation', () => ({
+  usePathname: vi.fn(() => '/'),
+}))
+
+vi.mock('next/link', () => ({
+  default: ({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) => (
+    <a href={href} className={className}>{children}</a>
+  ),
+}))
+
 import SideNav from '../SideNav'
 
 describe('SideNav', () => {
-  it('renders the home nav link', () => {
+  it('renders the agents nav link pointing to /agents', () => {
     render(<SideNav />)
-    expect(screen.getByTitle('Home')).toBeInTheDocument()
+    const links = screen.getAllByRole('link')
+    const hrefs = links.map(l => l.getAttribute('href'))
+    expect(hrefs).toContain('/agents')
   })
-  it('renders community avatars', () => {
+
+  it('renders the discover nav link', () => {
     render(<SideNav />)
-    expect(screen.getByTitle('Nate Herk')).toBeInTheDocument()
-    expect(screen.getByTitle('LiveKit')).toBeInTheDocument()
+    const links = screen.getAllByRole('link')
+    const hrefs = links.map(l => l.getAttribute('href'))
+    expect(hrefs).toContain('/discover')
   })
 })

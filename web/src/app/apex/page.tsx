@@ -19,14 +19,16 @@ export default function ApexPage() {
     <>
       <ApexScanOverlay />
       <HeroCard draftCount={10} />
-      <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-8 space-y-10 fade-up fade-up-1">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+        <div className="order-1 col-span-1 md:col-start-1 md:col-span-8 fade-up fade-up-1">
           <PhTable products={phProducts} onVeloPreview={() => setModalOpen(true)} />
-          <FounderGrid founders={founders} onOutreachDraft={() => setModalOpen(true)} />
         </div>
-        <div className="col-span-4 space-y-8 fade-up fade-up-2">
+        <div className="order-2 col-span-1 md:col-start-9 md:col-span-4 md:row-span-2 space-y-8 fade-up fade-up-2">
           <LiveStatsPanel />
           <AgentWorkflowLog items={workflowLog} />
+        </div>
+        <div className="order-3 col-span-1 md:col-start-1 md:col-span-8 fade-up fade-up-3">
+          <FounderGrid founders={founders} onOutreachDraft={() => setModalOpen(true)} />
         </div>
       </div>
       {modalOpen && <OutreachDraftModal onClose={() => setModalOpen(false)} />}

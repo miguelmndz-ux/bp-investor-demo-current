@@ -14,7 +14,10 @@
       "Bash(cp \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update.md\" \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update/SKILL.md\")",
       "Bash(rm \"C:/Users/mmcon/.claude/plugins/local/buildparty-design-update/skills/buildparty-design-update.md\")",
       "Bash(rm -rf \"C:/Users/mmcon/.claude/skills/buildparty-design-update\")",
-      "Bash(npx skills *)"
+      "Bash(npx skills *)",
+      "Bash(mkdir \"C:/Users/mmcon/.claude/skills/buildparty-responsive\")",
+      "Bash(mv \"C:/Users/mmcon/.claude/skills/buildparty-responsive.md\" \"C:/Users/mmcon/.claude/skills/buildparty-responsive/buildparty-responsive.md\")",
+      "Read(//c/Users/mmcon/.claude/skills/**)"
     ]
   }
 }

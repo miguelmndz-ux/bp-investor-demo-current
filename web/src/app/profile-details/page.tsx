@@ -1,9 +1,11 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export default function ProfileDetailsPage() {
   const router = useRouter()
+  const isMobile = useIsMobile()
 
   return (
     <div
@@ -11,9 +13,11 @@ export default function ProfileDetailsPage() {
       style={{
         background: 'linear-gradient(150deg, #fffaf7 0%, #fff1e6 100%)',
         fontFamily: 'var(--font-inter), Inter, sans-serif',
+        flexDirection: isMobile ? 'column' : 'row',
       }}
     >
       {/* ── Left panel — Velo blue ── */}
+      {!isMobile && (
       <div
         className="flex flex-col"
         style={{
@@ -139,11 +143,12 @@ export default function ProfileDetailsPage() {
           </div>
         </div>
       </div>
+      )}
 
       {/* ── Right panel ── */}
       <div
         className="flex-1 flex items-center justify-center"
-        style={{ background: '#FFFFFF', padding: '48px 40px' }}
+        style={{ background: '#FFFFFF', padding: isMobile ? '32px 20px' : '48px 40px' }}
       >
         <div style={{ width: '100%', maxWidth: 380 }}>
 
@@ -161,7 +166,7 @@ export default function ProfileDetailsPage() {
           </h1>
 
           {/* Name row */}
-          <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 12, marginBottom: 16 }}>
             {[
               { label: 'First name', value: 'Ajay' },
               { label: 'Last name',  value: 'Kumar' },

@@ -1,0 +1,431 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e460] [cursor=pointer]:
+    - img [ref=e461]
+  - alert [ref=e464]
+  - banner [ref=e523]:
+    - generic [ref=e524]: BuildParty
+    - generic [ref=e525]:
+      - button "notifications" [ref=e526] [cursor=pointer]:
+        - generic [ref=e527]: notifications
+      - button "help" [ref=e529] [cursor=pointer]:
+        - generic [ref=e530]: help
+      - img "Profile" [ref=e532]
+  - main [ref=e533]:
+    - generic [ref=e534]:
+      - generic [ref=e536]:
+        - generic [ref=e537]:
+          - heading "Apex is running…" [level=1] [ref=e538]
+          - generic [ref=e539]:
+            - generic [ref=e540]:
+              - generic [ref=e542]: travel_explore
+              - generic [ref=e543]:
+                - generic [ref=e544]: Scanning Product Hunt top 10
+                - paragraph [ref=e545]: ↳ running tool…
+            - generic [ref=e550]:
+              - generic [ref=e552]: person_search
+              - generic [ref=e554]: Enriching founder profiles
+            - generic [ref=e555]:
+              - generic [ref=e557]: group
+              - generic [ref=e559]: Creating community profile pages
+            - generic [ref=e560]:
+              - generic [ref=e562]: psychology
+              - generic [ref=e564]: Running Decode and Course skills
+            - generic [ref=e565]:
+              - generic [ref=e567]: edit_note
+              - generic [ref=e569]: Drafting outreach messages
+          - button "Stop" [ref=e570] [cursor=pointer]
+        - generic [ref=e573]:
+          - generic:
+            - generic:
+              - generic:
+                - generic: "#1"
+              - generic:
+                - generic: "#2"
+              - generic:
+                - generic: "#3"
+              - generic:
+                - generic: "#4"
+              - generic:
+                - generic: "#5"
+              - generic:
+                - generic: "#6"
+              - generic:
+                - generic: "#7"
+              - generic:
+                - generic: "#8"
+              - generic:
+                - generic: "#9"
+              - generic:
+                - generic: "#10"
+      - generic [ref=e574]:
+        - generic [ref=e575]:
+          - heading "Apex has drafted 10 new outreaches." [level=1] [ref=e576]:
+            - text: Apex has drafted
+            - generic [ref=e577]: 10 new
+            - text: outreaches.
+          - generic [ref=e578]:
+            - button "Review Drafts" [ref=e579] [cursor=pointer]
+            - paragraph [ref=e580]: Scanned 420+ products in last 24h
+        - generic:
+          - generic: auto_awesome
+      - generic [ref=e581]:
+        - generic [ref=e582]:
+          - generic [ref=e583]:
+            - generic [ref=e584]:
+              - generic [ref=e585]:
+                - heading "ProductHunt Top 10" [level=2] [ref=e586]
+                - paragraph [ref=e587]: Updated · Today
+              - button "refresh Refresh" [ref=e588] [cursor=pointer]:
+                - generic [ref=e589]: refresh
+                - text: Refresh
+            - generic [ref=e591]:
+              - generic [ref=e592]:
+                - generic [ref=e593]: Status
+                - generic [ref=e594]: Product
+                - generic [ref=e595]:
+                  - generic [ref=e596]:
+                    - generic [ref=e597]: arrow_upward
+                    - generic [ref=e598]: Votes
+                  - generic [ref=e599]:
+                    - generic [ref=e600]: mode_comment
+                    - generic [ref=e601]: Comments
+                  - generic [ref=e602]:
+                    - generic [ref=e603]: bolt
+                    - generic [ref=e604]: Score
+              - generic [ref=e605]:
+                - generic [ref=e606] [cursor=pointer]:
+                  - generic [ref=e608]: "1"
+                  - generic [ref=e610]: Confirmed
+                  - generic [ref=e611]:
+                    - img "Velo logo" [ref=e613]
+                    - generic [ref=e614]:
+                      - link "Velo" [ref=e615]:
+                        - /url: /apex/community/velo/owner
+                      - paragraph [ref=e616]: Video Messaging
+                    - button "Preview Outreach" [ref=e617]
+                  - generic [ref=e618]:
+                    - generic [ref=e619]: "617"
+                    - generic [ref=e620]: "143"
+                    - generic [ref=e621]: "103"
+                - generic [ref=e622] [cursor=pointer]:
+                  - generic [ref=e624]: "2"
+                  - generic [ref=e626]: Signed Up
+                  - generic [ref=e627]:
+                    - img "Chrome Vertical Tabs logo" [ref=e629]
+                    - generic [ref=e630]:
+                      - link "Chrome Vertical Tabs" [ref=e631]:
+                        - /url: /apex/community/chrome-vertical-tabs/owner
+                      - paragraph [ref=e632]: Browser Enhancement
+                    - button "Preview Outreach" [ref=e633]
+                  - generic [ref=e634]:
+                    - generic [ref=e635]: "368"
+                    - generic [ref=e636]: "19"
+                    - generic [ref=e637]: "61"
+                - generic [ref=e638] [cursor=pointer]:
+                  - generic [ref=e640]: "3"
+                  - generic [ref=e642]: Draft Sent
+                  - generic [ref=e643]:
+                    - img "Flint logo" [ref=e645]
+                    - generic [ref=e646]:
+                      - link "Flint" [ref=e647]:
+                        - /url: /apex/community/flint/owner
+                      - paragraph [ref=e648]: Campaign Landing Pages
+                    - button "Preview Outreach" [ref=e649]
+                  - generic [ref=e650]:
+                    - generic [ref=e651]: "345"
+                    - generic [ref=e652]: "27"
+                    - generic [ref=e653]: "58"
+                - generic [ref=e654] [cursor=pointer]:
+                  - generic [ref=e656]: "4"
+                  - generic [ref=e658]: Draft Sent
+                  - generic [ref=e659]:
+                    - img "LookAway 2 logo" [ref=e661]
+                    - generic [ref=e662]:
+                      - link "LookAway 2" [ref=e663]:
+                        - /url: /apex/community/lookaway-2/owner
+                      - paragraph [ref=e664]: Eye Health for Mac
+                    - button "Preview Outreach" [ref=e665]
+                  - generic [ref=e666]:
+                    - generic [ref=e667]: "265"
+                    - generic [ref=e668]: "23"
+                    - generic [ref=e669]: "44"
+                - generic [ref=e670] [cursor=pointer]:
+                  - generic [ref=e672]: "5"
+                  - generic [ref=e674]: Draft Sent
+                  - generic [ref=e675]:
+                    - img "MindsDB Anton logo" [ref=e677]
+                    - generic [ref=e678]:
+                      - link "MindsDB Anton" [ref=e679]:
+                        - /url: /apex/community/mindsdb-anton/owner
+                      - paragraph [ref=e680]: Autonomous BI Agent
+                    - button "Preview Outreach" [ref=e681]
+                  - generic [ref=e682]:
+                    - generic [ref=e683]: "185"
+                    - generic [ref=e684]: "16"
+                    - generic [ref=e685]: "31"
+                - generic [ref=e686] [cursor=pointer]:
+                  - generic [ref=e688]: "6"
+                  - generic [ref=e690]: Pending
+                  - generic [ref=e691]:
+                    - img "Browser Arena logo" [ref=e693]
+                    - generic [ref=e694]:
+                      - link "Browser Arena" [ref=e695]:
+                        - /url: /apex/community/browser-arena/owner
+                      - paragraph [ref=e696]: Cloud Browser Benchmarks
+                    - button "Preview Outreach" [ref=e697]
+                  - generic [ref=e698]:
+                    - generic [ref=e699]: "174"
+                    - generic [ref=e700]: "29"
+                    - generic [ref=e701]: "29"
+                - generic [ref=e702] [cursor=pointer]:
+                  - generic [ref=e704]: "7"
+                  - generic [ref=e706]: Pending
+                  - generic [ref=e707]:
+                    - img "Career-Ops on Claude logo" [ref=e709]
+                    - generic [ref=e710]:
+                      - link "Career-Ops on Claude" [ref=e711]:
+                        - /url: /apex/community/career-ops-on-claude/owner
+                      - paragraph [ref=e712]: AI Job Search
+                    - button "Preview Outreach" [ref=e713]
+                  - generic [ref=e714]:
+                    - generic [ref=e715]: "137"
+                    - generic [ref=e716]: "11"
+                    - generic [ref=e717]: "23"
+                - generic [ref=e718] [cursor=pointer]:
+                  - generic [ref=e720]: "8"
+                  - generic [ref=e722]: Pending
+                  - generic [ref=e723]:
+                    - img "Keeby logo" [ref=e725]
+                    - generic [ref=e726]:
+                      - link "Keeby" [ref=e727]:
+                        - /url: /apex/community/keeby/owner
+                      - paragraph [ref=e728]: Keyboard Sounds for Mac
+                    - button "Preview Outreach" [ref=e729]
+                  - generic [ref=e730]:
+                    - generic [ref=e731]: "136"
+                    - generic [ref=e732]: "12"
+                    - generic [ref=e733]: "23"
+                - generic [ref=e734] [cursor=pointer]:
+                  - generic [ref=e736]: "9"
+                  - generic [ref=e738]: Pending
+                  - generic [ref=e739]:
+                    - img "PassportReader logo" [ref=e741]
+                    - generic [ref=e742]:
+                      - link "PassportReader" [ref=e743]:
+                        - /url: /apex/community/passport-reader/owner
+                      - paragraph [ref=e744]: Identity Verification API
+                    - button "Preview Outreach" [ref=e745]
+                  - generic [ref=e746]:
+                    - generic [ref=e747]: "113"
+                    - generic [ref=e748]: "10"
+                    - generic [ref=e749]: "19"
+                - generic [ref=e750] [cursor=pointer]:
+                  - generic [ref=e752]: "10"
+                  - generic [ref=e754]: Pending
+                  - generic [ref=e755]:
+                    - img "FeatDrop logo" [ref=e757]
+                    - generic [ref=e758]:
+                      - link "FeatDrop" [ref=e759]:
+                        - /url: /apex/community/featdrop/owner
+                      - paragraph [ref=e760]: Public Product Changelog
+                    - button "Preview Outreach" [ref=e761]
+                  - generic [ref=e762]:
+                    - generic [ref=e763]: "110"
+                    - generic [ref=e764]: "16"
+                    - generic [ref=e765]: "18"
+          - generic [ref=e766]:
+            - generic [ref=e767]:
+              - generic [ref=e768]:
+                - generic [ref=e769]:
+                  - img "Ajay Kumar" [ref=e771]
+                  - generic [ref=e772]:
+                    - heading "Ajay Kumar" [level=4] [ref=e773]
+                    - generic [ref=e774]: Co-founder, Velo
+                - paragraph [ref=e775]: "\"Video is the most human form of async communication. We're making it instant.\""
+                - generic [ref=e776]:
+                  - button "mail Outreach Draft" [ref=e777] [cursor=pointer]:
+                    - generic [ref=e778]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e779] [cursor=pointer]:
+                    - generic [ref=e780]: open_in_new
+                    - text: Preview
+              - generic [ref=e781]:
+                - generic [ref=e782]:
+                  - img "Sourav S." [ref=e784]
+                  - generic [ref=e785]:
+                    - heading "Sourav S." [level=4] [ref=e786]
+                    - generic [ref=e787]: Co-founder, Velo
+                - paragraph [ref=e788]: "\"A very large enthusiast of technology and people.\""
+                - generic [ref=e789]:
+                  - button "mail Outreach Draft" [ref=e790] [cursor=pointer]:
+                    - generic [ref=e791]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e792] [cursor=pointer]:
+                    - generic [ref=e793]: open_in_new
+                    - text: Preview
+              - generic [ref=e794]:
+                - generic [ref=e795]:
+                  - img "Michelle Lim" [ref=e797]
+                  - generic [ref=e798]:
+                    - heading "Michelle Lim" [level=4] [ref=e799]
+                    - generic [ref=e800]: Co-founder, Flint
+                - paragraph [ref=e801]: "\"Every campaign deserves a landing page that actually converts — built in minutes, not days.\""
+                - generic [ref=e802]:
+                  - button "mail Outreach Draft" [ref=e803] [cursor=pointer]:
+                    - generic [ref=e804]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e805] [cursor=pointer]:
+                    - generic [ref=e806]: open_in_new
+                    - text: Preview
+              - generic [ref=e807]:
+                - generic [ref=e808]:
+                  - img "Jorge Torres" [ref=e810]
+                  - generic [ref=e811]:
+                    - heading "Jorge Torres" [level=4] [ref=e812]
+                    - generic [ref=e813]: CEO, MindsDB
+                - paragraph [ref=e814]: "\"Business intelligence shouldn't just tell you what happened — it should act on it.\""
+                - generic [ref=e815]:
+                  - button "mail Outreach Draft" [ref=e816] [cursor=pointer]:
+                    - generic [ref=e817]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e818] [cursor=pointer]:
+                    - generic [ref=e819]: open_in_new
+                    - text: Preview
+              - generic [ref=e820]:
+                - generic [ref=e821]:
+                  - img "Kushagra Agarwal" [ref=e823]
+                  - generic [ref=e824]:
+                    - heading "Kushagra Agarwal" [level=4] [ref=e825]
+                    - generic [ref=e826]: Maker, LookAway 2
+                - paragraph [ref=e827]: "\"Your eyes deserve breaks. LookAway makes it effortless and completely native on Mac.\""
+                - generic [ref=e828]:
+                  - button "mail Outreach Draft" [ref=e829] [cursor=pointer]:
+                    - generic [ref=e830]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e831] [cursor=pointer]:
+                    - generic [ref=e832]: open_in_new
+                    - text: Preview
+              - generic [ref=e833]:
+                - generic [ref=e834]:
+                  - img "Andrea Pinto" [ref=e836]
+                  - generic [ref=e837]:
+                    - heading "Andrea Pinto" [level=4] [ref=e838]
+                    - generic [ref=e839]: Founder, Nottelabs
+                - paragraph [ref=e840]: "\"Browser infrastructure should be open and benchmarked — we're building that standard.\""
+                - generic [ref=e841]:
+                  - button "mail Outreach Draft" [ref=e842] [cursor=pointer]:
+                    - generic [ref=e843]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e844] [cursor=pointer]:
+                    - generic [ref=e845]: open_in_new
+                    - text: Preview
+              - generic [ref=e846]:
+                - generic [ref=e847]:
+                  - img "Allan Jiang" [ref=e849]
+                  - generic [ref=e850]:
+                    - heading "Allan Jiang" [level=4] [ref=e851]
+                    - generic [ref=e852]: Maker, FeatDrop (YC W22)
+                - paragraph [ref=e853]: "\"Builders deserve a simple, public place to share what they've shipped.\""
+                - generic [ref=e854]:
+                  - button "mail Outreach Draft" [ref=e855] [cursor=pointer]:
+                    - generic [ref=e856]: mail
+                    - text: Outreach Draft
+                  - button "open_in_new Preview" [ref=e857] [cursor=pointer]:
+                    - generic [ref=e858]: open_in_new
+                    - text: Preview
+            - button "View all founders arrow_forward" [ref=e860] [cursor=pointer]:
+              - text: View all founders
+              - generic [ref=e861]: arrow_forward
+        - generic [ref=e862]:
+          - generic [ref=e863]:
+            - heading "Live Stats" [level=2] [ref=e865]
+            - generic [ref=e866]:
+              - generic [ref=e867]:
+                - generic [ref=e868]: Upvote Velocity
+                - generic [ref=e869]: +31 upvotes per hour
+                - paragraph [ref=e870]: "#1 Velo · 617 upvotes today"
+              - generic [ref=e873]: trending_up
+            - generic [ref=e874]:
+              - generic [ref=e875]:
+                - generic [ref=e876]: Most Upvotes
+                - generic [ref=e877]: "617"
+              - generic [ref=e878]:
+                - generic [ref=e879]: Upvote Speed
+                - generic [ref=e880]: 31 upvotes per hour
+              - generic [ref=e881]:
+                - generic [ref=e882]: Total Upvotes
+                - generic [ref=e883]: 2,450
+              - generic [ref=e884]:
+                - generic [ref=e885]: Most Comments
+                - generic [ref=e886]: "143"
+              - generic [ref=e887]:
+                - generic [ref=e888]: Total Comments
+                - generic [ref=e889]: "306"
+              - generic [ref=e890]:
+                - generic [ref=e891]: "#1 Today"
+                - generic [ref=e892]: Velo
+              - generic [ref=e893]:
+                - generic [ref=e894]: Products Today
+                - generic [ref=e895]: "10"
+              - generic [ref=e896]:
+                - generic [ref=e897]: Avg Score
+                - generic [ref=e898]: "43"
+              - generic [ref=e899]:
+                - generic [ref=e900]: Most Popular Topic
+                - text: Productivity & AI Tools
+          - generic [ref=e901]:
+            - generic [ref=e902]:
+              - heading "Agent Workflow" [level=2] [ref=e903]
+              - button "settings" [ref=e904] [cursor=pointer]:
+                - generic [ref=e905]: settings
+            - generic [ref=e906]:
+              - generic [ref=e907]:
+                - generic [ref=e909]: search_check
+                - generic [ref=e910]:
+                  - paragraph [ref=e911]: Scanned PH top 10 — April 8
+                  - paragraph [ref=e912]: 2 mins ago
+                - generic [ref=e913]: check_circle
+              - generic [ref=e914]:
+                - generic [ref=e916]: edit_note
+                - generic [ref=e917]:
+                  - paragraph [ref=e918]: Drafted outreach for Ajay Kumar (Velo)
+                  - paragraph [ref=e919]: 15 mins ago
+                - generic [ref=e920]: check_circle
+              - generic [ref=e921]:
+                - generic [ref=e923]: pending_actions
+                - generic [ref=e924]:
+                  - paragraph [ref=e925]: "Awaiting Approval: 8 Drafts"
+                  - paragraph [ref=e926]: 1 hour ago
+                - generic [ref=e927]: arrow_forward_ios
+              - generic [ref=e928]:
+                - generic [ref=e930]: analytics
+                - generic [ref=e931]:
+                  - paragraph [ref=e932]: Analyzed landing page for Flint
+                  - paragraph [ref=e933]: 2 hours ago
+                - generic [ref=e934]: check_circle
+              - generic [ref=e935]:
+                - generic [ref=e937]: manage_search
+                - generic [ref=e938]:
+                  - paragraph [ref=e939]: Extracted founder data for MindsDB
+                  - paragraph [ref=e940]: 3 hours ago
+                - generic [ref=e941]: check_circle
+            - button "View full log arrow_forward" [ref=e942] [cursor=pointer]:
+              - text: View full log
+              - generic [ref=e943]: arrow_forward
+  - navigation [ref=e944]:
+    - link "Home" [ref=e945] [cursor=pointer]:
+      - /url: /
+      - img [ref=e946]
+      - generic [ref=e948]: Home
+    - link "Discover" [ref=e949] [cursor=pointer]:
+      - /url: /discover
+      - img [ref=e950]
+      - generic [ref=e952]: Discover
+    - link "Calendar" [ref=e953] [cursor=pointer]:
+      - /url: "#"
+      - img [ref=e954]
+      - generic [ref=e956]: Calendar
+    - link "Apex" [ref=e957] [cursor=pointer]:
+      - /url: /apex
+      - img [ref=e958]
+      - generic [ref=e960]: Apex

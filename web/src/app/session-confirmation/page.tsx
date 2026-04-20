@@ -1,5 +1,7 @@
 'use client'
 
+import { useIsMobile } from '@/hooks/useIsMobile'
+
 const STEPS = [
   {
     text: 'Apex has automatically generated a Luma event page for your Velo demo session — complete with your decoded profile, session agenda, and speaker bio.',
@@ -13,6 +15,7 @@ const STEPS = [
 ]
 
 export default function SessionConfirmationPage() {
+  const isMobile = useIsMobile()
   return (
     <div
       className="min-h-screen"
@@ -83,7 +86,7 @@ export default function SessionConfirmationPage() {
           <h1
             className="font-jakarta font-black"
             style={{
-              fontSize: 32,
+              fontSize: isMobile ? 22 : 32,
               color: '#1a0a00',
               lineHeight: 1.15,
               marginBottom: 12,
@@ -153,7 +156,7 @@ export default function SessionConfirmationPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr 1fr',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr',
               gap: 16,
             }}
           >

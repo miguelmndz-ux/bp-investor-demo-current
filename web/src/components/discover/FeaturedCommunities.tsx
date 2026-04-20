@@ -17,7 +17,7 @@ export default function FeaturedCommunities({ communities, onSelect }: FeaturedC
           Show all
         </a>
       </div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {communities.map((community) => (
           <CommunityCard
             key={community.id}

@@ -10,11 +10,13 @@ import { trendingPrograms } from '@/lib/fixtures/discover-programs'
 import { trendingSessions, upcomingSessions } from '@/lib/fixtures/discover-sessions'
 import { featuredCommunities } from '@/lib/fixtures/discover-communities'
 import type { DiscoverSession, DiscoverProgram, DiscoverCommunity } from '@/lib/fixtures/discover-types'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 type PreviewType = 'session' | 'program' | 'community' | null
 type PreviewData = DiscoverSession | DiscoverProgram | DiscoverCommunity | null
 
 export default function DiscoverPage() {
+  const isMobile = useIsMobile()
   const [panelOpen, setPanelOpen] = useState(false)
   const [previewType, setPreviewType] = useState<PreviewType>(null)
   const [previewData, setPreviewData] = useState<PreviewData>(null)
@@ -32,7 +34,7 @@ export default function DiscoverPage() {
   return (
     <div
       className="transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
-      style={{ marginRight: panelOpen ? 380 : 0 }}
+      style={{ marginRight: (!isMobile && panelOpen) ? 380 : 0 }}
     >
       <FilterPills />
       <TrendingPrograms

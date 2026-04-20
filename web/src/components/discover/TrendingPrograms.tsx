@@ -17,7 +17,7 @@ export default function TrendingPrograms({ programs, onSelect }: TrendingProgram
           Show all
         </a>
       </div>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
         {programs.map((program) => (
           <ProgramCard
             key={program.id}

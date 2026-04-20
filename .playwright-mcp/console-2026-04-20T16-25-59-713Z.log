@@ -1,0 +1,20 @@
+[     167ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[     185ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1154257ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1154340ms] [LOG] [Fast Refresh] done in 305ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1172827ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1172881ms] [LOG] [Fast Refresh] done in 126ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1438751ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1438791ms] [LOG] [Fast Refresh] done in 119ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1443924ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1444097ms] [LOG] [Fast Refresh] done in 119ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1458733ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1458773ms] [LOG] [Fast Refresh] done in 134ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1474828ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1474873ms] [LOG] [Fast Refresh] done in 134ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1482163ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1482360ms] [LOG] [Fast Refresh] done in 127ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1781480ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1781718ms] [LOG] [Fast Refresh] done in 1976ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1784877ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431
+[ 1784920ms] [LOG] [Fast Refresh] done in 123ms @ http://localhost:3000/_next/static/chunks/0lpp_next_dist_0y3bfsx._.js:2431

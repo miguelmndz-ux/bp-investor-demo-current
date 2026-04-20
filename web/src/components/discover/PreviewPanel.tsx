@@ -3,7 +3,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { createPortal } from 'react-dom'
+import { Copy, ArrowSquareOut } from '@phosphor-icons/react'
 import type { DiscoverSession, DiscoverProgram, DiscoverCommunity } from '@/lib/fixtures/discover-types'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 type PreviewType = 'session' | 'program' | 'community' | null
 type PreviewData = DiscoverSession | DiscoverProgram | DiscoverCommunity | null
@@ -126,6 +128,7 @@ function ConfirmationBox() {
 }
 
 function SessionPreview({ session, onClose }: { session: DiscoverSession; onClose: () => void }) {
+  const isMobile = useIsMobile()
   const [registered, setRegistered] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false)
 
@@ -141,10 +144,10 @@ function SessionPreview({ session, onClose }: { session: DiscoverSession; onClos
   return (
     <>
       <div className="flex flex-col h-full">
-        <PreviewToolbar onClose={onClose} />
+        {!isMobile && <PreviewToolbar onClose={onClose} />}
 
-        {/* 1:1 cover image — shrinks if panel is short */}
-        <div className={`${registered ? 'w-1/2 mx-auto' : 'w-full'} rounded-[14px] overflow-hidden mb-4 bg-primary/[0.06] flex-shrink min-h-0`} style={{ aspectRatio: '1/1' }}>
+        {/* 1:1 cover image — smaller on mobile */}
+        <div className={`${registered ? 'w-1/2' : isMobile ? 'w-3/5' : 'w-full'} mx-auto rounded-[14px] overflow-hidden mb-4 bg-primary/[0.06] flex-shrink min-h-0`} style={{ aspectRatio: '1/1' }}>
           <img src={session.image} alt={session.title} className="w-full h-full object-cover" />
         </div>
 
@@ -262,26 +265,85 @@ function CTAButton({ label, onClick }: { label: string; onClick?: () => void }) 
 }
 
 export default function PreviewPanel({ type, data, open, onClose }: PreviewPanelProps) {
+  const isMobile = useIsMobile()
+
+  useEffect(() => {
+    if (isMobile && open) {
+      document.body.style.overflow = 'hidden'
+      return () => { document.body.style.overflow = '' }
+    }
+  }, [isMobile, open])
+
   return (
-    <div
-      className={`fixed top-16 right-0 bottom-0 w-[380px] z-[45] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        open ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-      }`}
-      style={{
-        background: 'rgba(255,255,255,0.45)',
-        backdropFilter: 'blur(40px)',
-        WebkitBackdropFilter: 'blur(40px)',
-        borderLeft: '1px solid rgba(255,255,255,0.3)',
-        boxShadow: '-8px 0 40px rgba(74,37,6,0.12)',
-      }}
-    >
+    <>
+    {isMobile && open && (
       <div
-        className="h-full p-6 flex flex-col relative overflow-hidden"
+        className="fixed inset-0 z-[44]"
+        style={{ background: 'rgba(0,0,0,0.3)' }}
+        onClick={onClose}
+      />
+    )}
+    <div
+      className={
+        isMobile
+          ? `fixed bottom-0 left-0 right-0 z-[45] flex flex-col transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-t-3xl ${
+              open ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
+            }`
+          : `fixed top-16 right-0 bottom-0 w-[380px] z-[45] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              open ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
+            }`
+      }
+      style={
+        isMobile
+          ? {
+              maxHeight: '85vh',
+              background: 'rgba(255,255,255,0.92)',
+              backdropFilter: 'blur(40px)',
+              WebkitBackdropFilter: 'blur(40px)',
+              borderTop: '1px solid rgba(255,255,255,0.3)',
+              boxShadow: '0 -8px 40px rgba(74,37,6,0.12)',
+            }
+          : {
+              background: 'rgba(255,255,255,0.45)',
+              backdropFilter: 'blur(40px)',
+              WebkitBackdropFilter: 'blur(40px)',
+              borderLeft: '1px solid rgba(255,255,255,0.3)',
+              boxShadow: '-8px 0 40px rgba(74,37,6,0.12)',
+            }
+      }
+    >
+      {/* Mobile sticky header: drag handle + action buttons */}
+      {isMobile && (
+        <div className="shrink-0 pt-3 px-5 pb-4">
+          <div className="flex justify-center mb-4">
+            <div className="w-8 h-1 rounded-full bg-stone-300" />
+          </div>
+          <div className="flex items-center justify-end gap-2">
+            <button
+              className="h-10 px-5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-colors hover:bg-primary/[0.12]"
+              style={{ background: 'rgba(156,63,0,0.06)', color: '#9c3f00' }}
+            >
+              <Copy size={15} weight="bold" />
+              Copy Link
+            </button>
+            <button
+              className="h-10 px-5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-colors hover:bg-primary/[0.12]"
+              style={{ background: 'rgba(156,63,0,0.06)', color: '#9c3f00' }}
+            >
+              Event Page
+              <ArrowSquareOut size={15} weight="bold" />
+            </button>
+          </div>
+        </div>
+      )}
+      <div
+        className={`p-6 flex flex-col relative ${isMobile ? 'flex-1 overflow-y-auto' : 'h-full overflow-hidden'}`}
       >
         {type === 'session' && data && <SessionPreview session={data as DiscoverSession} onClose={onClose} />}
         {type === 'program' && data && <ProgramPreview program={data as DiscoverProgram} />}
         {type === 'community' && data && <CommunityPreview community={data as DiscoverCommunity} />}
       </div>
     </div>
+    </>
   )
 }

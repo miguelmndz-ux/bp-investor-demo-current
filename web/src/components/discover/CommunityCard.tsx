@@ -9,8 +9,7 @@ export default function CommunityCard({ community, onClick }: CommunityCardProps
   return (
     <div
       onClick={onClick}
-      className="group relative rounded-[18px] overflow-hidden cursor-pointer"
-      style={{ aspectRatio: '3/4' }}
+      className="group relative rounded-[18px] overflow-hidden cursor-pointer aspect-[16/7] md:aspect-[3/4]"
     >
       <div
         className="absolute inset-0 transition-[filter] duration-300"

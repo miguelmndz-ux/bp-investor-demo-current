@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import type { DiscoverSession } from '@/lib/fixtures/discover-types'
 import SessionCard from './SessionCard'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface SessionCarouselProps {
   title: string
@@ -21,6 +22,7 @@ const arrowStyle = {
 const SIDEBAR_WIDTH = 80 // ml-20 = 80px
 
 export default function SessionCarousel({ title, sessions, onSelect }: SessionCarouselProps) {
+  const isMobile = useIsMobile()
   const outerRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   const [scrolled, setScrolled] = useState(false)
@@ -30,6 +32,7 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
 
   // Extend carousel to right edge AND left edge (to sidebar), responsive to panel open/close
   useEffect(() => {
+    if (isMobile) return  // CSS handles layout on mobile
     const el = outerRef.current
     if (!el || !el.parentElement) return
 
@@ -67,7 +70,7 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
       window.removeEventListener('resize', measure)
       ro.disconnect()
     }
-  }, [])
+  }, [isMobile])
 
   // Track scroll position to show/hide left arrow and fade
   useEffect(() => {
@@ -87,8 +90,8 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
   const fadeLeft = -leftOffset
 
   return (
-    <div ref={outerRef} className="mb-9" style={{ clipPath: 'inset(0 0 0 -9999px)' }}>
-      <div className="flex items-baseline justify-between mb-3.5 pr-12">
+    <div ref={outerRef} className="mb-9" style={isMobile ? undefined : { clipPath: 'inset(0 0 0 -9999px)' }}>
+      <div className={`flex items-baseline justify-between mb-3.5 ${isMobile ? '' : 'pr-12'}`}>
         <h2 className="font-jakarta font-black text-[22px] text-on-surface">
           {title}
         </h2>
@@ -96,69 +99,106 @@ export default function SessionCarousel({ title, sessions, onSelect }: SessionCa
           Show all
         </a>
       </div>
-      <div className="relative" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
-        <div
-          ref={scrollRef}
-          className="grid grid-flow-col gap-[2px] overflow-x-auto pb-1 pt-1"
-          style={{ gridAutoColumns: '220px', scrollbarWidth: 'none' }}
-        >
-          {sessions.map((session) => (
-            <SessionCard
-              key={session.id}
-              session={session}
-              onClick={() => onSelect(session)}
-            />
-          ))}
+
+      {isMobile ? (
+        /* Mobile: scroll-snap carousel with edge fades */
+        <div className="-ml-3.5 -mr-6 relative">
+          {/* Left fade — visible once scrolled */}
+          <div
+            className="absolute left-0 top-0 bottom-2 w-12 z-10 pointer-events-none transition-opacity duration-300"
+            style={{
+              background: 'linear-gradient(to right, rgba(255,243,234,0.9) 0%, rgba(255,243,234,0.25) 70%, transparent 100%)',
+              opacity: scrolled ? 1 : 0,
+            }}
+          />
+          {/* Right fade — always visible */}
+          <div
+            className="absolute right-0 top-0 bottom-2 w-12 z-10 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to left, rgba(255,243,234,0.9) 0%, rgba(255,243,234,0.25) 70%, transparent 100%)',
+            }}
+          />
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto gap-3 pb-2 pt-1 pr-6 hide-scrollbar"
+            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+          >
+            {sessions.map((session) => (
+              <div key={session.id} className="shrink-0 w-[200px]" style={{ scrollSnapAlign: 'start' }}>
+                <SessionCard
+                  session={session}
+                  onClick={() => onSelect(session)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
+      ) : (
+        /* Desktop: JS-measured full-bleed carousel */
+        <div className="relative" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
+          <div
+            ref={scrollRef}
+            className="grid grid-flow-col gap-[2px] overflow-x-auto pb-1 pt-1"
+            style={{ gridAutoColumns: '220px', scrollbarWidth: 'none' }}
+          >
+            {sessions.map((session) => (
+              <SessionCard
+                key={session.id}
+                session={session}
+                onClick={() => onSelect(session)}
+              />
+            ))}
+          </div>
 
-        {/* Left fade + button — visible once scrolled */}
-        <div
-          className="absolute top-0 bottom-0 pointer-events-none transition-opacity duration-300"
-          style={{
-            left: `${fadeLeft}px`,
-            width: `${leftOffset + 56}px`,
-            background: 'linear-gradient(to left, transparent 0%, rgba(255, 243, 234, 0.25) 60%, rgba(255, 243, 234, 0.7) 100%)',
-            opacity: scrolled ? 1 : 0,
-          }}
-        />
-        <button
-          onClick={scrollLeft}
-          className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 z-10"
-          style={{
-            left: `${btnLeft}px`,
-            ...arrowStyle,
-            opacity: hovering && scrolled ? 1 : 0,
-            pointerEvents: hovering && scrolled ? 'auto' : 'none',
-          }}
-        >
-          <span className="material-symbols-outlined text-on-background" style={{ fontSize: '18px' }}>
-            chevron_left
-          </span>
-        </button>
+          {/* Left fade + button — visible once scrolled */}
+          <div
+            className="absolute top-0 bottom-0 pointer-events-none transition-opacity duration-300"
+            style={{
+              left: `${fadeLeft}px`,
+              width: `${leftOffset + 56}px`,
+              background: 'linear-gradient(to left, transparent 0%, rgba(255, 243, 234, 0.25) 60%, rgba(255, 243, 234, 0.7) 100%)',
+              opacity: scrolled ? 1 : 0,
+            }}
+          />
+          <button
+            onClick={scrollLeft}
+            className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 z-10"
+            style={{
+              left: `${btnLeft}px`,
+              ...arrowStyle,
+              opacity: hovering && scrolled ? 1 : 0,
+              pointerEvents: hovering && scrolled ? 'auto' : 'none',
+            }}
+          >
+            <span className="material-symbols-outlined text-on-background" style={{ fontSize: '18px' }}>
+              chevron_left
+            </span>
+          </button>
 
-        {/* Right fade + button — always visible, mirrors left fade width */}
-        <div
-          className="absolute top-0 right-0 bottom-0 pointer-events-none"
-          style={{
-            width: `${leftOffset + 56}px`,
-            background: 'linear-gradient(to right, transparent 0%, rgba(255, 243, 234, 0.25) 60%, rgba(255, 243, 234, 0.7) 100%)',
-          }}
-        />
-        <button
-          onClick={scrollRight}
-          className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 z-10"
-          style={{
-            right: 48,
-            ...arrowStyle,
-            opacity: hovering ? 1 : 0,
-            pointerEvents: hovering ? 'auto' : 'none',
-          }}
-        >
-          <span className="material-symbols-outlined text-on-background" style={{ fontSize: '18px' }}>
-            chevron_right
-          </span>
-        </button>
-      </div>
+          {/* Right fade + button — always visible, mirrors left fade width */}
+          <div
+            className="absolute top-0 right-0 bottom-0 pointer-events-none"
+            style={{
+              width: `${leftOffset + 56}px`,
+              background: 'linear-gradient(to right, transparent 0%, rgba(255, 243, 234, 0.25) 60%, rgba(255, 243, 234, 0.7) 100%)',
+            }}
+          />
+          <button
+            onClick={scrollRight}
+            className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 z-10"
+            style={{
+              right: 48,
+              ...arrowStyle,
+              opacity: hovering ? 1 : 0,
+              pointerEvents: hovering ? 'auto' : 'none',
+            }}
+          >
+            <span className="material-symbols-outlined text-on-background" style={{ fontSize: '18px' }}>
+              chevron_right
+            </span>
+          </button>
+        </div>
+      )}
     </div>
   )
 }

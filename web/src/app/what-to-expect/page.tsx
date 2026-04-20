@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const FEATURE_ITEMS = [
   { icon: 'smart_toy', label: 'Browser Agent' },
@@ -59,6 +60,7 @@ const CHECKLIST = [
 
 export default function WhatToExpectPage() {
   const router = useRouter()
+  const isMobile = useIsMobile()
 
   return (
     <div
@@ -86,7 +88,7 @@ export default function WhatToExpectPage() {
       />
 
       {/* Header */}
-      <header style={{ paddingTop: 28, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+      <header style={{ paddingTop: 20, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
         <div className="flex items-baseline">
           <span
             className="font-jakarta font-black"
@@ -101,63 +103,212 @@ export default function WhatToExpectPage() {
       </header>
 
       {/* Main content */}
-      <main style={{ padding: '24px 24px 96px', maxWidth: 960, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <main style={{ padding: '16px 24px 96px', maxWidth: 960, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* Hero */}
         <header style={{ textAlign: 'center', marginBottom: 24 }}>
           <h1
             className="font-jakarta font-black"
             style={{
-              fontSize: 46,
+              fontSize: isMobile ? 28 : 46,
               color: '#1A0A00',
               letterSpacing: '-0.03em',
               lineHeight: 1.1,
-              marginBottom: 16,
+              marginBottom: 24,
             }}
           >
             Here's what we built for your launch,{' '}
             <span style={{ color: '#9c3f00' }}>Ajay.</span>
           </h1>
-          <p style={{ fontSize: 16, color: '#9e6b47', maxWidth: 580, margin: '0 auto', lineHeight: 1.65 }}>
-            Velo Live: Async Video AI hit{' '}
+          <p style={{ fontSize: 16, color: '#9e6b47', maxWidth: 660, margin: '0 auto', lineHeight: 1.65 }}>
+            Velo Live hit{' '}
             <strong style={{ color: '#4a2506', fontWeight: 700 }}>#1 Product of the Day</strong>
-            {' '}on Product Hunt. Let's show the builder community the AI pipeline turning raw recordings into share-ready video messages — in one take.
+            {' '}on Product Hunt. Let's show the builder community the AI pipeline that turns raw recordings into share-ready video, in one take.
           </p>
         </header>
 
         {/* TOC strip */}
-        <div className="flex gap-4 justify-center" style={{ marginTop: 24, marginBottom: 40 }}>
+        <div className="flex gap-3 justify-center" style={{ marginTop: 28, marginBottom: 36, flexWrap: 'wrap' }}>
           {[
-            { href: '#decode',  icon: 'psychology', label: 'Velo Decoded',        color: '#2563eb' },
-            { href: '#course',  icon: 'bolt',       label: 'Velo Course',          color: '#059669' },
-            { href: '#session', icon: 'live_tv',    label: 'Build with Video AI',  color: '#c2780a' },
-          ].map(({ href, icon, label, color }) => (
+            { href: '#decode',  icon: 'psychology', label: 'Velo Decoded',       color: '#9c3f00', num: '01' },
+            { href: '#course',  icon: 'bolt',       label: 'Velo Course',         color: '#9c3f00', num: '02' },
+            { href: '#session', icon: 'live_tv',    label: 'Build with Video AI', color: '#9c3f00', num: '03' },
+          ].map(({ href, icon, label, color, num }) => (
             <a
               key={href}
               href={href}
-              className="premium-glass rounded-2xl hover:opacity-80 transition-opacity"
-              style={{ minWidth: 160, padding: 16, textDecoration: 'none', display: 'block' }}
+              className="hover:opacity-80 transition-opacity"
+              style={{
+                textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10,
+                padding: '10px 18px', borderRadius: 9999,
+                background: 'rgba(255,255,255,0.55)',
+                border: '1px solid rgba(255,255,255,0.7)',
+                backdropFilter: 'blur(12px)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              }}
             >
-              <span
-                className="material-symbols-outlined"
-                style={{ fontSize: 28, color, display: 'block', marginBottom: 8, lineHeight: 1 }}
-              >
-                {icon}
+              <span style={{ fontSize: 11, fontWeight: 800, color: 'rgba(156,63,0,0.35)', letterSpacing: '0.05em', minWidth: 18 }}>
+                {num}
               </span>
-              <p className="font-jakarta font-black text-sm text-on-background" style={{ lineHeight: 1.3 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 18, color, lineHeight: 1 }}>{icon}</span>
+              <span className="font-jakarta font-black" style={{ fontSize: 13, color: '#1A0A00', letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
                 {label}
-              </p>
+              </span>
             </a>
           ))}
         </div>
+
+        {/* ── Decode File card ── */}
+        <section
+          id="decode"
+          className="premium-glass"
+          style={{
+            borderRadius: 24, padding: isMobile ? '24px 20px' : '40px 48px', marginBottom: 20,
+            display: 'flex', flexDirection: isMobile ? 'column' : 'row-reverse', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? 24 : 48,
+            position: 'relative',
+          }}
+        >
+          <div style={{
+            position: 'absolute', bottom: -24, left: -24, pointerEvents: 'none',
+            width: 128, height: 128, borderRadius: '50%',
+            background: 'rgba(163,56,0,0.08)', filter: 'blur(48px)',
+          }} />
+
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center',
+              padding: '4px 12px', borderRadius: 9999,
+              background: 'rgba(156,63,0,0.09)',
+              marginBottom: 20,
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#9c3f00', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                Decode Theme
+              </span>
+            </div>
+            <h2
+              className="font-jakarta font-black"
+              style={{ fontSize: isMobile ? 22 : 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
+            >
+              Velo Decoded
+            </h2>
+            <p style={{ fontSize: 15, color: '#9e6b47', lineHeight: 1.65, marginBottom: 24 }}>
+              A technical breakdown of Velo's AI video pipeline — from browser agent capture to AI avatar synthesis and automated script generation.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 10 }}>
+              {DECODE_ITEMS.map(({ icon, label }) => (
+                <div key={label} style={{
+                  padding: '14px 10px',
+                  borderRadius: 16,
+                  background: 'rgba(255,255,255,0.45)',
+                  border: '1px solid rgba(255,255,255,0.55)',
+                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  textAlign: 'center', gap: 8,
+                }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#9c3f00' }}>{icon}</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#4a2506', textTransform: 'uppercase', letterSpacing: '0.04em', lineHeight: 1.3 }}>
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ width: isMobile ? '100%' : '44%', flexShrink: 0 }}>
+            <div style={{
+              aspectRatio: '1800/822', borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(255,255,255,0.55)',
+              boxShadow: '0 8px 32px -8px rgba(0,0,0,0.12)',
+            }}>
+              <img
+                src="/apex/velo-decode-preview.png"
+                alt="Velo Live Decode File"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Course File card ── */}
+        <section
+          id="course"
+          className="premium-glass"
+          style={{
+            borderRadius: 24, padding: isMobile ? '24px 20px' : '40px 48px', marginBottom: 20,
+            display: 'flex', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? 24 : 48,
+            flexDirection: isMobile ? 'column' : 'row',
+            position: 'relative',
+          }}
+        >
+          <div style={{
+            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none', width: 256, height: 256, borderRadius: '50%',
+            background: 'rgba(163,56,0,0.08)', filter: 'blur(48px)',
+          }} />
+
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center',
+              padding: '4px 12px', borderRadius: 9999,
+              background: 'rgba(156,63,0,0.09)',
+              marginBottom: 20,
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#9c3f00', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                Learning &amp; Interaction
+              </span>
+            </div>
+            <h2
+              className="font-jakarta font-black"
+              style={{ fontSize: isMobile ? 22 : 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
+            >
+              Velo Course
+            </h2>
+            <p style={{ fontSize: 15, color: '#9e6b47', lineHeight: 1.65, marginBottom: 24 }}>
+              An interactive course where participants go hands-on with Velo's core workflow — capturing demos, generating AI avatars, and shipping polished video messages without retakes.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 10 }}>
+              {COURSE_ITEMS.map(({ icon, label }) => (
+                <div key={label} style={{
+                  padding: '14px 10px',
+                  borderRadius: 16,
+                  background: 'rgba(255,255,255,0.45)',
+                  border: '1px solid rgba(255,255,255,0.55)',
+                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  textAlign: 'center', gap: 8,
+                }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#9c3f00' }}>{icon}</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#4a2506', textTransform: 'uppercase', letterSpacing: '0.04em', lineHeight: 1.3 }}>
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ width: isMobile ? '100%' : '44%', flexShrink: 0 }}>
+            <div style={{
+              aspectRatio: '1800/822', borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(255,255,255,0.55)',
+              boxShadow: '0 8px 32px -8px rgba(0,0,0,0.12)',
+            }}>
+              <img
+                src="/apex/velo-microcourse-preview.png"
+                alt="Velo Live Course File"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+              />
+            </div>
+          </div>
+        </section>
 
         {/* ── Live Session card ── */}
         <section
           id="session"
           className="premium-glass"
           style={{
-            borderRadius: 24, padding: '40px 48px', marginBottom: 20,
-            display: 'flex', alignItems: 'center', gap: 48,
+            borderRadius: 24, padding: isMobile ? '24px 20px' : '40px 48px', marginBottom: 56,
+            display: 'flex', alignItems: isMobile ? 'stretch' : 'center', gap: isMobile ? 24 : 48,
+            flexDirection: isMobile ? 'column' : 'row',
             position: 'relative',
           }}
         >
@@ -194,7 +345,7 @@ export default function WhatToExpectPage() {
 
             <h2
               className="font-jakarta font-black"
-              style={{ fontSize: 36, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
+              style={{ fontSize: isMobile ? 22 : 36, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
             >
               Build with Video AI
             </h2>
@@ -202,7 +353,7 @@ export default function WhatToExpectPage() {
               A live deep-dive into how Velo turns raw screen recordings into polished video messages using a browser agent, AI avatar, and automated script generation — all in one take.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 12 }}>
               {FEATURE_ITEMS.map(({ icon, label }) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{
@@ -220,7 +371,7 @@ export default function WhatToExpectPage() {
           </div>
 
           {/* Video preview */}
-          <div style={{ width: '44%', flexShrink: 0 }}>
+          <div style={{ width: isMobile ? '100%' : '44%', flexShrink: 0 }}>
             <div style={{
               aspectRatio: '16/9', borderRadius: 16, overflow: 'hidden',
               position: 'relative', cursor: 'pointer',
@@ -249,148 +400,6 @@ export default function WhatToExpectPage() {
           </div>
         </section>
 
-        {/* ── Decode File card ── */}
-        <section
-          id="decode"
-          className="premium-glass"
-          style={{
-            borderRadius: 24, padding: '40px 48px', marginBottom: 20,
-            display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', gap: 48,
-            position: 'relative',
-          }}
-        >
-          <div style={{
-            position: 'absolute', bottom: -24, left: -24, pointerEvents: 'none',
-            width: 128, height: 128, borderRadius: '50%',
-            background: 'rgba(59,130,246,0.09)', filter: 'blur(48px)',
-          }} />
-
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center',
-              padding: '4px 12px', borderRadius: 9999,
-              background: 'rgba(37,99,235,0.09)',
-              marginBottom: 20,
-            }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                Decode Theme
-              </span>
-            </div>
-            <h2
-              className="font-jakarta font-black"
-              style={{ fontSize: 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
-            >
-              Velo Decoded
-            </h2>
-            <p style={{ fontSize: 15, color: '#9e6b47', lineHeight: 1.65, marginBottom: 24 }}>
-              A technical breakdown of Velo's AI video pipeline — from browser agent capture to AI avatar synthesis and automated script generation.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
-              {DECODE_ITEMS.map(({ icon, label }) => (
-                <div key={label} style={{
-                  padding: '14px 10px',
-                  borderRadius: 16,
-                  background: 'rgba(255,255,255,0.45)',
-                  border: '1px solid rgba(255,255,255,0.55)',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center',
-                  textAlign: 'center', gap: 8,
-                }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#2563eb' }}>{icon}</span>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#4a2506', textTransform: 'uppercase', letterSpacing: '0.04em', lineHeight: 1.3 }}>
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ width: '44%', flexShrink: 0 }}>
-            <div style={{
-              aspectRatio: '4/3', borderRadius: 16,
-              overflow: 'hidden',
-              border: '1px solid rgba(255,255,255,0.55)',
-              boxShadow: '0 8px 32px -8px rgba(0,0,0,0.12)',
-            }}>
-              <img
-                src="/apex/velo-decode-preview.png"
-                alt="Velo Live Decode File"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ── Course File card ── */}
-        <section
-          id="course"
-          className="premium-glass"
-          style={{
-            borderRadius: 24, padding: '40px 48px', marginBottom: 56,
-            display: 'flex', alignItems: 'center', gap: 48,
-            position: 'relative',
-          }}
-        >
-          <div style={{
-            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-            pointerEvents: 'none', width: 256, height: 256, borderRadius: '50%',
-            background: 'rgba(16,185,129,0.05)', filter: 'blur(48px)',
-          }} />
-
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center',
-              padding: '4px 12px', borderRadius: 9999,
-              background: 'rgba(16,185,129,0.09)',
-              marginBottom: 20,
-            }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                Learning &amp; Interaction
-              </span>
-            </div>
-            <h2
-              className="font-jakarta font-black"
-              style={{ fontSize: 32, color: '#1A0A00', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 12 }}
-            >
-              Velo Course
-            </h2>
-            <p style={{ fontSize: 15, color: '#9e6b47', lineHeight: 1.65, marginBottom: 24 }}>
-              An interactive course where participants go hands-on with Velo's core workflow — capturing demos, generating AI avatars, and shipping polished video messages without retakes.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
-              {COURSE_ITEMS.map(({ icon, label }) => (
-                <div key={label} style={{
-                  padding: '14px 10px',
-                  borderRadius: 16,
-                  background: 'rgba(255,255,255,0.45)',
-                  border: '1px solid rgba(255,255,255,0.55)',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center',
-                  textAlign: 'center', gap: 8,
-                }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#059669' }}>{icon}</span>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#4a2506', textTransform: 'uppercase', letterSpacing: '0.04em', lineHeight: 1.3 }}>
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ width: '44%', flexShrink: 0 }}>
-            <div style={{
-              aspectRatio: '4/3', borderRadius: 16,
-              overflow: 'hidden',
-              border: '1px solid rgba(255,255,255,0.55)',
-              boxShadow: '0 8px 32px -8px rgba(0,0,0,0.12)',
-            }}>
-              <img
-                src="/apex/velo-microcourse-preview.png"
-                alt="Velo Live Course File"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-              />
-            </div>
-          </div>
-        </section>
-
         {/* ── AI Team ── */}
         <p style={{
           fontSize: 11, fontWeight: 800, textTransform: 'uppercase',
@@ -399,7 +408,7 @@ export default function WhatToExpectPage() {
         }}>
           Managed by Your AI Team
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 56 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 20, marginBottom: 56 }}>
           {AI_TEAM.map(({ name, role, desc, icon, color, bg, aura }) => (
             <div
               key={name}
@@ -437,7 +446,7 @@ export default function WhatToExpectPage() {
         </div>
 
         {/* ── Next steps + CTA ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 24 : 40, alignItems: 'start' }}>
           {/* Checklist */}
           <div>
             <h3

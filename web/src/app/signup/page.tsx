@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const SESSION_CARDS = [
   { label: 'Live Build Session',    bg: 'rgba(255, 237, 213, 0.85)' },
@@ -63,6 +64,7 @@ const PARTNER_LOGOS = [
 
 export default function SignupPage() {
   const router = useRouter()
+  const isMobile = useIsMobile()
 
   return (
     <div
@@ -70,9 +72,11 @@ export default function SignupPage() {
       style={{
         background: 'linear-gradient(150deg, #fffaf7 0%, #fff1e6 100%)',
         fontFamily: 'var(--font-inter), Inter, sans-serif',
+        flexDirection: isMobile ? 'column' : 'row',
       }}
     >
       {/* ── Left panel ── */}
+      {!isMobile && (
       <div
         className="flex flex-col"
         style={{
@@ -186,11 +190,12 @@ export default function SignupPage() {
           ))}
         </div>
       </div>
+      )}
 
       {/* ── Right panel ── */}
       <div
         className="flex-1 flex items-center justify-center"
-        style={{ background: '#FFFFFF', padding: '48px 40px' }}
+        style={{ background: '#FFFFFF', padding: isMobile ? '32px 20px' : '48px 40px' }}
       >
         <div style={{ width: '100%', maxWidth: 380 }}>
 
