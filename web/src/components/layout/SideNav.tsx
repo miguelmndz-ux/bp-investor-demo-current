@@ -163,7 +163,7 @@ export default function SideNav() {
         </NavItem>
         <div className="relative">
           {scanProgress >= 0 && <ScanProgressDot progress={scanProgress} />}
-          <NavItem href="/apex" label="Apex" active={pathname.startsWith('/apex')}>
+          <NavItem href="/agents" label="Agents" active={pathname.startsWith('/agents') || pathname.startsWith('/apex')}>
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>auto_awesome</span>
           </NavItem>
         </div>
