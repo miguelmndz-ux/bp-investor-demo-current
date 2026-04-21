@@ -128,6 +128,35 @@ Default nav icons at ~24px are fine with just the class.
 
 Use arbitrary values like `rounded-[10px]` when the tokens don't fit (e.g. tooltip pills, small icon containers).
 
+### `grid-cols-N` inside constrained `max-w-*` produces narrow cards
+
+Placing a `grid-cols-5` (or similar) inside a `max-w-5xl` container (1024px) yields ~185px-wide cards, which looks broken. For grids that should fill the content area, drop the `max-w-*` constraint and use `w-full` — let the AppShell's `px-12` provide the outer margin.
+
+```tsx
+// ✅ fills the content area — cards are wide enough
+<div className="w-full">
+  <div className="grid grid-cols-5 gap-6">...</div>
+</div>
+
+// ❌ squishes 5 cards into 1024px — each card is only ~185px
+<div className="w-full max-w-5xl">
+  <div className="grid grid-cols-5 gap-6">...</div>
+</div>
+```
+
+### Next.js 15: dynamic route `params` is a Promise
+
+The App Router in Next.js 15 passes `params` as a `Promise`, not a plain object. Always unwrap with `use()` from React — forgetting this causes a silent runtime error where destructured values are `undefined`.
+
+```tsx
+import { use } from 'react'
+
+export default function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  ...
+}
+```
+
 ### Tooltips/popovers inside `overflow-y-auto` containers
 
 CSS forces `overflow-x: auto` whenever `overflow-y: auto` is set on the same element, clipping any absolutely-positioned children horizontally. Use `createPortal` + `position: fixed` + `getBoundingClientRect()` for anything that needs to escape a scroll container:
@@ -249,7 +278,43 @@ if (!ctx) return                       // still guard at runtime
 
 See `web/src/components/discover/SessionCarousel.tsx` for this pattern.
 
+### Off-by-one crash at state phase transitions
+
+When a counter state advances past the last valid index and a phase-change state update is scheduled in the same effect, there is a one-render window where the counter is out of bounds but the new phase hasn't applied yet. This causes an undefined array access that crashes the component silently.
+
+**Fix:** Guard the render with `index < array.length` before accessing `array[index]`:
+
+```tsx
+// ✅ safe — skips the one bad render, falls through to the complete branch
+{scanPhase === 'scanning' && activePhaseIndex < PHASES.length ? (
+  <StepRow phase={PHASES[activePhaseIndex]} />
+) : (
+  <CompletedView />
+)}
+
+// ❌ crashes — PHASES[5] is undefined when activePhaseIndex overshoots
+{scanPhase === 'scanning' ? (
+  <StepRow phase={PHASES[activePhaseIndex]} />
+) : (
+  <CompletedView />
+)}
+```
+
 ## Architecture Patterns
+
+### Vertical centering for landing-style pages
+
+When a page should be centered in the viewport (no scrollable content), wrap the content in:
+
+```tsx
+<div className="flex flex-col items-center justify-center min-h-[calc(100vh-14rem)]">
+```
+
+The `14rem` accounts for TopNav (`h-16` = 4rem) + main's `pt-28` (7rem) + ~3rem buffer. Use this pattern consistently for intro/landing screens like the agents page.
+
+### "Coming soon" routing over disabled UI
+
+For unbuilt features in the demo, don't visually disable cards with `opacity-50`, lock icons, or `cursor-not-allowed` — disabled UI reads as broken. Instead, route inactive items to a per-feature coming soon screen. See `web/src/app/agents/[slug]/page.tsx` as the reference implementation.
 
 ### Adding a new screen
 
@@ -366,6 +431,7 @@ Each component gets a test file at `__tests__/<ComponentName>.test.tsx` next to 
 - **Flexible routing:** Don't lock in a rigid navigation structure. New routes are added one at a time as prompted.
 - **Tailwind v3:** The project uses Tailwind v3, not v4. Do not upgrade or use v4 syntax.
 - **No competitors in demo data:** Don't feature competing platforms (e.g., Build Club) in fixture data. Use non-competing AI communities instead.
+- **No ALL-CAPS labels:** Never use `uppercase` Tailwind class or CSS `text-transform: uppercase` on sentence-style labels (status text, headlines, CTAs). Uppercase is reserved for micro-labels like category tags and badge eyebrows — never for UI copy that echoes the product voice.
 
 ## Screen Taxonomy
 

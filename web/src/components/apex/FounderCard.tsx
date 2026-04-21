@@ -7,7 +7,7 @@ interface FounderCardProps {
 
 export default function FounderCard({ founder, onOutreachDraft }: FounderCardProps) {
   return (
-    <div className="premium-glass -mx-6 md:mx-0 rounded-none md:rounded-xl p-4 md:p-6">
+    <div className="premium-glass rounded-2xl md:rounded-xl p-4 md:p-6">
       <div className="flex gap-4 items-start mb-4">
         <div className="w-14 h-14 rounded-full shadow-xl ring-4 ring-orange-100/40 shrink-0 border-2 border-white overflow-hidden">
           <img src={founder.avatar} alt={founder.name} className="w-full h-full object-cover" />

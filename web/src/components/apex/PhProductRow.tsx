@@ -23,8 +23,11 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
 
   if (isMobile) {
     return (
-      <div className="flex items-center gap-2 p-2.5 rounded-2xl bg-white/30 border border-orange-100/30 shadow-sm">
+      <div className="flex items-center gap-2 p-2.5 rounded-2xl bg-white/30 border border-orange-100/30 shadow-sm min-w-[430px]">
         <span className="text-[11px] font-black text-stone-400 w-5 text-center shrink-0">{rank}</span>
+        <span className={`text-[8px] font-extrabold px-1.5 py-0.5 rounded-[6px] bg-white text-on-background whitespace-nowrap w-[60px] text-center shrink-0 ${status.className}`}>
+          {status.label}
+        </span>
         <div className="w-8 h-8 rounded-md overflow-hidden shadow-sm shrink-0 bg-white border border-stone-100">
           <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
         </div>
@@ -37,10 +40,16 @@ export default function PhProductRow({ product, rank, onPreviewClick }: PhProduc
           </Link>
           <p className="text-[10px] text-stone-500 font-bold truncate leading-tight">{product.category}</p>
         </div>
-        <div className="w-[68px] flex items-center justify-center shrink-0">
-          <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded-[6px] bg-white text-on-background whitespace-nowrap ${status.className}`}>
-            {status.label}
-          </span>
+        <div className="flex gap-3 ml-1 shrink-0">
+          <div className="w-[36px] text-center">
+            <span className="text-sm font-black text-on-background">{product.votes.toLocaleString()}</span>
+          </div>
+          <div className="w-[36px] text-center">
+            <span className="text-sm font-black text-on-background">{product.comments}</span>
+          </div>
+          <div className="w-[36px] text-center">
+            <span className="text-sm font-black text-primary">{product.score}</span>
+          </div>
         </div>
       </div>
     )

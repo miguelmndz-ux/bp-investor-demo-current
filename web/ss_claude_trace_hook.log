@@ -8121,3 +8121,1235 @@ WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
 WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
 WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 868bfa1f-74f2-4810-97aa-e621cf70d232, span id: 82085f09-62dd-43c9-adfd-48ede3e024ec
+INFO:cc_tracer_lib.state:Starting episode, trace id: e1e07196-aaed-4463-943d-a379a96ed811, span id: f34ab134-dc58-4e20-917a-a5bdb190f01c
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1001740: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\81c045ea-1af3-4eb7-9f23-8d2535d7f132.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1001740: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\81c045ea-1af3-4eb7-9f23-8d2535d7f132.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1001740: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\81c045ea-1af3-4eb7-9f23-8d2535d7f132.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1001740: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\81c045ea-1af3-4eb7-9f23-8d2535d7f132.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1001740: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\81c045ea-1af3-4eb7-9f23-8d2535d7f132.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: 868bfa1f-74f2-4810-97aa-e621cf70d232, span id: ba766cf2-226d-404f-8c39-f9ea83c69277
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 280201: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\4ade132c-64f8-4720-a2e4-579955222fd4.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-17-58-291Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...L0oAKAE9aAA9aAP/2Q=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-18-58-295Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...oAU0AHagA9aAE6UAf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 025fc060-bb3e-46b8-9196-b857f2db0b14
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-21-52-134Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...aAFNAB2oAPWgBOlAH//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: cb05be32-51b7-4403-b545-824a202bcd9a
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-27-06-639Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...NACmgA7UAHrQAnSgD//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 4f320856-ee44-4b14-a05a-2579b9134f38
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-29-40-433Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...A0AKaADtQAetACdKAP/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: f8ff8927-ffc3-499c-8468-3f2ef52c458b
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-31-36-614Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...QApoAO1AB60AJ0oA/9k='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: b92f2e4c-fc9e-4f9f-9dfa-9f2b01ff0729
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-32-39-894Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...AKaADtQAetACdKAP/9k='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 77e42279-ff7d-4af2-9199-fb87c61f5dc8
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-34-25-591Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...DQApoAO1AB60AJ0oA//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 7a3e5417-e005-4753-baee-d81794d14ec1
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...}\\n  })\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-37-03-659Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...}\\n  })\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...t,\\n  }\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-39-27-923Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...}\\n  })\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...AU0AHagA9aAE6UAf/9k='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 5eea23d7-bd1a-4e58-90f5-86f22c2198a5
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-40-42-526Z.log#L1-L2"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...FNAB2oAPWgBOlAH/2Q=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: c6a0dd97-7523-4c74-9665-578a4ec0ae48
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-42-08-399Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...GgBTQAdqAD1oATpQB//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 054af96a-3eab-4d86-a062-1b9376276634
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-42-49-805Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...oAU0AHagA9aAE6UAf//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: fa2d67ad-9d47-4745-90e9-53026649d55f
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-44-17-659Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-44-17-659Z.log#L5-L8'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-46-33-481Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...TQAdqAD1oATpQB//2Q=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 5743c530-a25c-4293-8cfa-5babdc4039da
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-49-09-122Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...0AKaADtQAetACdKAP//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 04bcb45e-e2ee-4f16-86ad-f022633f6fc6
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-49-43-330Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...ACmgA7UAHrQAnSgD/9k='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 4bfcc139-6d5e-429e-a015-5dc9eab3d03c
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-50-09-249Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...DQApoAO1AB60AJ0oA//Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 7b38021f-d94d-4c75-8b15-06c222d30600
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-50-09-249Z.log#L5-L8'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-51-49-654Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...A0AKaADtQAetACdKAP/Z'}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: e668dd34-d5cd-4ee4-b967-b3f2c6f934c9
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-52-21-601Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...mgA7UAHrQAnSgD//2Q=='}}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+WARNING:cc_tracer_lib.state:Ignoring subagent stop: agent `adb8a495758cd024f` is not known.
+INFO:root:Started new session: f8906761-ba68-426d-b9f9-07d461f27bd7
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 43cfd60a-239e-4ef2-ba73-8f158c1579c8
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 116fc147-c2f1-4469-ad33-d5d6e53f1ade
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 5b20ca8b-c3ea-47b1-bd12-709fce6bfe3a
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 6755e42f-8892-4f58-96dc-49ffa3d4eda6
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...-10-20-068Z.log#L1-L4"}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+ERROR:root:Event processing failed
+Traceback (most recent call last):
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 98, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mmcon\claude-bench-autotrace\claude_autotrace_hook\cc_tracer.py", line 64, in main
+    event = HookEvent.model_validate(event_data)
+  File "C:\Users\mmcon\claude-bench-autotrace\venv\Lib\site-packages\pydantic\main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for HookEvent
+tool_response
+  Input should be a valid dictionary or instance of ToolResponse [type=model_type, input_value=[{'type': 'text', 'text':...p,\\n  }\\n}\');\n```'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 66ce855f-478a-467f-b065-3f4db9aa40fb
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: a4874f21-8e9d-4ac7-8be2-aed712c84d3f
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 10b98f03-8f18-4307-9452-4ca73b3d8ed8
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: a60c370e-8d21-43e7-b6eb-34dd540c57b7
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 2a1370dc-6647-426f-8e76-6079938a86ef
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 2bedd475-6ebe-4228-8546-4ad566e09cdc
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 0ccfca41-2bd5-494e-be59-17ab1c055a98
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: b63972d4-60d6-4257-9c24-69bb89eecfea
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: 0ae6553f-243b-4a84-94c5-0ceafb9517ff
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: c4be91c9-420e-4a96-9923-30899cff138f
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode
+INFO:cc_tracer_lib.state:Starting episode, trace id: beb8fcf7-54e0-48a6-bc3e-d48b2a232b52, span id: e5ab4d75-67f4-4386-beca-259872e37683
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.transcript:Invalid UTF-8 encoding at byte 1397172: C:\Users\mmcon\.claude\projects\C--Users-mmcon-Documents-Code-bp-investor-demo-current\f8906761-ba68-426d-b9f9-07d461f27bd7.jsonl
+WARNING:cc_tracer_lib.state:Notification received without an active episode

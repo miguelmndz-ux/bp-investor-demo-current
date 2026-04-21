@@ -1153,6 +1153,14 @@
     -webkit-backdrop-filter: blur(20px) !important;
   }
 
+  @media (max-width: 768px) {
+    .hero-stats-wrap { padding: 12px 20px !important; }
+    .hero-stats      { gap: 16px !important; }
+    .overview-grid   { grid-template-columns: 1fr !important; }
+    .usecase-grid    { grid-template-columns: 1fr !important; }
+    section          { padding: 40px 0 32px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1186,7 +1194,7 @@
     </div>
     <h1>Everything you need to know<br>about <span>Velo</span></h1>
     <p class="hero-sub">AI-native product demo and walkthrough generator. Raw recordings in, studio-quality video messages out.</p>
-    <div style="display:inline-block;background:rgba(255,255,255,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.85);border-radius:9999px;box-shadow:0 4px 24px -4px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.9);padding:16px 36px;">
+    <div class="hero-stats-wrap" style="display:inline-block;background:rgba(255,255,255,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.85);border-radius:9999px;box-shadow:0 4px 24px -4px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.9);padding:16px 36px;">
       <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-number">4</div>

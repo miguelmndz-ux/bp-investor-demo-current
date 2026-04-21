@@ -12,7 +12,7 @@ describe('BottomNav', () => {
     expect(screen.getByLabelText('Home')).toBeInTheDocument()
     expect(screen.getByLabelText('Discover')).toBeInTheDocument()
     expect(screen.getByLabelText('Calendar')).toBeInTheDocument()
-    expect(screen.getByLabelText('Apex')).toBeInTheDocument()
+    expect(screen.getByLabelText('Agents')).toBeInTheDocument()
   })
 
   it('marks the active route with aria-current', () => {

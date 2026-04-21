@@ -828,6 +828,16 @@
   
   #try-velo-btn:hover { filter: brightness(1.08); transform: scale(1.02); }
   #try-velo-btn:active { transform: scale(0.97); }
+
+  @media (max-width: 768px) {
+    .sidebar          { display: none; }
+    body              { padding-left: 0; }
+    .main             { padding: 130px 20px 60px; max-width: 100%; }
+    .course-hero      { text-align: center; }
+    .course-title-row { flex-direction: column !important; align-items: center !important; gap: 4px !important; margin-bottom: 12px !important; }
+    .course-hero h1   { font-size: 22px; }
+    .course-hero p    { font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -892,7 +902,7 @@
   </aside>
   <main class="main" id="main">
     <div class="course-hero">
-      <div style="margin-bottom: 2px; display: flex; align-items: baseline; gap: 12px;">
+      <div class="course-title-row" style="margin-bottom: 2px; display: flex; align-items: baseline; gap: 12px;">
         <div style="
           font-family: 'VCR OSD Mono', 'Share Tech Mono', monospace;
           font-size: 42px;

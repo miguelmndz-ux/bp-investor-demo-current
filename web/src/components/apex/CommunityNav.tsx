@@ -25,19 +25,15 @@ export default function CommunityNav({ slug, active }: CommunityNavProps) {
 
   return (
     <div
-      className="fixed top-[88px] left-20 right-0 h-[68px] z-[46] flex items-center justify-center"
+      className="fixed top-[88px] left-0 md:left-20 right-0 h-[68px] z-[46] flex items-center justify-center"
     >
       <div className="rounded-full px-1.5 py-1.5 flex items-center gap-1.5" style={{ background: '#ffffff', border: '1px solid #e7e5e4' }}>
         {pills.map(({ key, label, icon, href }) => (
           <Link
             key={key}
             href={href(slug)}
-            className="rounded-full px-5 py-2.5 font-extrabold font-jakarta transition-all flex items-center gap-2"
-            style={
-              active === key
-                ? { ...liquidGlass, fontSize: '15px' }
-                : { color: '#b07a5a', fontSize: '15px' }
-            }
+            className="rounded-full px-3 md:px-5 py-2 md:py-2.5 text-[13px] md:text-[15px] font-extrabold font-jakarta transition-all flex items-center gap-2"
+            style={active === key ? liquidGlass : { color: '#b07a5a' }}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px', lineHeight: '1' }}>{icon}</span>
             {label}
