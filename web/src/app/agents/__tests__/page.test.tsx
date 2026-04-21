@@ -11,12 +11,12 @@ vi.mock('@/components/agents/AgentCard', () => ({
 describe('AgentsPage', () => {
   it('renders the page headline', () => {
     render(<AgentsPage />)
-    expect(screen.getByText('The Constellation')).toBeInTheDocument()
+    expect(screen.getByText('Constellation')).toBeInTheDocument()
   })
 
-  it('renders the eyebrow label', () => {
+  it('renders the page subtitle', () => {
     render(<AgentsPage />)
-    expect(screen.getByText('BuildParty Agents')).toBeInTheDocument()
+    expect(screen.getByText('Five agents, one live operating layer in BuildParty')).toBeInTheDocument()
   })
 
   it('renders five agent cards', () => {
