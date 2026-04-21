@@ -30,9 +30,9 @@ export default function CommunityPage() {
       {hasFullProfile ? (
         <CommunityProfile product={product} founders={productFounders} />
       ) : (
-        <div className="flex gap-10">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-10">
           {/* Minimal left column with available data */}
-          <div className="w-[30%] shrink-0">
+          <div className="w-full md:w-[30%] shrink-0">
             <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg border border-orange-100/40 mb-5 bg-white">
               <img src={product.logo} alt={`${product.name} logo`} className="w-full h-full object-cover" />
             </div>

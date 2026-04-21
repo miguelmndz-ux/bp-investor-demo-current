@@ -10,7 +10,7 @@ interface PhTableProps {
 
 export default function PhTable({ products, onVeloPreview }: PhTableProps) {
   return (
-    <div className="premium-glass -mx-6 md:mx-0 rounded-none md:rounded-xl p-4 md:p-8">
+    <div className="premium-glass rounded-[32px] md:rounded-xl p-4 md:p-8">
       <div className="flex justify-between items-center mb-4 md:mb-8">
         <div>
           <h2 className="text-2xl font-black font-jakarta text-on-background">ProductHunt Top 10</h2>
@@ -19,14 +19,6 @@ export default function PhTable({ products, onVeloPreview }: PhTableProps) {
         <button className="glass-button px-4 py-2 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 border-white/50">
           <span className="material-symbols-outlined text-sm">refresh</span> Refresh
         </button>
-      </div>
-
-      {/* Mobile header */}
-      <div className="flex md:hidden px-2.5 mb-2 text-[10px] uppercase font-extrabold text-stone-400 tracking-widest">
-        <div className="w-5 shrink-0" />
-        <div className="w-8 shrink-0" />
-        <div className="flex-1 pl-2">Product</div>
-        <div className="w-[68px] text-center shrink-0">Status</div>
       </div>
 
       {/* Desktop header */}
@@ -50,15 +42,31 @@ export default function PhTable({ products, onVeloPreview }: PhTableProps) {
         </div>
       </div>
 
-      <div className="space-y-2">
-        {products.map((product, index) => (
-          <PhProductRow
-            key={product.name}
-            product={product}
-            rank={index + 1}
-            onPreviewClick={onVeloPreview}
-          />
-        ))}
+      {/* Scrollable container — horizontal scroll on mobile, normal on desktop */}
+      <div className="overflow-x-auto md:overflow-visible">
+        {/* Mobile header */}
+        <div className="flex md:hidden items-center px-2.5 mb-2 text-[10px] uppercase font-extrabold text-stone-400 tracking-widest min-w-[430px]">
+          <div className="w-5 shrink-0" />
+          <div className="w-[60px] shrink-0 text-center">Status</div>
+          <div className="w-8 shrink-0 ml-2" />
+          <div className="flex-1 pl-2">Product</div>
+          <div className="flex gap-3 ml-1 shrink-0">
+            <div className="w-[36px] text-center">Votes</div>
+            <div className="w-[36px] text-center">Cmts</div>
+            <div className="w-[36px] text-center">Score</div>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          {products.map((product, index) => (
+            <PhProductRow
+              key={product.name}
+              product={product}
+              rank={index + 1}
+              onPreviewClick={onVeloPreview}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )

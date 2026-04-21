@@ -37,7 +37,7 @@ const NAV_ITEMS: BottomNavItem[] = [
   },
   {
     href: '/apex',
-    label: 'Apex',
+    label: 'Agents',
     icon: <Sparkle size={24} weight="bold" />,
     activeIcon: <Sparkle size={24} weight="fill" />,
     match: (p) => p.startsWith('/apex'),

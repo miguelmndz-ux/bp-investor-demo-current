@@ -73,6 +73,7 @@ const config: Config = {
         body:     ['var(--font-inter)', 'Inter', 'sans-serif'],
         label:    ['var(--font-inter)', 'Inter', 'sans-serif'],
         jakarta:  ['var(--font-plus-jakarta-sans)', 'Plus Jakarta Sans', 'sans-serif'],
+        vcr:      ['VCR OSD Mono', 'monospace'],
       },
     },
   },

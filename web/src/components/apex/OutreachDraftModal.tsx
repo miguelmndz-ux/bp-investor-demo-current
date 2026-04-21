@@ -57,7 +57,7 @@ const CHANNELS = [
 
 function LinkedInDraft() {
   return (
-    <div className="px-8 py-6 space-y-4 text-sm leading-relaxed text-on-surface">
+    <div className="px-4 py-4 md:px-8 md:py-6 space-y-4 text-sm leading-relaxed text-on-surface">
       <p>Hey Ajay — congrats on hitting #1 on Product Hunt today.</p>
       <p>I decoded your launch and noticed something: builders aren't just excited about Velo as a tool — they're excited about a workflow shift. Async video that actually feels fast enough to replace Slack messages is a new category, and your PH comments prove it.</p>
       <p>We built something around that insight: a live 60-minute BuildParty session where you demo Velo in a real async workflow, your community builds alongside you, and Nova — our AI host — runs the entire show.</p>
@@ -69,7 +69,7 @@ function LinkedInDraft() {
 
 function XDraft() {
   return (
-    <div className="px-8 py-6 space-y-3 text-sm leading-relaxed text-on-surface">
+    <div className="px-4 py-4 md:px-8 md:py-6 space-y-3 text-sm leading-relaxed text-on-surface">
       <p>congrats on #1 ajay 🎉</p>
       <p>saw the velo launch — the async video angle is hitting different with builders right now.</p>
       <p>we decoded your launch and built a live session around it on buildparty. 60 min, your community builds a real workflow using velo, nova (our ai host) runs the whole thing.</p>
@@ -89,7 +89,7 @@ function XDraft() {
 
 function DiscordDraft() {
   return (
-    <div className="px-8 py-6 space-y-4 text-sm leading-relaxed text-on-surface">
+    <div className="px-4 py-4 md:px-8 md:py-6 space-y-4 text-sm leading-relaxed text-on-surface">
       <p>Hey @Ajay 👋 huge congrats on #1 today — the PH comments are full of builders who want to actually use Velo in their workflows, not just upvote it.</p>
       <p>We decoded your launch and put together a live BuildParty session built around the question your community is actually asking: <span className="font-semibold">what does a real async workflow look like when video is as fast as text?</span></p>
       <p>60-minute live session. Your community builds alongside you. Nova handles the session flow. We handle everything else — event page, community, run of show.</p>
@@ -100,7 +100,7 @@ function DiscordDraft() {
 
 function SlackDraft() {
   return (
-    <div className="px-8 py-6 space-y-4 text-sm leading-relaxed text-on-surface">
+    <div className="px-4 py-4 md:px-8 md:py-6 space-y-4 text-sm leading-relaxed text-on-surface">
       <p>🎉 <span className="font-bold">Congrats on the #1 launch Ajay!</span></p>
       <p>617 upvotes and a comments section full of builders who want Velo in their actual workflow — that's not just a good launch, that's product-market signal.</p>
       <p>We decoded the launch and built a live BuildParty session around it: 60 min, you demo Velo in a real async workflow, the community goes hands-on in real time. Nova (our AI host) briefs you 15 min before you go live.</p>
@@ -157,14 +157,14 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="w-full max-w-4xl max-h-[90vh] rounded-[32px] overflow-hidden flex flex-col relative shadow-2xl border border-white/60 bg-white/95 backdrop-blur-[40px]">
+      <div className="w-full mx-4 md:mx-auto md:max-w-4xl max-h-[90vh] rounded-2xl md:rounded-[32px] overflow-hidden flex flex-col relative shadow-2xl border border-white/60 bg-white/95 backdrop-blur-[40px]">
 
         {/* Specular highlight */}
         <div className="absolute -top-[100px] -right-[100px] w-[300px] h-[300px] bg-white/20 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Header */}
-        <div className="p-8 pb-4 flex items-center justify-between border-b border-stone-100">
-          <h2 className="text-2xl font-black font-jakarta text-on-background">Apex drafted this outreach</h2>
+        <div className="p-4 pb-3 md:p-8 md:pb-4 flex items-center justify-between border-b border-stone-100">
+          <h2 className="text-lg md:text-2xl font-black font-jakarta text-on-background">Apex drafted this outreach</h2>
           <button
             onClick={onClose}
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone-100 transition-all text-stone-600"
@@ -174,7 +174,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
         </div>
 
         {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto px-8 pt-8 space-y-8 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary/10 [&::-webkit-scrollbar-thumb:hover]:bg-primary/20 [&::-webkit-scrollbar-thumb]:rounded-full">
+        <div className="flex-1 overflow-y-auto px-4 pt-4 md:px-8 md:pt-8 space-y-8 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary/10 [&::-webkit-scrollbar-thumb:hover]:bg-primary/20 [&::-webkit-scrollbar-thumb]:rounded-full">
 
           {/* Founder row */}
           <div className="flex flex-wrap items-center justify-between gap-6">
@@ -240,7 +240,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
                     <div className="bg-white/10 border-t border-white/40">
                       {id === 'email' && (
                         <>
-                          <div className="px-8 pt-6 pb-4 border-b border-white/40">
+                          <div className="px-4 pt-4 pb-3 md:px-8 md:pt-6 md:pb-4 border-b border-white/40">
                             <p className="text-sm font-bold text-on-background">
                               <span className="text-stone-500 font-medium">Subject:</span> BuildParty loves Velo! Here&apos;s what we built for you
                             </p>
@@ -264,7 +264,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
         </div>
 
         {/* Footer */}
-        <div className="p-8 pt-6 border-t border-stone-100 bg-white/50 flex items-center gap-4 justify-end">
+        <div className="p-4 pt-4 md:p-8 md:pt-6 border-t border-stone-100 bg-white/50 flex items-center gap-4 justify-end">
           <OutlineButton icon={<PencilSimple size={18} />}>Edit drafts</OutlineButton>
           <PrimaryButton icon={<PaperPlaneTilt size={18} />} onClick={() => setSent(true)}>Approve &amp; Send All</PrimaryButton>
         </div>
@@ -296,7 +296,7 @@ export default function OutreachDraftModal({ onClose, onSend }: OutreachDraftMod
           >
             <span className="material-symbols-outlined text-white" style={{ fontSize: 40 }}>check</span>
           </div>
-          <h2 className="confirm-title font-jakarta font-black text-white text-3xl mb-3 tracking-tight">
+          <h2 className="confirm-title font-jakarta font-black text-white text-xl md:text-3xl mb-3 tracking-tight">
             Outreach sent.
           </h2>
           <p className="confirm-subtitle text-white/60 text-base font-medium">

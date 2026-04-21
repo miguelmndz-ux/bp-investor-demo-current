@@ -734,25 +734,9 @@ export default function ApexScanOverlay() {
         <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-primary-container/5 rounded-full blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col w-full h-full px-4 pt-4 pb-20">
-          {/* Centered content group — title + preview + step pulled together */}
+          {/* Centered content group — step indicator above preview */}
           <div className="flex-1 flex flex-col justify-center gap-9">
-            {/* Title */}
-            <h1 className="text-2xl font-black font-jakarta text-primary text-center leading-tight shrink-0">
-              {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
-            </h1>
-
-            {/* Preview — active step during scan; selected step when complete */}
-            {(scanPhase === 'scanning' || selectedPhaseIndex !== null) && (
-              <div className="min-h-0 overflow-hidden" style={{ maxHeight: '45vh' }}>
-                <StepPreview
-                  phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? 0) : activePhaseIndex}
-                  visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
-                  isMobile={true}
-                />
-              </div>
-            )}
-
-            {/* Step list */}
+            {/* Step indicator */}
             {scanPhase === 'scanning' && activePhaseIndex < PHASES.length ? (
               <div className="shrink-0 max-w-sm mx-auto w-full">
                 {mobileStep(PHASES[activePhaseIndex], activePhaseIndex, true, false, false)}
@@ -766,9 +750,23 @@ export default function ApexScanOverlay() {
                 {PHASES.map((p, i) => mobileStep(p, i, false, true, false))}
               </div>
             )}
+
+            {/* Preview — directly below step indicator */}
+            {(scanPhase === 'scanning' || selectedPhaseIndex !== null) && (
+              <div className="min-h-0 overflow-hidden" style={{ maxHeight: '45vh' }}>
+                <StepPreview
+                  phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? 0) : activePhaseIndex}
+                  visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
+                  isMobile={true}
+                />
+              </div>
+            )}
           </div>
 
-          {/* Button pinned to bottom */}
+          {/* Small status label + button pinned to bottom */}
+          <p className="shrink-0 text-base font-bold font-jakarta text-primary text-center mb-3">
+            {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running…'}
+          </p>
           <button
             onClick={handleDismiss}
             className="shrink-0 w-full font-jakarta font-bold text-base rounded-full px-8 py-4 transition-all duration-300 active:scale-95"

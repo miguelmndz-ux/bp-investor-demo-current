@@ -8,29 +8,43 @@ vi.mock('next/link', () => ({
   ),
 }))
 
+vi.mock('@phosphor-icons/react', () => ({
+  Microphone: () => <svg data-testid="icon-microphone" />,
+  Brain: () => <svg data-testid="icon-brain" />,
+  Code: () => <svg data-testid="icon-code" />,
+  Sparkle: () => <svg data-testid="icon-sparkle" />,
+  RocketLaunch: () => <svg data-testid="icon-rocketlaunch" />,
+}))
+
 const baseProps = {
   name: 'Nova',
-  description: 'Orchestrates every live session.',
-  gradientFrom: '#f59e0b',
-  gradientTo: '#d97706',
-  glowColor: 'rgba(245,158,11,0.35)',
+  role: 'Session Host',
+  iconName: 'Microphone' as const,
+  accentColor: '#7c3aed',
+  accentRgb: [124, 58, 237] as [number, number, number],
+  accentDarkRgb: [91, 33, 182] as [number, number, number],
+  imageBlend: 'lighten' as const,
 }
 
 describe('AgentCard', () => {
-  it('renders agent name and description', () => {
+  it('renders agent name and role', () => {
     render(<AgentCard {...baseProps} />)
     expect(screen.getByText('Nova')).toBeInTheDocument()
-    expect(screen.getByText('Orchestrates every live session.')).toBeInTheDocument()
+    expect(screen.getByText('Session Host')).toBeInTheDocument()
   })
 
-  it('does not render as a link when no href provided', () => {
+  it('renders the mascot image', () => {
     render(<AgentCard {...baseProps} />)
-    expect(screen.queryByRole('link')).not.toBeInTheDocument()
+    expect(screen.getByAltText('Nova')).toBeInTheDocument()
   })
 
-  it('renders as a link when href is provided', () => {
+  it('links to agent slug by default', () => {
+    render(<AgentCard {...baseProps} />)
+    expect(screen.getByRole('link')).toHaveAttribute('href', '/agents/nova')
+  })
+
+  it('links to custom href when provided', () => {
     render(<AgentCard {...baseProps} href="/apex" />)
-    expect(screen.getByRole('link')).toBeInTheDocument()
     expect(screen.getByRole('link')).toHaveAttribute('href', '/apex')
   })
 })

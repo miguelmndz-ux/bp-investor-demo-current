@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-21",
+  "lastUpdated": "2026-04-22",
   "decisions": [
     {
       "component": "ApexScanOverlay",
       "file": "web/src/components/apex/ApexScanOverlay.tsx",
       "pattern": "inline-responsive",
-      "decision": "Separate if (isMobile) early return + desktop return. Scanning: headline → preview (max-h-[45vh]) → single active step (max-w-sm mx-auto) → Stop button pinned to bottom. Complete (no selection): headline → all 5 steps centered (no preview). Complete (step tapped): headline → that step's preview → all steps. Centered group uses flex-1 flex-col justify-center gap-9. Button shrink-0 outside group. Guard: activePhaseIndex < PHASES.length prevents crash at scan boundary.",
-      "rationale": "User wanted preview above steps, no scrolling, compact steps without microsteps, centered wider button. Final round: show one step at a time during scan; tap-to-reveal preview after completion.",
+      "decision": "Separate if (isMobile) early return + desktop return. Centered flex-1 group (justify-center gap-9): step indicator first, then preview below it. Scanning: single active step → preview (max-h-[45vh]). Complete (no selection): all 5 steps (no preview). Complete (step tapped): all steps → that step's preview. Bottom (shrink-0, outside centered group): small status label (text-[11px] font-extrabold tracking-[0.15em] uppercase, color rgba(156,63,0,0.5)) → Stop/See results button. Guard: activePhaseIndex < PHASES.length prevents crash at scan boundary.",
+      "rationale": "User moved step indicator above preview (direct visual connection between what's running and its output). 'Apex is running' demoted from h1 to small uppercase caption above the button — declutters the centered area.",
       "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
       "resolvedAt": "2026-04-21"
     },
@@ -87,8 +87,8 @@
       "component": "AgentsPage + AgentCard",
       "file": "web/src/app/agents/page.tsx + web/src/components/agents/AgentCard.tsx",
       "pattern": "inline-responsive",
-      "decision": "grid-cols-5 → grid-cols-1 md:grid-cols-5 (single column on mobile). AgentCard: p-8 → p-5 md:p-8, avatar w-[128px] h-[128px] → w-24 h-24 md:w-[128px] md:h-[128px]. Headline text-4xl → text-2xl md:text-4xl.",
-      "rationale": "5-column grid is unusable on mobile. Single-column stacks all 5 agent cards cleanly. Reduced padding and avatar size keep each card compact at full width.",
+      "decision": "grid-cols-1 md:grid-cols-5. AgentCard: h-[200px] md:h-[400px]. On mobile (useIsMobile), all mascot images override per-agent props → right: -12px, bottom: -20px, width: 60% (uniform bottom-right corner with slight crop via overflow-hidden). On desktop, per-agent imageLeft/imageTop/imageRight/imageBottom props apply as before. Text: p-5 pt-5 md:p-6 md:pt-7, name text-[36px] md:text-[46px]. Page header: flex-col md:flex-row md:items-end md:justify-between, subtitle hidden md:block, mb-6 md:mb-10.",
+      "rationale": "User requested smaller cards + mascots uniformly in bottom corner on mobile. Per-agent offsets (some top-positioned) looked inconsistent in a stacked single-column layout. 60% width + slight negative offset gives visible crop at card edges without overwhelming the text.",
       "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
       "resolvedAt": "2026-04-21"
     },
@@ -98,6 +98,60 @@
       "pattern": "inline-responsive",
       "decision": "HeroCard: stays as a card (rounded-xl), scaled down with p-6 md:p-12 and text-2xl md:text-5xl. PhTable + LiveStatsPanel + AgentWorkflowLog: -mx-6 md:mx-0 rounded-none md:rounded-xl (full-bleed sections). PhProductRow: useIsMobile two branches — mobile is a 2-row layout (row1: rank+logo+name+status badge; row2: category+votes+comments+score aligned at pl-[52px]), desktop is full grid-cols-12. FounderCard: -mx-6 md:mx-0 rounded-none md:rounded-xl p-4 md:p-6, buttons py-3 md:py-2. FounderGrid: grid-cols-1 md:grid-cols-2, gap-0 md:gap-5 (full-bleed sections butt together). ApexPage grid restructured: PhTable (order-1, md:col-start-1 md:col-span-8), right col (order-2, md:col-start-9 md:col-span-4 md:row-span-2), FounderGrid (order-3, md:col-start-1 md:col-span-8) — places FounderGrid after AgentWorkflow on mobile, preserves desktop layout via explicit col-start + row-span.",
       "rationale": "HeroCard reverted to card per user. Status+Comments restored in PhProductRow via 2-row layout (avoids horizontal scroll). FounderCards are full-bleed stacked sections on mobile. FounderGrid moved below AgentWorkflow on mobile via CSS order; md:row-span-2 on right column keeps desktop layout intact.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "CommunityNav",
+      "file": "web/src/components/apex/CommunityNav.tsx",
+      "pattern": "inline-responsive",
+      "decision": "left-0 md:left-20 (SideNav hidden on mobile). Pill sizing: px-3 md:px-5 py-2 md:py-2.5 text-[13px] md:text-[15px]. fontSize removed from inline style — moved to Tailwind class so md: breakpoint works. Icon stays 18px on both.",
+      "rationale": "left-20 pushed the nav bar 80px from left on mobile. Three full-size pills (15px + px-5) summed to ~402px — overflowed the 393px iPhone 16 Pro viewport.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "OutreachDraftModal",
+      "file": "web/src/components/apex/OutreachDraftModal.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Modal wrapper: mx-4 md:mx-auto md:max-w-4xl rounded-2xl md:rounded-[32px]. Header: p-4 pb-3 md:p-8 md:pb-4, title text-lg md:text-2xl. Scrollable body: px-4 pt-4 md:px-8 md:pt-8. Draft content (all channel functions): px-4 py-4 md:px-8 md:py-6. Footer: p-4 pt-4 md:p-8 md:pt-6. Confirmation overlay title: text-xl md:text-3xl.",
+      "rationale": "No horizontal margin on mobile made the modal edge-to-edge. p-8 padding left too little content space on a 393px viewport.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "CommunityProfileFallback",
+      "file": "web/src/app/apex/community/[slug]/page.tsx",
+      "pattern": "inline-responsive",
+      "decision": "flex flex-col md:flex-row gap-6 md:gap-10 on the outer container. Left panel: w-full md:w-[30%]. Applies to the fallback branch only (products without a full profile). CommunityProfile component already handles responsive separately.",
+      "rationale": "w-[30%] of 393px = 118px — too narrow for product name, category badge, and vote counts.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "DecodePage",
+      "file": "web/src/app/apex/community/[slug]/decode/page.tsx",
+      "pattern": "inline-responsive",
+      "decision": "left-0 md:left-20 on the fixed iframe wrapper. bottom-16 md:bottom-0 so the iframe clears the BottomNav (64px) on mobile. top-16 stays — CommunityNav floats above the iframe via z-[46], which is intentional.",
+      "rationale": "left-20 assumed SideNav presence on mobile. bottom-0 caused iframe content to be hidden behind the BottomNav.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "CoursesPage",
+      "file": "web/src/app/apex/community/[slug]/courses/page.tsx",
+      "pattern": "inline-responsive",
+      "decision": "left-0 md:left-20 and bottom-16 md:bottom-0 on the fixed iframe wrapper. Same pattern as DecodePage.",
+      "rationale": "Same BottomNav overlap issue as DecodePage.",
+      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
+      "resolvedAt": "2026-04-21"
+    },
+    {
+      "component": "BothPage",
+      "file": "web/src/app/apex/community/[slug]/both/page.tsx",
+      "pattern": "inline-responsive",
+      "decision": "Container: flex-col md:flex-row, bottom-16 md:bottom-0, left-0 md:left-20. First iframe div: rounded-2xl md:rounded-tl-3xl md:rounded-tr-2xl md:rounded-br-2xl md:rounded-bl-2xl. Second div unchanged at rounded-2xl. Both divs flex-1 (stacks vertically on mobile, equal columns on desktop).",
+      "rationale": "Two side-by-side iframes at ~196px each on iPhone are too narrow. Stacked vertical layout gives each ~340px height. rounded-tl-3xl removed on mobile because AppShell has no concave corner without SideNav.",
       "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
       "resolvedAt": "2026-04-21"
     }

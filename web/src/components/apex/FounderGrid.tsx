@@ -9,7 +9,7 @@ interface FounderGridProps {
 export default function FounderGrid({ founders, onOutreachDraft }: FounderGridProps) {
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
         {founders.map((founder) => (
           <FounderCard key={founder.name} founder={founder} onOutreachDraft={onOutreachDraft} />
         ))}

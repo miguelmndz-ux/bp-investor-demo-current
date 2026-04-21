@@ -11,7 +11,7 @@ const statGrid = [
 
 export default function LiveStatsPanel() {
   return (
-    <div className="premium-glass -mx-6 md:mx-0 rounded-none md:rounded-xl p-4 md:p-7">
+    <div className="premium-glass rounded-[32px] md:rounded-xl p-4 md:p-7">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-black font-jakarta text-on-background">Live Stats</h2>
       </div>

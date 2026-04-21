@@ -5,71 +5,125 @@ import AgentCard from '@/components/agents/AgentCard'
 const agents = [
   {
     name: 'Nova',
-    description:
-      'Orchestrates every live session — managing introductions, timing, Q&A, and engagement from the moment the room opens.',
-    gradientFrom: '#f59e0b',
-    gradientTo: '#d97706',
-    glowColor: 'rgba(245,158,11,0.35)',
+    role: 'AI HOST',
+    iconName: 'Microphone' as const,
+    accentColor: '#7c3aed',
+    accentRgb: [124, 58, 237] as [number, number, number],
+    accentDarkRgb: [91, 33, 182] as [number, number, number],
+    imageBlend: 'lighten' as const,
+    imageRight: '-50px',
+    imageBottom: '-28px',
+    imageWidth: '85%',
+    mobileImageWidth: '44%',
+    mobileImageRight: '-36px',
+    mobileImageBottom: '-52px',
     href: undefined,
   },
   {
     name: 'Echo',
-    description:
-      'Captures everything said in a session and turns it into structured recaps, personalized follow-ups, and searchable memory.',
-    gradientFrom: '#06b6d4',
-    gradientTo: '#0891b2',
-    glowColor: 'rgba(6,182,212,0.35)',
+    role: 'SESSION MEMORY',
+    iconName: 'Brain' as const,
+    accentColor: '#059669',
+    accentRgb: [5, 150, 105] as [number, number, number],
+    accentDarkRgb: [4, 120, 87] as [number, number, number],
+    imageBlend: 'lighten' as const,
+    imageRight: '-81px',
+    imageBottom: '-80px',
+    imageWidth: '115%',
+    mobileImageWidth: '55%',
+    mobileImageRight: '-60px',
+    mobileImageBottom: '-68px',
     href: undefined,
   },
   {
     name: 'Orbit',
-    description:
-      "Lives inside the CoBuild environment — context-aware coding support that adapts to each builder's skill level in real time.",
-    gradientFrom: '#8b5cf6',
-    gradientTo: '#7c3aed',
-    glowColor: 'rgba(139,92,246,0.35)',
+    role: 'BUILD BUDDY',
+    iconName: 'Code' as const,
+    accentColor: '#2563eb',
+    accentRgb: [37, 99, 235] as [number, number, number],
+    accentDarkRgb: [29, 78, 216] as [number, number, number],
+    imageBlend: 'multiply' as const,
+    imageLeft: '67px',
+    imageTop: '209px',
+    imageWidth: '90%',
+    mobileImageWidth: '46%',
+    mobileImageRight: '-48px',
+    mobileImageBottom: '-56px',
     href: undefined,
   },
   {
     name: 'Flare',
-    description:
-      'Transforms session highlights into platform-native content — quote cards, threads, highlight reels — minutes after a session ends.',
-    gradientFrom: '#f43f5e',
-    gradientTo: '#e11d48',
-    glowColor: 'rgba(244,63,94,0.35)',
+    role: 'MEDIA AGENT',
+    iconName: 'Sparkle' as const,
+    accentColor: '#dc2626',
+    accentRgb: [220, 38, 38] as [number, number, number],
+    accentDarkRgb: [185, 28, 28] as [number, number, number],
+    imageBlend: 'multiply' as const,
+    imageLeft: '84px',
+    imageTop: '193px',
+    imageWidth: '87%',
+    mobileImageWidth: '40%',
+    mobileImageRight: '-36px',
     href: undefined,
   },
   {
     name: 'Apex',
-    description:
-      'Full-arc product launch director. Runs D-30 to D+30, coordinating assets, outreach, monitoring, and live BuildParty events.',
-    gradientFrom: '#ff7a2f',
-    gradientTo: '#c24e00',
-    glowColor: 'rgba(255,122,47,0.35)',
+    role: 'LAUNCH AGENT',
+    iconName: 'RocketLaunch' as const,
+    accentColor: '#ff7a2f',
+    accentRgb: [255, 122, 47] as [number, number, number],
+    accentDarkRgb: [194, 78, 0] as [number, number, number],
+    imageBlend: 'lighten' as const,
+    imageLeft: '67px',
+    imageTop: '198px',
+    imageWidth: '92%',
+    mobileImageWidth: '43%',
+    mobileImageRight: '-36px',
+    mobileImageBottom: '-64px',
     href: '/apex',
   },
-] as const
+]
 
 export default function AgentsPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-14rem)]">
-      <div className="w-full">
-      <div className="mb-10 fade-up fade-up-1">
-        <p className="text-xs font-extrabold tracking-widest text-primary uppercase mb-3">
-          BuildParty Agents
-        </p>
-        <h1 className="font-jakarta font-black text-2xl md:text-4xl text-on-background mb-2">
-          The Constellation
-        </h1>
-        <p className="text-base text-on-background/60">
-          Five agents. One live operating layer.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6 fade-up fade-up-2">
-        {agents.map((agent) => (
-          <AgentCard key={agent.name} {...agent} />
-        ))}
-      </div>
+      {/* Page-specific background override */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          zIndex: -1,
+          background: `
+            radial-gradient(ellipse at 10% 90%, rgba(255,122,47,0.10) 0%, transparent 50%),
+            radial-gradient(ellipse at 90% 10%, rgba(255,180,100,0.07) 0%, transparent 45%),
+            radial-gradient(ellipse at 50% 50%, rgba(255,240,220,0.15) 0%, transparent 70%),
+            #ffffff
+          `,
+        }}
+      />
+      <div className="w-full pt-6 md:pt-0">
+        <div className="mb-6 md:mb-10 fade-up fade-up-1 flex flex-col md:flex-row md:items-end md:justify-between">
+          <h1 className="font-jakarta font-black text-3xl md:text-4xl text-on-background text-center md:text-left">
+            Our Agent{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Constellation
+            </span>
+          </h1>
+          <p className="hidden md:block text-base text-on-background/60">
+            Five agents, one live operating layer in BuildParty
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-3 fade-up fade-up-2">
+          {agents.map((agent) => (
+            <AgentCard key={agent.name} {...agent} />
+          ))}
+        </div>
       </div>
     </div>
   )

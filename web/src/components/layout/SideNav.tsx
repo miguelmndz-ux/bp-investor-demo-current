@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { House, Compass, CalendarBlank, Sparkle } from '@phosphor-icons/react'
 import { communities } from '@/lib/fixtures/communities'
 
 function Tooltip({ label, y }: { label: string; y: number }) {
@@ -24,12 +25,14 @@ function NavItem({
   href,
   label,
   active,
-  children,
+  icon,
+  activeIcon,
 }: {
   href: string
   label: string
   active?: boolean
-  children: React.ReactNode
+  icon: React.ReactNode
+  activeIcon: React.ReactNode
 }) {
   const ref = useRef<HTMLAnchorElement>(null)
   const [tooltipY, setTooltipY] = useState<number | null>(null)
@@ -53,7 +56,7 @@ function NavItem({
         }}
         onMouseLeave={() => setTooltipY(null)}
       >
-        {children}
+        {active ? activeIcon : icon}
       </Link>
       {tooltipY !== null && <Tooltip label={label} y={tooltipY} />}
     </>
@@ -152,20 +155,34 @@ export default function SideNav() {
       }}
     >
       <div className="space-y-3 flex flex-col items-center w-full shrink-0">
-        <NavItem href="/apex" label="Home">
-          <span className="material-symbols-outlined">home</span>
-        </NavItem>
-        <NavItem href="/discover" label="Discover" active={pathname === '/discover'}>
-          <span className="material-symbols-outlined">explore</span>
-        </NavItem>
-        <NavItem href="#" label="Calendar">
-          <span className="material-symbols-outlined">calendar_today</span>
-        </NavItem>
+        <NavItem
+          href="/apex"
+          label="Home"
+          icon={<House size={24} weight="bold" />}
+          activeIcon={<House size={24} weight="fill" />}
+        />
+        <NavItem
+          href="/discover"
+          label="Discover"
+          active={pathname === '/discover'}
+          icon={<Compass size={24} weight="bold" />}
+          activeIcon={<Compass size={24} weight="fill" />}
+        />
+        <NavItem
+          href="#"
+          label="Calendar"
+          icon={<CalendarBlank size={24} weight="bold" />}
+          activeIcon={<CalendarBlank size={24} weight="fill" />}
+        />
         <div className="relative">
           {scanProgress >= 0 && <ScanProgressDot progress={scanProgress} />}
-          <NavItem href="/agents" label="Agents" active={pathname.startsWith('/agents') || pathname.startsWith('/apex')}>
-            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500" }}>auto_awesome</span>
-          </NavItem>
+          <NavItem
+            href="/agents"
+            label="Agents"
+            active={pathname.startsWith('/agents') || pathname.startsWith('/apex')}
+            icon={<Sparkle size={24} weight="bold" />}
+            activeIcon={<Sparkle size={24} weight="fill" />}
+          />
         </div>
       </div>
       <div className="my-3 w-8 h-px bg-stone-200/80 shrink-0" />
