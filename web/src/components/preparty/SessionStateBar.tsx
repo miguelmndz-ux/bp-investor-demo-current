@@ -46,7 +46,7 @@ export function SessionStateBar() {
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-[10px] ${s.pill}`}
           >
             <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${s.dot}`} />
-            <span className={`font-black uppercase tracking-wider ${s.labelColor}`}>
+            <span className={`font-vcr uppercase tracking-wider ${s.labelColor}`}>
               {seg.label}
             </span>
             <span className="text-stone-400">·</span>
