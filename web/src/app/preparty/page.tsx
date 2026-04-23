@@ -1,6 +1,10 @@
 'use client'
 
 import { useIsMobile } from '@/hooks/useIsMobile'
+import { Smiley } from '@phosphor-icons/react'
+import { NovaAvatar } from '@/components/preparty/NovaAvatar'
+import { SessionStateBar } from '@/components/preparty/SessionStateBar'
+import { SessionTimeline } from '@/components/preparty/SessionTimeline'
 
 // ─── Avatar pool ──────────────────────────────────────────────────────────────
 const AVATARS = [
@@ -196,29 +200,55 @@ export default function PrePartyPage() {
 
         {/* ── Center canvas ─────────────────────────────────────────────────── */}
         <section className="flex-1 flex flex-col overflow-hidden relative min-w-0">
-          <div className="flex-1 overflow-y-auto px-3 md:px-6 pt-4 md:pt-6 pb-36" style={{ scrollbarWidth: 'none' }}>
-            <div className="flex flex-col items-center space-y-6 w-full">
+          <div
+            className="flex-1 overflow-y-auto px-3 md:px-6 pt-4 md:pt-6 pb-36"
+            style={{ scrollbarWidth: 'none' }}
+          >
+            <div className="flex flex-col items-center space-y-4 w-full">
+
+              {/* Orientation header */}
+              <div className="flex items-center justify-between w-full px-1">
+                <div>
+                  <h2 className="text-[15px] font-black text-stone-800">PreParty Lobby</h2>
+                  <p className="text-[12px] text-stone-500 font-medium">Velo · Nova is hosting</p>
+                </div>
+              </div>
 
               {/* Stage */}
               <div
-                className="relative w-full rounded-[2rem] overflow-hidden shadow-2xl"
+                className="relative w-full rounded-[2rem] overflow-hidden shadow-xl"
                 style={{
                   aspectRatio: '16/9',
-                  background: 'linear-gradient(135deg, #1a0800 0%, #2d1200 40%, #0a0612 100%)',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
+                  background: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 45%, #ddd6fe 100%)',
+                  border: '1px solid rgba(167,139,250,0.25)',
+                  boxShadow: '0 20px 60px rgba(139,92,246,0.12)',
                 }}
               >
-                <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(255,122,47,0.18) 0%, transparent 70%)' }} />
-                <div className="absolute top-0 right-1/4 w-64 h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(120,80,255,0.12) 0%, transparent 70%)' }} />
-                <div className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 100%)' }} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span
-                    className="font-jakarta font-black tracking-[0.3em] text-lg md:text-3xl uppercase text-white"
-                    style={{ textShadow: '0 0 40px rgba(255,122,47,0.5), 0 2px 8px rgba(0,0,0,0.5)' }}
-                  >
-                    Join Live Stage
-                  </span>
+                {/* Ambient glow */}
+                <div
+                  className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[60%] rounded-full pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)',
+                  }}
+                />
+
+                {/* Session state bar — top of stage */}
+                <div className="absolute top-4 left-0 right-0 flex justify-center px-4">
+                  <SessionStateBar />
+                </div>
+
+                {/* Nova — center stage */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <NovaAvatar size={160} />
+                  <div className="text-center">
+                    <p className="text-[14px] font-black text-violet-700">Nova</p>
+                    <p className="text-[11px] font-medium text-violet-500/80">AI Host · BuildParty</p>
+                  </div>
+                </div>
+
+                {/* Session timeline — bottom of stage */}
+                <div className="absolute bottom-4 left-6 right-6">
+                  <SessionTimeline />
                 </div>
               </div>
 
@@ -248,11 +278,10 @@ export default function PrePartyPage() {
             </div>
           </div>
 
-          {/* Floating Control Dock */}
+          {/* Floating Control Dock — unchanged */}
           <div className="absolute bottom-6 left-0 right-0 px-4 md:px-8 z-20 pointer-events-none">
             <div className="flex justify-center items-center gap-2 md:gap-4 pointer-events-auto">
 
-              {/* Waveform button — hidden on mobile */}
               <button
                 className="hidden md:flex rounded-full items-center justify-center gap-0.5 w-20 h-20 transition-all hover:scale-105 active:scale-95 shrink-0"
                 style={dockGlass}
@@ -262,40 +291,63 @@ export default function PrePartyPage() {
                   <div className="w-[3px] h-5 bg-stone-500 rounded-full" />
                   <div className="w-[3px] h-4 bg-stone-500 rounded-full" />
                 </div>
-                <span className="material-symbols-outlined text-stone-500 ml-0.5" style={{ fontSize: '16px' }}>expand_more</span>
+                <span
+                  className="material-symbols-outlined text-stone-500 ml-0.5"
+                  style={{ fontSize: '16px' }}
+                >
+                  expand_more
+                </span>
               </button>
 
-              {/* Main dock */}
-              <div className="rounded-[2rem] p-2 md:p-3 flex items-center gap-2 md:gap-3 px-3 md:px-5" style={dockGlass}>
+              <div
+                className="rounded-[2rem] p-2 md:p-3 flex items-center gap-2 md:gap-3 px-3 md:px-5"
+                style={dockGlass}
+              >
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm"
                   style={{ background: '#fff7f0', border: '1px solid rgba(255,122,47,0.3)' }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}>mic</span>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ fontSize: '20px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}
+                  >
+                    mic
+                  </span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm"
                   style={{ background: '#fff7f0', border: '1px solid rgba(255,122,47,0.3)' }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}>videocam</span>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ fontSize: '20px', color: '#c24e00', fontVariationSettings: "'FILL' 1" }}
+                  >
+                    videocam
+                  </span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                   style={{ background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(209,213,219,0.4)' }}
                 >
-                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>present_to_all</span>
+                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>
+                    present_to_all
+                  </span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                   style={{ background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(209,213,219,0.4)' }}
                 >
-                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>image</span>
+                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>
+                    image
+                  </span>
                 </button>
                 <button
                   className="w-11 h-11 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                   style={{ background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(209,213,219,0.4)' }}
                 >
-                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>settings</span>
+                  <span className="material-symbols-outlined text-stone-500" style={{ fontSize: '20px' }}>
+                    settings
+                  </span>
                 </button>
               </div>
 
@@ -376,7 +428,7 @@ export default function PrePartyPage() {
                 className="flex-1 bg-transparent border-none focus:ring-0 text-[13px] p-0 placeholder:text-stone-400 font-medium outline-none"
               />
               <button className="ml-3 text-stone-400 hover:text-stone-600 transition-colors">
-                <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>sentiment_satisfied</span>
+                <Smiley size={20} weight="bold" />
               </button>
             </div>
           </div>
