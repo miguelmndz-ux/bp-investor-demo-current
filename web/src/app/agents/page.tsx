@@ -31,6 +31,7 @@ const agents = [
     imageBottom: '-80px',
     imageWidth: '115%',
     mobileImageWidth: '55%',
+    mobileImageMaxWidth: '260px',
     mobileImageRight: '-60px',
     mobileImageBottom: '-68px',
     href: undefined,
@@ -43,12 +44,12 @@ const agents = [
     accentRgb: [37, 99, 235] as [number, number, number],
     accentDarkRgb: [29, 78, 216] as [number, number, number],
     imageBlend: 'multiply' as const,
-    imageLeft: '67px',
-    imageTop: '209px',
+    imageRight: '-40px',
+    imageBottom: '-43px',
     imageWidth: '90%',
     mobileImageWidth: '46%',
     mobileImageRight: '-48px',
-    mobileImageBottom: '-56px',
+    mobileImageBottom: '-40px',
     href: undefined,
   },
   {
@@ -59,11 +60,12 @@ const agents = [
     accentRgb: [220, 38, 38] as [number, number, number],
     accentDarkRgb: [185, 28, 28] as [number, number, number],
     imageBlend: 'multiply' as const,
-    imageLeft: '84px',
-    imageTop: '193px',
+    imageRight: '-50px',
+    imageBottom: '-19px',
     imageWidth: '87%',
     mobileImageWidth: '40%',
     mobileImageRight: '-36px',
+    mobileImageBottom: '-52px',
     href: undefined,
   },
   {
@@ -74,12 +76,12 @@ const agents = [
     accentRgb: [255, 122, 47] as [number, number, number],
     accentDarkRgb: [194, 78, 0] as [number, number, number],
     imageBlend: 'lighten' as const,
-    imageLeft: '67px',
-    imageTop: '198px',
+    imageRight: '-46px',
+    imageBottom: '-61px',
     imageWidth: '92%',
     mobileImageWidth: '43%',
     mobileImageRight: '-36px',
-    mobileImageBottom: '-64px',
+    mobileImageBottom: '-88px',
     href: '/apex',
   },
 ]
@@ -119,7 +121,7 @@ export default function AgentsPage() {
             Five agents, one live operating layer in BuildParty
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-3 fade-up fade-up-2">
+        <div className="grid grid-cols-1 xl:grid-cols-5 gap-2 xl:gap-3 fade-up fade-up-2">
           {agents.map((agent) => (
             <AgentCard key={agent.name} {...agent} />
           ))}

@@ -365,21 +365,30 @@ export default function PrePartyPage() {
             borderLeft: '1px solid rgba(255,255,255,0.3)',
           }}
         >
-          {/* Tabs */}
-          <div className="px-4 border-b border-stone-100/60">
-            <div className="flex items-center gap-5 px-2">
-              <button className="py-3 text-[14px] font-bold text-stone-900 border-b-2" style={{ borderColor: '#ff6b00' }}>Chat</button>
-              <button className="py-3 text-[14px] font-medium text-stone-400 hover:text-stone-700 transition-colors">Q&amp;A</button>
-              <button className="py-3 text-[14px] font-medium text-stone-400 hover:text-stone-700 transition-colors">Polls</button>
-              <button className="py-3 text-[14px] font-medium text-stone-400 hover:text-stone-700 transition-colors">People</button>
+          {/* Tabs — segmented control */}
+          <div className="px-4 pt-4 pb-3">
+            <div
+              className="flex rounded-full p-[3px]"
+              style={{ background: 'rgba(156,63,0,0.07)', border: '1px solid rgba(156,63,0,0.05)' }}
+            >
+              <button
+                className="flex-1 py-[7px] rounded-full font-jakarta font-bold text-[12px] text-center"
+                style={{ background: 'rgba(255,255,255,0.95)', boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 1px 8px rgba(194,78,0,0.06)', color: '#9c3f00' }}
+              >Chat</button>
+              <button className="flex-1 py-[7px] rounded-full font-jakarta font-medium text-[12px] text-center text-stone-400 hover:text-stone-600 transition-colors">Q&amp;A</button>
+              <button className="flex-1 py-[7px] rounded-full font-jakarta font-medium text-[12px] text-center text-stone-400 hover:text-stone-600 transition-colors">Polls</button>
+              <button className="flex-1 py-[7px] rounded-full font-jakarta font-medium text-[12px] text-center text-stone-400 hover:text-stone-600 transition-colors">People</button>
             </div>
           </div>
 
           {/* Sub-tabs */}
           <div className="flex items-center gap-2 px-5 py-3 border-b border-stone-100/40 bg-white/10">
-            <button className="px-4 py-1.5 rounded-full text-[11px] font-bold bg-white text-stone-900 shadow-sm border border-stone-100/60">Public</button>
-            <button className="px-4 py-1.5 rounded-full text-[11px] font-bold text-stone-500 hover:bg-white/60 transition-colors">Green Room</button>
-            <button className="px-4 py-1.5 rounded-full text-[11px] font-bold text-stone-500 hover:bg-white/60 transition-colors">Help</button>
+            <button
+              className="px-4 py-1.5 rounded-full font-jakarta font-bold text-[10px]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,122,47,0.25) 0%, rgba(194,78,0,0.2) 100%)', backdropFilter: 'blur(20px) saturate(180%)', WebkitBackdropFilter: 'blur(20px) saturate(180%)', border: '1px solid rgba(255,122,47,0.3)', boxShadow: '0 8px 32px -4px rgba(194,78,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3)', color: '#7a2e00' }}
+            >Public</button>
+            <button className="px-4 py-1.5 rounded-full font-jakarta font-bold text-[10px] text-stone-500 hover:bg-white/60 transition-colors">Green Room</button>
+            <button className="px-4 py-1.5 rounded-full font-jakarta font-bold text-[10px] text-stone-500 hover:bg-white/60 transition-colors">Help</button>
           </div>
 
           {/* Messages */}
@@ -389,27 +398,34 @@ export default function PrePartyPage() {
                 {msg.avatar ? (
                   <img src={msg.avatar} alt={msg.name} className="w-9 h-9 rounded-full object-cover shrink-0 border border-white shadow-sm" />
                 ) : (
-                  <div className={`w-9 h-9 rounded-full ${msg.avatarBg} flex items-center justify-center text-white font-bold text-[12px] shrink-0 shadow-sm`}>
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-white text-[12px] shrink-0 shadow-sm font-jakarta font-bold"
+                    style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)' }}
+                  >
                     {msg.initials}
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5 mb-1 flex-wrap">
-                    <span className="text-[13px] font-bold text-stone-900">{msg.name}</span>
+                    <span className="font-jakarta font-bold text-[13px] text-stone-900">{msg.name}</span>
                     {msg.isStaff && (
-                      <span className="px-1.5 py-0.5 rounded-[4px] text-[9px] font-black uppercase tracking-wider text-white leading-none" style={{ background: '#ff7a2f' }}>
-                        Staff
+                      <span className="px-1.5 py-0.5 rounded-[4px] font-vcr text-[9px] text-white leading-none" style={{ background: '#ff7a2f' }}>
+                        STAFF
                       </span>
                     )}
-                    <span className="text-[10px] text-stone-400 font-medium ml-auto">{msg.time}</span>
+                    <span className="font-vcr text-[9px] text-stone-400 ml-auto">{msg.time}</span>
                   </div>
-                  <p className="text-[13px] text-stone-700 leading-relaxed">{msg.text}</p>
+                  <p className="font-body text-[13px] text-stone-700 leading-relaxed">{msg.text}</p>
                   {msg.reactions.length > 0 && (
                     <div className="mt-2 flex gap-1.5 flex-wrap">
                       {msg.reactions.map((r, i) => (
-                        <button key={i} className="flex items-center gap-1 px-2 py-1 bg-white/60 border border-stone-100 rounded-[8px] text-[11px] hover:bg-white transition-colors">
+                        <button
+                          key={i}
+                          className="flex items-center gap-1 px-2 py-1 rounded-[8px] text-[11px] transition-opacity hover:opacity-80"
+                          style={{ background: 'linear-gradient(135deg, rgba(255,122,47,0.15) 0%, rgba(194,78,0,0.1) 100%)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,122,47,0.2)' }}
+                        >
                           <span>{r.emoji}</span>
-                          <span className="font-bold text-stone-600">{r.count}</span>
+                          <span className="font-jakarta font-bold text-[#7a2e00]">{r.count}</span>
                         </button>
                       ))}
                     </div>
@@ -425,7 +441,7 @@ export default function PrePartyPage() {
               <input
                 type="text"
                 placeholder="Type something..."
-                className="flex-1 bg-transparent border-none focus:ring-0 text-[13px] p-0 placeholder:text-stone-400 font-medium outline-none"
+                className="flex-1 bg-transparent border-none focus:ring-0 font-body text-[13px] p-0 placeholder:text-stone-400 outline-none"
               />
               <button className="ml-3 text-stone-400 hover:text-stone-600 transition-colors">
                 <Smiley size={20} weight="bold" />

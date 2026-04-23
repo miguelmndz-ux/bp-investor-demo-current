@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-22",
+  "lastUpdated": "2026-04-23",
   "decisions": [
     {
       "component": "ApexScanOverlay",
@@ -87,10 +87,10 @@
       "component": "AgentsPage + AgentCard",
       "file": "web/src/app/agents/page.tsx + web/src/components/agents/AgentCard.tsx",
       "pattern": "inline-responsive",
-      "decision": "grid-cols-1 md:grid-cols-5. AgentCard: h-[200px] md:h-[400px]. On mobile (useIsMobile), all mascot images override per-agent props → right: -12px, bottom: -20px, width: 60% (uniform bottom-right corner with slight crop via overflow-hidden). On desktop, per-agent imageLeft/imageTop/imageRight/imageBottom props apply as before. Text: p-5 pt-5 md:p-6 md:pt-7, name text-[36px] md:text-[46px]. Page header: flex-col md:flex-row md:items-end md:justify-between, subtitle hidden md:block, mb-6 md:mb-10.",
-      "rationale": "User requested smaller cards + mascots uniformly in bottom corner on mobile. Per-agent offsets (some top-positioned) looked inconsistent in a stacked single-column layout. 60% width + slight negative offset gives visible crop at card edges without overwhelming the text.",
-      "breakpoints": { "mobile": "< 768px", "desktop": ">= 768px" },
-      "resolvedAt": "2026-04-21"
+      "decision": "Grid: grid-cols-1 below xl:, xl:grid-cols-5 at desktop. Link wrapper: block (no fixed width — cards fill column width). AgentCard: h-[200px] xl:h-[400px]. imageStyle uses useIsMobile(1280) (isCompact): compact style below xl:, desktop style at xl:+. imageLeft/imageTop props removed entirely — desktop imageStyle always uses right/bottom anchoring. Orbit/Flare/Apex converted from left/top to right/bottom (geometrically equivalent at 260px ref card). Flare mobileImageBottom added (-52px, was missing). Text: p-5 pt-5 xl:p-6 xl:pt-7, name text-[36px] xl:text-[46px]. Page header breakpoints unchanged (md:).",
+      "rationale": "md:grid-cols-5 at 768px gave 5 portrait cards in ~820px content = ~160px each — too narrow. Orbit/Flare/Apex used left/top anchoring which caused mascots to shift vertically as card width changed. right/bottom anchoring keeps the corner pinned. useIsMobile(1280) for image style ensures 200px-tall compact cards (768px–1280px range) use the per-agent mobile image sizes, which were tuned for portrait-short cards. xl: grid breakpoint gives ~240px per card minimum.",
+      "breakpoints": { "mobile": "< 768px", "compact": "768px–1279px (grid-cols-1, h-200, compact image style)", "desktop": ">= 1280px (grid-cols-5, h-400, desktop image style)" },
+      "resolvedAt": "2026-04-23"
     },
     {
       "component": "HeroCard + PhTable + PhProductRow + FounderCard + LiveStatsPanel + AgentWorkflowLog",

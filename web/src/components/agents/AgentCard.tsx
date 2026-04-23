@@ -15,10 +15,9 @@ export interface AgentCardProps {
   imageBlend: 'multiply' | 'lighten'
   imageRight?: string
   imageBottom?: string
-  imageLeft?: string
-  imageTop?: string
   imageWidth?: string
   mobileImageWidth?: string
+  mobileImageMaxWidth?: string
   mobileImageRight?: string
   mobileImageBottom?: string
   href?: string
@@ -31,32 +30,25 @@ export default function AgentCard({
   imageBlend,
   imageRight = '-8px',
   imageBottom = '-12px',
-  imageLeft,
-  imageTop,
   imageWidth = '75%',
   mobileImageWidth = '60%',
+  mobileImageMaxWidth = '220px',
   mobileImageRight = '-12px',
   mobileImageBottom = '-20px',
   href,
 }: AgentCardProps) {
-  const isMobile = useIsMobile()
+  const isCompact = useIsMobile(1280)
   const destination = href ?? `/agents/${name.toLowerCase()}`
 
-  const imageStyle: React.CSSProperties = isMobile
-    ? { width: mobileImageWidth, maxWidth: 'none', height: 'auto', right: mobileImageRight, bottom: mobileImageBottom, mixBlendMode: imageBlend }
-    : {
-        width: imageWidth,
-        maxWidth: 'none',
-        height: 'auto',
-        ...(imageLeft !== undefined || imageTop !== undefined
-          ? { left: imageLeft, top: imageTop }
-          : { bottom: imageBottom, right: imageRight }),
-        mixBlendMode: imageBlend,
-      }
+  // Below xl: (1280px) use the compact/mobile image style — sized for 200px-tall landscape cards.
+  // At xl:+ use full desktop style for the 400px portrait grid.
+  const imageStyle: React.CSSProperties = isCompact
+    ? { width: mobileImageWidth, maxWidth: mobileImageMaxWidth, height: 'auto', right: mobileImageRight, bottom: mobileImageBottom, mixBlendMode: imageBlend }
+    : { width: imageWidth, maxWidth: 'none', height: 'auto', right: imageRight, bottom: imageBottom, mixBlendMode: imageBlend }
 
   const card = (
     <div
-      className="relative rounded-[20px] overflow-hidden h-[200px] md:h-[400px] cursor-pointer"
+      className="relative rounded-[20px] overflow-hidden h-[200px] xl:h-[400px] cursor-pointer"
       style={{
         background: `linear-gradient(160deg,
           rgba(255,255,255,0.96) 0%,
@@ -70,11 +62,11 @@ export default function AgentCard({
       }}
     >
       {/* Text content */}
-      <div className="relative z-10 p-5 pt-5 md:p-6 md:pt-7 flex flex-col gap-3">
+      <div className="relative z-10 p-5 pt-5 xl:p-6 xl:pt-7 flex flex-col gap-3">
         <span className="font-vcr text-[13px] tracking-wide uppercase text-on-background/55">
           {role}
         </span>
-        <p className="font-jakarta font-black text-[36px] md:text-[46px] leading-none text-on-background">
+        <p className="font-jakarta font-black text-[36px] xl:text-[46px] leading-none text-on-background">
           {name}
         </p>
       </div>
