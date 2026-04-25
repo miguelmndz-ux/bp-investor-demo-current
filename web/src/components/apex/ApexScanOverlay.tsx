@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { phProducts } from '@/lib/fixtures/products'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
-type ScanPhase = 'scanning' | 'complete' | 'dismissed'
+type ScanPhase = 'ready' | 'scanning' | 'complete' | 'dismissed'
 
 const PHASES = [
   { id: 1, name: 'Scanning Product Hunt top 10',    icon: 'travel_explore' },
@@ -588,7 +588,7 @@ function StepPreview({ phaseIndex, visibleCount, isMobile }: StepPreviewProps) {
 }
 
 export default function ApexScanOverlay() {
-  const [scanPhase, setScanPhase]               = useState<ScanPhase>('scanning')
+  const [scanPhase, setScanPhase]               = useState<ScanPhase>('ready')
   const [activePhaseIndex, setActivePhaseIndex] = useState(0)
   const [isExiting, setIsExiting]               = useState(false)
   // Track both which phase owns the count so stale counts never bleed into a new step's first render
@@ -597,9 +597,16 @@ export default function ApexScanOverlay() {
   const isMobile                                = useIsMobile()
   const [visibleMicrosteps, setVisibleMicrosteps]   = useState(0)
   const [selectedPhaseIndex, setSelectedPhaseIndex] = useState<number | null>(null)
+  const [isReadyFading, setIsReadyFading] = useState(false)
+
+  const handleRunApex = useCallback(() => {
+    setIsReadyFading(true)
+    setTimeout(() => setScanPhase('scanning'), 300)
+  }, [])
 
   // Broadcast scan progress for SideNav indicator
   useEffect(() => {
+    if (scanPhase === 'ready') return
     const progress = scanPhase === 'complete' ? 1 : activePhaseIndex / PHASES.length
     window.dispatchEvent(new CustomEvent('apex-scan-progress', { detail: { progress, phase: scanPhase } }))
   }, [scanPhase, activePhaseIndex])
@@ -700,7 +707,7 @@ export default function ApexScanOverlay() {
           gridTemplateColumns: '36px 1fr auto',
           columnGap: 12,
           alignItems: 'center',
-          opacity: (!isActive && !isComplete) ? 0.35 : 1,
+          opacity: (!isActive && !isComplete) && scanPhase !== 'ready' ? 0.35 : 1,
           cursor: scanPhase === 'complete' ? 'pointer' : 'default',
           ...(isActive || isSelected ? {
             background: 'rgba(255,122,47,0.07)',
@@ -727,6 +734,66 @@ export default function ApexScanOverlay() {
         </div>
       </div>
     )
+
+    if (scanPhase === 'ready') {
+      return (
+        <div className="fixed top-16 left-0 right-0 bottom-0 z-[45] overflow-hidden" style={overlayStyle}>
+          <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-primary-container/5 rounded-full blur-2xl pointer-events-none" />
+
+          <div
+            className="relative z-10 flex flex-col w-full h-full px-4 pt-6 items-center overflow-y-auto"
+            style={{ opacity: isReadyFading ? 0 : 1, transition: 'opacity 300ms ease' }}
+          >
+            {/* Mascot */}
+            <div className="relative flex items-center justify-center mb-2">
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(ellipse, rgba(255,122,47,0.18) 0%, transparent 70%)',
+                  filter: 'blur(30px)',
+                }}
+              />
+              <img
+                src="/apex/apex-mascot.png"
+                alt="Apex"
+                style={{ width: 180, mixBlendMode: 'lighten', position: 'relative' }}
+              />
+            </div>
+
+            {/* Heading + description */}
+            <h1 className="text-2xl font-black font-jakarta text-primary text-center mb-2">
+              Ready to run Apex?
+            </h1>
+            <p className="text-sm text-center leading-relaxed mb-5 px-2" style={{ color: 'rgba(26,10,0,0.55)' }}>
+              Apex scans today&apos;s top Product Hunt launches, enriches founder profiles, and drafts personalized outreach.
+            </p>
+
+            {/* Steps */}
+            <div className="w-full max-w-sm space-y-1 mb-6">
+              {PHASES.map((p, i) => mobileStep(p, i, false, false, false))}
+            </div>
+
+            {/* CTA */}
+            <button
+              onClick={handleRunApex}
+              className="w-full max-w-sm font-jakarta font-bold text-base rounded-full px-8 py-4 transition-all duration-300 active:scale-95 text-white"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%)',
+                boxShadow: '0 4px 16px rgba(194,78,0,0.3)',
+              }}
+            >
+              Run Apex
+            </button>
+            {/* spacer — pb-6 is ignored by overflow-y-auto */}
+            <div className="h-6 shrink-0" />
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div className="fixed top-16 left-0 right-0 bottom-0 z-[45] overflow-hidden" style={overlayStyle}>
@@ -794,107 +861,238 @@ export default function ApexScanOverlay() {
       >
         {/* Left: title + steps + button */}
         <div className="w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">
-          <h1 className="text-4xl font-black font-jakarta text-primary leading-tight pl-4">
-            {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
-          </h1>
+          {scanPhase === 'ready' ? (
+            <div
+              className="flex flex-col gap-6"
+              style={{ opacity: isReadyFading ? 0 : 1, transition: 'opacity 300ms ease' }}
+            >
+              <div className="pl-4">
+                <h1 className="text-4xl font-black font-jakarta text-primary leading-tight">
+                  Ready to run Apex?
+                </h1>
+                <p className="mt-3 text-[15px] leading-relaxed" style={{ color: 'rgba(26,10,0,0.55)', maxWidth: 360 }}>
+                  Apex scans today&apos;s top Product Hunt launches, enriches founder profiles, and drafts
+                  personalized outreach \u2014 so you&apos;re ready to run a live BuildParty session.
+                </p>
+              </div>
 
-          <div className="space-y-1 fade-up">
-            {PHASES.map((p, i) => {
-              const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
-              const isComplete = i < activePhaseIndex || scanPhase === 'complete'
-              const isWaiting  = !isActive && !isComplete
-              const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
-              const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
-              return (
-                <div
-                  key={p.id}
-                  className="transition-all duration-300 px-4 py-3 rounded-[14px]"
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '40px 1fr auto',
-                    columnGap: 16,
-                    alignItems: 'center',
-                    opacity: isWaiting ? 0.35 : 1,
-                    cursor: scanPhase === 'complete' ? 'pointer' : 'default',
-                    ...(isActive || isSelected ? {
-                      background: 'rgba(255,122,47,0.07)',
-                      border: '1px solid rgba(255,122,47,0.35)',
-                      boxShadow: '0 0 24px rgba(255,122,47,0.12)',
-                    } : {}),
-                  }}
-                  onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(i) }}
-                >
-                  <div
-                    className="w-10 h-10 flex items-center justify-center rounded-full"
-                    style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)', alignSelf: 'center' }}
-                  >
-                    <span className="material-symbols-outlined text-white" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>
-                      {p.icon}
-                    </span>
-                  </div>
-
-                  <span className="text-on-background text-[15px] font-bold leading-tight" style={{ alignSelf: 'center' }}>
-                    {p.name}
-                  </span>
-
-                  <div style={{ alignSelf: 'center' }}>
-                    {isActive && (
-                      <svg className="animate-spin" width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
-                        <circle cx="10" cy="10" r="7" stroke="rgba(255,122,47,0.15)" strokeWidth="2" />
-                        <path d="M10 3 A7 7 0 0 1 17 10" stroke="#ff7a2f" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
-                    {isComplete && (
-                      <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}>
-                        check_circle
-                      </span>
-                    )}
-                  </div>
-
-                  {isActive && microsteps.length > 0 && (
-                    <div style={{ gridColumn: '2 / 3', marginTop: -10, paddingBottom: 4 }}>
-                      <svg width="18" height="4" viewBox="0 0 18 4" fill="none" style={{ display: 'block' }}>
-                        <line x1="5" y1="0" x2="5" y2="4" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        {microsteps.map((step, j) => {
-                          const isLast = j === microsteps.length - 1
-                          return (
-                            <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 5, animation: 'fadeUp 0.3s ease both' }}>
-                              <svg width="18" height="22" viewBox="0 0 18 22" fill="none" style={{ flexShrink: 0 }}>
-                                <line x1="5" y1="0" x2="5" y2="9" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
-                                {!isLast && <line x1="5" y1="11" x2="5" y2="22" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />}
-                                <path d="M5 9 Q5 11 7 11 L15 11" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" fill="none" />
-                                <polyline points="12.5,8.5 15,11 12.5,13.5" stroke="rgba(156,63,0,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                              </svg>
-                              <span style={{ fontSize: 11, color: 'rgba(156,63,0,0.6)', fontWeight: 600 }}>{step}</span>
-                            </div>
-                          )
-                        })}
+              <div className="space-y-1 fade-up">
+                {PHASES.map((p, i) => {
+                  const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
+                  const isComplete = i < activePhaseIndex || scanPhase === 'complete'
+                  const isWaiting  = !isActive && !isComplete
+                  const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
+                  const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
+                  return (
+                    <div
+                      key={p.id}
+                      className="transition-all duration-300 px-4 py-3 rounded-[14px]"
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '40px 1fr auto',
+                        columnGap: 16,
+                        alignItems: 'center',
+                        opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
+                        cursor: scanPhase === 'complete' ? 'pointer' : 'default',
+                        ...(isActive || isSelected ? {
+                          background: 'rgba(255,122,47,0.07)',
+                          border: '1px solid rgba(255,122,47,0.35)',
+                          boxShadow: '0 0 24px rgba(255,122,47,0.12)',
+                        } : {}),
+                      }}
+                      onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(i) }}
+                    >
+                      <div
+                        className="w-10 h-10 flex items-center justify-center rounded-full"
+                        style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)', alignSelf: 'center' }}
+                      >
+                        <span className="material-symbols-outlined text-white" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>
+                          {p.icon}
+                        </span>
                       </div>
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
 
-          <button
-            onClick={handleDismiss}
-            className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
-            style={liquidGlass}
-          >
-            {scanPhase === 'complete' ? 'See results' : 'Stop'}
-          </button>
+                      <span className="text-on-background text-[15px] font-bold leading-tight" style={{ alignSelf: 'center' }}>
+                        {p.name}
+                      </span>
+
+                      <div style={{ alignSelf: 'center' }}>
+                        {isActive && (
+                          <svg className="animate-spin" width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
+                            <circle cx="10" cy="10" r="7" stroke="rgba(255,122,47,0.15)" strokeWidth="2" />
+                            <path d="M10 3 A7 7 0 0 1 17 10" stroke="#ff7a2f" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {isComplete && (
+                          <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}>
+                            check_circle
+                          </span>
+                        )}
+                      </div>
+
+                      {isActive && microsteps.length > 0 && (
+                        <div style={{ gridColumn: '2 / 3', marginTop: -10, paddingBottom: 4 }}>
+                          <svg width="18" height="4" viewBox="0 0 18 4" fill="none" style={{ display: 'block' }}>
+                            <line x1="5" y1="0" x2="5" y2="4" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                          <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            {microsteps.map((step, j) => {
+                              const isLast = j === microsteps.length - 1
+                              return (
+                                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 5, animation: 'fadeUp 0.3s ease both' }}>
+                                  <svg width="18" height="22" viewBox="0 0 18 22" fill="none" style={{ flexShrink: 0 }}>
+                                    <line x1="5" y1="0" x2="5" y2="9" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
+                                    {!isLast && <line x1="5" y1="11" x2="5" y2="22" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />}
+                                    <path d="M5 9 Q5 11 7 11 L15 11" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" fill="none" />
+                                    <polyline points="12.5,8.5 15,11 12.5,13.5" stroke="rgba(156,63,0,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                                  </svg>
+                                  <span style={{ fontSize: 11, color: 'rgba(156,63,0,0.6)', fontWeight: 600 }}>{step}</span>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              <button
+                onClick={handleRunApex}
+                className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95 text-white"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%)',
+                  boxShadow: '0 4px 16px rgba(194,78,0,0.3)',
+                }}
+              >
+                Run Apex
+              </button>
+            </div>
+          ) : (
+            <>
+              <h1 className="text-4xl font-black font-jakarta text-primary leading-tight pl-4">
+                {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
+              </h1>
+
+              <div className="space-y-1 fade-up">
+                {PHASES.map((p, i) => {
+                  const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
+                  const isComplete = i < activePhaseIndex || scanPhase === 'complete'
+                  const isWaiting  = !isActive && !isComplete
+                  const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
+                  const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
+                  return (
+                    <div
+                      key={p.id}
+                      className="transition-all duration-300 px-4 py-3 rounded-[14px]"
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '40px 1fr auto',
+                        columnGap: 16,
+                        alignItems: 'center',
+                        opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
+                        cursor: scanPhase === 'complete' ? 'pointer' : 'default',
+                        ...(isActive || isSelected ? {
+                          background: 'rgba(255,122,47,0.07)',
+                          border: '1px solid rgba(255,122,47,0.35)',
+                          boxShadow: '0 0 24px rgba(255,122,47,0.12)',
+                        } : {}),
+                      }}
+                      onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(i) }}
+                    >
+                      <div
+                        className="w-10 h-10 flex items-center justify-center rounded-full"
+                        style={{ background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)', alignSelf: 'center' }}
+                      >
+                        <span className="material-symbols-outlined text-white" style={{ fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>
+                          {p.icon}
+                        </span>
+                      </div>
+
+                      <span className="text-on-background text-[15px] font-bold leading-tight" style={{ alignSelf: 'center' }}>
+                        {p.name}
+                      </span>
+
+                      <div style={{ alignSelf: 'center' }}>
+                        {isActive && (
+                          <svg className="animate-spin" width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
+                            <circle cx="10" cy="10" r="7" stroke="rgba(255,122,47,0.15)" strokeWidth="2" />
+                            <path d="M10 3 A7 7 0 0 1 17 10" stroke="#ff7a2f" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {isComplete && (
+                          <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: "'FILL' 1", color: '#ff7a2f' }}>
+                            check_circle
+                          </span>
+                        )}
+                      </div>
+
+                      {isActive && microsteps.length > 0 && (
+                        <div style={{ gridColumn: '2 / 3', marginTop: -10, paddingBottom: 4 }}>
+                          <svg width="18" height="4" viewBox="0 0 18 4" fill="none" style={{ display: 'block' }}>
+                            <line x1="5" y1="0" x2="5" y2="4" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                          <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            {microsteps.map((step, j) => {
+                              const isLast = j === microsteps.length - 1
+                              return (
+                                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 5, animation: 'fadeUp 0.3s ease both' }}>
+                                  <svg width="18" height="22" viewBox="0 0 18 22" fill="none" style={{ flexShrink: 0 }}>
+                                    <line x1="5" y1="0" x2="5" y2="9" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />
+                                    {!isLast && <line x1="5" y1="11" x2="5" y2="22" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" />}
+                                    <path d="M5 9 Q5 11 7 11 L15 11" stroke="rgba(156,63,0,0.6)" strokeWidth="2" strokeLinecap="round" fill="none" />
+                                    <polyline points="12.5,8.5 15,11 12.5,13.5" stroke="rgba(156,63,0,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                                  </svg>
+                                  <span style={{ fontSize: 11, color: 'rgba(156,63,0,0.6)', fontWeight: 600 }}>{step}</span>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              <button
+                onClick={handleDismiss}
+                className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
+                style={liquidGlass}
+              >
+                {scanPhase === 'complete' ? 'See results' : 'Stop'}
+              </button>
+            </>
+          )}
         </div>
 
-        {/* Right: output preview */}
-        <div className="flex-1 min-h-0 py-4">
-          <StepPreview
-            phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? PHASES.length - 1) : activePhaseIndex}
-            visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
-            isMobile={false}
-          />
+        {/* Right: mascot (ready) or output preview (scanning/complete) */}
+        <div className="flex-1 min-h-0 py-4 flex items-center justify-center">
+          {scanPhase === 'ready' ? (
+            <div className="relative flex items-center justify-center h-full">
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: 340,
+                  height: 340,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(ellipse, rgba(255,122,47,0.18) 0%, transparent 70%)',
+                  filter: 'blur(40px)',
+                }}
+              />
+              <img
+                src="/apex/apex-mascot.png"
+                alt="Apex"
+                style={{ width: 380, maxWidth: '100%', mixBlendMode: 'lighten', position: 'relative' }}
+              />
+            </div>
+          ) : (
+            <StepPreview
+              phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? PHASES.length - 1) : activePhaseIndex}
+              visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
+              isMobile={false}
+            />
+          )}
         </div>
       </div>
     </div>
