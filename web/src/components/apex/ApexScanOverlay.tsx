@@ -742,45 +742,47 @@ export default function ApexScanOverlay() {
           <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-primary-container/5 rounded-full blur-2xl pointer-events-none" />
 
           <div
-            className="relative z-10 flex flex-col w-full h-full px-4 pt-6 items-center overflow-y-auto"
+            className="relative z-10 flex flex-col w-full h-full px-4 pt-6"
             style={{ opacity: isReadyFading ? 0 : 1, transition: 'opacity 300ms ease' }}
           >
-            {/* Mascot */}
-            <div className="relative flex items-center justify-center mb-2">
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  width: 200,
-                  height: 200,
-                  borderRadius: '50%',
-                  background: 'radial-gradient(ellipse, rgba(255,122,47,0.18) 0%, transparent 70%)',
-                  filter: 'blur(30px)',
-                }}
-              />
-              <img
-                src="/apex/apex-mascot.png"
-                alt="Apex"
-                style={{ width: 180, mixBlendMode: 'lighten', position: 'relative' }}
-              />
+            {/* Scrollable content */}
+            <div className="flex-1 overflow-y-auto flex flex-col items-center">
+              {/* Mascot */}
+              <div className="relative flex items-center justify-center mb-2">
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    width: 200,
+                    height: 200,
+                    borderRadius: '50%',
+                    background: 'radial-gradient(ellipse, rgba(255,122,47,0.18) 0%, transparent 70%)',
+                    filter: 'blur(30px)',
+                  }}
+                />
+                <img
+                  src="/apex/apex-mascot.png"
+                  alt="Apex"
+                  style={{ width: 180, mixBlendMode: 'lighten', position: 'relative' }}
+                />
+              </div>
+
+              {/* Heading */}
+              <h1 className="text-2xl font-black font-jakarta text-primary text-center mb-5">
+                Ready to run Apex?
+              </h1>
+
+              {/* Steps */}
+              <div className="w-full max-w-sm space-y-1 mb-6">
+                {PHASES.map((p, i) => mobileStep(p, i, false, false, false))}
+              </div>
+              {/* spacer — pb is ignored by overflow-y-auto */}
+              <div className="h-4 shrink-0" />
             </div>
 
-            {/* Heading + description */}
-            <h1 className="text-2xl font-black font-jakarta text-primary text-center mb-2">
-              Ready to run Apex?
-            </h1>
-            <p className="text-sm text-center leading-relaxed mb-5 px-2" style={{ color: 'rgba(26,10,0,0.55)' }}>
-              Apex scans today&apos;s top Product Hunt launches, enriches founder profiles, and drafts personalized outreach.
-            </p>
-
-            {/* Steps */}
-            <div className="w-full max-w-sm space-y-1 mb-6">
-              {PHASES.map((p, i) => mobileStep(p, i, false, false, false))}
-            </div>
-
-            {/* CTA */}
+            {/* CTA pinned to bottom */}
             <button
               onClick={handleRunApex}
-              className="w-full max-w-sm font-jakarta font-bold text-base rounded-full px-8 py-4 transition-all duration-300 active:scale-95 text-white"
+              className="shrink-0 w-full font-jakarta font-bold text-base rounded-full px-8 py-4 transition-all duration-300 active:scale-95 text-white"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%)',
                 boxShadow: '0 4px 16px rgba(194,78,0,0.3)',
@@ -788,8 +790,7 @@ export default function ApexScanOverlay() {
             >
               Run Apex
             </button>
-            {/* spacer — pb-6 is ignored by overflow-y-auto */}
-            <div className="h-6 shrink-0" />
+            <div className="h-20 shrink-0" />
           </div>
         </div>
       )
@@ -870,19 +871,14 @@ export default function ApexScanOverlay() {
                 <h1 className="text-4xl font-black font-jakarta text-primary leading-tight">
                   Ready to run Apex?
                 </h1>
-                <p className="mt-3 text-[15px] leading-relaxed" style={{ color: 'rgba(26,10,0,0.55)', maxWidth: 360 }}>
-                  Apex scans today&apos;s top Product Hunt launches, enriches founder profiles, and drafts
-                  personalized outreach \u2014 so you&apos;re ready to run a live BuildParty session.
-                </p>
               </div>
 
               <div className="space-y-1 fade-up">
                 {PHASES.map((p, i) => {
-                  const phase      = scanPhase as string
-                  const isActive   = i === activePhaseIndex && phase === 'scanning'
-                  const isComplete = i < activePhaseIndex || phase === 'complete'
+                  const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
+                  const isComplete = i < activePhaseIndex || scanPhase === 'complete'
                   const isWaiting  = !isActive && !isComplete
-                  const isSelected = phase === 'complete' && selectedPhaseIndex === i
+                  const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
                   const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
                   return (
                     <div
@@ -893,15 +889,15 @@ export default function ApexScanOverlay() {
                         gridTemplateColumns: '40px 1fr auto',
                         columnGap: 16,
                         alignItems: 'center',
-                        opacity: isWaiting && phase !== 'ready' ? 0.35 : 1,
-                        cursor: phase === 'complete' ? 'pointer' : 'default',
+                        opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
+                        cursor: scanPhase === 'complete' ? 'pointer' : 'default',
                         ...(isActive || isSelected ? {
                           background: 'rgba(255,122,47,0.07)',
                           border: '1px solid rgba(255,122,47,0.35)',
                           boxShadow: '0 0 24px rgba(255,122,47,0.12)',
                         } : {}),
                       }}
-                      onClick={() => { if (phase === 'complete') setSelectedPhaseIndex(i) }}
+                      onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(i) }}
                     >
                       <div
                         className="w-10 h-10 flex items-center justify-center rounded-full"
@@ -977,11 +973,10 @@ export default function ApexScanOverlay() {
 
               <div className="space-y-1 fade-up">
                 {PHASES.map((p, i) => {
-                  const phase      = scanPhase as string
-                  const isActive   = i === activePhaseIndex && phase === 'scanning'
-                  const isComplete = i < activePhaseIndex || phase === 'complete'
+                  const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
+                  const isComplete = i < activePhaseIndex || scanPhase === 'complete'
                   const isWaiting  = !isActive && !isComplete
-                  const isSelected = phase === 'complete' && selectedPhaseIndex === i
+                  const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
                   const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
                   return (
                     <div
@@ -992,8 +987,8 @@ export default function ApexScanOverlay() {
                         gridTemplateColumns: '40px 1fr auto',
                         columnGap: 16,
                         alignItems: 'center',
-                        opacity: isWaiting && phase !== 'ready' ? 0.35 : 1,
-                        cursor: phase === 'complete' ? 'pointer' : 'default',
+                        opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
+                        cursor: scanPhase === 'complete' ? 'pointer' : 'default',
                         ...(isActive || isSelected ? {
                           background: 'rgba(255,122,47,0.07)',
                           border: '1px solid rgba(255,122,47,0.35)',
