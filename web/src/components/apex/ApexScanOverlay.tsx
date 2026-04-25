@@ -875,11 +875,11 @@ export default function ApexScanOverlay() {
 
               <div className="space-y-1 fade-up">
                 {PHASES.map((p, i) => {
-                  const isActive   = i === activePhaseIndex && scanPhase === 'scanning'
-                  const isComplete = i < activePhaseIndex || scanPhase === 'complete'
-                  const isWaiting  = !isActive && !isComplete
-                  const isSelected = scanPhase === 'complete' && selectedPhaseIndex === i
-                  const microsteps = (MICROSTEPS[i] ?? []).slice(0, visibleMicrosteps)
+                  const isActive   = false
+                  const isComplete = false
+                  const isWaiting  = true
+                  const isSelected = false
+                  const microsteps: string[] = []
                   return (
                     <div
                       key={p.id}
@@ -889,15 +889,15 @@ export default function ApexScanOverlay() {
                         gridTemplateColumns: '40px 1fr auto',
                         columnGap: 16,
                         alignItems: 'center',
-                        opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
-                        cursor: scanPhase === 'complete' ? 'pointer' : 'default',
+                        opacity: 1,
+                        cursor: 'default',
                         ...(isActive || isSelected ? {
                           background: 'rgba(255,122,47,0.07)',
                           border: '1px solid rgba(255,122,47,0.35)',
                           boxShadow: '0 0 24px rgba(255,122,47,0.12)',
                         } : {}),
                       }}
-                      onClick={() => { if (scanPhase === 'complete') setSelectedPhaseIndex(i) }}
+                      onClick={() => {}}
                     >
                       <div
                         className="w-10 h-10 flex items-center justify-center rounded-full"
@@ -987,7 +987,7 @@ export default function ApexScanOverlay() {
                         gridTemplateColumns: '40px 1fr auto',
                         columnGap: 16,
                         alignItems: 'center',
-                        opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
+                        opacity: isWaiting ? 0.35 : 1,
                         cursor: scanPhase === 'complete' ? 'pointer' : 'default',
                         ...(isActive || isSelected ? {
                           background: 'rgba(255,122,47,0.07)',
