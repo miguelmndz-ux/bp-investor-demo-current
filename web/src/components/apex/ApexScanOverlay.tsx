@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { phProducts } from '@/lib/fixtures/products'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
-type ScanPhase = 'scanning' | 'complete' | 'dismissed'
+type ScanPhase = 'ready' | 'scanning' | 'complete' | 'dismissed'
 
 const PHASES = [
   { id: 1, name: 'Scanning Product Hunt top 10',    icon: 'travel_explore' },
@@ -588,7 +588,7 @@ function StepPreview({ phaseIndex, visibleCount, isMobile }: StepPreviewProps) {
 }
 
 export default function ApexScanOverlay() {
-  const [scanPhase, setScanPhase]               = useState<ScanPhase>('scanning')
+  const [scanPhase, setScanPhase]               = useState<ScanPhase>('ready')
   const [activePhaseIndex, setActivePhaseIndex] = useState(0)
   const [isExiting, setIsExiting]               = useState(false)
   // Track both which phase owns the count so stale counts never bleed into a new step's first render
@@ -597,9 +597,16 @@ export default function ApexScanOverlay() {
   const isMobile                                = useIsMobile()
   const [visibleMicrosteps, setVisibleMicrosteps]   = useState(0)
   const [selectedPhaseIndex, setSelectedPhaseIndex] = useState<number | null>(null)
+  const [isReadyFading, setIsReadyFading] = useState(false)
+
+  const handleRunApex = useCallback(() => {
+    setIsReadyFading(true)
+    setTimeout(() => setScanPhase('scanning'), 300)
+  }, [])
 
   // Broadcast scan progress for SideNav indicator
   useEffect(() => {
+    if (scanPhase === 'ready') return
     const progress = scanPhase === 'complete' ? 1 : activePhaseIndex / PHASES.length
     window.dispatchEvent(new CustomEvent('apex-scan-progress', { detail: { progress, phase: scanPhase } }))
   }, [scanPhase, activePhaseIndex])
@@ -700,7 +707,7 @@ export default function ApexScanOverlay() {
           gridTemplateColumns: '36px 1fr auto',
           columnGap: 12,
           alignItems: 'center',
-          opacity: (!isActive && !isComplete) ? 0.35 : 1,
+          opacity: (!isActive && !isComplete) && scanPhase !== 'ready' ? 0.35 : 1,
           cursor: scanPhase === 'complete' ? 'pointer' : 'default',
           ...(isActive || isSelected ? {
             background: 'rgba(255,122,47,0.07)',
@@ -727,6 +734,64 @@ export default function ApexScanOverlay() {
         </div>
       </div>
     )
+
+    if (scanPhase === 'ready') {
+      return (
+        <div className="fixed top-16 left-0 right-0 bottom-0 z-[45] overflow-hidden" style={overlayStyle}>
+          <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-primary-container/5 rounded-full blur-2xl pointer-events-none" />
+
+          <div
+            className="relative z-10 flex flex-col w-full h-full px-4 pt-6 pb-6 items-center overflow-y-auto"
+            style={{ opacity: isReadyFading ? 0 : 1, transition: 'opacity 300ms ease' }}
+          >
+            {/* Mascot */}
+            <div className="relative flex items-center justify-center mb-2">
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(ellipse, rgba(255,122,47,0.18) 0%, transparent 70%)',
+                  filter: 'blur(30px)',
+                }}
+              />
+              <img
+                src="/apex/apex-mascot.png"
+                alt="Apex"
+                style={{ width: 180, mixBlendMode: 'lighten', position: 'relative' }}
+              />
+            </div>
+
+            {/* Heading + description */}
+            <h1 className="text-2xl font-black font-jakarta text-primary text-center mb-2">
+              Ready to run Apex?
+            </h1>
+            <p className="text-sm text-center leading-relaxed mb-5 px-2" style={{ color: 'rgba(26,10,0,0.55)' }}>
+              Apex scans today&apos;s top Product Hunt launches, enriches founder profiles, and drafts personalized outreach.
+            </p>
+
+            {/* Steps */}
+            <div className="w-full max-w-sm space-y-1 mb-6">
+              {PHASES.map((p, i) => mobileStep(p, i, false, false, false))}
+            </div>
+
+            {/* CTA */}
+            <button
+              onClick={handleRunApex}
+              className="w-full max-w-sm font-jakarta font-bold text-base rounded-full px-8 py-4 transition-all duration-300 active:scale-95 text-white"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%)',
+                boxShadow: '0 4px 16px rgba(194,78,0,0.3)',
+              }}
+            >
+              Run Apex
+            </button>
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div className="fixed top-16 left-0 right-0 bottom-0 z-[45] overflow-hidden" style={overlayStyle}>
@@ -794,9 +859,24 @@ export default function ApexScanOverlay() {
       >
         {/* Left: title + steps + button */}
         <div className="w-[42%] flex flex-col justify-center gap-6 py-4 shrink-0">
-          <h1 className="text-4xl font-black font-jakarta text-primary leading-tight pl-4">
-            {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
-          </h1>
+          {scanPhase === 'ready' ? (
+            <div
+              className="pl-4"
+              style={{ opacity: isReadyFading ? 0 : 1, transition: 'opacity 300ms ease' }}
+            >
+              <h1 className="text-4xl font-black font-jakarta text-primary leading-tight">
+                Ready to run Apex?
+              </h1>
+              <p className="mt-3 text-[15px] leading-relaxed" style={{ color: 'rgba(26,10,0,0.55)', maxWidth: 360 }}>
+                Apex scans today&apos;s top Product Hunt launches, enriches founder profiles, and drafts
+                personalized outreach \u2014 so you&apos;re ready to run a live BuildParty session.
+              </p>
+            </div>
+          ) : (
+            <h1 className="text-4xl font-black font-jakarta text-primary leading-tight pl-4">
+              {scanPhase === 'complete' ? 'Apex run complete.' : 'Apex is running\u2026'}
+            </h1>
+          )}
 
           <div className="space-y-1 fade-up">
             {PHASES.map((p, i) => {
@@ -814,7 +894,7 @@ export default function ApexScanOverlay() {
                     gridTemplateColumns: '40px 1fr auto',
                     columnGap: 16,
                     alignItems: 'center',
-                    opacity: isWaiting ? 0.35 : 1,
+                    opacity: isWaiting && scanPhase !== 'ready' ? 0.35 : 1,
                     cursor: scanPhase === 'complete' ? 'pointer' : 'default',
                     ...(isActive || isSelected ? {
                       background: 'rgba(255,122,47,0.07)',
@@ -879,22 +959,55 @@ export default function ApexScanOverlay() {
             })}
           </div>
 
-          <button
-            onClick={handleDismiss}
-            className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
-            style={liquidGlass}
-          >
-            {scanPhase === 'complete' ? 'See results' : 'Stop'}
-          </button>
+          {scanPhase === 'ready' ? (
+            <button
+              onClick={handleRunApex}
+              className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95 text-white"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,122,47,0.97) 0%, rgba(194,78,0,0.92) 100%)',
+                boxShadow: '0 4px 16px rgba(194,78,0,0.3)',
+              }}
+            >
+              Run Apex
+            </button>
+          ) : (
+            <button
+              onClick={handleDismiss}
+              className="self-start font-jakarta font-bold text-sm rounded-full px-8 py-3 transition-all duration-300 active:scale-95"
+              style={liquidGlass}
+            >
+              {scanPhase === 'complete' ? 'See results' : 'Stop'}
+            </button>
+          )}
         </div>
 
-        {/* Right: output preview */}
-        <div className="flex-1 min-h-0 py-4">
-          <StepPreview
-            phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? PHASES.length - 1) : activePhaseIndex}
-            visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
-            isMobile={false}
-          />
+        {/* Right: mascot (ready) or output preview (scanning/complete) */}
+        <div className="flex-1 min-h-0 py-4 flex items-center justify-center">
+          {scanPhase === 'ready' ? (
+            <div className="relative flex items-center justify-center h-full">
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: 340,
+                  height: 340,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(ellipse, rgba(255,122,47,0.18) 0%, transparent 70%)',
+                  filter: 'blur(40px)',
+                }}
+              />
+              <img
+                src="/apex/apex-mascot.png"
+                alt="Apex"
+                style={{ width: 380, maxWidth: '100%', mixBlendMode: 'lighten', position: 'relative' }}
+              />
+            </div>
+          ) : (
+            <StepPreview
+              phaseIndex={scanPhase === 'complete' ? (selectedPhaseIndex ?? PHASES.length - 1) : activePhaseIndex}
+              visibleCount={scanPhase === 'complete' ? 999 : visibleCount}
+              isMobile={false}
+            />
+          )}
         </div>
       </div>
     </div>
