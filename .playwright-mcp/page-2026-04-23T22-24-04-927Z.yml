@@ -1,0 +1,172 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /apex
+        - img [ref=e5]
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /discover
+        - img [ref=e8]
+      - link [ref=e10] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e11]
+      - link [ref=e14] [cursor=pointer]:
+        - /url: /agents
+        - img [ref=e15]
+    - generic [ref=e18]:
+      - link "Nate Herk" [ref=e19] [cursor=pointer]:
+        - /url: https://www.nateherk.com/
+        - img "Nate Herk" [ref=e20]
+      - link "The AI Collective" [ref=e21] [cursor=pointer]:
+        - /url: https://www.aicollective.com/
+        - img "The AI Collective" [ref=e22]
+      - link "Sabrina Ramonov" [ref=e23] [cursor=pointer]:
+        - /url: https://substack.com/@sabrinaramonov
+        - img "Sabrina Ramonov" [ref=e24]
+      - link "Ben's Bites" [ref=e25] [cursor=pointer]:
+        - /url: https://www.bensbites.com/
+        - img "Ben's Bites" [ref=e26]
+      - link "Liam Ottley" [ref=e27] [cursor=pointer]:
+        - /url: https://www.liamottley.com/
+        - img "Liam Ottley" [ref=e28]
+      - link "Every.to" [ref=e29] [cursor=pointer]:
+        - /url: https://every.to/
+        - img "Every.to" [ref=e30]
+      - link "Claude" [ref=e31] [cursor=pointer]:
+        - /url: https://claude.ai/
+        - img "Claude" [ref=e32]
+      - link "LiveKit" [ref=e33] [cursor=pointer]:
+        - /url: https://livekit.io/
+        - img "LiveKit" [ref=e34]
+  - banner [ref=e35]:
+    - generic [ref=e36]: BuildParty
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - img [ref=e39]
+        - textbox "Search insights, founders, or drafts…" [ref=e41]
+      - button [ref=e42] [cursor=pointer]:
+        - img [ref=e43]
+      - img "Profile" [ref=e47]
+  - main [ref=e48]:
+    - generic [ref=e50]:
+      - complementary [ref=e51]:
+        - generic [ref=e52]:
+          - heading "Velo" [level=2] [ref=e53]
+          - generic [ref=e54]: expand_more
+        - generic [ref=e55]:
+          - generic [ref=e56] [cursor=pointer]:
+            - generic [ref=e57]: tag
+            - generic [ref=e58]: lobby
+          - generic [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]: podcasts
+            - generic [ref=e61]: stage
+          - generic [ref=e62] [cursor=pointer]:
+            - generic [ref=e63]: campaign
+            - generic [ref=e64]: announcements
+          - heading "Community" [level=3] [ref=e66]
+          - generic [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: chat_bubble
+            - generic [ref=e69]: general-chat
+          - generic [ref=e70] [cursor=pointer]:
+            - generic [ref=e71]: palette
+            - generic [ref=e72]: design-lab
+        - generic [ref=e74]:
+          - img "You" [ref=e77]
+          - generic [ref=e79]:
+            - generic [ref=e80]: You
+            - generic [ref=e81]: Online
+      - generic [ref=e82]:
+        - generic [ref=e84]:
+          - generic [ref=e87]: Join Live Stage
+          - generic [ref=e88]:
+            - generic [ref=e90] [cursor=pointer]:
+              - img "Attendee" [ref=e92]
+              - img "Attendee" [ref=e94]
+              - img "Attendee" [ref=e98]
+            - generic [ref=e102] [cursor=pointer]:
+              - img "Attendee" [ref=e104]
+              - img "Attendee" [ref=e108]
+            - generic [ref=e114] [cursor=pointer]:
+              - img "Attendee" [ref=e116]
+              - img "Attendee" [ref=e118]
+            - img "Attendee" [ref=e128] [cursor=pointer]
+            - generic [ref=e138] [cursor=pointer]:
+              - img "Attendee" [ref=e140]
+              - img "Attendee" [ref=e142]
+              - img "Attendee" [ref=e144]
+            - img "Attendee" [ref=e154] [cursor=pointer]
+            - generic [ref=e162] [cursor=pointer]:
+              - img "Attendee" [ref=e164]
+              - img "Attendee" [ref=e166]
+        - generic [ref=e185]:
+          - button "expand_more" [ref=e186] [cursor=pointer]:
+            - generic [ref=e191]: expand_more
+          - generic [ref=e192]:
+            - button "mic" [ref=e193] [cursor=pointer]:
+              - generic [ref=e194]: mic
+            - button "videocam" [ref=e195] [cursor=pointer]:
+              - generic [ref=e196]: videocam
+            - button "present_to_all" [ref=e197] [cursor=pointer]:
+              - generic [ref=e198]: present_to_all
+            - button "image" [ref=e199] [cursor=pointer]:
+              - generic [ref=e200]: image
+            - button "settings" [ref=e201] [cursor=pointer]:
+              - generic [ref=e202]: settings
+      - complementary [ref=e203]:
+        - generic [ref=e205]:
+          - button "Chat" [ref=e206] [cursor=pointer]
+          - button "Q&A" [ref=e207] [cursor=pointer]
+          - button "Polls" [ref=e208] [cursor=pointer]
+          - button "People" [ref=e209] [cursor=pointer]
+        - generic [ref=e210]:
+          - button "Public" [ref=e211] [cursor=pointer]
+          - button "Green Room" [ref=e212] [cursor=pointer]
+          - button "Help" [ref=e213] [cursor=pointer]
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - generic [ref=e216]: TH
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - generic [ref=e219]: Tyler Huang
+                - generic [ref=e220]: 10:42 PM
+              - paragraph [ref=e221]: wait is that silero VAD? thought LiveKit used webrtcvad
+              - button "🔥 4" [ref=e223] [cursor=pointer]:
+                - generic [ref=e224]: 🔥
+                - generic [ref=e225]: "4"
+          - generic [ref=e226]:
+            - img "Chris Wilson" [ref=e227]
+            - generic [ref=e228]:
+              - generic [ref=e229]:
+                - generic [ref=e230]: Chris Wilson
+                - generic [ref=e231]: Staff
+                - generic [ref=e232]: 10:43 PM
+              - paragraph [ref=e233]: we switched to silero — better accuracy. WebRTC still supported 👍
+          - generic [ref=e234]:
+            - img "Dylan James" [ref=e235]
+            - generic [ref=e236]:
+              - generic [ref=e237]:
+                - generic [ref=e238]: Dylan James
+                - generic [ref=e239]: 10:43 PM
+              - paragraph [ref=e240]: I tried building this with raw WebSockets for 3 weeks. I feel both validated and personally attacked 😭
+              - generic [ref=e241]:
+                - button "❤️ 6" [ref=e242] [cursor=pointer]:
+                  - generic [ref=e243]: ❤️
+                  - generic [ref=e244]: "6"
+                - button "🔥 11" [ref=e245] [cursor=pointer]:
+                  - generic [ref=e246]: 🔥
+                  - generic [ref=e247]: "11"
+          - generic [ref=e248]:
+            - img "Kimi Hindman" [ref=e249]
+            - generic [ref=e250]:
+              - generic [ref=e251]:
+                - generic [ref=e252]: Kimi Hindman
+                - generic [ref=e253]: Staff
+                - generic [ref=e254]: 10:45 PM
+              - paragraph [ref=e255]: ElevenLabs Turbo in demo — one-line swap in agent config ✨
+        - generic [ref=e257]:
+          - textbox "Type something..." [ref=e258]
+          - button [ref=e259] [cursor=pointer]:
+            - img [ref=e260]
+  - button "Open Next.js Dev Tools" [ref=e267] [cursor=pointer]:
+    - img [ref=e268]
+  - alert [ref=e271]

@@ -15,7 +15,7 @@ type AnchorProps = BaseProps & { href: string } & AnchorHTMLAttributes<HTMLAncho
 type Props = ButtonProps | AnchorProps
 
 export default function PrimaryButton({ children, className = '', icon, fullWidth, ...rest }: Props) {
-  const base = `${fullWidth ? 'block w-full text-center' : 'inline-flex'} items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-extrabold font-jakarta text-white shadow-xl hover:opacity-90 active:scale-95 transition-all ${className}`
+  const base = `${fullWidth ? 'flex w-full' : 'inline-flex'} items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-extrabold font-jakarta text-white shadow-xl hover:opacity-90 active:scale-95 transition-all ${className}`
   const style = { background: 'linear-gradient(135deg, #ff7a2f 0%, #c24e00 100%)' }
 
   const content = (
